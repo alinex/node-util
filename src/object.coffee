@@ -5,21 +5,46 @@
 # Read configuration
 # -------------------------------------------------
 
-module.exports.deepExtend = (object, extenders...) ->
-  return {} if not object?
-  for other in extenders
-    for own key, val of other
-      if not object[key]? or typeof val isnt "object"
-        object[key] = val
-      else if val instanceof Date
-        object[key] = new Date val.getTime()
-      else if val instanceof RegExp
-        flags = ''
-        flags += 'g' if val.global?
-        flags += 'i' if val.ignoreCase?
-        flags += 'm' if val.multiline?
-        flags += 'y' if val.sticky?
-        object[key] = new RegExp(val.source, flags)
-      else
-        object[key] = deepExtend object[key], val
-  object
+extend = module.exports.extend = (obj, ext...) ->
+  # clone if no extenders given
+  return extend null, obj if not ext?
+  obj = {} unless obj
+  # use all extenders
+  for src in ext
+    if typeof src isnt 'object'
+      obj = src
+    else if Array.isArray src
+      obj = cloneArray src
+    else if src instanceof Date
+      obj = cloneDate src
+    else if src instanceof RegExp
+      obj = cloneRegExp src
+    else if obj.constructor?
+      obj = cloneInstance src
+    else
+      for key, val of src
+        obj[key] = extend obj[key], val
+  obj
+
+module.exports.clone = (object) ->
+  extend null, object
+
+cloneRegExp = (obj) ->
+  flags = ''
+  flags += 'g' if obj.global?
+  flags += 'i' if obj.ignoreCase?
+  flags += 'm' if obj.multiline?
+  flags += 'y' if obj.sticky?
+  new RegExp obj.source, flags
+
+cloneArray = (obj) ->
+  obj.slice 0
+
+cloneDate = (obj) ->
+  new Date obj.getTime()
+
+cloneInstance = (obj) ->
+  res = obj.constructor()
+  for own key, val of obj
+    res[key] = extend null, val
+  res
