@@ -5,24 +5,67 @@ describe "Object", ->
 
   {object} = require '../../src/index'
 
-  test = {}
-  beforeEach ->
-    test =
-      one: 1
-      two: 2
-      string: 'Hello'
-      array: [1,2,3]
-      re: /a.*/
-      date: new Date()
+  describe.only "clone", ->
+
+    it "should clone object", ->
+      test = { eins: 1 }
+      result = object.clone test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+
+    it "should clone string", ->
+      test = "eins"
+      result = object.clone test
+      expect(result, "deep check").to.deep.equal test
+
+    it "should clone array", ->
+      test = [ 1,2,3 ]
+      result = object.clone test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+
+    it "should clone date", ->
+      test = new Date()
+      result = object.clone test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+
+    it "should clone regexp", ->
+      test = /ab/
+      result = object.clone test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+
+    it "should clone instance", ->
+      test = new Error "Test error"
+      result = object.clone test
+      console.log result
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
 
   describe "extend", ->
 
-    it "should let object untouched for empty extenders", ->
-      result = object.extend test, {}
+    it "should clone object", ->
+      test = { eins: 1 }
+      result = object.extend null, test
       expect(result, "deep check").to.deep.equal test
-      expect(result, "reference").to.equal test
+      expect(result, "reference").to.not.equal test
 
-    it.only "should clone into empty object", ->
+    it "should let object untouched for empty extenders", ->
+      test = { eins: 1 }
+      orig = object.extend null, test
+      object.extend test, {}
+      expect(test, "deep check").to.deep.equal orig
+      expect(test, "reference").to.not.equal orig
+      test = object.extend test, {}
+      expect(test, "deep check").to.deep.equal orig
+      expect(test, "reference").to.not.equal orig
+      test = object.extend test
+      expect(test, "deep check").to.deep.equal orig
+      expect(test, "reference").to.not.equal orig
+
+    it "should clone into empty object", ->
+      test = { eins: 1 }
       result = object.extend {}, test
       console.log result, test
       expect(result, "deep check").to.deep.equal test
