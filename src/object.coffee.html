@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>object.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/object.coffee", defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+  <script src="../fileSearch.js"></script>
+  <script src="../goToLine.js"></script>
+  <link rel="stylesheet" href="../fileSearch.css" />
+  <link rel="stylesheet" href="../goToLine.css" />
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+      <div class="heading h1">
+        <a href="#utility%20functions%20for%20objects.">Utility functions for objects.</a>
+      </div>
+      <div class="heading h2">
+        <a href="#extend%20object">Extend object</a>
+      </div>
+      <div class="heading h2">
+        <a href="#deep%20cloning%20object">Deep cloning object</a>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a><div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="utility%20functions%20for%20objects.">
+  <h1>
+    <a href="#utility%20functions%20for%20objects." name="utility%20functions%20for%20objects." class="pilcrow">&#182;</a>
+    Utility functions for objects.
+  </h1>
+</div>
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="extend%20object">
+  <h2>
+    <a href="#extend%20object" name="extend%20object" class="pilcrow">&#182;</a>
+    Extend object
+  </h2>
+</div>
+
+
+<p>This method will extend a given object with the entries from additional
+objects. Therefore it will do a deep extend.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+base object to be extended</li>
+<li><code>extender</code>...
+multiple extenders may be given with will be cloned into the object.</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>object</code>
+the given and maybe changed object.</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">extend = module.exports.extend = </span><span class="nf">(obj, ext...) -&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3">&#182;</a>
+</div>
+<p>clone if no extenders given</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="k">return</span> <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">obj</span> <span class="k">if</span> <span class="o">not</span> <span class="nx">ext</span><span class="o">?</span>
+  <span class="nv">obj = </span><span class="p">{}</span> <span class="k">unless</span> <span class="nx">obj</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4">&#182;</a>
+</div>
+<p>use all extenders</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="k">for</span> <span class="nx">src</span> <span class="k">in</span> <span class="nx">ext</span>
+    <span class="k">continue</span> <span class="k">unless</span> <span class="nx">src</span>
+    <span class="k">continue</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">constructor</span><span class="o">?</span> <span class="o">is</span> <span class="nb">Object</span> <span class="o">and</span> <span class="o">not</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">src</span><span class="p">).</span><span class="nx">length</span>
+    <span class="k">if</span> <span class="k">typeof</span> <span class="nx">src</span> <span class="o">isnt</span> <span class="s">&#39;object&#39;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5">&#182;</a>
+</div>
+<p>simple variables or function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+      <span class="nv">obj = </span><span class="nx">src</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span> <span class="nx">src</span>
+      <span class="nv">res = </span><span class="p">[]</span>
+      <span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">src</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">push</span> <span class="nx">extend</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="o">?</span><span class="p">,</span> <span class="nx">src</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+      <span class="nv">obj = </span><span class="nx">res</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="nx">src</span> <span class="k">instanceof</span> <span class="nb">Date</span>
+      <span class="nv">obj = </span><span class="k">new</span> <span class="nb">Date</span> <span class="nx">src</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="nx">src</span> <span class="k">instanceof</span> <span class="nb">RegExp</span>
+      <span class="nv">flags = </span><span class="s">&#39;&#39;</span>
+      <span class="nx">flags</span> <span class="o">+=</span> <span class="s">&#39;g&#39;</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">global</span>
+      <span class="nx">flags</span> <span class="o">+=</span> <span class="s">&#39;i&#39;</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">ignoreCase</span>
+      <span class="nx">flags</span> <span class="o">+=</span> <span class="s">&#39;m&#39;</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">multiline</span>
+      <span class="nx">flags</span> <span class="o">+=</span> <span class="s">&#39;y&#39;</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">sticky</span>
+      <span class="nv">obj = </span><span class="k">new</span> <span class="nb">RegExp</span> <span class="nx">src</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span> <span class="nx">flags</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">!=</span> <span class="nb">Object</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6">&#182;</a>
+</div>
+
+<div class="highlight"><pre><code><span class="nx">exact</span> <span class="nx">copy</span><span class="o">/</span><span class="nx">clone</span> <span class="nx">not</span> <span class="nx">working</span> <span class="nx">on</span> <span class="nx">instances</span>
+ <span class="nx">obj</span> <span class="o">=</span> <span class="nx">extendInstance</span> <span class="nx">obj</span><span class="p">,</span> <span class="nx">src</span>
+</code></pre></div>
+
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+      <span class="nv">obj = </span><span class="nx">src</span>
+    <span class="k">else</span>
+      <span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">src</span>
+        <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">extend</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">],</span> <span class="nx">val</span>
+  <span class="nx">obj</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="deep%20cloning%20object">
+  <h2>
+    <a href="#deep%20cloning%20object" name="deep%20cloning%20object" class="pilcrow">&#182;</a>
+    Deep cloning object
+  </h2>
+</div>
+
+
+<p>This method will create a clone of the given object.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+to be cloned</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>object</code>
+clone of the given  object.</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">module.exports.clone = </span><span class="nf">(object) -&gt;</span>
+  <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">object</span>
+
+<span class="nv">extendInstance = </span><span class="nf">(obj, src) -&gt;</span>
+  <span class="nv">res = </span><span class="nx">src</span><span class="p">.</span><span class="nx">constructor</span><span class="p">()</span>
+  <span class="k">for</span> <span class="k">own</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">src</span>
+    <span class="nx">res</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">extend</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">],</span> <span class="nx">val</span>
+  <span class="nx">res</span>
+</pre></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+  </div>
+</body>
+</html>

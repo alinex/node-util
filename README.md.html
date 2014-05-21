@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>README.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "", thisFile = "home/alex/a3/node-util/README.md", defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+  <script src="fileSearch.js"></script>
+  <script src="goToLine.js"></script>
+  <link rel="stylesheet" href="fileSearch.css" />
+  <link rel="stylesheet" href="goToLine.css" />
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+      <div class="heading h1">
+        <a href="#package%3A%20alinex-util">Package: alinex-util</a>
+      </div>
+      <div class="heading h2">
+        <a href="#install">Install</a>
+      </div>
+      <div class="heading h2">
+        <a href="#usage">Usage</a>
+      </div>
+      <div class="heading h3">
+        <a href="#extend%20object">Extend object</a>
+      </div>
+      <div class="heading h3">
+        <a href="#deep%20cloning%20object">Deep cloning object</a>
+      </div>
+      <div class="heading h2">
+        <a href="#license">License</a>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a><div class="docs markdown">
+<div class="pilwrap" id="package%3A%20alinex-util">
+  <h1>
+    <a href="#package%3A%20alinex-util" name="package%3A%20alinex-util" class="pilcrow">&#182;</a>
+    Package: alinex-util
+  </h1>
+</div>
+
+
+<p><a href="https://travis-ci.org/alinex/node-util"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status" title="" /></a> 
+<a href="https://coveralls.io/r/alinex/node-util?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.png?branch=master" alt="Coverage Status" title="" /></a>
+<a href="https://gemnasium.com/alinex/node-util"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status" title="" /></a></p>
+
+<p>Description comes here...</p>
+
+
+<div class="pilwrap" id="install">
+  <h2>
+    <a href="#install" name="install" class="pilcrow">&#182;</a>
+    Install
+  </h2>
+</div>
+
+
+<p>The easiest way is to let npm add the module directly:</p>
+
+
+<div class="highlight"><pre><code><span class="o">&gt;</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">alinex</span><span class="o">-</span><span class="nx">fs</span> <span class="o">--</span><span class="nx">save</span>
+</code></pre></div>
+
+
+
+<p><a href="https://nodei.co/npm/alinex-util/"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;stars=true" alt="NPM" title="" /></a></p>
+
+
+<div class="pilwrap" id="usage">
+  <h2>
+    <a href="#usage" name="usage" class="pilcrow">&#182;</a>
+    Usage
+  </h2>
+</div>
+
+
+
+<div class="pilwrap" id="extend%20object">
+  <h3>
+    <a href="#extend%20object" name="extend%20object" class="pilcrow">&#182;</a>
+    Extend object
+  </h3>
+</div>
+
+
+<p>This method will extend a given object with the entries from additional
+objects. Therefore it will do a deep extend.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+base object to be extended</li>
+<li><code>extender</code>...
+multiple extenders may be given with will be cloned into the object.</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>object</code>
+the given and maybe changed object.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">object</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span> <span class="nx">test</span><span class="p">;</span>
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">;</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">test</span><span class="p">,</span> <span class="p">{</span> <span class="nx">zwei</span><span class="o">:</span> <span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="s1">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">drei</span><span class="o">:</span> <span class="mi">3</span> <span class="p">});</span>
+
+<span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="s1">&#39;eins&#39;</span><span class="p">,</span> <span class="nx">zwei</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">drei</span><span class="o">:</span> <span class="mi">3</span> <span class="p">}</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="deep%20cloning%20object">
+  <h3>
+    <a href="#deep%20cloning%20object" name="deep%20cloning%20object" class="pilcrow">&#182;</a>
+    Deep cloning object
+  </h3>
+</div>
+
+
+<p>This method will create a clone of the given object.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+to be cloned</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>object</code>
+clone of the given  object.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">object</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span> <span class="nx">test</span><span class="p">;</span>
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">;</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">clone</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+
+<span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="license">
+  <h2>
+    <a href="#license" name="license" class="pilcrow">&#182;</a>
+    License
+  </h2>
+</div>
+
+
+<p>Copyright 2014 Alexander Schilling</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<blockquote>
+  <p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+</blockquote>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
+  </div>
+</body>
+</html>
