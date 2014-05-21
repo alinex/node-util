@@ -1,57 +1,75 @@
-# Utility functions.
+# Utility functions for objects.
 # =================================================
 
 
-# Read configuration
+# Extend object
 # -------------------------------------------------
-
+# This method will extend a given object with the entries from additional
+# objects. Therefore it will do a deep extend.
+#
+# __Arguments:__
+#
+# * `object`
+#   base object to be extended
+# * `extender`...
+#   multiple extenders may be given with will be cloned into the object.
+#
+# __Returns:__
+#
+# * `object`
+#   the given and maybe changed object.
 extend = module.exports.extend = (obj, ext...) ->
-#  console.log 'extend', obj, ext
   # clone if no extenders given
   return extend null, obj if not ext?
   obj = {} unless obj
-#  console.log ' xtend', obj, ext
   # use all extenders
   for src in ext
-#    console.log src.constructor
     continue unless src
     continue if src.constructor? is Object and not Object.keys(src).length
-#    console.log 'check', obj, src
     if typeof src isnt 'object'
+      # simple variables or function
       obj = src
     else if Array.isArray src
-      obj = cloneArray src
+      res = []
+      for key, val of src
+        res.push extend obj[key]?, src[key]
+      obj = res
     else if src instanceof Date
-      obj = cloneDate src
+      obj = new Date src.getTime()
     else if src instanceof RegExp
-      obj = cloneRegExp src
-    else if obj.constructor? isnt Object
-      obj = cloneInstance src
+      flags = ''
+      flags += 'g' if src.global
+      flags += 'i' if src.ignoreCase
+      flags += 'm' if src.multiline
+      flags += 'y' if src.sticky
+      obj = new RegExp src.source, flags
+    else if src.constructor != Object
+#     exact copy/clone not working on instances
+#      obj = extendInstance obj, src
+      obj = src
     else
       for key, val of src
         obj[key] = extend obj[key], val
-#  console.log 'result', obj
   obj
 
+# Deep cloning object
+# -------------------------------------------------
+# This method will create a clone of the given object.
+#
+# __Arguments:__
+#
+# * `object`
+#   to be cloned
+#
+# __Returns:__
+#
+# * `object`
+#   clone of the given  object.
 module.exports.clone = (object) ->
   extend null, object
 
-cloneRegExp = (obj) ->
-  flags = ''
-  flags += 'g' if obj.global
-  flags += 'i' if obj.ignoreCase
-  flags += 'm' if obj.multiline
-  flags += 'y' if obj.sticky
-  new RegExp obj.source, flags
-
-cloneArray = (obj) ->
-  obj.slice 0
-
-cloneDate = (obj) ->
-  new Date obj.getTime()
-
-cloneInstance = (obj) ->
-  res = obj.constructor()
-  for own key, val of obj
-    res[key] = extend null, val
+extendInstance = (obj, src) ->
+  res = src.constructor()
+  for own key, val of src
+    res[key] = extend obj[key], val
   res
