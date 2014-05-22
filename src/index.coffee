@@ -6,3 +6,4 @@
 # Load helpers for each category
 # -------------------------------------------------
 module.exports.object = require './object'
+module.exports.string = require './string'

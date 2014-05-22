@@ -1,23 +1,10 @@
-# Utility functions for objects.
+# Utility functions for strings.
 # =================================================
 
 
-# Add object helpers to the Object class
+# Check for specific string start
 # -------------------------------------------------
-# This will allow to call the methods directly on an object.
-module.exports.addToPrototype = ->
-  Object.prototype.extend = ->
-    args = arguments
-    args.unshift this
-    extend.apply null, args
-  Object.prototype.clone = ->
-    extend null, this
-
-
-# Extend object
-# -------------------------------------------------
-# This method will extend a given object with the entries from additional
-# objects. Therefore it will do a deep extend.
+# Peek at the beginning of a given string to see if it matches a sequence.
 #
 # __Arguments:__
 #

@@ -8,8 +8,5 @@ Version 0.0.1 (2014-05-21)
 -------------------------------------------------
 - Finished clone() and expand() methods.
 - Added clone tests.
-- Added test methods to extend function.
-- Travis integration.
-- First function design.
-- Initial commit
+- Added test methods for extend function.
 
