@@ -2,18 +2,6 @@
 # =================================================
 
 
-# Add object helpers to the Object class
-# -------------------------------------------------
-# This will allow to call the methods directly on an object.
-module.exports.addToPrototype = ->
-  Object.prototype.extend = ->
-    args = arguments
-    args.unshift this
-    extend.apply null, args
-  Object.prototype.clone = ->
-    extend null, this
-
-
 # Extend object
 # -------------------------------------------------
 # This method will extend a given object with the entries from additional
@@ -85,3 +73,14 @@ extendInstance = (obj, src) ->
   for own key, val of src
     res[key] = extend obj[key], val
   res
+
+
+# Add object helpers to the Object class
+# -------------------------------------------------
+# This will allow to call the methods directly on an object.
+module.exports.addToPrototype = ->
+  Object.prototype.extend = (args...) ->
+    args.unshift this
+    extend.apply null, args
+  Object.prototype.clone = ->
+    extend null, this

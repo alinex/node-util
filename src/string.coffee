@@ -8,67 +8,43 @@
 #
 # __Arguments:__
 #
-# * `object`
-#   base object to be extended
-# * `extender`...
-#   multiple extenders may be given with will be cloned into the object.
+# * `string`
+#   text to be checked
+# * `literal`
+#   phrase to match
+# * `start` (optional)
+#   offset character position to start looking for
 #
 # __Returns:__
 #
-# * `object`
-#   the given and maybe changed object.
-extend = module.exports.extend = (obj, ext...) ->
-  # clone if no extenders given
-  return extend null, obj if not ext?
-  obj = {} unless obj
-  # use all extenders
-  for src in ext
-    continue unless src
-    continue if src.constructor? is Object and not Object.keys(src).length
-    if typeof src isnt 'object'
-      # simple variables or function
-      obj = src
-    else if Array.isArray src
-      res = []
-      for key, val of src
-        res.push extend obj[key]?, src[key]
-      obj = res
-    else if src instanceof Date
-      obj = new Date src.getTime()
-    else if src instanceof RegExp
-      flags = ''
-      flags += 'g' if src.global
-      flags += 'i' if src.ignoreCase
-      flags += 'm' if src.multiline
-      flags += 'y' if src.sticky
-      obj = new RegExp src.source, flags
-    else if src.constructor != Object
-#     exact copy/clone not working on instances
-#      obj = extendInstance obj, src
-      obj = src
-    else
-      for key, val of src
-        obj[key] = extend obj[key], val
-  obj
+# * `true` if `string` starts with `literal`
+module.exports.starts = (string, literal, start) ->
+  literal is string.substr start, literal.length
 
-# Deep cloning object
+# Check for specific string ending
 # -------------------------------------------------
-# This method will create a clone of the given object.
+# Peek at the end of a given string to see if it matches a sequence.
 #
 # __Arguments:__
 #
-# * `object`
-#   to be cloned
+# * `string`
+#   text to be checked
+# * `literal`
+#   phrase to match
+# * `back` (optional)
+#   offset character position from the end to look for
 #
 # __Returns:__
 #
-# * `object`
-#   clone of the given  object.
-module.exports.clone = (object) ->
-  extend null, object
+# * `true` if `string` ends with `literal`
+exports.ends = (string, literal, back) ->
+  len = literal.length
+  literal is string.substr string.length - len - (back or 0), len
 
-extendInstance = (obj, src) ->
-  res = src.constructor()
-  for own key, val of src
-    res[key] = extend obj[key], val
-  res
+# Add object helpers to the Object class
+# -------------------------------------------------
+# This will allow to call the methods directly on an object.
+module.exports.addToPrototype = ->
+  String.prototype.starts = (literal, start) ->
+    mosule.exports.starts this, literal, start
+
