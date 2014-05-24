@@ -3,7 +3,7 @@ expect = chai.expect
 
 describe "String", ->
 
-  {string} = require '../../src/index'
+  {string} = require '../../lib/index'
 
   describe "starts", ->
 

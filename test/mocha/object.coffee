@@ -3,7 +3,7 @@ expect = chai.expect
 
 describe "Object", ->
 
-  {object} = require '../../src/index'
+  {object} = require '../../lib/index'
 
   describe "clone", ->
 
