@@ -44,6 +44,17 @@ exports.ends = (string, literal, back) ->
 # Repeat string n times
 # -------------------------------------------------
 # Use clever algorithm to have O(log(n)) string concatenation operations.
+#
+# __Arguments:__
+#
+# * `string`
+#   text to be repeated
+# * `n`
+#   number of repeats
+#
+# __Returns:__
+#
+# * the repeated test
 exports.repeat = (str, n) ->
   res = ''
   while n > 0

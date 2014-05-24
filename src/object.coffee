@@ -31,7 +31,7 @@ extend = module.exports.extend = (obj, ext...) ->
       obj = src
     else if Array.isArray src
       res = []
-      for key, val of src
+      for own key, val of src
         res.push extend obj[key]?, src[key]
       obj = res
     else if src instanceof Date

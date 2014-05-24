@@ -1,11 +1,11 @@
 Package: alinex-util
 =================================================
 
-[![Build Status] (https://travis-ci.org/alinex/node-util.svg?branch=master)](https://travis-ci.org/alinex/node-util) 
+[![Build Status] (https://travis-ci.org/alinex/node-util.svg?branch=master)](https://travis-ci.org/alinex/node-util)
 [![Coverage Status] (https://coveralls.io/repos/alinex/node-util/badge.png?branch=master)](https://coveralls.io/r/alinex/node-util?branch=master)
 [![Dependency Status] (https://gemnasium.com/alinex/node-util.png)](https://gemnasium.com/alinex/node-util)
 
-This module will be used as incubator for different small helper methods which 
+This module will be used as incubator for different small helper methods which
 are generally used.
 
 
@@ -48,7 +48,7 @@ Usage of string helpers
 
 ### Match string start
 
-This is a handy method to check that a certain string starts with the given 
+This is a handy method to check that a certain string starts with the given
 phrase.
 
 __Arguments:__
@@ -83,7 +83,7 @@ Or the same call using prototype extension:
 
 ### Match string end
 
-This is a handy method to check that a certain string ends with the given 
+This is a handy method to check that a certain string ends with the given
 phrase.
 
 __Arguments:__
@@ -114,6 +114,37 @@ Or the same call using prototype extension:
     require('alinex-util').string.addToPrototype();
     var test = 'abcdefg';
     var result = test.ends('fg');
+
+### Repeat string n times
+
+Use clever algorithm to have O(log(n)) string concatenation operations.
+
+__Arguments:__
+
+* `string` (if not called as String method)
+  text to be repeated
+* `n`
+  number of repeats
+
+__Returns:__
+
+* the repeated test
+
+__Example:__
+
+    var string = require('alinex-util').string;
+    var test = 'ab';
+    var result = string.repeat(test, 3);
+
+This results to:
+
+    result = 'ababab'
+
+Or the same call using prototype extension:
+
+    require('alinex-util').string.addToPrototype();
+    var test = 'ab';
+    var result = test.repeat(3);
 
 
 Usage of object helpers
@@ -182,6 +213,40 @@ Or the same call using prototype extension:
     require('alinex-util').object.addToPrototype();
     var test = { eins: 1 };
     var result = test.clone();
+
+
+Usage of array helpers
+-------------------------------------------------
+
+
+### Get the last element of an array
+
+__Arguments:__
+
+* `array`
+  of elements to work on
+* `back` (optional)
+  offset character position from the end to look for
+
+__Returns:__
+
+* last element value
+
+__Example:__
+
+    var array = require('alinex-util').array;
+    var test = [ 1,2,3,4,5 ];
+    var result = array.last(test);
+
+This results to:
+
+    result = 5
+
+Or the same call using prototype extension:
+
+    require('alinex-util').array.addToPrototype();
+    var test = [ 1,2,3,4,5 ];
+    var result = test.last();
 
 
 License
