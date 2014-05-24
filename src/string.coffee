@@ -18,7 +18,7 @@
 # __Returns:__
 #
 # * `true` if `string` starts with `literal`
-module.exports.starts = (string, literal, start) ->
+exports.starts = (string, literal, start) ->
   literal is string.substr start, literal.length
 
 # Check for specific string ending
@@ -41,10 +41,24 @@ exports.ends = (string, literal, back) ->
   len = literal.length
   literal is string.substr string.length - len - (back or 0), len
 
+# Repeat string n times
+# -------------------------------------------------
+# Use clever algorithm to have O(log(n)) string concatenation operations.
+exports.repeat = (str, n) ->
+  res = ''
+  while n > 0
+    res += str if n & 1
+    n >>>= 1
+    str += str
+  res
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
-module.exports.addToPrototype = ->
+exports.addToPrototype = ->
   String.prototype.starts = (literal, start) ->
-    mosule.exports.starts this, literal, start
-
+    exports.starts this, literal, start
+  String.prototype.ends = (literal, back) ->
+    exports.ends this, literal, back
+  String.prototype.repeat = (n) ->
+    exports.repeat this, n
