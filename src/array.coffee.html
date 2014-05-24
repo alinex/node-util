@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>array.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../", thisFile = "Users/alex/a3/node-util/src/array.coffee", defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+  <script src="../fileSearch.js"></script>
+  <script src="../goToLine.js"></script>
+  <link rel="stylesheet" href="../fileSearch.css" />
+  <link rel="stylesheet" href="../goToLine.css" />
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+      <div class="heading h1">
+        <a href="#utility%20functions%20for%20array.">Utility functions for array.</a>
+      </div>
+      <div class="heading h2">
+        <a href="#get%20the%20last%20element%20of%20an%20array">Get the last element of an array</a>
+      </div>
+      <div class="heading h2">
+        <a href="#add%20array%20helpers%20to%20the%20object%20class">Add array helpers to the Object class</a>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a><div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="utility%20functions%20for%20array.">
+  <h1>
+    <a href="#utility%20functions%20for%20array." name="utility%20functions%20for%20array." class="pilcrow">&#182;</a>
+    Utility functions for array.
+  </h1>
+</div>
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="get%20the%20last%20element%20of%20an%20array">
+  <h2>
+    <a href="#get%20the%20last%20element%20of%20an%20array" name="get%20the%20last%20element%20of%20an%20array" class="pilcrow">&#182;</a>
+    Get the last element of an array
+  </h2>
+</div>
+
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>array</code>
+of elements to work on</li>
+<li><code>back</code> (optional)
+offset character position from the end to look for</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>last element value</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.last = </span><span class="nf">(array, back) -&gt;</span>
+  <span class="nx">array</span><span class="p">[</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="p">(</span><span class="nx">back</span> <span class="o">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="add%20array%20helpers%20to%20the%20object%20class">
+  <h2>
+    <a href="#add%20array%20helpers%20to%20the%20object%20class" name="add%20array%20helpers%20to%20the%20object%20class" class="pilcrow">&#182;</a>
+    Add array helpers to the Object class
+  </h2>
+</div>
+
+
+<p>This will allow to call the methods directly on an object.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.addToPrototype = </span><span class="nf">-&gt;</span>
+  <span class="nb">Array</span><span class="p">.</span><span class="nv">prototype.last = </span><span class="nf">(back) -&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">last</span> <span class="k">this</span><span class="p">,</span> <span class="nx">back</span>
+</pre></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+  </div>
+</body>
+</html>

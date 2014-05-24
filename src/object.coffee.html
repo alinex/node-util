@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/object.coffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "Users/alex/a3/node-util/src/object.coffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
   <script src="../fileSearch.js"></script>
@@ -30,6 +30,9 @@
       </div>
       <div class="heading h2">
         <a href="#deep%20cloning%20object">Deep cloning object</a>
+      </div>
+      <div class="heading h2">
+        <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
       </div>
     </div>
   </div>
@@ -126,7 +129,7 @@ the given and maybe changed object.</li>
       <span class="nv">obj = </span><span class="nx">src</span>
     <span class="k">else</span> <span class="k">if</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span> <span class="nx">src</span>
       <span class="nv">res = </span><span class="p">[]</span>
-      <span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">src</span>
+      <span class="k">for</span> <span class="k">own</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">src</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">push</span> <span class="nx">extend</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="o">?</span><span class="p">,</span> <span class="nx">src</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
       <span class="nv">obj = </span><span class="nx">res</span>
     <span class="k">else</span> <span class="k">if</span> <span class="nx">src</span> <span class="k">instanceof</span> <span class="nb">Date</span>
@@ -201,6 +204,31 @@ clone of the given  object.</li>
   <span class="k">for</span> <span class="k">own</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">src</span>
     <span class="nx">res</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">extend</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">],</span> <span class="nx">val</span>
   <span class="nx">res</span>
+
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="add%20object%20helpers%20to%20the%20object%20class">
+  <h2>
+    <a href="#add%20object%20helpers%20to%20the%20object%20class" name="add%20object%20helpers%20to%20the%20object%20class" class="pilcrow">&#182;</a>
+    Add object helpers to the Object class
+  </h2>
+</div>
+
+
+<p>This will allow to call the methods directly on an object.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">module.exports.addToPrototype = </span><span class="nf">-&gt;</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.extend = </span><span class="nf">(args...) -&gt;</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
+    <span class="nx">extend</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.clone = </span><span class="nf">-&gt;</span>
+    <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="k">this</span>
 </pre></div>
         </td>
       </tr>

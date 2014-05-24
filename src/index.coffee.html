@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/index.coffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "Users/alex/a3/node-util/src/index.coffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
   <script src="../fileSearch.js"></script>
@@ -27,6 +27,9 @@
       </div>
       <div class="heading h2">
         <a href="#load%20helpers%20for%20each%20category">Load helpers for each category</a>
+      </div>
+      <div class="heading h2">
+        <a href="#add%20all%20helpers%20to%20the%20corresponding%20class">Add all helpers to the corresponding class</a>
       </div>
     </div>
   </div>
@@ -71,7 +74,32 @@
 
         </td>
         <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">module.exports.string = </span><span class="nx">require</span> <span class="s">&#39;./string&#39;</span>
 <span class="nv">module.exports.object = </span><span class="nx">require</span> <span class="s">&#39;./object&#39;</span>
+<span class="nv">module.exports.array = </span><span class="nx">require</span> <span class="s">&#39;./array&#39;</span>
+
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="add%20all%20helpers%20to%20the%20corresponding%20class">
+  <h2>
+    <a href="#add%20all%20helpers%20to%20the%20corresponding%20class" name="add%20all%20helpers%20to%20the%20corresponding%20class" class="pilcrow">&#182;</a>
+    Add all helpers to the corresponding class
+  </h2>
+</div>
+
+
+<p>This will allow to call the methods directly on an object.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">module.exports.addToPrototype = </span><span class="nf">-&gt;</span>
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">array</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
 </pre></div>
         </td>
       </tr>

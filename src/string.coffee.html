@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>string.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../", thisFile = "Users/alex/a3/node-util/src/string.coffee", defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+  <script src="../fileSearch.js"></script>
+  <script src="../goToLine.js"></script>
+  <link rel="stylesheet" href="../fileSearch.css" />
+  <link rel="stylesheet" href="../goToLine.css" />
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+      <div class="heading h1">
+        <a href="#utility%20functions%20for%20strings.">Utility functions for strings.</a>
+      </div>
+      <div class="heading h2">
+        <a href="#check%20for%20specific%20string%20start">Check for specific string start</a>
+      </div>
+      <div class="heading h2">
+        <a href="#check%20for%20specific%20string%20ending">Check for specific string ending</a>
+      </div>
+      <div class="heading h2">
+        <a href="#repeat%20string%20n%20times">Repeat string n times</a>
+      </div>
+      <div class="heading h2">
+        <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a><div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="utility%20functions%20for%20strings.">
+  <h1>
+    <a href="#utility%20functions%20for%20strings." name="utility%20functions%20for%20strings." class="pilcrow">&#182;</a>
+    Utility functions for strings.
+  </h1>
+</div>
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="check%20for%20specific%20string%20start">
+  <h2>
+    <a href="#check%20for%20specific%20string%20start" name="check%20for%20specific%20string%20start" class="pilcrow">&#182;</a>
+    Check for specific string start
+  </h2>
+</div>
+
+
+<p>Peek at the beginning of a given string to see if it matches a sequence.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be checked</li>
+<li><code>literal</code>
+phrase to match</li>
+<li><code>start</code> (optional)
+offset character position to start looking for</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>true</code> if <code>string</code> starts with <code>literal</code></li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.starts = </span><span class="nf">(string, literal, start) -&gt;</span>
+  <span class="nx">literal</span> <span class="o">is</span> <span class="nx">string</span><span class="p">.</span><span class="nx">substr</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">literal</span><span class="p">.</span><span class="nx">length</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="check%20for%20specific%20string%20ending">
+  <h2>
+    <a href="#check%20for%20specific%20string%20ending" name="check%20for%20specific%20string%20ending" class="pilcrow">&#182;</a>
+    Check for specific string ending
+  </h2>
+</div>
+
+
+<p>Peek at the end of a given string to see if it matches a sequence.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be checked</li>
+<li><code>literal</code>
+phrase to match</li>
+<li><code>back</code> (optional)
+offset character position from the end to look for</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>true</code> if <code>string</code> ends with <code>literal</code></li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.ends = </span><span class="nf">(string, literal, back) -&gt;</span>
+  <span class="nv">len = </span><span class="nx">literal</span><span class="p">.</span><span class="nx">length</span>
+  <span class="nx">literal</span> <span class="o">is</span> <span class="nx">string</span><span class="p">.</span><span class="nx">substr</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">len</span> <span class="o">-</span> <span class="p">(</span><span class="nx">back</span> <span class="o">or</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">len</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="repeat%20string%20n%20times">
+  <h2>
+    <a href="#repeat%20string%20n%20times" name="repeat%20string%20n%20times" class="pilcrow">&#182;</a>
+    Repeat string n times
+  </h2>
+</div>
+
+
+<p>Use clever algorithm to have O(log(n)) string concatenation operations.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be repeated</li>
+<li><code>n</code>
+number of repeats</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>the repeated test</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.repeat = </span><span class="nf">(str, n) -&gt;</span>
+  <span class="nv">res = </span><span class="s">&#39;&#39;</span>
+  <span class="k">while</span> <span class="nx">n</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="nx">res</span> <span class="o">+=</span> <span class="nx">str</span> <span class="k">if</span> <span class="nx">n</span> <span class="o">&amp;</span> <span class="mi">1</span>
+    <span class="nx">n</span> <span class="o">&gt;&gt;&gt;=</span> <span class="mi">1</span>
+    <span class="nx">str</span> <span class="o">+=</span> <span class="nx">str</span>
+  <span class="nx">res</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="add%20object%20helpers%20to%20the%20object%20class">
+  <h2>
+    <a href="#add%20object%20helpers%20to%20the%20object%20class" name="add%20object%20helpers%20to%20the%20object%20class" class="pilcrow">&#182;</a>
+    Add object helpers to the Object class
+  </h2>
+</div>
+
+
+<p>This will allow to call the methods directly on an object.</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.addToPrototype = </span><span class="nf">-&gt;</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.starts = </span><span class="nf">(literal, start) -&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">starts</span> <span class="k">this</span><span class="p">,</span> <span class="nx">literal</span><span class="p">,</span> <span class="nx">start</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.ends = </span><span class="nf">(literal, back) -&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">ends</span> <span class="k">this</span><span class="p">,</span> <span class="nx">literal</span><span class="p">,</span> <span class="nx">back</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.repeat = </span><span class="nf">(n) -&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span>
+</pre></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+  </div>
+</body>
+</html>
