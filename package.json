@@ -29,7 +29,6 @@
   "dependencies": {},
   "devDependencies": {
     "alinex-make": "0.2.x",
-    "coveralls": "2.x",
     "chai": "1.x"
   },
   "optionalDependencies": {},
