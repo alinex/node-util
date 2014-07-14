@@ -8,6 +8,9 @@ Package: alinex-util
 This module will be used as incubator for different small helper methods which
 are generally used.
 
+It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
+following the code standards defined there.
+
 
 Install
 -------------------------------------------------
