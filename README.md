@@ -16,6 +16,9 @@ are generally used for different general class types:
 It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
 following the code standards defined there.
 
+It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
+following the code standards defined there.
+
 
 Install
 -------------------------------------------------
