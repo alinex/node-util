@@ -6,7 +6,15 @@ Package: alinex-util
 [![Dependency Status] (https://gemnasium.com/alinex/node-util.png)](https://gemnasium.com/alinex/node-util)
 
 This module will be used as incubator for different small helper methods which
-are generally used.
+are generally used for different general class types:
+
+- string helper
+- array helper
+- object helper
+- may extend the base classes
+
+It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
+following the code standards defined there.
 
 
 Install
