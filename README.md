@@ -9,12 +9,10 @@ This module will be used as incubator for different small helper methods which
 are generally used for different general class types:
 
 - string helper
+- number helper
 - array helper
 - object helper
 - may extend the base classes
-
-It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
-following the code standards defined there.
 
 It is one of the modules of the [Alinex Universe](http://alinex.github.io/node-alinex)
 following the code standards defined there.
@@ -156,6 +154,23 @@ Or the same call using prototype extension:
     require('alinex-util').string.addToPrototype();
     var test = 'ab';
     var result = test.repeat(3);
+
+
+Usage of number helpers
+-------------------------------------------------
+
+### Check for Integer
+
+This method will check that the given value is an integer.
+
+__Arguments:__
+
+* `object`
+  to be analyzed
+
+__Returns:__
+
+* `true` if `object` is an integer
 
 
 Usage of object helpers
