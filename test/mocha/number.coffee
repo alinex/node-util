@@ -65,3 +65,24 @@ describe "Number", ->
       expect number.isInteger([])
       , "use []"
       .to.be.false
+
+  describe "filterInt", ->
+
+    it "should succeed on normal values", ->
+      expect number.filterInt('421')
+      .to.equal 421
+      expect number.filterInt('-421')
+      .to.equal -421
+      expect number.filterInt('+421')
+      .to.equal 421
+      expect number.filterInt('0')
+      .to.equal 0
+      expect number.filterInt('Infinity')
+      .to.equal Infinity
+
+    it "should fail on other strings", ->
+      expect number.filterInt('421hop')
+      .to.equal NaN
+#console.log(filterInt('421e+0'));            // NaN
+#console.log(filterInt('hop1.61803398875'));  // NaN
+#console.log(filterInt('1.61803398875'));     // NaN

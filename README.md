@@ -172,6 +172,19 @@ __Returns:__
 
 * `true` if `object` is an integer
 
+### Strict parse for Integer
+
+This will fail on all strings which are no real integer.
+
+__Arguments:__
+
+* `value`
+  to be analyzed
+
+__Returns:__
+
+* `value` as Number or `NaN`
+
 
 Usage of object helpers
 -------------------------------------------------
