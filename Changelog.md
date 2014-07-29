@@ -4,6 +4,14 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.1 (2014-07-29)
+-------------------------------------------------
+- Added number utilities.
+- Merge branch 'master' of https://github.com/alinex/node-util
+- Updated documentation.
+- Added link to alinex module in documentation.
+- Remove coveralls as direct dependency.
+
 Version 0.1.0 (2014-05-24)
 -------------------------------------------------
 - Test on compiled code.
