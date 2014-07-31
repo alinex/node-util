@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.5 (2014-07-31)
+-------------------------------------------------
+- Fixed again.
+
 Version 0.1.4 (2014-07-31)
 -------------------------------------------------
 - Fixed parseSeconds and parseMSeconds to not fail on objects but to give NaN.
