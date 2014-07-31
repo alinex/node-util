@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/a3/node-util/READMEmd", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/a3/node-util/README.md", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -35,34 +35,40 @@
         <a href="#usage%20of%20string%20helpers">Usage of string helpers</a>
       </div>
       <div class="heading h3">
-        <a href="#match%20string%20start">Match string start</a>
+        <a href="#starts%20-%20match%20string%20start">starts - match string start</a>
       </div>
       <div class="heading h3">
-        <a href="#match%20string%20end">Match string end</a>
+        <a href="#ends%20-%20match%20string%20end">ends - match string end</a>
       </div>
       <div class="heading h3">
-        <a href="#repeat%20string%20n%20times">Repeat string n times</a>
+        <a href="#repeat%20-%20repeat%20string%20n%20times">repeat - Repeat string n times</a>
       </div>
       <div class="heading h2">
         <a href="#usage%20of%20number%20helpers">Usage of number helpers</a>
       </div>
       <div class="heading h3">
-        <a href="#check%20for%20integer">Check for Integer</a>
+        <a href="#isinteger%20-%20check%20for%20integer">isInteger - check for Integer</a>
+      </div>
+      <div class="heading h3">
+        <a href="#parseint%20-%20strict%20parse%20for%20integer">parseInt - strict parse for Integer</a>
+      </div>
+      <div class="heading h3">
+        <a href="#parseseconds%20-%20parse%20human%20readable%20time%20to%20seconds">parseSeconds - parse human readable time to seconds</a>
       </div>
       <div class="heading h2">
         <a href="#usage%20of%20object%20helpers">Usage of object helpers</a>
       </div>
       <div class="heading h3">
-        <a href="#extend%20object">Extend object</a>
+        <a href="#extend%20-%20extend%20object">extend - extend object</a>
       </div>
       <div class="heading h3">
-        <a href="#deep%20cloning%20object">Deep cloning object</a>
+        <a href="#clone%20-%20deep%20cloning%20object">clone - deep cloning object</a>
       </div>
       <div class="heading h2">
         <a href="#usage%20of%20array%20helpers">Usage of array helpers</a>
       </div>
       <div class="heading h3">
-        <a href="#get%20the%20last%20element%20of%20an%20array">Get the last element of an array</a>
+        <a href="#last%20-%20get%20the%20last%20element">last - get the last element</a>
       </div>
       <div class="heading h2">
         <a href="#license">License</a>
@@ -79,9 +85,9 @@
 </div>
 
 
-<p><a href="https://travis-ci.org/alinex/node-util.html"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status" title="" /></a>
-<a href="https://coveralls.io/r/alinex/node-util.html?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.png?branch=master" alt="Coverage Status" title="" /></a>
-<a href="https://gemnasium.com/alinex/node-util.html"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status" title="" /></a></p>
+<p><a href="https://travis-ci.org/alinex/node-util"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status" title="" /></a>
+<a href="https://coveralls.io/r/alinex/node-util?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.png?branch=master" alt="Coverage Status" title="" /></a>
+<a href="https://gemnasium.com/alinex/node-util"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status" title="" /></a></p>
 
 <p>This module will be used as incubator for different small helper methods which
 are generally used for different general class types:</p>
@@ -94,7 +100,7 @@ are generally used for different general class types:</p>
 <li>may extend the base classes</li>
 </ul>
 
-<p>It is one of the modules of the <a href="http://alinex.github.io/node-alinex.html">Alinex Universe</a>
+<p>It is one of the modules of the <a href="http://alinex.github.io/node-alinex">Alinex Universe</a>
 following the code standards defined there.</p>
 
 
@@ -114,7 +120,7 @@ following the code standards defined there.</p>
 
 
 
-<p><a href="https://nodei.co/npm/alinex-util/.html"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;stars=true" alt="NPM" title="" /></a></p>
+<p><a href="https://nodei.co/npm/alinex-util/"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;stars=true" alt="NPM" title="" /></a></p>
 
 
 <div class="pilwrap" id="usage">
@@ -167,10 +173,10 @@ you won't need the first parameter:</p>
 
 
 
-<div class="pilwrap" id="match%20string%20start">
+<div class="pilwrap" id="starts%20-%20match%20string%20start">
   <h3>
-    <a href="#match%20string%20start" name="match%20string%20start" class="pilcrow">&#182;</a>
-    Match string start
+    <a href="#starts%20-%20match%20string%20start" name="starts%20-%20match%20string%20start" class="pilcrow">&#182;</a>
+    starts - match string start
   </h3>
 </div>
 
@@ -224,10 +230,10 @@ offset character position to start looking for</li>
 
 
 
-<div class="pilwrap" id="match%20string%20end">
+<div class="pilwrap" id="ends%20-%20match%20string%20end">
   <h3>
-    <a href="#match%20string%20end" name="match%20string%20end" class="pilcrow">&#182;</a>
-    Match string end
+    <a href="#ends%20-%20match%20string%20end" name="ends%20-%20match%20string%20end" class="pilcrow">&#182;</a>
+    ends - match string end
   </h3>
 </div>
 
@@ -281,10 +287,10 @@ offset character position from the end to look for</li>
 
 
 
-<div class="pilwrap" id="repeat%20string%20n%20times">
+<div class="pilwrap" id="repeat%20-%20repeat%20string%20n%20times">
   <h3>
-    <a href="#repeat%20string%20n%20times" name="repeat%20string%20n%20times" class="pilcrow">&#182;</a>
-    Repeat string n times
+    <a href="#repeat%20-%20repeat%20string%20n%20times" name="repeat%20-%20repeat%20string%20n%20times" class="pilcrow">&#182;</a>
+    repeat - Repeat string n times
   </h3>
 </div>
 
@@ -344,10 +350,10 @@ number of repeats</li>
 
 
 
-<div class="pilwrap" id="check%20for%20integer">
+<div class="pilwrap" id="isinteger%20-%20check%20for%20integer">
   <h3>
-    <a href="#check%20for%20integer" name="check%20for%20integer" class="pilcrow">&#182;</a>
-    Check for Integer
+    <a href="#isinteger%20-%20check%20for%20integer" name="isinteger%20-%20check%20for%20integer" class="pilcrow">&#182;</a>
+    isInteger - check for Integer
   </h3>
 </div>
 
@@ -357,15 +363,82 @@ number of repeats</li>
 <p><strong>Arguments:</strong></p>
 
 <ul>
-<li><code>object</code>
+<li><code>value</code>
 to be analyzed</li>
 </ul>
 
 <p><strong>Returns:</strong></p>
 
 <ul>
-<li><code>true</code> if <code>object</code> is an integer</li>
+<li><code>true</code> if <code>value</code> is an integer</li>
 </ul>
+
+
+<div class="pilwrap" id="parseint%20-%20strict%20parse%20for%20integer">
+  <h3>
+    <a href="#parseint%20-%20strict%20parse%20for%20integer" name="parseint%20-%20strict%20parse%20for%20integer" class="pilcrow">&#182;</a>
+    parseInt - strict parse for Integer
+  </h3>
+</div>
+
+
+<p>This will fail on all strings which are no real integer.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>value</code>
+to be analyzed</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>value</code> as Number or <code>NaN</code></li>
+</ul>
+
+<p>To check if you got a number or invalid string use <code>isNaN()</code>.</p>
+
+
+<div class="pilwrap" id="parseseconds%20-%20parse%20human%20readable%20time%20to%20seconds">
+  <h3>
+    <a href="#parseseconds%20-%20parse%20human%20readable%20time%20to%20seconds" name="parseseconds%20-%20parse%20human%20readable%20time%20to%20seconds" class="pilcrow">&#182;</a>
+    parseSeconds - parse human readable time to seconds
+  </h3>
+</div>
+
+
+<p>This will fail on all strings which are no real integer.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>value</code>
+to be analyzed</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>value</code> as Number of seconds or <code>NaN</code></li>
+</ul>
+
+<p>To check if you got a number or invalid string use <code>isNaN()</code>.</p>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>     <span class="c1">// 200</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;200s&#39;</span><span class="p">);</span>  <span class="c1">// 200</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;200S&#39;</span><span class="p">);</span>  <span class="c1">// 200</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;5m&#39;</span><span class="p">);</span>    <span class="c1">// 300</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;1h&#39;</span><span class="p">);</span>    <span class="c1">// 3600</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;2.5h&#39;</span><span class="p">);</span>  <span class="c1">// 9000</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;1d&#39;</span><span class="p">);</span>    <span class="c1">// 86400</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;2h 5m 100s&#39;</span><span class="p">);</span> <span class="c1">// 7600</span>
+</code></pre></div>
+
+
 
 
 <div class="pilwrap" id="usage%20of%20object%20helpers">
@@ -377,10 +450,10 @@ to be analyzed</li>
 
 
 
-<div class="pilwrap" id="extend%20object">
+<div class="pilwrap" id="extend%20-%20extend%20object">
   <h3>
-    <a href="#extend%20object" name="extend%20object" class="pilcrow">&#182;</a>
-    Extend object
+    <a href="#extend%20-%20extend%20object" name="extend%20-%20extend%20object" class="pilcrow">&#182;</a>
+    extend - extend object
   </h3>
 </div>
 
@@ -433,10 +506,10 @@ the given and maybe changed object.</li>
 
 
 
-<div class="pilwrap" id="deep%20cloning%20object">
+<div class="pilwrap" id="clone%20-%20deep%20cloning%20object">
   <h3>
-    <a href="#deep%20cloning%20object" name="deep%20cloning%20object" class="pilcrow">&#182;</a>
-    Deep cloning object
+    <a href="#clone%20-%20deep%20cloning%20object" name="clone%20-%20deep%20cloning%20object" class="pilcrow">&#182;</a>
+    clone - deep cloning object
   </h3>
 </div>
 
@@ -495,10 +568,10 @@ clone of the given  object.</li>
 
 
 
-<div class="pilwrap" id="get%20the%20last%20element%20of%20an%20array">
+<div class="pilwrap" id="last%20-%20get%20the%20last%20element">
   <h3>
-    <a href="#get%20the%20last%20element%20of%20an%20array" name="get%20the%20last%20element%20of%20an%20array" class="pilcrow">&#182;</a>
-    Get the last element of an array
+    <a href="#last%20-%20get%20the%20last%20element" name="last%20-%20get%20the%20last%20element" class="pilcrow">&#182;</a>
+    last - get the last element
   </h3>
 </div>
 
@@ -562,7 +635,7 @@ you may not use this file except in compliance with the License.
 You may obtain a copy of the License at</p>
 
 <blockquote>
-  <p><a href="http://www.apache.org/licenses/LICENSE-2.0.html">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+  <p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 </blockquote>
 
 <p>Unless required by applicable law or agreed to in writing, software
