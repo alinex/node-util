@@ -156,6 +156,7 @@ to be analyzed</li>
 <span class="nv">exports.parseSeconds = </span><span class="nf">(value) -&gt;</span>
   <span class="nv">int = </span><span class="nx">parseInteger</span> <span class="nx">value</span>
   <span class="k">return</span> <span class="nx">int</span> <span class="k">unless</span> <span class="nb">isNaN</span> <span class="nx">int</span>
+  <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">int</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
   <span class="nv">int = </span><span class="mi">0</span>
   <span class="k">for</span> <span class="nx">part</span> <span class="k">in</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">split</span> <span class="sr">/\s+/</span>
     <span class="nv">match = </span><span class="sr">/^(\d+(?:\.\d+)?)\s*([smhd])$/</span><span class="p">.</span><span class="nx">exec</span> <span class="nx">part</span>
@@ -202,6 +203,7 @@ to be analyzed</li>
 <span class="nv">exports.parseMSeconds = </span><span class="nf">(value) -&gt;</span>
   <span class="nv">int = </span><span class="nx">parseInteger</span> <span class="nx">value</span>
   <span class="k">return</span> <span class="nx">int</span> <span class="k">unless</span> <span class="nb">isNaN</span> <span class="nx">int</span>
+  <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">int</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
   <span class="nv">int = </span><span class="mi">0</span>
   <span class="k">for</span> <span class="nx">part</span> <span class="k">in</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">split</span> <span class="sr">/\s+/</span>
     <span class="nv">match = </span><span class="sr">/^(\d+(?:\.\d+)?)\s*([smhd]|ms)$/</span><span class="p">.</span><span class="nx">exec</span> <span class="nx">part</span>
