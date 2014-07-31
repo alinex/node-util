@@ -49,6 +49,7 @@ exports.parseInt = parseInteger = (value) ->
 exports.parseSeconds = (value) ->
   int = parseInteger value
   return int unless isNaN int
+  return NaN unless typeof int is 'string'
   int = 0
   for part in value.toLowerCase().split /\s+/
     match = /^(\d+(?:\.\d+)?)\s*([smhd])$/.exec part
@@ -77,6 +78,7 @@ exports.parseSeconds = (value) ->
 exports.parseMSeconds = (value) ->
   int = parseInteger value
   return int unless isNaN int
+  return NaN unless typeof int is 'string'
   int = 0
   for part in value.toLowerCase().split /\s+/
     match = /^(\d+(?:\.\d+)?)\s*([smhd]|ms)$/.exec part
