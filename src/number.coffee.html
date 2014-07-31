@@ -35,6 +35,9 @@
         <a href="#read%20time%20interval%20in%20seconds">Read time interval in seconds</a>
       </div>
       <div class="heading h2">
+        <a href="#read%20time%20interval%20in%20mmilliseconds">Read time interval in mmilliseconds</a>
+      </div>
+      <div class="heading h2">
         <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
       </div>
     </div>
@@ -163,6 +166,53 @@ to be analyzed</li>
       <span class="k">when</span> <span class="s">&#39;m&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">60</span>
       <span class="k">when</span> <span class="s">&#39;h&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">3600</span>
       <span class="k">when</span> <span class="s">&#39;d&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span>
+  <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span> <span class="nx">int</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="read%20time%20interval%20in%20mmilliseconds">
+  <h2>
+    <a href="#read%20time%20interval%20in%20mmilliseconds" name="read%20time%20interval%20in%20mmilliseconds" class="pilcrow">&#182;</a>
+    Read time interval in mmilliseconds
+  </h2>
+</div>
+
+
+<p>With this parser it is possible to read a time interval in human format
+like: <code>1h 30m</code>.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>value</code>
+to be analyzed</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>value</code> as Number or <code>NaN</code></li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.parseMSeconds = </span><span class="nf">(value) -&gt;</span>
+  <span class="nv">int = </span><span class="nx">parseInteger</span> <span class="nx">value</span>
+  <span class="k">return</span> <span class="nx">int</span> <span class="k">unless</span> <span class="nb">isNaN</span> <span class="nx">int</span>
+  <span class="nv">int = </span><span class="mi">0</span>
+  <span class="k">for</span> <span class="nx">part</span> <span class="k">in</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">split</span> <span class="sr">/\s+/</span>
+    <span class="nv">match = </span><span class="sr">/^(\d+(?:\.\d+)?)\s*([smhd]|ms)$/</span><span class="p">.</span><span class="nx">exec</span> <span class="nx">part</span>
+    <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="nx">match</span>
+    <span class="nv">value = </span><span class="nb">parseFloat</span> <span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nx">int</span> <span class="o">+=</span> <span class="k">switch</span> <span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+      <span class="k">when</span> <span class="s">&#39;ms&#39;</span> <span class="k">then</span> <span class="nx">value</span>
+      <span class="k">when</span> <span class="s">&#39;s&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">1000</span>
+      <span class="k">when</span> <span class="s">&#39;m&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">60000</span>
+      <span class="k">when</span> <span class="s">&#39;h&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">3600000</span>
+      <span class="k">when</span> <span class="s">&#39;d&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600000</span>
   <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span> <span class="nx">int</span>
 
 
