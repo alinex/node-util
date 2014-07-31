@@ -89,3 +89,47 @@ describe "Number", ->
       .to.deep.equal NaN
       expect number.parseInt('421e+0')
       .to.deep.equal NaN
+
+  describe.only "parseSeconds", ->
+
+    it "should read normal integers", ->
+      expect number.parseSeconds(6)
+      , "use 6"
+      .to.equal 6
+
+    it "should read human strings", ->
+      expect number.parseSeconds('120s')
+      , "use 120s"
+      .to.equal 120
+      expect number.parseSeconds('5m')
+      , "use 5m"
+      .to.equal 300
+      expect number.parseSeconds('2h')
+      , "use 2h"
+      .to.equal 7200
+
+    it "should read combined strings", ->
+      expect number.parseSeconds('2h 5m 100s')
+      , "use 2h 5m 100s"
+      .to.equal 7600
+
+    it "should convert floats", ->
+      expect number.parseSeconds('2.5h')
+      , "use 2.5h"
+      .to.equal 9000
+
+    it "should be case insensitive", ->
+      expect number.parseSeconds('2H')
+      , "use 2H"
+      .to.equal 7200
+
+    it "should return NaN", ->
+      expect number.parseSeconds('2h 5m 100smilies')
+      , "use 2h 5m 100sekunden"
+      .to.deep.equal NaN
+      expect number.parseSeconds('2k')
+      , "use 2k"
+      .to.deep.equal NaN
+      expect number.parseSeconds('-2s')
+      , "use -2s"
+      .to.deep.equal NaN

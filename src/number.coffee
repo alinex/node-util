@@ -33,6 +33,34 @@ exports.parseInt = parseInteger = (value) ->
   return Number value if /^(\-|\+)?([0-9]+|Infinity)$/.test value
   NaN
 
+# Read time interval in seconds
+# -------------------------------------------------
+# With this parser it is possible to read a time interval in human format
+# like: `1h 30m`.
+#
+# __Arguments:__
+#
+# * `value`
+#   to be analyzed
+#
+# __Returns:__
+#
+# * `value` as Number or `NaN`
+exports.parseSeconds = (value) ->
+  int = parseInteger value
+  return int unless isNaN int
+  int = 0
+  for part in value.toLowerCase().split /\s+/
+    match = /^(\d+(?:\.\d+)?)\s*([smhd])$/.exec part
+    return NaN unless match
+    value = parseFloat match[1]
+    int += switch match[2]
+      when 's' then value
+      when 'm' then value * 60
+      when 'h' then value * 3600
+      when 'd' then value * 24 * 3600
+  Math.floor int
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
@@ -40,3 +68,4 @@ exports.addToPrototype = ->
   unless Number.isInteger
     Number.prototype.isInteger = isInteger
   Number.prototype.parseInt = parseInteger
+  Number.prototype.parseSeconds = parseSeconds

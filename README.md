@@ -165,12 +165,12 @@ This method will check that the given value is an integer.
 
 __Arguments:__
 
-* `object`
+* `value`
   to be analyzed
 
 __Returns:__
 
-* `true` if `object` is an integer
+* `true` if `value` is an integer
 
 ### parseInt - strict parse for Integer
 
@@ -185,7 +185,33 @@ __Returns:__
 
 * `value` as Number or `NaN`
 
-To check if you got a number use `isNaN()`.
+To check if you got a number or invalid string use `isNaN()`.
+
+### parseSeconds - parse human readable time to seconds
+
+This will fail on all strings which are no real integer.
+
+__Arguments:__
+
+* `value`
+  to be analyzed
+
+__Returns:__
+
+* `value` as Number of seconds or `NaN`
+
+To check if you got a number or invalid string use `isNaN()`.
+
+__Example:__
+
+    number.parseSeconds(200);     // 200
+    number.parseSeconds('200s');  // 200
+    number.parseSeconds('200S');  // 200
+    number.parseSeconds('5m');    // 300
+    number.parseSeconds('1h');    // 3600
+    number.parseSeconds('2.5h');  // 9000
+    number.parseSeconds('1d');    // 86400
+    number.parseSeconds('2h 5m 100s'); // 7600
 
 
 Usage of object helpers
