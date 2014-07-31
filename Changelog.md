@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.3 (2014-07-31)
+-------------------------------------------------
+- Adds number.parseMSeconds.
+
 Version 0.1.2 (2014-07-31)
 -------------------------------------------------
 - Add number.getSeconds to parse human readable interval.
