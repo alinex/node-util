@@ -29,7 +29,7 @@ exports.isInteger = isInteger = (value) ->
 # __Returns:__
 #
 # * `value` as Number or `NaN`
-exports.filterInt = filterInt = (value) ->
+exports.parseInt = parseInteger = (value) ->
   return Number value if /^(\-|\+)?([0-9]+|Infinity)$/.test value
   NaN
 
@@ -39,4 +39,4 @@ exports.filterInt = filterInt = (value) ->
 exports.addToPrototype = ->
   unless Number.isInteger
     Number.prototype.isInteger = isInteger
-  Number.prototype.filterInt = filterInt
+  Number.prototype.parseInt = parseInteger

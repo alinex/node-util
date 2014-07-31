@@ -66,23 +66,26 @@ describe "Number", ->
       , "use []"
       .to.be.false
 
-  describe "filterInt", ->
+  describe "parseInt", ->
 
     it "should succeed on normal values", ->
-      expect number.filterInt('421')
+      expect number.parseInt('421')
       .to.equal 421
-      expect number.filterInt('-421')
+      expect number.parseInt('-421')
       .to.equal -421
-      expect number.filterInt('+421')
+      expect number.parseInt('+421')
       .to.equal 421
-      expect number.filterInt('0')
+      expect number.parseInt('0')
       .to.equal 0
-      expect number.filterInt('Infinity')
+      expect number.parseInt('Infinity')
       .to.equal Infinity
 
     it "should fail on other strings", ->
-      expect number.filterInt('421hop')
-      .to.equal NaN
-#console.log(filterInt('421e+0'));            // NaN
-#console.log(filterInt('hop1.61803398875'));  // NaN
-#console.log(filterInt('1.61803398875'));     // NaN
+      expect number.parseInt('421hop')
+      .to.deep.equal NaN
+      expect number.parseInt('hop421')
+      .to.deep.equal NaN
+      expect number.parseInt('1.23')
+      .to.deep.equal NaN
+      expect number.parseInt('421e+0')
+      .to.deep.equal NaN

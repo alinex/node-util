@@ -55,7 +55,7 @@ you won't need the first parameter:
 Usage of string helpers
 -------------------------------------------------
 
-### Match string start
+### starts - match string start
 
 This is a handy method to check that a certain string starts with the given
 phrase.
@@ -90,7 +90,7 @@ Or the same call using prototype extension:
     var result = test.starts('ab');
 
 
-### Match string end
+### ends - match string end
 
 This is a handy method to check that a certain string ends with the given
 phrase.
@@ -124,7 +124,7 @@ Or the same call using prototype extension:
     var test = 'abcdefg';
     var result = test.ends('fg');
 
-### Repeat string n times
+### repeat - Repeat string n times
 
 Use clever algorithm to have O(log(n)) string concatenation operations.
 
@@ -159,7 +159,7 @@ Or the same call using prototype extension:
 Usage of number helpers
 -------------------------------------------------
 
-### Check for Integer
+### isInteger - check for Integer
 
 This method will check that the given value is an integer.
 
@@ -172,7 +172,7 @@ __Returns:__
 
 * `true` if `object` is an integer
 
-### Strict parse for Integer
+### parseInt - strict parse for Integer
 
 This will fail on all strings which are no real integer.
 
@@ -185,11 +185,13 @@ __Returns:__
 
 * `value` as Number or `NaN`
 
+To check if you got a number use `isNaN()`.
+
 
 Usage of object helpers
 -------------------------------------------------
 
-### Extend object
+### extend - extend object
 
 This method will extend a given object with the entries from additional
 objects. Therefore it will do a deep extend.
@@ -223,7 +225,7 @@ Or the same call using prototype extension:
     test.extend({ zwei: 2 }, { eins: 'eins' }, { drei: 3 });
 
 
-### Deep cloning object
+### clone - deep cloning object
 
 This method will create a clone of the given object.
 
@@ -258,7 +260,7 @@ Usage of array helpers
 -------------------------------------------------
 
 
-### Get the last element of an array
+### last - get the last element
 
 __Arguments:__
 
