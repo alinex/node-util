@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.2 (2014-07-31)
+-------------------------------------------------
+- Add number.getSeconds to parse human readable interval.
+- Finished strict parseInt method.
+- Added new bug buggy filterInt method.
+
 Version 0.1.1 (2014-07-29)
 -------------------------------------------------
 - Added number utilities.
