@@ -61,6 +61,35 @@ exports.parseSeconds = (value) ->
       when 'd' then value * 24 * 3600
   Math.floor int
 
+# Read time interval in mmilliseconds
+# -------------------------------------------------
+# With this parser it is possible to read a time interval in human format
+# like: `1h 30m`.
+#
+# __Arguments:__
+#
+# * `value`
+#   to be analyzed
+#
+# __Returns:__
+#
+# * `value` as Number or `NaN`
+exports.parseMSeconds = (value) ->
+  int = parseInteger value
+  return int unless isNaN int
+  int = 0
+  for part in value.toLowerCase().split /\s+/
+    match = /^(\d+(?:\.\d+)?)\s*([smhd]|ms)$/.exec part
+    return NaN unless match
+    value = parseFloat match[1]
+    int += switch match[2]
+      when 'ms' then value
+      when 's' then value * 1000
+      when 'm' then value * 60000
+      when 'h' then value * 3600000
+      when 'd' then value * 24 * 3600000
+  Math.floor int
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.

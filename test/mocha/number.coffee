@@ -90,7 +90,7 @@ describe "Number", ->
       expect number.parseInt('421e+0')
       .to.deep.equal NaN
 
-  describe.only "parseSeconds", ->
+  describe "parseSeconds", ->
 
     it "should read normal integers", ->
       expect number.parseSeconds(6)
@@ -131,5 +131,52 @@ describe "Number", ->
       , "use 2k"
       .to.deep.equal NaN
       expect number.parseSeconds('-2s')
+      , "use -2s"
+      .to.deep.equal NaN
+
+  describe "parseMSeconds", ->
+
+    it "should read normal integers", ->
+      expect number.parseMSeconds(6)
+      , "use 6"
+      .to.equal 6
+
+    it "should read human strings", ->
+      expect number.parseMSeconds('120ms')
+      , "use 120ms"
+      .to.equal 120
+      expect number.parseMSeconds('120s')
+      , "use 120s"
+      .to.equal 120000
+      expect number.parseMSeconds('5m')
+      , "use 5m"
+      .to.equal 300000
+      expect number.parseMSeconds('2h')
+      , "use 2h"
+      .to.equal 7200000
+
+    it "should read combined strings", ->
+      expect number.parseMSeconds('2h 5m 100s')
+      , "use 2h 5m 100s"
+      .to.equal 7600000
+
+    it "should convert floats", ->
+      expect number.parseMSeconds('2.5h')
+      , "use 2.5h"
+      .to.equal 9000000
+
+    it "should be case insensitive", ->
+      expect number.parseMSeconds('2H')
+      , "use 2H"
+      .to.equal 7200000
+
+    it "should return NaN", ->
+      expect number.parseMSeconds('2h 5m 100smilies')
+      , "use 2h 5m 100sekunden"
+      .to.deep.equal NaN
+      expect number.parseMSeconds('2k')
+      , "use 2k"
+      .to.deep.equal NaN
+      expect number.parseMSeconds('-2s')
       , "use -2s"
       .to.deep.equal NaN
