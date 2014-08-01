@@ -54,14 +54,40 @@ exports.ends = (string, literal, back) ->
 #
 # __Returns:__
 #
-# * the repeated test
-exports.repeat = (str, n) ->
+# * the repeated text
+exports.repeat = (string, n) ->
   res = ''
   while n > 0
-    res += str if n & 1
+    res += string if n & 1
     n >>>= 1
-    str += str
+    string += string
   res
+
+# Upper case first character
+# -------------------------------------------------
+# __Arguments:__
+#
+# * `string`
+#   text to be changed
+#
+# __Returns:__
+#
+# * the text with first letter upper case
+exports.ucFirst = (string) ->
+  string.charAt(0).toUpperCase() + string.slice(1)
+
+# Lower case first character
+# -------------------------------------------------
+# __Arguments:__
+#
+# * `string`
+#   text to be changed
+#
+# __Returns:__
+#
+# * the text with first letter lower case
+exports.lcFirst = (string) ->
+  string.charAt(0).toLowerCase() + string.slice(1)
 
 # Add object helpers to the Object class
 # -------------------------------------------------
@@ -73,3 +99,7 @@ exports.addToPrototype = ->
     exports.ends this, literal, back
   String.prototype.repeat = (n) ->
     exports.repeat this, n
+  String.prototype.ucFirst = ->
+    exports.ucFirst this
+  String.prototype.lcFirst = ->
+    exports.lcFirst this

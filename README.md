@@ -126,8 +126,6 @@ Or the same call using prototype extension:
 
 ### repeat - Repeat string n times
 
-Use clever algorithm to have O(log(n)) string concatenation operations.
-
 __Arguments:__
 
 * `string` (if not called as String method)
@@ -154,6 +152,29 @@ Or the same call using prototype extension:
     require('alinex-util').string.addToPrototype();
     var test = 'ab';
     var result = test.repeat(3);
+
+### ucFirst - make first letter upper case
+
+__Arguments:__
+
+* `string` (if not called as String method)
+  text to be changed
+
+__Returns:__
+
+* the same text but with first letter in upper case
+
+
+### lcFirst - make first letter lower case
+
+__Arguments:__
+
+* `string` (if not called as String method)
+  text to be changed
+
+__Returns:__
+
+* the same text but with first letter in lower case
 
 
 Usage of number helpers

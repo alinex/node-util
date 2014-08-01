@@ -62,6 +62,27 @@ describe "String", ->
       , "no repeat"
       .to.be.equal ''
 
+  describe "ucFirst", ->
+
+    it "should make first letter upper case", ->
+      expect string.ucFirst 'hello'
+      , "use hello"
+      .to.be.equal 'Hello'
+      expect string.ucFirst 'Hello'
+      , "use Hello"
+      .to.be.equal 'Hello'
+
+  describe "lcFirst", ->
+
+    it "should make first letter lower case", ->
+      string.addToPrototype()
+      expect string.lcFirst 'hello'
+      , "use hello"
+      .to.be.equal 'hello'
+      expect string.lcFirst 'Hello'
+      , "use Hello"
+      .to.be.equal 'hello'
+
   describe "prototype", ->
 
     it "should match string start", ->
@@ -90,3 +111,21 @@ describe "String", ->
       expect test.repeat(3)
       , "3 repeats"
       .to.be.equal 'ababab'
+
+    it "should make first letter upper case", ->
+      string.addToPrototype()
+      expect 'hello'.ucFirst()
+      , "use hello"
+      .to.be.equal 'Hello'
+      expect 'Hello'.ucFirst()
+      , "use Hello"
+      .to.be.equal 'Hello'
+
+    it "should make first letter lower case", ->
+      string.addToPrototype()
+      expect 'hello'.lcFirst()
+      , "use hello"
+      .to.be.equal 'hello'
+      expect 'Hello'.lcFirst()
+      , "use Hello"
+      .to.be.equal 'hello'
