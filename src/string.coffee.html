@@ -35,6 +35,12 @@
         <a href="#repeat%20string%20n%20times">Repeat string n times</a>
       </div>
       <div class="heading h2">
+        <a href="#upper%20case%20first%20character">Upper case first character</a>
+      </div>
+      <div class="heading h2">
+        <a href="#lower%20case%20first%20character">Lower case first character</a>
+      </div>
+      <div class="heading h2">
         <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
       </div>
     </div>
@@ -155,17 +161,79 @@ number of repeats</li>
 <p><strong>Returns:</strong></p>
 
 <ul>
-<li>the repeated test</li>
+<li>the repeated text</li>
 </ul>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.repeat = </span><span class="nf">(str, n) -&gt;</span>
+<span class="nv">exports.repeat = </span><span class="nf">(string, n) -&gt;</span>
   <span class="nv">res = </span><span class="s">&#39;&#39;</span>
   <span class="k">while</span> <span class="nx">n</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="nx">res</span> <span class="o">+=</span> <span class="nx">str</span> <span class="k">if</span> <span class="nx">n</span> <span class="o">&amp;</span> <span class="mi">1</span>
+    <span class="nx">res</span> <span class="o">+=</span> <span class="nx">string</span> <span class="k">if</span> <span class="nx">n</span> <span class="o">&amp;</span> <span class="mi">1</span>
     <span class="nx">n</span> <span class="o">&gt;&gt;&gt;=</span> <span class="mi">1</span>
-    <span class="nx">str</span> <span class="o">+=</span> <span class="nx">str</span>
+    <span class="nx">string</span> <span class="o">+=</span> <span class="nx">string</span>
   <span class="nx">res</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="upper%20case%20first%20character">
+  <h2>
+    <a href="#upper%20case%20first%20character" name="upper%20case%20first%20character" class="pilcrow">&#182;</a>
+    Upper case first character
+  </h2>
+</div>
+
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be changed</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>the text with first letter upper case</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.ucFirst = </span><span class="nf">(string) -&gt;</span>
+  <span class="nx">string</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="o">+</span> <span class="nx">string</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="lower%20case%20first%20character">
+  <h2>
+    <a href="#lower%20case%20first%20character" name="lower%20case%20first%20character" class="pilcrow">&#182;</a>
+    Lower case first character
+  </h2>
+</div>
+
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be changed</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>the text with first letter lower case</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.lcFirst = </span><span class="nf">(string) -&gt;</span>
+  <span class="nx">string</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">+</span> <span class="nx">string</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
 </pre></div>
@@ -191,6 +259,10 @@ number of repeats</li>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">ends</span> <span class="k">this</span><span class="p">,</span> <span class="nx">literal</span><span class="p">,</span> <span class="nx">back</span>
   <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.repeat = </span><span class="nf">(n) -&gt;</span>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.ucFirst = </span><span class="nf">-&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">ucFirst</span> <span class="k">this</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.lcFirst = </span><span class="nf">-&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">lcFirst</span> <span class="k">this</span>
 </pre></div>
         </td>
       </tr>
