@@ -25,7 +25,6 @@ Version 0.1.2 (2014-07-31)
 Version 0.1.1 (2014-07-29)
 -------------------------------------------------
 - Added number utilities.
-- Merge branch 'master' of https://github.com/alinex/node-util
 - Updated documentation.
 - Added link to alinex module in documentation.
 - Remove coveralls as direct dependency.
