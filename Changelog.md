@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.6 (2014-08-07)
+-------------------------------------------------
+- Updated changelog.
+- Allow number signs in seconds and mseconds parse.
+- Added ucFirst and lcFirst methods for strings.
+
 Version 0.1.5 (2014-07-31)
 -------------------------------------------------
 - Fixed again.
