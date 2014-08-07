@@ -52,7 +52,7 @@ exports.parseSeconds = (value) ->
   return NaN unless typeof value is 'string'
   int = 0
   for part in value.toLowerCase().split /\s+/
-    match = /^(\d+(?:\.\d+)?)\s*([smhd])$/.exec part
+    match = /^([+-]?\d+(?:\.\d+)?)\s*([smhd])$/.exec part
     return NaN unless match
     value = parseFloat match[1]
     int += switch match[2]
@@ -81,7 +81,7 @@ exports.parseMSeconds = (value) ->
   return NaN unless typeof value is 'string'
   int = 0
   for part in value.toLowerCase().split /\s+/
-    match = /^(\d+(?:\.\d+)?)\s*([smhd]|ms)$/.exec part
+    match = /^([+-]?\d+(?:\.\d+)?)\s*([smhd]|ms)$/.exec part
     return NaN unless match
     value = parseFloat match[1]
     int += switch match[2]
