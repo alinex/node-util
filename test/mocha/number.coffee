@@ -101,6 +101,9 @@ describe "Number", ->
       expect number.parseSeconds('120s')
       , "use 120s"
       .to.equal 120
+      expect number.parseSeconds('+120s')
+      , "use +120s"
+      .to.equal 120
       expect number.parseSeconds('5m')
       , "use 5m"
       .to.equal 300
@@ -130,9 +133,6 @@ describe "Number", ->
       expect number.parseSeconds('2k')
       , "use 2k"
       .to.deep.equal NaN
-      expect number.parseSeconds('-2s')
-      , "use -2s"
-      .to.deep.equal NaN
 
   describe "parseMSeconds", ->
 
@@ -144,6 +144,9 @@ describe "Number", ->
     it "should read human strings", ->
       expect number.parseMSeconds('120ms')
       , "use 120ms"
+      .to.equal 120
+      expect number.parseMSeconds('+120ms')
+      , "use +120ms"
       .to.equal 120
       expect number.parseMSeconds('120s')
       , "use 120s"
@@ -176,7 +179,4 @@ describe "Number", ->
       .to.deep.equal NaN
       expect number.parseMSeconds('2k')
       , "use 2k"
-      .to.deep.equal NaN
-      expect number.parseMSeconds('-2s')
-      , "use -2s"
       .to.deep.equal NaN
