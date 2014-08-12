@@ -177,6 +177,20 @@ __Returns:__
 * the same text but with first letter in lower case
 
 
+### contains - is substring contained?
+
+__Arguments:__
+
+* `string`
+  text to be check
+* `phrase`
+  text to be searched for
+
+__Returns:__
+
+* (bool) `true` if phrase is contained in string
+
+
 Usage of number helpers
 -------------------------------------------------
 

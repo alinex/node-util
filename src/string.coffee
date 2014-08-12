@@ -89,6 +89,21 @@ exports.ucFirst = (string) ->
 exports.lcFirst = (string) ->
   string.charAt(0).toLowerCase() + string.slice(1)
 
+# Check if string contains substring
+# -------------------------------------------------
+# __Arguments:__
+#
+# * `string`
+#   text to be check
+# * `phrase`
+#   text to be searched for
+#
+# __Returns:__
+#
+# * (bool) `true` if phrase is contained in string
+exports.contains = (string, phrase) ->
+  string.indexOf(phrase) isnt -1
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
@@ -103,3 +118,5 @@ exports.addToPrototype = ->
     exports.ucFirst this
   String.prototype.lcFirst = ->
     exports.lcFirst this
+  String.prototype.contains = (phrase) ->
+    exports.contains this, phrase

@@ -129,3 +129,15 @@ describe "String", ->
       expect 'Hello'.lcFirst()
       , "use Hello"
       .to.be.equal 'hello'
+
+    it "should contain substring", ->
+      string.addToPrototype()
+      expect 'hello'.contains 'll'
+      , "use hello"
+      .to.be.true
+
+    it "should not contain substring", ->
+      string.addToPrototype()
+      expect 'card'.contains 'll'
+      , "use card"
+      .to.be.false
