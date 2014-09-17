@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/string.coffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/stringcoffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
   <script src="../fileSearch.js"></script>
@@ -39,6 +39,9 @@
       </div>
       <div class="heading h2">
         <a href="#lower%20case%20first%20character">Lower case first character</a>
+      </div>
+      <div class="heading h2">
+        <a href="#check%20if%20string%20contains%20substring">Check if string contains substring</a>
       </div>
       <div class="heading h2">
         <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
@@ -241,6 +244,39 @@ text to be changed</li>
       </tr>
       <tr>
         <td class="docs">
+<div class="pilwrap" id="check%20if%20string%20contains%20substring">
+  <h2>
+    <a href="#check%20if%20string%20contains%20substring" name="check%20if%20string%20contains%20substring" class="pilcrow">&#182;</a>
+    Check if string contains substring
+  </h2>
+</div>
+
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be check</li>
+<li><code>phrase</code>
+text to be searched for</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>(bool) <code>true</code> if phrase is contained in string</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.contains = </span><span class="nf">(string, phrase) -&gt;</span>
+  <span class="nx">string</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">phrase</span><span class="p">)</span> <span class="o">isnt</span> <span class="o">-</span><span class="mi">1</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
 <div class="pilwrap" id="add%20object%20helpers%20to%20the%20object%20class">
   <h2>
     <a href="#add%20object%20helpers%20to%20the%20object%20class" name="add%20object%20helpers%20to%20the%20object%20class" class="pilcrow">&#182;</a>
@@ -263,6 +299,8 @@ text to be changed</li>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">ucFirst</span> <span class="k">this</span>
   <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.lcFirst = </span><span class="nf">-&gt;</span>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">lcFirst</span> <span class="k">this</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.contains = </span><span class="nf">(phrase) -&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">contains</span> <span class="k">this</span><span class="p">,</span> <span class="nx">phrase</span>
 </pre></div>
         </td>
       </tr>
