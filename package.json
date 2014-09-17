@@ -1,10 +1,16 @@
 {
   "name": "alinex-util",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Different small helper methods which are generally used",
   "copyright": "Alexander Schilling 2014",
   "private": false,
-  "keywords": ["utils", "helper", "string", "object", "array"],
+  "keywords": [
+    "utils",
+    "helper",
+    "string",
+    "object",
+    "array"
+  ],
   "homepage": "http://alinex.github.io/node-util/",
   "repository": {
     "type": "git",

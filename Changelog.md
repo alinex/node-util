@@ -4,6 +4,14 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.7 (2014-09-17)
+-------------------------------------------------
+- Fixed calls to new make tool.
+- Update to alinex-make 0.3 for development.
+- Added string.contains method.
+- Merge
+- Add description for npm.
+
 Version 0.1.6 (2014-08-07)
 -------------------------------------------------
 - Allow number signs in seconds and mseconds parse.
