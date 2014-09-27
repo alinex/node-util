@@ -34,7 +34,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "alinex-make": "0.3.x",
+    "alinex-make": "0.4.x",
     "chai": "1.x"
   },
   "optionalDependencies": {},
