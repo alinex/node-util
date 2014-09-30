@@ -62,6 +62,52 @@ describe "String", ->
       , "no repeat"
       .to.be.equal ''
 
+  describe "lpad", ->
+
+    it "should left pad string", ->
+      test = 'ab'
+      expect string.lpad(test, 5)
+      , "normal left pad"
+      .to.be.equal '   ab'
+
+    it "should left pad string with character", ->
+      test = 'ab'
+      expect string.lpad(test, 5, 'x')
+      , "normal left pad with x"
+      .to.be.equal 'xxxab'
+
+    it "should not pad if not neccessary", ->
+      test = 'ab'
+      expect string.lpad(test, 2)
+      , "left pad not necessary"
+      .to.be.equal 'ab'
+      expect string.lpad(test, 1)
+      , "left pad not necessary"
+      .to.be.equal 'ab'
+
+  describe "rpad", ->
+
+    it "should right pad string", ->
+      test = 'ab'
+      expect string.rpad(test, 5)
+      , "normal right pad"
+      .to.be.equal 'ab   '
+
+    it "should right pad string with character", ->
+      test = 'ab'
+      expect string.rpad(test, 5, 'x')
+      , "normal right pad with x"
+      .to.be.equal 'abxxx'
+
+    it "should not pad if not neccessary", ->
+      test = 'ab'
+      expect string.rpad(test, 2)
+      , "right pad not necessary"
+      .to.be.equal 'ab'
+      expect string.rpad(test, 1)
+      , "right pad not necessary"
+      .to.be.equal 'ab'
+
   describe "ucFirst", ->
 
     it "should make first letter upper case", ->
