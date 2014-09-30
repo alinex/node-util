@@ -35,6 +35,12 @@
         <a href="#repeat%20string%20n%20times">Repeat string n times</a>
       </div>
       <div class="heading h2">
+        <a href="#left%20pad%20string%20to%20specified%20length">Left pad string to specified length</a>
+      </div>
+      <div class="heading h2">
+        <a href="#right%20pad%20string%20to%20specified%20length">Right pad string to specified length</a>
+      </div>
+      <div class="heading h2">
         <a href="#upper%20case%20first%20character">Upper case first character</a>
       </div>
       <div class="heading h2">
@@ -182,6 +188,78 @@ number of repeats</li>
       </tr>
       <tr>
         <td class="docs">
+<div class="pilwrap" id="left%20pad%20string%20to%20specified%20length">
+  <h2>
+    <a href="#left%20pad%20string%20to%20specified%20length" name="left%20pad%20string%20to%20specified%20length" class="pilcrow">&#182;</a>
+    Left pad string to specified length
+  </h2>
+</div>
+
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be padded</li>
+<li><code>n</code>
+final length of text</li>
+<li><code>char</code>
+character used for padding (defaults to ' ')</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>the padded text</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.lpad = </span><span class="nf">(string, length, char = &#39; &#39;) -&gt;</span>
+  <span class="k">return</span> <span class="nx">string</span> <span class="k">unless</span> <span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span>
+  <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">char</span><span class="p">,</span> <span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">+</span> <span class="nx">string</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="right%20pad%20string%20to%20specified%20length">
+  <h2>
+    <a href="#right%20pad%20string%20to%20specified%20length" name="right%20pad%20string%20to%20specified%20length" class="pilcrow">&#182;</a>
+    Right pad string to specified length
+  </h2>
+</div>
+
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be padded</li>
+<li><code>n</code>
+final length of text</li>
+<li><code>char</code>
+character used for padding (defaults to ' ')</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>the padded text</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.rpad = </span><span class="nf">(string, length, char = &#39; &#39;) -&gt;</span>
+  <span class="k">return</span> <span class="nx">string</span> <span class="k">unless</span> <span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span>
+  <span class="nx">string</span> <span class="o">+</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">char</span><span class="p">,</span> <span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
 <div class="pilwrap" id="upper%20case%20first%20character">
   <h2>
     <a href="#upper%20case%20first%20character" name="upper%20case%20first%20character" class="pilcrow">&#182;</a>
@@ -295,6 +373,10 @@ text to be searched for</li>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">ends</span> <span class="k">this</span><span class="p">,</span> <span class="nx">literal</span><span class="p">,</span> <span class="nx">back</span>
   <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.repeat = </span><span class="nf">(n) -&gt;</span>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.rpad = </span><span class="nf">(n, char) -&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">rpad</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">char</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.lpad = </span><span class="nf">(n, char) -&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">lpad</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">char</span>
   <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.ucFirst = </span><span class="nf">-&gt;</span>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">ucFirst</span> <span class="k">this</span>
   <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.lcFirst = </span><span class="nf">-&gt;</span>
