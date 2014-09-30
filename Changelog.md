@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.8 (2014-09-30)
+-------------------------------------------------
+- Added 'lpad' and 'rpad' methods for strings.
+- Upgrade alinex-make.
+
 Version 0.1.7 (2014-09-17)
 -------------------------------------------------
 - Fixed calls to new make tool.
