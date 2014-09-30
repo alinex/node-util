@@ -153,6 +153,36 @@ Or the same call using prototype extension:
     var test = 'ab';
     var result = test.repeat(3);
 
+### lpad - Left pad string to specified length
+
+__Arguments:__
+
+* `string`
+   text to be padded
+* `n`
+   final length of text
+* `char`
+   character used for padding (defaults to ' ')
+
+__Returns:__
+
+* the padded text
+
+### rpad - right pad string to specified length
+
+__Arguments:__
+
+* `string`
+   text to be padded
+* `n`
+   final length of text
+* `char`
+   character used for padding (defaults to ' ')
+
+__Returns:__
+
+* the padded text
+
 ### ucFirst - make first letter upper case
 
 __Arguments:__

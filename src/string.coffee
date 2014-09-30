@@ -63,6 +63,44 @@ exports.repeat = (string, n) ->
     string += string
   res
 
+# Left pad string to specified length
+# -------------------------------------------------
+#
+# __Arguments:__
+#
+# * `string`
+#   text to be padded
+# * `n`
+#   final length of text
+# * `char`
+#   character used for padding (defaults to ' ')
+#
+# __Returns:__
+#
+# * the padded text
+exports.lpad = (string, length, char = ' ') ->
+  return string unless length > string.length
+  exports.repeat(char, length - string.length) + string
+
+# Right pad string to specified length
+# -------------------------------------------------
+#
+# __Arguments:__
+#
+# * `string`
+#   text to be padded
+# * `n`
+#   final length of text
+# * `char`
+#   character used for padding (defaults to ' ')
+#
+# __Returns:__
+#
+# * the padded text
+exports.rpad = (string, length, char = ' ') ->
+  return string unless length > string.length
+  string + exports.repeat(char, length - string.length)
+
 # Upper case first character
 # -------------------------------------------------
 # __Arguments:__
@@ -114,6 +152,10 @@ exports.addToPrototype = ->
     exports.ends this, literal, back
   String.prototype.repeat = (n) ->
     exports.repeat this, n
+  String.prototype.rpad = (n, char) ->
+    exports.rpad this, n, char
+  String.prototype.lpad = (n, char) ->
+    exports.lpad this, n, char
   String.prototype.ucFirst = ->
     exports.ucFirst this
   String.prototype.lcFirst = ->
