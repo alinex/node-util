@@ -79,6 +79,7 @@ exports.repeat = (string, n) ->
 #
 # * the padded text
 exports.lpad = (string, length, char = ' ') ->
+  string = string.toString() unless typeof string is 'string'
   return string unless length > string.length
   exports.repeat(char, length - string.length) + string
 
@@ -98,6 +99,7 @@ exports.lpad = (string, length, char = ' ') ->
 #
 # * the padded text
 exports.rpad = (string, length, char = ' ') ->
+  string = string.toString() unless typeof string is 'string'
   return string unless length > string.length
   string + exports.repeat(char, length - string.length)
 
