@@ -4,6 +4,13 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.9 (2014-10-08)
+-------------------------------------------------
+- Updated npmignore to not ignore too much.
+- Fixed changelog.
+- Automatic string conversion in pad methods.
+- Added test routines for lpad and rpad.
+
 Version 0.1.8 (2014-09-30)
 -------------------------------------------------
 - Added 'lpad' and 'rpad' methods for strings.
