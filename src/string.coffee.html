@@ -215,6 +215,7 @@ character used for padding (defaults to ' ')</li>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">exports.lpad = </span><span class="nf">(string, length, char = &#39; &#39;) -&gt;</span>
+  <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">string</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
   <span class="k">return</span> <span class="nx">string</span> <span class="k">unless</span> <span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span>
   <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">char</span><span class="p">,</span> <span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">+</span> <span class="nx">string</span>
 
@@ -251,6 +252,7 @@ character used for padding (defaults to ' ')</li>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">exports.rpad = </span><span class="nf">(string, length, char = &#39; &#39;) -&gt;</span>
+  <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">string</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
   <span class="k">return</span> <span class="nx">string</span> <span class="k">unless</span> <span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span>
   <span class="nx">string</span> <span class="o">+</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">char</span><span class="p">,</span> <span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
 
