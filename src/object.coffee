@@ -24,7 +24,7 @@ extend = module.exports.extend = (obj, ext...) ->
   obj = {} unless obj
   # use all extenders
   for src in ext
-    continue unless src
+    continue unless src?
     continue if src.constructor? is Object and not Object.keys(src).length
     if typeof src isnt 'object'
       # simple variables or function

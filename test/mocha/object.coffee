@@ -112,6 +112,10 @@ describe "Object", ->
       expect(result, "contains key drei").to.include.keys 'drei'
       expect(result.eins, "value changed").to.equal 'eins'
 
+    it "should extend empty object with 0", ->
+      result = object.extend null, 0
+      expect(result, "value changed").to.equal 0
+
   describe "prototype", ->
 
     it "should clone object", ->
