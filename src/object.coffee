@@ -21,15 +21,17 @@
 extend = module.exports.extend = (obj, ext...) ->
   # clone if no extenders given
   return extend null, obj if not ext?
-  obj = {} unless obj
+  obj = null unless obj
   # use all extenders
   for src in ext
     continue unless src?
     continue if src.constructor? is Object and not Object.keys(src).length
+    obj = {} unless obj
     if typeof src isnt 'object'
       # simple variables or function
       obj = src
     else if Array.isArray src
+      # array
       res = []
       for own key, val of src
         res.push extend obj[key]?, src[key]
@@ -48,9 +50,11 @@ extend = module.exports.extend = (obj, ext...) ->
 #      obj = extendInstance obj, src
       obj = src
     else
+      # object structure
       for key, val of src
         obj[key] = extend obj[key], val
   obj
+
 
 # Deep cloning object
 # -------------------------------------------------
