@@ -69,15 +69,14 @@ extend = module.exports.extend = (obj, ext...) ->
 #
 # * `object`
 #   clone of the given  object.
-module.exports.clone = (object) ->
-  extend null, object
+module.exports.clone = (obj) ->
+  extend null, obj
 
 extendInstance = (obj, src) ->
   res = src.constructor()
   for own key, val of src
     res[key] = extend obj[key], val
   res
-
 
 # Add object helpers to the Object class
 # -------------------------------------------------
