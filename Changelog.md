@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.1.11 (2014-11-21)
+-------------------------------------------------
+- Renamed internal variable for conformance only.
+- Fixed bug in object extend/clone which makes null values into {}.
+
 Version 0.1.10 (2014-10-21)
 -------------------------------------------------
 - Fixed bug in extending objects containing 0 or ''.
