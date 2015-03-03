@@ -2,7 +2,6 @@ Package: alinex-util
 =================================================
 
 [![Build Status] (https://travis-ci.org/alinex/node-util.svg?branch=master)](https://travis-ci.org/alinex/node-util)
-[![Coverage Status] (https://coveralls.io/repos/alinex/node-util/badge.png?branch=master)](https://coveralls.io/r/alinex/node-util?branch=master)
 [![Dependency Status] (https://gemnasium.com/alinex/node-util.png)](https://gemnasium.com/alinex/node-util)
 
 This module will be used as incubator for different small helper methods which
