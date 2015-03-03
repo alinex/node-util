@@ -29,61 +29,64 @@
         <a href="#install">Install</a>
       </div>
       <div class="heading h2">
-        <a href="#usage">Usage</a>
+        <a href="#general%20usage">General Usage</a>
       </div>
       <div class="heading h2">
-        <a href="#usage%20of%20string%20helpers">Usage of string helpers</a>
+        <a href="#string%20type">String type</a>
       </div>
       <div class="heading h3">
-        <a href="#starts%20-%20match%20string%20start">starts - match string start</a>
+        <a href="#starts">starts</a>
       </div>
       <div class="heading h3">
-        <a href="#ends%20-%20match%20string%20end">ends - match string end</a>
+        <a href="#ends">ends</a>
       </div>
       <div class="heading h3">
-        <a href="#repeat%20-%20repeat%20string%20n%20times">repeat - Repeat string n times</a>
+        <a href="#repeat">repeat</a>
       </div>
       <div class="heading h3">
-        <a href="#lpad%20-%20left%20pad%20string%20to%20specified%20length">lpad - Left pad string to specified length</a>
+        <a href="#lpad">lpad</a>
       </div>
       <div class="heading h3">
-        <a href="#rpad%20-%20right%20pad%20string%20to%20specified%20length">rpad - right pad string to specified length</a>
+        <a href="#rpad">rpad</a>
       </div>
       <div class="heading h3">
-        <a href="#ucfirst%20-%20make%20first%20letter%20upper%20case">ucFirst - make first letter upper case</a>
+        <a href="#ucfirst">ucFirst</a>
       </div>
       <div class="heading h3">
-        <a href="#lcfirst%20-%20make%20first%20letter%20lower%20case">lcFirst - make first letter lower case</a>
+        <a href="#lcfirst">lcFirst</a>
       </div>
       <div class="heading h3">
-        <a href="#contains%20-%20is%20substring%20contained%3F">contains - is substring contained?</a>
+        <a href="#contains">contains</a>
       </div>
       <div class="heading h2">
-        <a href="#usage%20of%20number%20helpers">Usage of number helpers</a>
+        <a href="#number%20type">Number type</a>
       </div>
       <div class="heading h3">
-        <a href="#isinteger%20-%20check%20for%20integer">isInteger - check for Integer</a>
+        <a href="#isinteger">isInteger</a>
       </div>
       <div class="heading h3">
-        <a href="#parseint%20-%20strict%20parse%20for%20integer">parseInt - strict parse for Integer</a>
+        <a href="#parseint">parseInt</a>
       </div>
       <div class="heading h3">
-        <a href="#parseseconds%20-%20parse%20human%20readable%20time%20to%20seconds">parseSeconds - parse human readable time to seconds</a>
+        <a href="#parsesecond">parseSecond</a>
       </div>
       <div class="heading h2">
-        <a href="#usage%20of%20object%20helpers">Usage of object helpers</a>
+        <a href="#object">Object</a>
       </div>
       <div class="heading h3">
-        <a href="#extend%20-%20extend%20object">extend - extend object</a>
+        <a href="#extend">extend</a>
       </div>
       <div class="heading h3">
-        <a href="#clone%20-%20deep%20cloning%20object">clone - deep cloning object</a>
+        <a href="#clone">clone</a>
+      </div>
+      <div class="heading h3">
+        <a href="#isempty">isempty</a>
       </div>
       <div class="heading h2">
-        <a href="#usage%20of%20array%20helpers">Usage of array helpers</a>
+        <a href="#array%20object">Array object</a>
       </div>
       <div class="heading h3">
-        <a href="#last%20-%20get%20the%20last%20element">last - get the last element</a>
+        <a href="#last">last</a>
       </div>
       <div class="heading h2">
         <a href="#license">License</a>
@@ -101,7 +104,6 @@
 
 
 <p><a href="https://travis-ci.org/alinex/node-util"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status" title="" /></a>
-<a href="https://coveralls.io/r/alinex/node-util?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.png?branch=master" alt="Coverage Status" title="" /></a>
 <a href="https://gemnasium.com/alinex/node-util"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status" title="" /></a></p>
 
 <p>This module will be used as incubator for different small helper methods which
@@ -115,7 +117,7 @@ are generally used for different general class types:</p>
 <li>may extend the base classes</li>
 </ul>
 
-<p>It is one of the modules of the <a href="http://alinex.github.io/node-alinex.html">Alinex Universe</a>
+<p>It is one of the modules of the <a href="http://alinex.github.io/node-alinex">Alinex Universe</a>
 following the code standards defined there.</p>
 
 
@@ -138,10 +140,10 @@ following the code standards defined there.</p>
 <p><a href="https://nodei.co/npm/alinex-util/"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;stars=true" alt="NPM" title="" /></a></p>
 
 
-<div class="pilwrap" id="usage">
+<div class="pilwrap" id="general%20usage">
   <h2>
-    <a href="#usage" name="usage" class="pilcrow">&#182;</a>
-    Usage
+    <a href="#general%20usage" name="general%20usage" class="pilcrow">&#182;</a>
+    General Usage
   </h2>
 </div>
 
@@ -179,19 +181,19 @@ you won't need the first parameter:</p>
 
 
 
-<div class="pilwrap" id="usage%20of%20string%20helpers">
+<div class="pilwrap" id="string%20type">
   <h2>
-    <a href="#usage%20of%20string%20helpers" name="usage%20of%20string%20helpers" class="pilcrow">&#182;</a>
-    Usage of string helpers
+    <a href="#string%20type" name="string%20type" class="pilcrow">&#182;</a>
+    String type
   </h2>
 </div>
 
 
 
-<div class="pilwrap" id="starts%20-%20match%20string%20start">
+<div class="pilwrap" id="starts">
   <h3>
-    <a href="#starts%20-%20match%20string%20start" name="starts%20-%20match%20string%20start" class="pilcrow">&#182;</a>
-    starts - match string start
+    <a href="#starts" name="starts" class="pilcrow">&#182;</a>
+    starts
   </h3>
 </div>
 
@@ -245,10 +247,10 @@ offset character position to start looking for</li>
 
 
 
-<div class="pilwrap" id="ends%20-%20match%20string%20end">
+<div class="pilwrap" id="ends">
   <h3>
-    <a href="#ends%20-%20match%20string%20end" name="ends%20-%20match%20string%20end" class="pilcrow">&#182;</a>
-    ends - match string end
+    <a href="#ends" name="ends" class="pilcrow">&#182;</a>
+    ends
   </h3>
 </div>
 
@@ -302,13 +304,15 @@ offset character position from the end to look for</li>
 
 
 
-<div class="pilwrap" id="repeat%20-%20repeat%20string%20n%20times">
+<div class="pilwrap" id="repeat">
   <h3>
-    <a href="#repeat%20-%20repeat%20string%20n%20times" name="repeat%20-%20repeat%20string%20n%20times" class="pilcrow">&#182;</a>
-    repeat - Repeat string n times
+    <a href="#repeat" name="repeat" class="pilcrow">&#182;</a>
+    repeat
   </h3>
 </div>
 
+
+<p>Repeat a given string multiple times.</p>
 
 <p><strong>Arguments:</strong></p>
 
@@ -354,13 +358,15 @@ number of repeats</li>
 
 
 
-<div class="pilwrap" id="lpad%20-%20left%20pad%20string%20to%20specified%20length">
+<div class="pilwrap" id="lpad">
   <h3>
-    <a href="#lpad%20-%20left%20pad%20string%20to%20specified%20length" name="lpad%20-%20left%20pad%20string%20to%20specified%20length" class="pilcrow">&#182;</a>
-    lpad - Left pad string to specified length
+    <a href="#lpad" name="lpad" class="pilcrow">&#182;</a>
+    lpad
   </h3>
 </div>
 
+
+<p>Left pad string to specified length.</p>
 
 <p><strong>Arguments:</strong></p>
 
@@ -380,13 +386,15 @@ character used for padding (defaults to ' ')</li>
 </ul>
 
 
-<div class="pilwrap" id="rpad%20-%20right%20pad%20string%20to%20specified%20length">
+<div class="pilwrap" id="rpad">
   <h3>
-    <a href="#rpad%20-%20right%20pad%20string%20to%20specified%20length" name="rpad%20-%20right%20pad%20string%20to%20specified%20length" class="pilcrow">&#182;</a>
-    rpad - right pad string to specified length
+    <a href="#rpad" name="rpad" class="pilcrow">&#182;</a>
+    rpad
   </h3>
 </div>
 
+
+<p>Right pad string to specified length.</p>
 
 <p><strong>Arguments:</strong></p>
 
@@ -406,13 +414,15 @@ character used for padding (defaults to ' ')</li>
 </ul>
 
 
-<div class="pilwrap" id="ucfirst%20-%20make%20first%20letter%20upper%20case">
+<div class="pilwrap" id="ucfirst">
   <h3>
-    <a href="#ucfirst%20-%20make%20first%20letter%20upper%20case" name="ucfirst%20-%20make%20first%20letter%20upper%20case" class="pilcrow">&#182;</a>
-    ucFirst - make first letter upper case
+    <a href="#ucfirst" name="ucfirst" class="pilcrow">&#182;</a>
+    ucFirst
   </h3>
 </div>
 
+
+<p>Make first letter upper case.</p>
 
 <p><strong>Arguments:</strong></p>
 
@@ -428,13 +438,15 @@ text to be changed</li>
 </ul>
 
 
-<div class="pilwrap" id="lcfirst%20-%20make%20first%20letter%20lower%20case">
+<div class="pilwrap" id="lcfirst">
   <h3>
-    <a href="#lcfirst%20-%20make%20first%20letter%20lower%20case" name="lcfirst%20-%20make%20first%20letter%20lower%20case" class="pilcrow">&#182;</a>
-    lcFirst - make first letter lower case
+    <a href="#lcfirst" name="lcfirst" class="pilcrow">&#182;</a>
+    lcFirst
   </h3>
 </div>
 
+
+<p>Make first letter lower case.</p>
 
 <p><strong>Arguments:</strong></p>
 
@@ -450,13 +462,15 @@ text to be changed</li>
 </ul>
 
 
-<div class="pilwrap" id="contains%20-%20is%20substring%20contained%3F">
+<div class="pilwrap" id="contains">
   <h3>
-    <a href="#contains%20-%20is%20substring%20contained%3F" name="contains%20-%20is%20substring%20contained%3F" class="pilcrow">&#182;</a>
-    contains - is substring contained?
+    <a href="#contains" name="contains" class="pilcrow">&#182;</a>
+    contains
   </h3>
 </div>
 
+
+<p>Is substring contained?</p>
 
 <p><strong>Arguments:</strong></p>
 
@@ -474,22 +488,24 @@ text to be searched for</li>
 </ul>
 
 
-<div class="pilwrap" id="usage%20of%20number%20helpers">
+<div class="pilwrap" id="number%20type">
   <h2>
-    <a href="#usage%20of%20number%20helpers" name="usage%20of%20number%20helpers" class="pilcrow">&#182;</a>
-    Usage of number helpers
+    <a href="#number%20type" name="number%20type" class="pilcrow">&#182;</a>
+    Number type
   </h2>
 </div>
 
 
 
-<div class="pilwrap" id="isinteger%20-%20check%20for%20integer">
+<div class="pilwrap" id="isinteger">
   <h3>
-    <a href="#isinteger%20-%20check%20for%20integer" name="isinteger%20-%20check%20for%20integer" class="pilcrow">&#182;</a>
-    isInteger - check for Integer
+    <a href="#isinteger" name="isinteger" class="pilcrow">&#182;</a>
+    isInteger
   </h3>
 </div>
 
+
+<p>Check for Integer.</p>
 
 <p>This method will check that the given value is an integer.</p>
 
@@ -507,13 +523,15 @@ to be analyzed</li>
 </ul>
 
 
-<div class="pilwrap" id="parseint%20-%20strict%20parse%20for%20integer">
+<div class="pilwrap" id="parseint">
   <h3>
-    <a href="#parseint%20-%20strict%20parse%20for%20integer" name="parseint%20-%20strict%20parse%20for%20integer" class="pilcrow">&#182;</a>
-    parseInt - strict parse for Integer
+    <a href="#parseint" name="parseint" class="pilcrow">&#182;</a>
+    parseInt
   </h3>
 </div>
 
+
+<p>Strict parse for Integer.</p>
 
 <p>This will fail on all strings which are no real integer.</p>
 
@@ -533,13 +551,15 @@ to be analyzed</li>
 <p>To check if you got a number or invalid string use <code>isNaN()</code>.</p>
 
 
-<div class="pilwrap" id="parseseconds%20-%20parse%20human%20readable%20time%20to%20seconds">
+<div class="pilwrap" id="parsesecond">
   <h3>
-    <a href="#parseseconds%20-%20parse%20human%20readable%20time%20to%20seconds" name="parseseconds%20-%20parse%20human%20readable%20time%20to%20seconds" class="pilcrow">&#182;</a>
-    parseSeconds - parse human readable time to seconds
+    <a href="#parsesecond" name="parsesecond" class="pilcrow">&#182;</a>
+    parseSecond
   </h3>
 </div>
 
+
+<p>Parse human readable time to seconds.</p>
 
 <p>This will fail on all strings which are no real integer.</p>
 
@@ -574,22 +594,24 @@ to be analyzed</li>
 
 
 
-<div class="pilwrap" id="usage%20of%20object%20helpers">
+<div class="pilwrap" id="object">
   <h2>
-    <a href="#usage%20of%20object%20helpers" name="usage%20of%20object%20helpers" class="pilcrow">&#182;</a>
-    Usage of object helpers
+    <a href="#object" name="object" class="pilcrow">&#182;</a>
+    Object
   </h2>
 </div>
 
 
 
-<div class="pilwrap" id="extend%20-%20extend%20object">
+<div class="pilwrap" id="extend">
   <h3>
-    <a href="#extend%20-%20extend%20object" name="extend%20-%20extend%20object" class="pilcrow">&#182;</a>
-    extend - extend object
+    <a href="#extend" name="extend" class="pilcrow">&#182;</a>
+    extend
   </h3>
 </div>
 
+
+<p>Extend an object with another one.</p>
 
 <p>This method will extend a given object with the entries from additional
 objects. Therefore it will do a deep extend.</p>
@@ -639,13 +661,15 @@ the given and maybe changed object.</li>
 
 
 
-<div class="pilwrap" id="clone%20-%20deep%20cloning%20object">
+<div class="pilwrap" id="clone">
   <h3>
-    <a href="#clone%20-%20deep%20cloning%20object" name="clone%20-%20deep%20cloning%20object" class="pilcrow">&#182;</a>
-    clone - deep cloning object
+    <a href="#clone" name="clone" class="pilcrow">&#182;</a>
+    clone
   </h3>
 </div>
 
+
+<p>Deep cloning of an object.</p>
 
 <p>This method will create a clone of the given object.</p>
 
@@ -692,22 +716,49 @@ clone of the given  object.</li>
 
 
 
-<div class="pilwrap" id="usage%20of%20array%20helpers">
+<div class="pilwrap" id="isempty">
+  <h3>
+    <a href="#isempty" name="isempty" class="pilcrow">&#182;</a>
+    isempty
+  </h3>
+</div>
+
+
+<p>Check if object is empty or uninitialized.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+to be checked</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>boolean</code>
+true if object is empty</li>
+</ul>
+
+
+<div class="pilwrap" id="array%20object">
   <h2>
-    <a href="#usage%20of%20array%20helpers" name="usage%20of%20array%20helpers" class="pilcrow">&#182;</a>
-    Usage of array helpers
+    <a href="#array%20object" name="array%20object" class="pilcrow">&#182;</a>
+    Array object
   </h2>
 </div>
 
 
 
-<div class="pilwrap" id="last%20-%20get%20the%20last%20element">
+<div class="pilwrap" id="last">
   <h3>
-    <a href="#last%20-%20get%20the%20last%20element" name="last%20-%20get%20the%20last%20element" class="pilcrow">&#182;</a>
-    last - get the last element
+    <a href="#last" name="last" class="pilcrow">&#182;</a>
+    last
   </h3>
 </div>
 
+
+<p>Get the last element.</p>
 
 <p><strong>Arguments:</strong></p>
 

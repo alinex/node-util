@@ -32,6 +32,9 @@
         <a href="#deep%20cloning%20object">Deep cloning object</a>
       </div>
       <div class="heading h2">
+        <a href="#check%20for%20empty%20objects">Check for empty objects</a>
+      </div>
+      <div class="heading h2">
         <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
       </div>
     </div>
@@ -237,6 +240,55 @@ clone of the given  object.</li>
       </tr>
       <tr>
         <td class="docs">
+<div class="pilwrap" id="check%20for%20empty%20objects">
+  <h2>
+    <a href="#check%20for%20empty%20objects" name="check%20for%20empty%20objects" class="pilcrow">&#182;</a>
+    Check for empty objects
+  </h2>
+</div>
+
+
+<p>This method will check if an object is empty. This is also true for undefined
+objects.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+to be checked</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li><code>boolean</code>
+true if object is empty</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">isempty = module.exports.isempty = </span><span class="nf">(obj) -&gt;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11">&#182;</a>
+</div>
+<p>true for undefined objects</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="k">return</span> <span class="kc">true</span> <span class="k">unless</span> <span class="nx">obj</span><span class="o">?</span>
+  <span class="k">return</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">0</span> <span class="k">if</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">length</span><span class="o">?</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">0</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
 <div class="pilwrap" id="add%20object%20helpers%20to%20the%20object%20class">
   <h2>
     <a href="#add%20object%20helpers%20to%20the%20object%20class" name="add%20object%20helpers%20to%20the%20object%20class" class="pilcrow">&#182;</a>
@@ -254,6 +306,8 @@ clone of the given  object.</li>
     <span class="nx">extend</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
   <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.clone = </span><span class="nf">-&gt;</span>
     <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="k">this</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.isempty = </span><span class="nf">-&gt;</span>
+    <span class="nx">isempty</span> <span class="k">this</span>
 </pre></div>
         </td>
       </tr>
