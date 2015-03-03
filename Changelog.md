@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.1 (2015-03-03)
+-------------------------------------------------
+- update to use builder
+
 Version 0.2.0 (2015-03-03)
 -------------------------------------------------
 - Upgraded travis check list.
