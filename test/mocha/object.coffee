@@ -116,6 +116,18 @@ describe "Object", ->
       result = object.extend null, 0
       expect(result, "value changed").to.equal 0
 
+  describe "isempty", ->
+
+    it "should detect empty objects", ->
+      expect(object.isempty(null), "null").to.equal true
+      expect(object.isempty(undefined), "undefined").to.equal true
+      expect(object.isempty([]), "array").to.equal true
+      expect(object.isempty({}), "object").to.equal true
+
+    it "should detect not empty objects", ->
+      expect(object.isempty([4]), "array").to.equal false
+      expect(object.isempty({a:1}), "object").to.equal false
+
   describe "prototype", ->
 
     it "should clone object", ->

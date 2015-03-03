@@ -78,6 +78,26 @@ extendInstance = (obj, src) ->
     res[key] = extend obj[key], val
   res
 
+# Check for empty objects
+# -------------------------------------------------
+# This method will check if an object is empty. This is also true for undefined
+# objects.
+#
+# __Arguments:__
+#
+# * `object`
+#   to be checked
+#
+# __Returns:__
+#
+# * `boolean`
+#   true if object is empty
+isempty = module.exports.isempty = (obj) ->
+  # true for undefined objects
+  return true unless obj?
+  return obj.length is 0 if obj.length?
+  Object.keys(obj).length is 0
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
@@ -87,3 +107,6 @@ module.exports.addToPrototype = ->
     extend.apply null, args
   Object.prototype.clone = ->
     extend null, this
+  Object.prototype.isempty = ->
+    isempty this
+

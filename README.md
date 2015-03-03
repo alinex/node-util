@@ -28,7 +28,7 @@ The easiest way is to let npm add the module directly:
 [![NPM](https://nodei.co/npm/alinex-util.png?downloads=true&stars=true)](https://nodei.co/npm/alinex-util/)
 
 
-Usage
+General Usage
 -------------------------------------------------
 
 All methods in this package can be called from the resulting function collection:
@@ -52,10 +52,10 @@ you won't need the first parameter:
     y = util.object.clone(x);
 
 
-Usage of string helpers
+String type
 -------------------------------------------------
 
-### starts - match string start
+### starts
 
 This is a handy method to check that a certain string starts with the given
 phrase.
@@ -90,7 +90,7 @@ Or the same call using prototype extension:
     var result = test.starts('ab');
 
 
-### ends - match string end
+### ends
 
 This is a handy method to check that a certain string ends with the given
 phrase.
@@ -124,7 +124,9 @@ Or the same call using prototype extension:
     var test = 'abcdefg';
     var result = test.ends('fg');
 
-### repeat - Repeat string n times
+### repeat
+
+Repeat a given string multiple times.
 
 __Arguments:__
 
@@ -153,7 +155,9 @@ Or the same call using prototype extension:
     var test = 'ab';
     var result = test.repeat(3);
 
-### lpad - Left pad string to specified length
+### lpad
+
+Left pad string to specified length.
 
 __Arguments:__
 
@@ -168,7 +172,9 @@ __Returns:__
 
 * the padded text
 
-### rpad - right pad string to specified length
+### rpad
+
+Right pad string to specified length.
 
 __Arguments:__
 
@@ -183,7 +189,9 @@ __Returns:__
 
 * the padded text
 
-### ucFirst - make first letter upper case
+### ucFirst
+
+Make first letter upper case.
 
 __Arguments:__
 
@@ -195,7 +203,9 @@ __Returns:__
 * the same text but with first letter in upper case
 
 
-### lcFirst - make first letter lower case
+### lcFirst
+
+Make first letter lower case.
 
 __Arguments:__
 
@@ -207,7 +217,9 @@ __Returns:__
 * the same text but with first letter in lower case
 
 
-### contains - is substring contained?
+### contains
+
+Is substring contained?
 
 __Arguments:__
 
@@ -221,10 +233,12 @@ __Returns:__
 * (bool) `true` if phrase is contained in string
 
 
-Usage of number helpers
+Number type
 -------------------------------------------------
 
-### isInteger - check for Integer
+### isInteger
+
+Check for Integer.
 
 This method will check that the given value is an integer.
 
@@ -237,7 +251,9 @@ __Returns:__
 
 * `true` if `value` is an integer
 
-### parseInt - strict parse for Integer
+### parseInt
+
+Strict parse for Integer.
 
 This will fail on all strings which are no real integer.
 
@@ -252,7 +268,9 @@ __Returns:__
 
 To check if you got a number or invalid string use `isNaN()`.
 
-### parseSeconds - parse human readable time to seconds
+### parseSecond
+
+Parse human readable time to seconds.
 
 This will fail on all strings which are no real integer.
 
@@ -279,10 +297,12 @@ __Example:__
     number.parseSeconds('2h 5m 100s'); // 7600
 
 
-Usage of object helpers
+Object
 -------------------------------------------------
 
-### extend - extend object
+### extend
+
+Extend an object with another one.
 
 This method will extend a given object with the entries from additional
 objects. Therefore it will do a deep extend.
@@ -316,7 +336,9 @@ Or the same call using prototype extension:
     test.extend({ zwei: 2 }, { eins: 'eins' }, { drei: 3 });
 
 
-### clone - deep cloning object
+### clone
+
+Deep cloning of an object.
 
 This method will create a clone of the given object.
 
@@ -347,11 +369,27 @@ Or the same call using prototype extension:
     var result = test.clone();
 
 
-Usage of array helpers
+### isempty
+
+Check if object is empty or uninitialized.
+
+__Arguments:__
+
+* `object`
+  to be checked
+
+__Returns:__
+
+* `boolean`
+  true if object is empty
+
+Array object
 -------------------------------------------------
 
 
-### last - get the last element
+### last
+
+Get the last element.
 
 __Arguments:__
 
