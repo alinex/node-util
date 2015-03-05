@@ -151,31 +151,63 @@ following the code standards defined there.</p>
 <p>All methods in this package can be called from the resulting function collection:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">);</span>
-<span class="nx">string</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">string</span><span class="p">;</span> <span class="c1">// shortcut to the string functions</span>
-<span class="nx">object</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">object</span><span class="p">;</span> <span class="c1">// shortcut to the object functions</span>
+<div class="highlight"><pre><code><span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-util&#39;</span>
+<span class="nx">string</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">string</span> <span class="err">#</span> <span class="nx">shortcut</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">string</span> <span class="nx">functions</span>
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">object</span> <span class="err">#</span> <span class="nx">shortcut</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">object</span> <span class="nx">functions</span>
 </code></pre></div>
 
 
 
-<p>An other alternative is to add the fucntions to the appropriate objects. This is
-done with the <code>addToPrototype</code> methods:</p>
+<p>Or directly import the needed objects with:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">);</span>
-<span class="nx">util</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">();</span> <span class="c1">// will do it for all</span>
-<span class="nx">util</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">();</span> <span class="c1">// or extend only the Object class</span>
+<div class="highlight"><pre><code><span class="p">{</span><span class="nx">string</span><span class="p">,</span><span class="nx">object</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-util&#39;</span>
+<span class="err">#</span> <span class="nx">alternatively</span>
+<span class="nx">string</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
 </code></pre></div>
 
 
 
-<p>If you call the functions from an class instance (after adding to prototype),
-you won't need the first parameter:</p>
+<p>Or you may inlcude only the needed types separately:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">x</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
-<span class="nx">y</span> <span class="o">=</span> <span class="nx">x</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span> <span class="c1">// instead of</span>
-<span class="nx">y</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">clone</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">string</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-util/lib/string&#39;</span>
+<span class="nx">number</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-util/lib/number&#39;</span>
+<span class="nx">object</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-util/lib/object&#39;</span>
+<span class="nx">array</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">&#39;alinex-util/lib/array&#39;</span>
+</code></pre></div>
+
+
+
+<p>Now you may use the helper functions like:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">x</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="nx">y</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">clone</span> <span class="nx">x</span>
+</code></pre></div>
+
+
+
+<p>An other alternative is to add the helper functions to the appropriate objects.
+This is done with the <code>addToPrototype</code> methods:</p>
+
+
+<div class="highlight"><pre><code><span class="err">#</span> <span class="nx">after</span> <span class="nx">loading</span> <span class="nx">the</span> <span class="nx">helper</span> <span class="nx">into</span> <span class="err">`</span><span class="nx">object</span><span class="err">`</span><span class="o">:</span>
+<span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span> <span class="err">#</span> <span class="nx">extend</span> <span class="nx">only</span> <span class="nx">the</span> <span class="nb">Object</span> <span class="kr">class</span>
+
+<span class="err">#</span> <span class="nx">or</span> <span class="k">do</span> <span class="nx">it</span> <span class="k">for</span> <span class="nx">all</span> <span class="nx">objects</span> <span class="nx">and</span> <span class="k">in</span> <span class="nx">one</span> <span class="nx">statement</span> <span class="kd">with</span> <span class="nx">the</span> <span class="nx">require</span><span class="o">:</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">addToPrototype</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+<p>Now you may call the helper methods directly on any object and you won't need
+to give the working object as the first parameter:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">x</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="nx">y</span> <span class="o">=</span> <span class="nx">x</span><span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
 </code></pre></div>
 
 
@@ -221,9 +253,9 @@ offset character position to start looking for</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">starts</span><span class="p">(</span><span class="nx">test</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">string</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">starts</span> <span class="nx">test</span><span class="p">,</span> <span class="s1">&#39;ab&#39;</span>
 </code></pre></div>
 
 
@@ -239,9 +271,9 @@ offset character position to start looking for</li>
 <p>Or the same call using prototype extension:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">starts</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">starts</span> <span class="s1">&#39;ab&#39;</span>
 </code></pre></div>
 
 
@@ -278,9 +310,9 @@ offset character position from the end to look for</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">ends</span><span class="p">(</span><span class="nx">test</span><span class="p">,</span> <span class="s1">&#39;fg&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">string</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">ends</span> <span class="nx">test</span><span class="p">,</span> <span class="s1">&#39;fg&#39;</span>
 </code></pre></div>
 
 
@@ -296,9 +328,9 @@ offset character position from the end to look for</li>
 <p>Or the same call using prototype extension:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">ends</span><span class="p">(</span><span class="s1">&#39;fg&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">ends</span> <span class="s1">&#39;fg&#39;</span>
 </code></pre></div>
 
 
@@ -332,9 +364,9 @@ number of repeats</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;ab&#39;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">test</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">string</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;ab&#39;</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">repeat</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">3</span>
 </code></pre></div>
 
 
@@ -350,9 +382,9 @@ number of repeats</li>
 <p>Or the same call using prototype extension:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;ab&#39;</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="s1">&#39;ab&#39;</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">repeat</span> <span class="mi">3</span>
 </code></pre></div>
 
 
@@ -581,14 +613,14 @@ to be analyzed</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>     <span class="c1">// 200</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;200s&#39;</span><span class="p">);</span>  <span class="c1">// 200</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;200S&#39;</span><span class="p">);</span>  <span class="c1">// 200</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;5m&#39;</span><span class="p">);</span>    <span class="c1">// 300</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;1h&#39;</span><span class="p">);</span>    <span class="c1">// 3600</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;2.5h&#39;</span><span class="p">);</span>  <span class="c1">// 9000</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;1d&#39;</span><span class="p">);</span>    <span class="c1">// 86400</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span><span class="p">(</span><span class="s1">&#39;2h 5m 100s&#39;</span><span class="p">);</span> <span class="c1">// 7600</span>
+<div class="highlight"><pre><code><span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="mi">200</span>          <span class="err">#</span> <span class="mi">200</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s1">&#39;200s&#39;</span>       <span class="err">#</span> <span class="mi">200</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s1">&#39;200S&#39;</span>       <span class="err">#</span> <span class="mi">200</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s1">&#39;5m&#39;</span>         <span class="err">#</span> <span class="mi">300</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s1">&#39;1h&#39;</span>         <span class="err">#</span> <span class="mi">3600</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s1">&#39;2.5h&#39;</span>       <span class="err">#</span> <span class="mi">9000</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s1">&#39;1d&#39;</span>         <span class="err">#</span> <span class="mi">86400</span>
+<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s1">&#39;2h 5m 100s&#39;</span> <span class="err">#</span> <span class="mi">7600</span>
 </code></pre></div>
 
 
@@ -635,9 +667,9 @@ the given and maybe changed object.</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
-<span class="nx">object</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">test</span><span class="p">,</span> <span class="p">{</span> <span class="nx">zwei</span><span class="o">:</span> <span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="s1">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">drei</span><span class="o">:</span> <span class="mi">3</span> <span class="p">});</span>
+<div class="highlight"><pre><code><span class="nx">object</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="nx">object</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">test</span><span class="p">,</span> <span class="p">{</span> <span class="nx">zwei</span><span class="o">:</span> <span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="s1">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">drei</span><span class="o">:</span> <span class="mi">3</span> <span class="p">}</span>
 </code></pre></div>
 
 
@@ -653,9 +685,9 @@ the given and maybe changed object.</li>
 <p>Or the same call using prototype extension:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
-<span class="nx">test</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span> <span class="nx">zwei</span><span class="o">:</span> <span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="s1">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">drei</span><span class="o">:</span> <span class="mi">3</span> <span class="p">});</span>
+<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="nx">test</span><span class="p">.</span><span class="nx">extend</span> <span class="p">{</span> <span class="nx">zwei</span><span class="o">:</span> <span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="s1">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">drei</span><span class="o">:</span> <span class="mi">3</span> <span class="p">}</span>
 </code></pre></div>
 
 
@@ -690,9 +722,9 @@ clone of the given  object.</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">clone</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">object</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">clone</span> <span class="nx">test</span>
 </code></pre></div>
 
 
@@ -708,9 +740,9 @@ clone of the given  object.</li>
 <p>Or the same call using prototype extension:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">};</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
 </code></pre></div>
 
 
@@ -778,9 +810,9 @@ offset character position from the end to look for</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">];</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">last</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+<div class="highlight"><pre><code><span class="nx">array</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">last</span> <span class="nx">test</span>
 </code></pre></div>
 
 
@@ -796,9 +828,9 @@ offset character position from the end to look for</li>
 <p>Or the same call using prototype extension:</p>
 
 
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">];</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">last</span><span class="p">();</span>
+<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+<span class="nx">test</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">last</span><span class="p">()</span>
 </code></pre></div>
 
 
