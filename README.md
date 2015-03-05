@@ -32,23 +32,43 @@ General Usage
 
 All methods in this package can be called from the resulting function collection:
 
-    util = require('alinex-util');
-    string = util.string; // shortcut to the string functions
-    object = util.object; // shortcut to the object functions
+    util = require 'alinex-util'
+    string = util.string # shortcut to the string functions
+    object = util.object # shortcut to the object functions
 
-An other alternative is to add the fucntions to the appropriate objects. This is
-done with the `addToPrototype` methods:
+Or directly import the needed objects with:
 
-    util = require('alinex-util');
-    util.addToPrototype(); // will do it for all
-    util.object.addToPrototype(); // or extend only the Object class
+    {string,object} = require 'alinex-util'
+    # alternatively
+    string = require('alinex-util').string
+    object = require('alinex-util').object
 
-If you call the functions from an class instance (after adding to prototype),
-you won't need the first parameter:
+Or you may inlcude only the needed types separately:
 
-    x = { eins: 1 };
-    y = x.clone(); // instead of
-    y = util.object.clone(x);
+    string = require 'alinex-util/lib/string'
+    number = require 'alinex-util/lib/number'
+    object = require 'alinex-util/lib/object'
+    array = require 'alinex-util/lib/array'
+
+Now you may use the helper functions like:
+
+    x = { eins: 1 }
+    y = object.clone x
+
+An other alternative is to add the helper functions to the appropriate objects.
+This is done with the `addToPrototype` methods:
+
+    # after loading the helper into `object`:
+    object.addToPrototype() # extend only the Object class
+
+    # or do it for all objects and in one statement with the require:
+    require('alinex-util').addToPrototype()
+
+Now you may call the helper methods directly on any object and you won't need
+to give the working object as the first parameter:
+
+    x = { eins: 1 }
+    y = x.clone()
 
 
 String type
@@ -74,9 +94,9 @@ __Returns:__
 
 __Example:__
 
-    var string = require('alinex-util').string;
-    var test = 'abcdefg';
-    var result = string.starts(test, 'ab');
+    string = require('alinex-util').string
+    test = 'abcdefg'
+    result = string.starts test, 'ab'
 
 This results to:
 
@@ -84,9 +104,9 @@ This results to:
 
 Or the same call using prototype extension:
 
-    require('alinex-util').string.addToPrototype();
-    var test = 'abcdefg';
-    var result = test.starts('ab');
+    require('alinex-util').string.addToPrototype()
+    test = 'abcdefg'
+    result = test.starts 'ab'
 
 
 ### ends
@@ -109,9 +129,9 @@ __Returns:__
 
 __Example:__
 
-    var string = require('alinex-util').string;
-    var test = 'abcdefg';
-    var result = string.ends(test, 'fg');
+    string = require('alinex-util').string
+    test = 'abcdefg'
+    result = string.ends test, 'fg'
 
 This results to:
 
@@ -119,9 +139,9 @@ This results to:
 
 Or the same call using prototype extension:
 
-    require('alinex-util').string.addToPrototype();
-    var test = 'abcdefg';
-    var result = test.ends('fg');
+    require('alinex-util').string.addToPrototype()
+    test = 'abcdefg'
+    result = test.ends 'fg'
 
 ### repeat
 
@@ -140,9 +160,9 @@ __Returns:__
 
 __Example:__
 
-    var string = require('alinex-util').string;
-    var test = 'ab';
-    var result = string.repeat(test, 3);
+    string = require('alinex-util').string
+    test = 'ab'
+    result = string.repeat test, 3
 
 This results to:
 
@@ -150,9 +170,9 @@ This results to:
 
 Or the same call using prototype extension:
 
-    require('alinex-util').string.addToPrototype();
-    var test = 'ab';
-    var result = test.repeat(3);
+    require('alinex-util').string.addToPrototype()
+    test = 'ab'
+    result = test.repeat 3
 
 ### lpad
 
@@ -286,14 +306,14 @@ To check if you got a number or invalid string use `isNaN()`.
 
 __Example:__
 
-    number.parseSeconds(200);     // 200
-    number.parseSeconds('200s');  // 200
-    number.parseSeconds('200S');  // 200
-    number.parseSeconds('5m');    // 300
-    number.parseSeconds('1h');    // 3600
-    number.parseSeconds('2.5h');  // 9000
-    number.parseSeconds('1d');    // 86400
-    number.parseSeconds('2h 5m 100s'); // 7600
+    number.parseSeconds 200          # 200
+    number.parseSeconds '200s'       # 200
+    number.parseSeconds '200S'       # 200
+    number.parseSeconds '5m'         # 300
+    number.parseSeconds '1h'         # 3600
+    number.parseSeconds '2.5h'       # 9000
+    number.parseSeconds '1d'         # 86400
+    number.parseSeconds '2h 5m 100s' # 7600
 
 
 Object
@@ -320,9 +340,9 @@ __Returns:__
 
 __Example:__
 
-    var object = require('alinex-util').object;
-    var test = { eins: 1 };
-    object.extend(test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 });
+    object = require('alinex-util').object
+    test = { eins: 1 }
+    object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 
 This results to:
 
@@ -330,9 +350,9 @@ This results to:
 
 Or the same call using prototype extension:
 
-    require('alinex-util').object.addToPrototype();
-    var test = { eins: 1 };
-    test.extend({ zwei: 2 }, { eins: 'eins' }, { drei: 3 });
+    require('alinex-util').object.addToPrototype()
+    test = { eins: 1 }
+    test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 
 
 ### clone
@@ -353,9 +373,9 @@ __Returns:__
 
 __Example:__
 
-    var object = require('alinex-util').object;
-    var test = { eins: 1 };
-    var result = object.clone(test);
+    object = require('alinex-util').object
+    test = { eins: 1 }
+    result = object.clone test
 
 This results to:
 
@@ -363,9 +383,9 @@ This results to:
 
 Or the same call using prototype extension:
 
-    require('alinex-util').object.addToPrototype();
-    var test = { eins: 1 };
-    var result = test.clone();
+    require('alinex-util').object.addToPrototype()
+    test = { eins: 1 }
+    result = test.clone()
 
 
 ### isempty
@@ -403,9 +423,9 @@ __Returns:__
 
 __Example:__
 
-    var array = require('alinex-util').array;
-    var test = [ 1,2,3,4,5 ];
-    var result = array.last(test);
+    array = require('alinex-util').array
+    test = [ 1,2,3,4,5 ]
+    result = array.last test
 
 This results to:
 
@@ -413,9 +433,9 @@ This results to:
 
 Or the same call using prototype extension:
 
-    require('alinex-util').array.addToPrototype();
-    var test = [ 1,2,3,4,5 ];
-    var result = test.last();
+    require('alinex-util').array.addToPrototype()
+    test = [ 1,2,3,4,5 ]
+    result = test.last()
 
 
 License
