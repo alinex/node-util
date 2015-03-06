@@ -22,7 +22,9 @@ Install
 
 The easiest way is to let npm add the module directly:
 
-    > npm install alinex-fs --save
+``` sh
+npm install alinex-fs --save
+```
 
 [![NPM](https://nodei.co/npm/alinex-util.png?downloads=true&stars=true)](https://nodei.co/npm/alinex-util/)
 
@@ -32,28 +34,36 @@ General Usage
 
 All methods in this package can be called from the resulting function collection:
 
-    util = require 'alinex-util'
-    string = util.string # shortcut to the string functions
-    object = util.object # shortcut to the object functions
+``` coffee
+util = require 'alinex-util'
+string = util.string # shortcut to the string functions
+object = util.object # shortcut to the object functions
+```
 
 Or shorter:
 
-    {string,object} = require 'alinex-util'
-    array = require 'alinex-util/lib/array'
+``` coffee
+{string,object} = require 'alinex-util'
+array = require 'alinex-util/lib/array'
+```
 
 An other alternative is to add the fucntions to the appropriate objects. This is
 done with the `addToPrototype` methods:
 
-    util = require 'alinex-util'
-    util.addToPrototype() # will do it for all
-    util.object.addToPrototype() # or extend only the Object class
+``` coffee
+util = require 'alinex-util'
+util.addToPrototype() # will do it for all
+util.object.addToPrototype() # or extend only the Object class
+```
 
 If you call the functions from an class instance (after adding to prototype),
 you won't need the first parameter:
 
-    x = { eins: 1 }
-    y = x.clone() # instead of
-    y = util.object.clone x
+``` coffee
+x = { eins: 1 }
+y = x.clone() # instead of
+y = util.object.clone x
+```
 
 
 String type
@@ -79,19 +89,25 @@ __Returns:__
 
 __Example:__
 
-    var string = require('alinex-util').string
-    var test = 'abcdefg'
-    var result = string.starts test, 'ab'
+``` coffee
+var string = require('alinex-util').string
+var test = 'abcdefg'
+var result = string.starts test, 'ab'
+```
 
 This results to:
 
-    result = true
+``` coffee
+result = true
+```
 
 Or the same call using prototype extension:
 
-    require('alinex-util').string.addToPrototype()
-    var test = 'abcdefg'
-    var result = test.starts 'ab'
+``` coffee
+require('alinex-util').string.addToPrototype()
+var test = 'abcdefg'
+var result = test.starts 'ab'
+```
 
 
 ### ends
@@ -114,19 +130,25 @@ __Returns:__
 
 __Example:__
 
-    var string = require('alinex-util').string
-    var test = 'abcdefg'
-    var result = string.ends test, 'fg'
+``` coffee
+var string = require('alinex-util').string
+var test = 'abcdefg'
+var result = string.ends test, 'fg'
+```
 
 This results to:
 
-    result = true
+``` coffee
+result = true
+```
 
 Or the same call using prototype extension:
 
-    require('alinex-util').string.addToPrototype()
-    var test = 'abcdefg'
-    var result = test.ends 'fg'
+``` coffee
+require('alinex-util').string.addToPrototype()
+var test = 'abcdefg'
+var result = test.ends 'fg'
+```
 
 ### repeat
 
@@ -145,19 +167,25 @@ __Returns:__
 
 __Example:__
 
-    var string = require('alinex-util').string
-    var test = 'ab'
-    var result = string.repeat test, 3
+``` coffee
+var string = require('alinex-util').string
+var test = 'ab'
+var result = string.repeat test, 3
+```
 
 This results to:
 
-    result = 'ababab'
+``` coffee
+result = 'ababab'
+```
 
 Or the same call using prototype extension:
 
-    require('alinex-util').string.addToPrototype()
-    var test = 'ab'
-    var result = test.repeat 3
+``` coffee
+require('alinex-util').string.addToPrototype()
+var test = 'ab'
+var result = test.repeat 3
+```
 
 ### lpad
 
@@ -291,14 +319,16 @@ To check if you got a number or invalid string use `isNaN()`.
 
 __Example:__
 
-    number.parseSeconds 200          # 200
-    number.parseSeconds '200s'       # 200
-    number.parseSeconds '200S'       # 200
-    number.parseSeconds '5m'         # 300
-    number.parseSeconds '1h'         # 3600
-    number.parseSeconds '2.5h'       # 9000
-    number.parseSeconds '1d'         # 86400
-    number.parseSeconds '2h 5m 100s' # 7600
+``` coffee
+number.parseSeconds 200          # 200
+number.parseSeconds '200s'       # 200
+number.parseSeconds '200S'       # 200
+number.parseSeconds '5m'         # 300
+number.parseSeconds '1h'         # 3600
+number.parseSeconds '2.5h'       # 9000
+number.parseSeconds '1d'         # 86400
+number.parseSeconds '2h 5m 100s' # 7600
+```
 
 
 Object
@@ -325,19 +355,25 @@ __Returns:__
 
 __Example:__
 
-    var object = require('alinex-util').object
-    var test = { eins: 1 }
-    object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
+``` coffee
+var object = require('alinex-util').object
+var test = { eins: 1 }
+object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
+```
 
 This results to:
 
-    test = { eins: 'eins', zwei: 2, drei: 3 }
+``` coffee
+test = { eins: 'eins', zwei: 2, drei: 3 }
+```
 
 Or the same call using prototype extension:
 
-    require('alinex-util').object.addToPrototype()
-    var test = { eins: 1 }
-    test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
+``` coffee
+require('alinex-util').object.addToPrototype()
+var test = { eins: 1 }
+test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
+```
 
 
 ### clone
@@ -358,19 +394,25 @@ __Returns:__
 
 __Example:__
 
-    var object = require('alinex-util').object
-    var test = { eins: 1 }
-    var result = object.clone test
+``` coffee
+var object = require('alinex-util').object
+var test = { eins: 1 }
+var result = object.clone test
+```
 
 This results to:
 
-    result = { eins: 1 }
+``` coffee
+result = { eins: 1 }
+```
 
 Or the same call using prototype extension:
 
-    require('alinex-util').object.addToPrototype()
-    var test = { eins: 1 }
-    var result = test.clone()
+``` coffee
+require('alinex-util').object.addToPrototype()
+var test = { eins: 1 }
+var result = test.clone()
+```
 
 
 ### isempty
@@ -387,9 +429,9 @@ __Returns:__
 * `boolean`
   true if object is empty
 
+
 Array object
 -------------------------------------------------
-
 
 ### last
 
@@ -408,25 +450,31 @@ __Returns:__
 
 __Example:__
 
-    var array = require('alinex-util').array
-    var test = [ 1,2,3,4,5 ]
-    var result = array.last test
+``` coffee
+var array = require('alinex-util').array
+var test = [ 1,2,3,4,5 ]
+var result = array.last test
+```
 
 This results to:
 
-    result = 5
+``` coffee
+result = 5
+```
 
 Or the same call using prototype extension:
 
-    require('alinex-util').array.addToPrototype()
-    var test = [ 1,2,3,4,5 ]
-    var result = test.last()
+``` coffee
+require('alinex-util').array.addToPrototype()
+var test = [ 1,2,3,4,5 ]
+var result = test.last()
+```
 
 
 License
 -------------------------------------------------
 
-Copyright 2014 Alexander Schilling
+Copyright 2014-2015 Alexander Schilling
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
