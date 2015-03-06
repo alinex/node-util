@@ -4,6 +4,15 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.1 (2015-03-03)
+-------------------------------------------------
+- update to use builder
+
+Version 0.2.0 (2015-03-03)
+-------------------------------------------------
+- Upgraded travis check list.
+- Added object.isempty() method.
+
 Version 0.1.11 (2014-11-21)
 -------------------------------------------------
 - Renamed internal variable for conformance only.

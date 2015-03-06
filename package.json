@@ -1,6 +1,6 @@
 {
   "name": "alinex-util",
-  "version": "0.1.11",
+  "version": "0.2.1",
   "description": "Different small helper methods which are generally used",
   "copyright": "Alexander Schilling 2014",
   "private": false,
@@ -26,16 +26,16 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "scripts": {
-    "prepublish": "node_modules/.bin/alinex-make -c compile",
-    "test": "node_modules/.bin/alinex-make -c test"
+    "prepublish": "node_modules/.bin/builder -c compile",
+    "test": "node_modules/.bin/builder -c test"
   },
   "directories": {
     "lib": "./lib"
   },
   "dependencies": {},
   "devDependencies": {
-    "alinex-make": "0.4.x",
-    "chai": "1.x"
+    "alinex-builder": "1.x",
+    "chai": "2.x"
   },
   "optionalDependencies": {},
   "engines": {
