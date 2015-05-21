@@ -31,41 +31,17 @@
       <div class="heading h2">
         <a href="#general%20usage">General Usage</a>
       </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20object%20%3D%20util.object%20%23%20shortcut%20to%20the%20object%20functions">    object = util.object # shortcut to the object functions</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20object%20%3D%20require('alinex-util').object">    object = require('alinex-util').object</a>
-      </div>
       <div class="heading h2">
         <a href="#string%20type">String type</a>
       </div>
       <div class="heading h3">
         <a href="#starts">starts</a>
       </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20string.starts%20test%2C%20'ab'">    result = string.starts test, 'ab'</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20test.starts%20'ab'">    result = test.starts 'ab'</a>
-      </div>
       <div class="heading h3">
         <a href="#ends">ends</a>
       </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20string.ends%20test%2C%20'fg'">    result = string.ends test, 'fg'</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20test.ends%20'fg'">    result = test.ends 'fg'</a>
-      </div>
       <div class="heading h3">
         <a href="#repeat">repeat</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20string.repeat%20test%2C%203">    result = string.repeat test, 3</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20test.repeat%203">    result = test.repeat 3</a>
       </div>
       <div class="heading h3">
         <a href="#lpad">lpad</a>
@@ -94,29 +70,14 @@
       <div class="heading h3">
         <a href="#parsesecond">parseSecond</a>
       </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20number.parseseconds%20'2h%205m%20100s'%20%23%207600">    number.parseSeconds '2h 5m 100s' # 7600</a>
-      </div>
       <div class="heading h2">
         <a href="#object">Object</a>
       </div>
       <div class="heading h3">
         <a href="#extend">extend</a>
       </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20object.extend%20test%2C%20%7B%20zwei%3A%202%20%7D%2C%20%7B%20eins%3A%20'eins'%20%7D%2C%20%7B%20drei%3A%203%20%7D">    object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20test.extend%20%7B%20zwei%3A%202%20%7D%2C%20%7B%20eins%3A%20'eins'%20%7D%2C%20%7B%20drei%3A%203%20%7D">    test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }</a>
-      </div>
       <div class="heading h3">
         <a href="#clone">clone</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20object.clone%20test">    result = object.clone test</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20test.clone()">    result = test.clone()</a>
       </div>
       <div class="heading h3">
         <a href="#isempty">isempty</a>
@@ -126,12 +87,6 @@
       </div>
       <div class="heading h3">
         <a href="#last">last</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20array.last%20test">    result = array.last test</a>
-      </div>
-      <div class="heading h1">
-        <a href="#%20%20%20%20result%20%3D%20test.last()">    result = test.last()</a>
       </div>
       <div class="heading h2">
         <a href="#license">License</a>
@@ -195,19 +150,6 @@ following the code standards defined there.</p>
 
 <p>All methods in this package can be called from the resulting function collection:</p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    util = require 'alinex-util'
-    string = util.string # shortcut to the string functions</p>
-
-
-<div class="pilwrap" id="%20%20%20%20object%20%3D%20util.object%20%23%20shortcut%20to%20the%20object%20functions">
-  <h1>
-    <a href="#%20%20%20%20object%20%3D%20util.object%20%23%20shortcut%20to%20the%20object%20functions" name="%20%20%20%20object%20%3D%20util.object%20%23%20shortcut%20to%20the%20object%20functions" class="pilcrow">&#182;</a>
-        object = util.object # shortcut to the object functions
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nv">util = </span><span class="nx">require</span> <span class="s">&#39;alinex-util&#39;</span>
 <span class="nv">string = </span><span class="nx">util</span><span class="p">.</span><span class="nx">string</span> <span class="c1"># shortcut to the string functions</span>
@@ -225,37 +167,7 @@ following the code standards defined there.</p>
 
 
 
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
-
 <p>Or directly import the needed objects with:</p>
-
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    {string,object} = require 'alinex-util'
-    # alternatively
-    string = require('alinex-util').string</p>
-
-
-<div class="pilwrap" id="%20%20%20%20object%20%3D%20require('alinex-util').object">
-  <h1>
-    <a href="#%20%20%20%20object%20%3D%20require('alinex-util').object" name="%20%20%20%20object%20%3D%20require('alinex-util').object" class="pilcrow">&#182;</a>
-        object = require('alinex-util').object
-  </h1>
-</div>
-
 
 
 <div class="highlight"><pre><code><span class="nv">util = </span><span class="nx">require</span> <span class="s">&#39;alinex-util&#39;</span>
@@ -265,63 +177,7 @@ following the code standards defined there.</p>
 
 
 
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
-
 <p>Or you may inlcude only the needed types separately:</p>
-
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    string = require 'alinex-util/lib/string'
-    number = require 'alinex-util/lib/number'
-    object = require 'alinex-util/lib/object'
-    array = require 'alinex-util/lib/array'</p>
-
-<p>Now you may use the helper functions like:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">x</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
-<span class="nx">y</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">clone</span> <span class="nx">x</span>
-</code></pre></div>
-
-
-
-<p>An other alternative is to add the helper functions to the appropriate objects.
-This is done with the <code>addToPrototype</code> methods:</p>
-
-
-<div class="highlight"><pre><code><span class="err">#</span> <span class="nx">after</span> <span class="nx">loading</span> <span class="nx">the</span> <span class="nx">helper</span> <span class="nx">into</span> <span class="err">`</span><span class="nx">object</span><span class="err">`</span><span class="o">:</span>
-<span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span> <span class="err">#</span> <span class="nx">extend</span> <span class="nx">only</span> <span class="nx">the</span> <span class="nb">Object</span> <span class="kr">class</span>
-
-<span class="err">#</span> <span class="nx">or</span> <span class="k">do</span> <span class="nx">it</span> <span class="k">for</span> <span class="nx">all</span> <span class="nx">objects</span> <span class="nx">and</span> <span class="k">in</span> <span class="nx">one</span> <span class="nx">statement</span> <span class="kd">with</span> <span class="nx">the</span> <span class="nx">require</span><span class="o">:</span>
-<span class="nx">require</span><span class="p">(</span><span class="s1">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">addToPrototype</span><span class="p">()</span>
-</code></pre></div>
-
-
-
-<p>Now you may call the helper methods directly on any object and you won't need
-to give the working object as the first parameter:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">x</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">eins</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span>
-<span class="nx">y</span> <span class="o">=</span> <span class="nx">x</span><span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
-</code></pre></div>
-
-
-
-<p>=======</p>
 
 
 <div class="highlight"><pre><code><span class="nv">x = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
@@ -330,22 +186,6 @@ to give the working object as the first parameter:</p>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 
 <div class="pilwrap" id="string%20type">
@@ -387,19 +227,6 @@ offset character position to start looking for</li>
 
 <p><strong>Example:</strong></p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    string = require('alinex-util').string
-    test = 'abcdefg'</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20string.starts%20test%2C%20'ab'">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20string.starts%20test%2C%20'ab'" name="%20%20%20%20result%20%3D%20string.starts%20test%2C%20'ab'" class="pilcrow">&#182;</a>
-        result = string.starts test, 'ab'
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
@@ -407,22 +234,6 @@ offset character position to start looking for</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 <p>This results to:</p>
 
@@ -434,19 +245,6 @@ offset character position to start looking for</li>
 
 <p>Or the same call using prototype extension:</p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    require('alinex-util').string.addToPrototype()
-    test = 'abcdefg'</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20test.starts%20'ab'">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20test.starts%20'ab'" name="%20%20%20%20result%20%3D%20test.starts%20'ab'" class="pilcrow">&#182;</a>
-        result = test.starts 'ab'
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
@@ -454,22 +252,6 @@ offset character position to start looking for</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 
 <div class="pilwrap" id="ends">
@@ -502,19 +284,6 @@ offset character position from the end to look for</li>
 
 <p><strong>Example:</strong></p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    string = require('alinex-util').string
-    test = 'abcdefg'</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20string.ends%20test%2C%20'fg'">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20string.ends%20test%2C%20'fg'" name="%20%20%20%20result%20%3D%20string.ends%20test%2C%20'fg'" class="pilcrow">&#182;</a>
-        result = string.ends test, 'fg'
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
@@ -522,22 +291,6 @@ offset character position from the end to look for</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 <p>This results to:</p>
 
@@ -549,19 +302,6 @@ offset character position from the end to look for</li>
 
 <p>Or the same call using prototype extension:</p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    require('alinex-util').string.addToPrototype()
-    test = 'abcdefg'</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20test.ends%20'fg'">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20test.ends%20'fg'" name="%20%20%20%20result%20%3D%20test.ends%20'fg'" class="pilcrow">&#182;</a>
-        result = test.ends 'fg'
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
@@ -569,22 +309,6 @@ offset character position from the end to look for</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 
 <div class="pilwrap" id="repeat">
@@ -614,19 +338,6 @@ number of repeats</li>
 
 <p><strong>Example:</strong></p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    string = require('alinex-util').string
-    test = 'ab'</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20string.repeat%20test%2C%203">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20string.repeat%20test%2C%203" name="%20%20%20%20result%20%3D%20string.repeat%20test%2C%203" class="pilcrow">&#182;</a>
-        result = string.repeat test, 3
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;ab&#39;</span>
@@ -634,22 +345,6 @@ number of repeats</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 <p>This results to:</p>
 
@@ -661,19 +356,6 @@ number of repeats</li>
 
 <p>Or the same call using prototype extension:</p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    require('alinex-util').string.addToPrototype()
-    test = 'ab'</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20test.repeat%203">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20test.repeat%203" name="%20%20%20%20result%20%3D%20test.repeat%203" class="pilcrow">&#182;</a>
-        result = test.repeat 3
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;ab&#39;</span>
@@ -681,22 +363,6 @@ number of repeats</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 
 <div class="pilwrap" id="lpad">
@@ -921,24 +587,6 @@ to be analyzed</li>
 
 <p><strong>Example:</strong></p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    number.parseSeconds 200          # 200
-    number.parseSeconds '200s'       # 200
-    number.parseSeconds '200S'       # 200
-    number.parseSeconds '5m'         # 300
-    number.parseSeconds '1h'         # 3600
-    number.parseSeconds '2.5h'       # 9000
-    number.parseSeconds '1d'         # 86400</p>
-
-
-<div class="pilwrap" id="%20%20%20%20number.parseseconds%20'2h%205m%20100s'%20%23%207600">
-  <h1>
-    <a href="#%20%20%20%20number.parseseconds%20'2h%205m%20100s'%20%23%207600" name="%20%20%20%20number.parseseconds%20'2h%205m%20100s'%20%23%207600" class="pilcrow">&#182;</a>
-        number.parseSeconds '2h 5m 100s' # 7600
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="mi">200</span>          <span class="c1"># 200</span>
 <span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s">&#39;200s&#39;</span>       <span class="c1"># 200</span>
@@ -951,22 +599,6 @@ to be analyzed</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 
 <div class="pilwrap" id="object">
@@ -1009,19 +641,6 @@ the given and maybe changed object.</li>
 
 <p><strong>Example:</strong></p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    object = require('alinex-util').object
-    test = { eins: 1 }</p>
-
-
-<div class="pilwrap" id="%20%20%20%20object.extend%20test%2C%20%7B%20zwei%3A%202%20%7D%2C%20%7B%20eins%3A%20'eins'%20%7D%2C%20%7B%20drei%3A%203%20%7D">
-  <h1>
-    <a href="#%20%20%20%20object.extend%20test%2C%20%7B%20zwei%3A%202%20%7D%2C%20%7B%20eins%3A%20'eins'%20%7D%2C%20%7B%20drei%3A%203%20%7D" name="%20%20%20%20object.extend%20test%2C%20%7B%20zwei%3A%202%20%7D%2C%20%7B%20eins%3A%20'eins'%20%7D%2C%20%7B%20drei%3A%203%20%7D" class="pilcrow">&#182;</a>
-        object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
@@ -1029,22 +648,6 @@ the given and maybe changed object.</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 <p>This results to:</p>
 
@@ -1056,19 +659,6 @@ the given and maybe changed object.</li>
 
 <p>Or the same call using prototype extension:</p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    require('alinex-util').object.addToPrototype()
-    test = { eins: 1 }</p>
-
-
-<div class="pilwrap" id="%20%20%20%20test.extend%20%7B%20zwei%3A%202%20%7D%2C%20%7B%20eins%3A%20'eins'%20%7D%2C%20%7B%20drei%3A%203%20%7D">
-  <h1>
-    <a href="#%20%20%20%20test.extend%20%7B%20zwei%3A%202%20%7D%2C%20%7B%20eins%3A%20'eins'%20%7D%2C%20%7B%20drei%3A%203%20%7D" name="%20%20%20%20test.extend%20%7B%20zwei%3A%202%20%7D%2C%20%7B%20eins%3A%20'eins'%20%7D%2C%20%7B%20drei%3A%203%20%7D" class="pilcrow">&#182;</a>
-        test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
@@ -1076,22 +666,6 @@ the given and maybe changed object.</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 
 <div class="pilwrap" id="clone">
@@ -1122,19 +696,6 @@ clone of the given  object.</li>
 
 <p><strong>Example:</strong></p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    object = require('alinex-util').object
-    test = { eins: 1 }</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20object.clone%20test">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20object.clone%20test" name="%20%20%20%20result%20%3D%20object.clone%20test" class="pilcrow">&#182;</a>
-        result = object.clone test
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
@@ -1142,22 +703,6 @@ clone of the given  object.</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 <p>This results to:</p>
 
@@ -1169,19 +714,6 @@ clone of the given  object.</li>
 
 <p>Or the same call using prototype extension:</p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    require('alinex-util').object.addToPrototype()
-    test = { eins: 1 }</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20test.clone()">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20test.clone()" name="%20%20%20%20result%20%3D%20test.clone()" class="pilcrow">&#182;</a>
-        result = test.clone()
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
@@ -1189,22 +721,6 @@ clone of the given  object.</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 
 <div class="pilwrap" id="isempty">
@@ -1268,19 +784,6 @@ offset character position from the end to look for</li>
 
 <p><strong>Example:</strong></p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    array = require('alinex-util').array
-    test = [ 1,2,3,4,5 ]</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20array.last%20test">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20array.last%20test" name="%20%20%20%20result%20%3D%20array.last%20test" class="pilcrow">&#182;</a>
-        result = array.last test
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">array = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
@@ -1288,22 +791,6 @@ offset character position from the end to look for</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 <p>This results to:</p>
 
@@ -1315,19 +802,6 @@ offset character position from the end to look for</li>
 
 <p>Or the same call using prototype extension:</p>
 
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-    require('alinex-util').array.addToPrototype()
-    test = [ 1,2,3,4,5 ]</p>
-
-
-<div class="pilwrap" id="%20%20%20%20result%20%3D%20test.last()">
-  <h1>
-    <a href="#%20%20%20%20result%20%3D%20test.last()" name="%20%20%20%20result%20%3D%20test.last()" class="pilcrow">&#182;</a>
-        result = test.last()
-  </h1>
-</div>
-
-
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
 <span class="nx">var</span> <span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
@@ -1335,22 +809,6 @@ offset character position from the end to look for</li>
 </code></pre></div>
 
 
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <p>a6d997534d5e577909b2f84a7d00693fe751b012</p>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
 
 
 <div class="pilwrap" id="license">
