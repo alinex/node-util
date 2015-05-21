@@ -34,11 +34,6 @@ General Usage
 
 All methods in this package can be called from the resulting function collection:
 
-<<<<<<< HEAD
-    util = require 'alinex-util'
-    string = util.string # shortcut to the string functions
-    object = util.object # shortcut to the object functions
-=======
 ``` coffee
 util = require 'alinex-util'
 string = util.string # shortcut to the string functions
@@ -51,58 +46,20 @@ Or shorter:
 {string,object} = require 'alinex-util'
 array = require 'alinex-util/lib/array'
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
-
 Or directly import the needed objects with:
 
-<<<<<<< HEAD
-    {string,object} = require 'alinex-util'
-    # alternatively
-    string = require('alinex-util').string
-    object = require('alinex-util').object
-=======
 ``` coffee
 util = require 'alinex-util'
 util.addToPrototype() # will do it for all
 util.object.addToPrototype() # or extend only the Object class
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
-
 Or you may inlcude only the needed types separately:
 
-<<<<<<< HEAD
-    string = require 'alinex-util/lib/string'
-    number = require 'alinex-util/lib/number'
-    object = require 'alinex-util/lib/object'
-    array = require 'alinex-util/lib/array'
-
-Now you may use the helper functions like:
-
-    x = { eins: 1 }
-    y = object.clone x
-
-An other alternative is to add the helper functions to the appropriate objects.
-This is done with the `addToPrototype` methods:
-
-    # after loading the helper into `object`:
-    object.addToPrototype() # extend only the Object class
-
-    # or do it for all objects and in one statement with the require:
-    require('alinex-util').addToPrototype()
-
-Now you may call the helper methods directly on any object and you won't need
-to give the working object as the first parameter:
-
-    x = { eins: 1 }
-    y = x.clone()
-=======
 ``` coffee
 x = { eins: 1 }
 y = x.clone() # instead of
 y = util.object.clone x
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
-
 
 String type
 -------------------------------------------------
@@ -127,18 +84,11 @@ __Returns:__
 
 __Example:__
 
-<<<<<<< HEAD
-    string = require('alinex-util').string
-    test = 'abcdefg'
-    result = string.starts test, 'ab'
-=======
 ``` coffee
 var string = require('alinex-util').string
 var test = 'abcdefg'
 var result = string.starts test, 'ab'
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
-
 This results to:
 
 ``` coffee
@@ -147,18 +97,11 @@ result = true
 
 Or the same call using prototype extension:
 
-<<<<<<< HEAD
-    require('alinex-util').string.addToPrototype()
-    test = 'abcdefg'
-    result = test.starts 'ab'
-=======
 ``` coffee
 require('alinex-util').string.addToPrototype()
 var test = 'abcdefg'
 var result = test.starts 'ab'
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
-
 
 ### ends
 
@@ -180,17 +123,11 @@ __Returns:__
 
 __Example:__
 
-<<<<<<< HEAD
-    string = require('alinex-util').string
-    test = 'abcdefg'
-    result = string.ends test, 'fg'
-=======
 ``` coffee
 var string = require('alinex-util').string
 var test = 'abcdefg'
 var result = string.ends test, 'fg'
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 This results to:
 
@@ -200,17 +137,11 @@ result = true
 
 Or the same call using prototype extension:
 
-<<<<<<< HEAD
-    require('alinex-util').string.addToPrototype()
-    test = 'abcdefg'
-    result = test.ends 'fg'
-=======
 ``` coffee
 require('alinex-util').string.addToPrototype()
 var test = 'abcdefg'
 var result = test.ends 'fg'
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 ### repeat
 
@@ -229,17 +160,11 @@ __Returns:__
 
 __Example:__
 
-<<<<<<< HEAD
-    string = require('alinex-util').string
-    test = 'ab'
-    result = string.repeat test, 3
-=======
 ``` coffee
 var string = require('alinex-util').string
 var test = 'ab'
 var result = string.repeat test, 3
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 This results to:
 
@@ -249,17 +174,11 @@ result = 'ababab'
 
 Or the same call using prototype extension:
 
-<<<<<<< HEAD
-    require('alinex-util').string.addToPrototype()
-    test = 'ab'
-    result = test.repeat 3
-=======
 ``` coffee
 require('alinex-util').string.addToPrototype()
 var test = 'ab'
 var result = test.repeat 3
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 ### lpad
 
@@ -393,16 +312,6 @@ To check if you got a number or invalid string use `isNaN()`.
 
 __Example:__
 
-<<<<<<< HEAD
-    number.parseSeconds 200          # 200
-    number.parseSeconds '200s'       # 200
-    number.parseSeconds '200S'       # 200
-    number.parseSeconds '5m'         # 300
-    number.parseSeconds '1h'         # 3600
-    number.parseSeconds '2.5h'       # 9000
-    number.parseSeconds '1d'         # 86400
-    number.parseSeconds '2h 5m 100s' # 7600
-=======
 ``` coffee
 number.parseSeconds 200          # 200
 number.parseSeconds '200s'       # 200
@@ -413,7 +322,6 @@ number.parseSeconds '2.5h'       # 9000
 number.parseSeconds '1d'         # 86400
 number.parseSeconds '2h 5m 100s' # 7600
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 
 Object
@@ -440,17 +348,11 @@ __Returns:__
 
 __Example:__
 
-<<<<<<< HEAD
-    object = require('alinex-util').object
-    test = { eins: 1 }
-    object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
-=======
 ``` coffee
 var object = require('alinex-util').object
 var test = { eins: 1 }
 object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 This results to:
 
@@ -460,17 +362,11 @@ test = { eins: 'eins', zwei: 2, drei: 3 }
 
 Or the same call using prototype extension:
 
-<<<<<<< HEAD
-    require('alinex-util').object.addToPrototype()
-    test = { eins: 1 }
-    test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
-=======
 ``` coffee
 require('alinex-util').object.addToPrototype()
 var test = { eins: 1 }
 test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 
 ### clone
@@ -491,17 +387,11 @@ __Returns:__
 
 __Example:__
 
-<<<<<<< HEAD
-    object = require('alinex-util').object
-    test = { eins: 1 }
-    result = object.clone test
-=======
 ``` coffee
 var object = require('alinex-util').object
 var test = { eins: 1 }
 var result = object.clone test
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 This results to:
 
@@ -511,17 +401,11 @@ result = { eins: 1 }
 
 Or the same call using prototype extension:
 
-<<<<<<< HEAD
-    require('alinex-util').object.addToPrototype()
-    test = { eins: 1 }
-    result = test.clone()
-=======
 ``` coffee
 require('alinex-util').object.addToPrototype()
 var test = { eins: 1 }
 var result = test.clone()
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 
 ### isempty
@@ -559,17 +443,11 @@ __Returns:__
 
 __Example:__
 
-<<<<<<< HEAD
-    array = require('alinex-util').array
-    test = [ 1,2,3,4,5 ]
-    result = array.last test
-=======
 ``` coffee
 var array = require('alinex-util').array
 var test = [ 1,2,3,4,5 ]
 var result = array.last test
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 This results to:
 
@@ -579,17 +457,11 @@ result = 5
 
 Or the same call using prototype extension:
 
-<<<<<<< HEAD
-    require('alinex-util').array.addToPrototype()
-    test = [ 1,2,3,4,5 ]
-    result = test.last()
-=======
 ``` coffee
 require('alinex-util').array.addToPrototype()
 var test = [ 1,2,3,4,5 ]
 var result = test.last()
 ```
->>>>>>> a6d997534d5e577909b2f84a7d00693fe751b012
 
 
 License
