@@ -4,6 +4,17 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.2 (2015-05-26)
+-------------------------------------------------
+- Added new method to documentation.
+- Added array.unique() method.
+- Fixed documentation merge conflicts.
+- Merge branch 'master' of https://github.com/alinex/node-util
+- Update documentation structure.
+- Merge branch 'master' of https://github.com/alinex/node-util
+- Converted code examples into coffee-script.
+- Format documentation in coffeescript.
+
 Version 0.2.1 (2015-03-03)
 -------------------------------------------------
 - update to use builder
