@@ -88,6 +88,9 @@
       <div class="heading h3">
         <a href="#last">last</a>
       </div>
+      <div class="heading h3">
+        <a href="#unique">unique</a>
+      </div>
       <div class="heading h2">
         <a href="#license">License</a>
       </div>
@@ -228,9 +231,9 @@ offset character position to start looking for</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">starts</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;ab&#39;</span>
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">starts</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;ab&#39;</span>
 </code></pre></div>
 
 
@@ -247,8 +250,8 @@ offset character position to start looking for</li>
 
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">starts</span> <span class="s">&#39;ab&#39;</span>
+<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
+<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">starts</span> <span class="s">&#39;ab&#39;</span>
 </code></pre></div>
 
 
@@ -285,9 +288,9 @@ offset character position from the end to look for</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">ends</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;fg&#39;</span>
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">ends</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;fg&#39;</span>
 </code></pre></div>
 
 
@@ -304,8 +307,8 @@ offset character position from the end to look for</li>
 
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">ends</span> <span class="s">&#39;fg&#39;</span>
+<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
+<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">ends</span> <span class="s">&#39;fg&#39;</span>
 </code></pre></div>
 
 
@@ -339,9 +342,9 @@ number of repeats</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;ab&#39;</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">repeat</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">3</span>
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;ab&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">repeat</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">3</span>
 </code></pre></div>
 
 
@@ -358,8 +361,8 @@ number of repeats</li>
 
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="s">&#39;ab&#39;</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">repeat</span> <span class="mi">3</span>
+<span class="nv">test = </span><span class="s">&#39;ab&#39;</span>
+<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">repeat</span> <span class="mi">3</span>
 </code></pre></div>
 
 
@@ -642,8 +645,8 @@ the given and maybe changed object.</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
+<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
+<span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
 <span class="nx">object</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">test</span><span class="p">,</span> <span class="p">{</span> <span class="nv">zwei: </span><span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nv">eins: </span><span class="s">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nv">drei: </span><span class="mi">3</span> <span class="p">}</span>
 </code></pre></div>
 
@@ -661,7 +664,7 @@ the given and maybe changed object.</li>
 
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
+<span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
 <span class="nx">test</span><span class="p">.</span><span class="nx">extend</span> <span class="p">{</span> <span class="nv">zwei: </span><span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nv">eins: </span><span class="s">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nv">drei: </span><span class="mi">3</span> <span class="p">}</span>
 </code></pre></div>
 
@@ -697,9 +700,9 @@ clone of the given  object.</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">clone</span> <span class="nx">test</span>
+<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
+<span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
+<span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">clone</span> <span class="nx">test</span>
 </code></pre></div>
 
 
@@ -716,8 +719,8 @@ clone of the given  object.</li>
 
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
+<span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
+<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
 </code></pre></div>
 
 
@@ -785,9 +788,9 @@ offset character position from the end to look for</li>
 <p><strong>Example:</strong></p>
 
 
-<div class="highlight"><pre><code><span class="nx">var</span> <span class="nv">array = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">array</span><span class="p">.</span><span class="nx">last</span> <span class="nx">test</span>
+<div class="highlight"><pre><code><span class="nv">array = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
+<span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
+<span class="nv">result = </span><span class="nx">array</span><span class="p">.</span><span class="nx">last</span> <span class="nx">test</span>
 </code></pre></div>
 
 
@@ -804,8 +807,60 @@ offset character position from the end to look for</li>
 
 
 <div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nx">var</span> <span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
-<span class="nx">var</span> <span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">last</span><span class="p">()</span>
+<span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
+<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">last</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="unique">
+  <h3>
+    <a href="#unique" name="unique" class="pilcrow">&#182;</a>
+    unique
+  </h3>
+</div>
+
+
+<p>Remove duplicate entries from array.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>array</code>
+of elements to work on</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>new array with duplicates removed</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">array = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
+<span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
+<span class="nv">result = </span><span class="nx">array</span><span class="p">.</span><span class="nx">unique</span> <span class="nx">test</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div>
+
+
+
+<p>Or the same call using prototype extension:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
+<span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
+<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">unique</span>
 </code></pre></div>
 
 

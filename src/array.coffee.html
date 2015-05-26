@@ -79,6 +79,10 @@ offset character position from the end to look for</li>
 <span class="nv">exports.last = </span><span class="nf">(array, back) -&gt;</span>
   <span class="nx">array</span><span class="p">[</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="p">(</span><span class="nx">back</span> <span class="o">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
 
+<span class="nv">exports.unique = </span><span class="nf">(array) -&gt;</span>
+  <span class="nv">output = </span><span class="p">{}</span>
+  <span class="nx">output</span><span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">key</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="k">for</span> <span class="nx">key</span> <span class="k">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">...</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span>
+  <span class="nx">value</span> <span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">output</span>
 
 
 </pre></div>
@@ -100,6 +104,8 @@ offset character position from the end to look for</li>
 <span class="nv">exports.addToPrototype = </span><span class="nf">-&gt;</span>
   <span class="nb">Array</span><span class="p">.</span><span class="nv">prototype.last = </span><span class="nf">(back) -&gt;</span>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">last</span> <span class="k">this</span><span class="p">,</span> <span class="nx">back</span>
+  <span class="nb">Array</span><span class="p">.</span><span class="nv">prototype.unique = </span><span class="nf">-&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">unique</span> <span class="k">this</span>
 </pre></div>
         </td>
       </tr>
