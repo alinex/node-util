@@ -85,9 +85,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-var string = require('alinex-util').string
-var test = 'abcdefg'
-var result = string.starts test, 'ab'
+string = require('alinex-util').string
+test = 'abcdefg'
+result = string.starts test, 'ab'
 ```
 This results to:
 
@@ -99,8 +99,8 @@ Or the same call using prototype extension:
 
 ``` coffee
 require('alinex-util').string.addToPrototype()
-var test = 'abcdefg'
-var result = test.starts 'ab'
+test = 'abcdefg'
+result = test.starts 'ab'
 ```
 
 ### ends
@@ -124,9 +124,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-var string = require('alinex-util').string
-var test = 'abcdefg'
-var result = string.ends test, 'fg'
+string = require('alinex-util').string
+test = 'abcdefg'
+result = string.ends test, 'fg'
 ```
 
 This results to:
@@ -139,8 +139,8 @@ Or the same call using prototype extension:
 
 ``` coffee
 require('alinex-util').string.addToPrototype()
-var test = 'abcdefg'
-var result = test.ends 'fg'
+test = 'abcdefg'
+result = test.ends 'fg'
 ```
 
 ### repeat
@@ -161,9 +161,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-var string = require('alinex-util').string
-var test = 'ab'
-var result = string.repeat test, 3
+string = require('alinex-util').string
+test = 'ab'
+result = string.repeat test, 3
 ```
 
 This results to:
@@ -176,8 +176,8 @@ Or the same call using prototype extension:
 
 ``` coffee
 require('alinex-util').string.addToPrototype()
-var test = 'ab'
-var result = test.repeat 3
+test = 'ab'
+result = test.repeat 3
 ```
 
 ### lpad
@@ -349,8 +349,8 @@ __Returns:__
 __Example:__
 
 ``` coffee
-var object = require('alinex-util').object
-var test = { eins: 1 }
+object = require('alinex-util').object
+test = { eins: 1 }
 object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
 
@@ -364,7 +364,7 @@ Or the same call using prototype extension:
 
 ``` coffee
 require('alinex-util').object.addToPrototype()
-var test = { eins: 1 }
+test = { eins: 1 }
 test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
 
@@ -388,9 +388,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-var object = require('alinex-util').object
-var test = { eins: 1 }
-var result = object.clone test
+object = require('alinex-util').object
+test = { eins: 1 }
+result = object.clone test
 ```
 
 This results to:
@@ -403,8 +403,8 @@ Or the same call using prototype extension:
 
 ``` coffee
 require('alinex-util').object.addToPrototype()
-var test = { eins: 1 }
-var result = test.clone()
+test = { eins: 1 }
+result = test.clone()
 ```
 
 
@@ -444,9 +444,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-var array = require('alinex-util').array
-var test = [ 1,2,3,4,5 ]
-var result = array.last test
+array = require('alinex-util').array
+test = [ 1,2,3,4,5 ]
+result = array.last test
 ```
 
 This results to:
@@ -459,8 +459,43 @@ Or the same call using prototype extension:
 
 ``` coffee
 require('alinex-util').array.addToPrototype()
-var test = [ 1,2,3,4,5 ]
-var result = test.last()
+test = [ 1,2,3,4,5 ]
+result = test.last()
+```
+
+### unique
+
+Remove duplicate entries from array.
+
+__Arguments:__
+
+* `array`
+  of elements to work on
+
+__Returns:__
+
+* new array with duplicates removed
+
+__Example:__
+
+``` coffee
+array = require('alinex-util').array
+test = [ 1,2,2,3,4,1,5 ]
+result = array.unique test
+```
+
+This results to:
+
+``` coffee
+result = [1,2,3,4,5]
+```
+
+Or the same call using prototype extension:
+
+``` coffee
+require('alinex-util').array.addToPrototype()
+test = [ 1,2,2,3,4,1,5 ]
+result = test.unique
 ```
 
 
