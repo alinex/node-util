@@ -18,6 +18,10 @@
 exports.last = (array, back) ->
   array[array.length - (back or 0) - 1]
 
+exports.unique = (array) ->
+  output = {}
+  output[array[key]] = array[key] for key in [0...array.length]
+  value for key, value of output
 
 # Add array helpers to the Object class
 # -------------------------------------------------
@@ -25,3 +29,5 @@ exports.last = (array, back) ->
 exports.addToPrototype = ->
   Array.prototype.last = (back) ->
     exports.last this, back
+  Array.prototype.unique = ->
+    exports.unique this
