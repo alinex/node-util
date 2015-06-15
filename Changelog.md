@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.3 (2015-06-15)
+-------------------------------------------------
+- Upgraded dependent modules.
+
 Version 0.2.2 (2015-06-15)
 -------------------------------------------------
 - Upgraded dependent modules.
