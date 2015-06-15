@@ -7,10 +7,6 @@ individual versions:
 Version 0.2.3 (2015-06-15)
 -------------------------------------------------
 - Upgraded dependent modules.
-
-Version 0.2.2 (2015-06-15)
--------------------------------------------------
-- Upgraded dependent modules.
 - Fix bug in extend when 'toString' is used as key.
 
 Version 0.2.2 (2015-05-26)
