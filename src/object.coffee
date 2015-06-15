@@ -52,7 +52,9 @@ extend = module.exports.extend = (obj, ext...) ->
     else
       # object structure
       for key, val of src
-        obj[key] = extend obj[key], val
+        # test to assure a key like 'toString' won't map to the standard function
+        base = if key in Object.keys(obj) then obj[key] else undefined
+        obj[key] = extend base, val
   obj
 
 

@@ -116,6 +116,14 @@ describe "Object", ->
       result = object.extend null, 0
       expect(result, "value changed").to.equal 0
 
+    it "should work with toString as name", ->
+      test = { toString: 'eins' }
+      result = object.extend {}, test
+      expect(result, "test-1").to.deep.equal test
+      test = { toString: {} }
+      result = object.extend {}, test
+      expect(result, "test-2").to.deep.equal test
+
   describe "isempty", ->
 
     it "should detect empty objects", ->
