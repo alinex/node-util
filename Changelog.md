@@ -4,6 +4,23 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.2.2 (2015-06-15)
+-------------------------------------------------
+- Upgraded dependent modules.
+- Upgraded dependent modules.
+- Upgraded dependent modules.
+- Upgraded dependent modules.
+- Fix bug in extend when 'toString' is used as key.
+- Added information for version 0.2.2
+- Added new method to documentation.
+- Added array.unique() method.
+- Fixed documentation merge conflicts.
+- Merge branch 'master' of https://github.com/alinex/node-util
+- Update documentation structure.
+- Merge branch 'master' of https://github.com/alinex/node-util
+- Converted code examples into coffee-script.
+- Format documentation in coffeescript.
+
 Version 0.2.2 (2015-05-26)
 -------------------------------------------------
 - Added new method to documentation.
