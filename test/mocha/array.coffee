@@ -3,7 +3,7 @@ expect = chai.expect
 
 describe "Array", ->
 
-  {array} = require '../../lib/index'
+  {array} = require '../../src/index'
 
   describe "last", ->
 

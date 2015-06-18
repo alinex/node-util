@@ -3,7 +3,7 @@ expect = chai.expect
 
 describe "Number", ->
 
-  {number} = require '../../lib/index'
+  {number} = require '../../src/index'
 
   describe "isInteger", ->
 
