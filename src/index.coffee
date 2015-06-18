@@ -18,4 +18,3 @@ module.exports.addToPrototype = ->
   module.exports.string.addToPrototype()
   module.exports.object.addToPrototype()
   module.exports.array.addToPrototype()
-  module.exports.number.addToPrototype()

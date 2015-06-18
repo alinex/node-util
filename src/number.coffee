@@ -46,7 +46,7 @@ exports.parseInt = parseInteger = (value) ->
 # __Returns:__
 #
 # * `value` as Number or `NaN`
-exports.parseSeconds = (value) ->
+exports.parseSeconds = parseSeconds = (value) ->
   int = parseInteger value
   return int unless isNaN int
   return NaN unless typeof value is 'string'
@@ -62,7 +62,7 @@ exports.parseSeconds = (value) ->
       when 'd' then value * 24 * 3600
   Math.floor int
 
-# Read time interval in mmilliseconds
+# Read time interval in milliseconds
 # -------------------------------------------------
 # With this parser it is possible to read a time interval in human format
 # like: `1h 30m`.
@@ -75,7 +75,7 @@ exports.parseSeconds = (value) ->
 # __Returns:__
 #
 # * `value` as Number or `NaN`
-exports.parseMSeconds = (value) ->
+exports.parseMSeconds = parseMSeconds = (value) ->
   int = parseInteger value
   return int unless isNaN int
   return NaN unless typeof value is 'string'
@@ -91,12 +91,3 @@ exports.parseMSeconds = (value) ->
       when 'h' then value * 3600000
       when 'd' then value * 24 * 3600000
   Math.floor int
-
-# Add object helpers to the Object class
-# -------------------------------------------------
-# This will allow to call the methods directly on an object.
-exports.addToPrototype = ->
-  unless Number.isInteger
-    Number.prototype.isInteger = isInteger
-  Number.prototype.parseInt = parseInteger
-  Number.prototype.parseSeconds = parseSeconds

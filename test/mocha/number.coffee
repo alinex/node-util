@@ -27,7 +27,7 @@ describe "Number", ->
     it "should fail on string integers", ->
       expect number.isInteger('6')
       , "use '6'"
-      .to.be.false
+      .to.be.add
       expect number.isInteger('0')
       , "use '0'"
       .to.be.false
@@ -110,6 +110,9 @@ describe "Number", ->
       expect number.parseSeconds('2h')
       , "use 2h"
       .to.equal 7200
+      expect number.parseSeconds('1d')
+      , "use 1d"
+      .to.equal 24*3600
 
     it "should read combined strings", ->
       expect number.parseSeconds('2h 5m 100s')
@@ -132,6 +135,9 @@ describe "Number", ->
       .to.deep.equal NaN
       expect number.parseSeconds('2k')
       , "use 2k"
+      .to.deep.equal NaN
+      expect number.parseSeconds([])
+      , "use array"
       .to.deep.equal NaN
 
   describe "parseMSeconds", ->
@@ -157,6 +163,9 @@ describe "Number", ->
       expect number.parseMSeconds('2h')
       , "use 2h"
       .to.equal 7200000
+      expect number.parseMSeconds('1d')
+      , "use 1d"
+      .to.equal 24*3600000
 
     it "should read combined strings", ->
       expect number.parseMSeconds('2h 5m 100s')
@@ -179,4 +188,7 @@ describe "Number", ->
       .to.deep.equal NaN
       expect number.parseMSeconds('2k')
       , "use 2k"
+      .to.deep.equal NaN
+      expect number.parseMSeconds([])
+      , "use array"
       .to.deep.equal NaN
