@@ -168,9 +168,12 @@ describe "Number", ->
       .to.equal 24*3600000
 
     it "should read combined strings", ->
-      expect number.parseMSeconds('2h 5m 100s')
+      expect number.parseMSeconds('2h 5m 100s 5ms')
       , "use 2h 5m 100s"
-      .to.equal 7600000
+      .to.equal 7600005
+      expect number.parseMSeconds('2h5m100s5ms')
+      , "use 2h 5m 100s"
+      .to.equal 7600005
 
     it "should convert floats", ->
       expect number.parseMSeconds('2.5h')

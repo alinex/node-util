@@ -51,7 +51,7 @@ exports.parseSeconds = parseSeconds = (value) ->
   return int unless isNaN int
   return NaN unless typeof value is 'string'
   int = 0
-  for part in value.toLowerCase().split /\s+/
+  for part in value.toLowerCase().replace(/([smhd])(\d)/g, '$1 $2').split /\s+/
     match = /^([+-]?\d+(?:\.\d+)?)\s*([smhd])$/.exec part
     return NaN unless match
     value = parseFloat match[1]
@@ -80,7 +80,7 @@ exports.parseMSeconds = parseMSeconds = (value) ->
   return int unless isNaN int
   return NaN unless typeof value is 'string'
   int = 0
-  for part in value.toLowerCase().split /\s+/
+  for part in value.toLowerCase().replace(/([smhd])(\d)/g, '$1 $2').split /\s+/
     match = /^([+-]?\d+(?:\.\d+)?)\s*([smhd]|ms)$/.exec part
     return NaN unless match
     value = parseFloat match[1]
