@@ -74,12 +74,6 @@ extend = module.exports.extend = (obj, ext...) ->
 module.exports.clone = (obj) ->
   extend null, obj
 
-extendInstance = (obj, src) ->
-  res = src.constructor()
-  for own key, val of src
-    res[key] = extend obj[key], val
-  res
-
 # Check for empty objects
 # -------------------------------------------------
 # This method will check if an object is empty. This is also true for undefined

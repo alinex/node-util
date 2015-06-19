@@ -37,7 +37,7 @@ describe "Object", ->
       expect(result, "reference").to.not.equal test
 
     it "should clone regexp", ->
-      test = /ab/
+      test = /ab/gim
       result = object.clone test
       expect(result, "deep check").to.deep.equal test
       expect(result, "reference").to.not.equal test

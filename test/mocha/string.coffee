@@ -187,3 +187,15 @@ describe "String", ->
       expect 'card'.contains 'll'
       , "use card"
       .to.be.false
+
+    it "should left pad string", ->
+      string.addToPrototype()
+      expect 'ab'.lpad(5)
+      , "normal left pad"
+      .to.be.equal '   ab'
+
+    it "should right pad string", ->
+      string.addToPrototype()
+      expect 'ab'.rpad(5)
+      , "normal right pad"
+      .to.be.equal 'ab   '
