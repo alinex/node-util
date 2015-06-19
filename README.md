@@ -294,7 +294,7 @@ __Returns:__
 
 To check if you got a number or invalid string use `isNaN()`.
 
-### parseSecond
+### parseSeconds
 
 Parse human readable time to seconds.
 
@@ -323,6 +323,11 @@ number.parseSeconds '2.5h'       # 9000
 number.parseSeconds '1d'         # 86400
 number.parseSeconds '2h 5m 100s' # 7600
 ```
+
+### parseMSeconds
+
+Parse human readable time to milliseconds. It will work the same as above and
+you may specify `ms` as additional unit here.
 
 
 Object
