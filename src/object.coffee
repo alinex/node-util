@@ -45,11 +45,14 @@ extend = module.exports.extend = (obj, ext...) ->
       flags += 'm' if src.multiline
       flags += 'y' if src.sticky
       obj = new RegExp src.source, flags
-    else if src.constructor != Object
+    else if src.constructor.name != Object.name
+      # use the name because the object may differ if created in sandbox
+#      console.log 'other', src, src.constructor, Object
 #     exact copy/clone not working on instances
 #      obj = extendInstance obj, src
       obj = src
     else
+#      console.log 'object', src
       # object structure
       for key, val of src
         # test to assure a key like 'toString' won't map to the standard function
