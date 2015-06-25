@@ -375,6 +375,12 @@ test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
 
 
+### extendArrayConcat
+
+This method is like extend but will concat arrays elements directly instead
+of concat the element clones. This keeps the references under the first array.
+
+
 ### clone
 
 Deep cloning of an object.

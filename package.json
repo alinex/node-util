@@ -9,7 +9,9 @@
     "helper",
     "string",
     "object",
-    "array"
+    "array",
+    "extend",
+    "clone"
   ],
   "homepage": "http://alinex.github.io/node-util/",
   "repository": {
@@ -26,13 +28,16 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "scripts": {
-    "prepublish": "node_modules/.bin/builder -c compile",
+    "prepublish": "node_modules/.bin/builder -c compile --uglify",
     "test": "node_modules/.bin/builder -c test"
   },
   "directories": {
     "lib": "./lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "chalk": "1.x",
+    "debug": "2.x"
+  },
   "devDependencies": {
     "alinex-builder": "1.x",
     "chai": "3.x"

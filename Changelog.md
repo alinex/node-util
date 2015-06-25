@@ -14,7 +14,6 @@ Version 0.2.4 (2015-06-24)
 - Completed tests for number classes.
 - Updated coerage tests.
 - Add coveralls.
-- Fixed changelog.
 
 Version 0.2.3 (2015-06-15)
 -------------------------------------------------
@@ -25,10 +24,8 @@ Version 0.2.2 (2015-05-26)
 -------------------------------------------------
 - Added new method to documentation.
 - Added array.unique() method.
-- Fixed documentation merge conflicts.
 - Merge branch 'master' of https://github.com/alinex/node-util
 - Update documentation structure.
-- Merge branch 'master' of https://github.com/alinex/node-util
 - Converted code examples into coffee-script.
 - Format documentation in coffeescript.
 

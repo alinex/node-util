@@ -116,12 +116,88 @@ describe "Object", ->
       result = object.extend null, 0
       expect(result, "value changed").to.equal 0
 
+    it "should make clone array elements", ->
+      test1 = [{ one: 'eins' }]
+      test2 = [{ one: 'eins' }]
+      result = object.extend test1, test2
+      expect(result[0], "test-1").to.equal test1[0]
+      expect(result[1], "test-2").to.not.equal test2[0]
+
     it "should work with toString as name", ->
       test = { toString: 'eins' }
       result = object.extend {}, test
       expect(result, "test-1").to.deep.equal test
       test = { toString: {} }
       result = object.extend {}, test
+      expect(result, "test-2").to.deep.equal test
+
+  describe "extendArrayConcat", ->
+
+    it "should clone object", ->
+      test = { eins: 1 }
+      result = object.extendArrayConcat null, test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+
+    it "should let object untouched for empty extenders", ->
+      test = { eins: 1 }
+      orig = object.extendArrayConcat null, test
+      object.extendArrayConcat test, {}
+      expect(test, "deep check").to.deep.equal orig
+      expect(test, "reference").to.not.equal orig
+      test = object.extendArrayConcat test, {}
+      expect(test, "deep check").to.deep.equal orig
+      expect(test, "reference").to.not.equal orig
+      test = object.extendArrayConcat test
+      expect(test, "deep check").to.deep.equal orig
+      expect(test, "reference").to.not.equal orig
+
+    it "should clone into empty object", ->
+      test = { eins: 1 }
+      result = object.extendArrayConcat {}, test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "is cloned").to.not.equal test
+
+    it "should add integer attribute", ->
+      test = { eins: 1 }
+      result = object.extendArrayConcat test, { drei: 3 }
+      expect(result, "equal check").to.equal test
+      expect(result, "contains key eins").to.include.keys 'eins'
+      expect(result, "contains key drei").to.include.keys 'drei'
+
+    it "should overwrite entry", ->
+      test = { eins: 1 }
+      result = object.extendArrayConcat test, { eins: 'eins' }
+      expect(result, "is changed").to.equal test
+      expect(result, "contains key eins").to.include.keys 'eins'
+      expect(result.eins, "value changed").to.equal 'eins'
+
+    it "should add multiple extenders", ->
+      test = { eins: 1 }
+      result = object.extendArrayConcat test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
+      expect(result, "is changed").to.equal test
+      expect(result, "contains key eins").to.include.keys 'eins'
+      expect(result, "contains key zwei").to.include.keys 'zwei'
+      expect(result, "contains key drei").to.include.keys 'drei'
+      expect(result.eins, "value changed").to.equal 'eins'
+
+    it "should extend empty object with 0", ->
+      result = object.extendArrayConcat null, 0
+      expect(result, "value changed").to.equal 0
+
+    it "should make references to array elements", ->
+      test1 = [{ one: 'eins' }]
+      test2 = [{ one: 'eins' }]
+      result = object.extendArrayConcat test1, test2
+      expect(result[0], "test-1").to.equal test1[0]
+      expect(result[1], "test-2").to.equal test2[0]
+
+    it "should work with toString as name", ->
+      test = { toString: 'eins' }
+      result = object.extendArrayConcat {}, test
+      expect(result, "test-1").to.deep.equal test
+      test = { toString: {} }
+      result = object.extendArrayConcat {}, test
       expect(result, "test-2").to.deep.equal test
 
   describe "isempty", ->
