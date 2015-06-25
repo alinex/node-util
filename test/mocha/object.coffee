@@ -212,7 +212,7 @@ describe "Object", ->
       expect(object.isempty([4]), "array").to.equal false
       expect(object.isempty({a:1}), "object").to.equal false
 
-  describe.only "path", ->
+  describe "path", ->
 
     test =
       string: 'test'
