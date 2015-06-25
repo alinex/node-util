@@ -4,6 +4,13 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.1 (2015-06-25)
+-------------------------------------------------
+- Enabled all tests.
+- Added pathSearch method.
+- Added object.path to jump into object.
+- Updated insstall documentation.
+
 Version 0.3.0 (2015-06-25)
 -------------------------------------------------
 - Updated changelog.
