@@ -212,6 +212,50 @@ describe "Object", ->
       expect(object.isempty([4]), "array").to.equal false
       expect(object.isempty({a:1}), "object").to.equal false
 
+  describe.only "path", ->
+
+    test =
+      string: 'test'
+      object:
+        numbers:
+          one: 1
+          two: 2
+      list: [
+        one: 1
+      ,
+        two: 2
+      ]
+
+    it "should access root", ->
+      expect(object.path(test, '')).to.deep.equal test
+      expect(object.path(test, '/')).to.deep.equal test
+      expect(object.path(test, [])).to.deep.equal test
+
+    it "should access subelement", ->
+      expect(object.path(test, '/string')).to.deep.equal test.string
+      expect(object.path(test, 'string')).to.deep.equal test.string
+      expect(object.path(test, ['string'])).to.deep.equal test.string
+
+    it "should access list", ->
+      expect(object.path(test, '/object/numbers/one')).to.equal 1
+      expect(object.path(test, 'object/numbers')).to.deep.equal test.object.numbers
+      expect(object.path(test, ['','object','numbers','one'])).to.equal 1
+
+    it "should access object", ->
+      expect(object.path(test, '/list/0/one')).to.equal 1
+      expect(object.path(test, 'list/1')).to.deep.equal test.list[1]
+
+    it "should allow special separator", ->
+      expect(object.path(test, 'list.0.one', '.')).to.equal 1
+      expect(object.path(test, 'object.numbers.two', '.')).to.equal 2
+
+    it "should allow regexp separator", ->
+      expect(object.path(test, 'list;0; one', /[;:]\s*/)).to.equal 1
+      expect(object.path(test, 'object:numbers;two', /[;:]\s*/)).to.equal 2
+
+  describe "pathSearch", ->
+
+
   describe "prototype", ->
 
     it "should clone object", ->

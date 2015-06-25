@@ -136,6 +136,7 @@ extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
   debug "<- #{chalk.grey util.inspect obj}"
   obj
 
+
 # Deep cloning object
 # -------------------------------------------------
 # This method will create a clone of the given object.
@@ -151,6 +152,7 @@ extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
 #   clone of the given  object.
 module.exports.clone = (obj) ->
   extend null, obj
+
 
 # Check for empty objects
 # -------------------------------------------------
@@ -172,6 +174,67 @@ isempty = module.exports.isempty = (obj) ->
   return obj.length is 0 if obj.length?
   Object.keys(obj).length is 0
 
+
+# Access path in object
+# -------------------------------------------------
+exports.path = (obj, path, separator = '/') ->
+  path = path.split separator if typeof path is 'string'
+  debug "get path #{util.inspect path} from #{util.inspect obj}"
+  ref = obj
+  for k in path
+    continue unless k
+    ref = ref[k]
+#  console.log ref
+  return ref
+
+
+# Find path in object
+# -------------------------------------------------
+pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
+  path = path.split separator if typeof path is 'string'
+  return obj unless path.length
+  cur = path.shift()
+  # step over empty paths like //
+  cur = path.shift() while cur is '' and path.length
+  result = obj
+  switch
+    # wildcard path
+    when cur is '*'
+      unless path.length
+        result = []
+        result.push val for key,val of obj
+        return result
+      for key,val of obj
+        result = pathSearch val, path[0..]
+        return result if result?
+      return
+    # recursive wildcard
+    when cur is '**'
+      return obj unless path.length
+      result = pathSearch result, path[0..]
+      return result if result?
+      path.unshift cur
+      for key,val of obj
+        result = pathSearch val, path[0..]
+        return result if result?
+      return
+    # regexp matching
+    when cur.match /\W/
+      cur = new RegExp "^#{cur}$"
+      result = []
+      for key,val of obj
+        result.push val if key.match cur
+      return unless result.length
+      result = result[0] if result.length is 1
+      result
+    # concrete name
+    else
+      result = obj?[cur]
+      return unless result?
+      return pathSearch result, path if path.length
+      result
+
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
@@ -182,8 +245,12 @@ module.exports.addToPrototype = ->
   Object.prototype.extendArrayConcat = (args...) ->
     args.unshift this
     extend.apply null, args
-  Object.prototype.clone = ->
-    extend null, this
-  Object.prototype.isempty = ->
-    isempty this
+  Object.prototype.clone = -> extend null, this
+  Object.prototype.isempty = -> isempty this
+  Object.prototype.path = -> (args...) ->
+    args.unshift this
+    path.apply null, args
+  Object.prototype.pathSearch = -> (args...) ->
+    args.unshift this
+    pathSearch.apply null, args
 
