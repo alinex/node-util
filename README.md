@@ -101,6 +101,7 @@ string = require('alinex-util').string
 test = 'abcdefg'
 result = string.starts test, 'ab'
 ```
+
 This results to:
 
 ``` coffee
@@ -209,6 +210,20 @@ __Returns:__
 
 * the padded text
 
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = '5'
+result = string.lpad test, 3, '0'
+```
+
+This results to:
+
+``` coffee
+result = '005'
+```
+
 ### rpad
 
 Right pad string to specified length.
@@ -226,6 +241,20 @@ __Returns:__
 
 * the padded text
 
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = 'abc'
+result = string.starts test, 5, ' '
+```
+
+This results to:
+
+``` coffee
+result = 'abc  '
+```
+
 ### ucFirst
 
 Make first letter upper case.
@@ -238,6 +267,20 @@ __Arguments:__
 __Returns:__
 
 * the same text but with first letter in upper case
+
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = 'abcdefg'
+result = string.ucfirst test
+```
+
+This results to:
+
+``` coffee
+result = 'Abcdefg'
+```
 
 
 ### lcFirst
@@ -253,6 +296,19 @@ __Returns:__
 
 * the same text but with first letter in lower case
 
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = 'ABCDEFG'
+result = string.lcFirst test
+```
+
+This results to:
+
+``` coffee
+result = 'aBCDEFG'
+```
 
 ### contains
 
@@ -268,6 +324,22 @@ __Arguments:__
 __Returns:__
 
 * (bool) `true` if phrase is contained in string
+
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = 'abcdefg'
+result1 = string.contains test, 'bc'
+result2 = string.contains test, 'gh'
+```
+
+This results to:
+
+``` coffee
+result1 = true
+result2 = false
+```
 
 
 Number type
@@ -444,6 +516,119 @@ __Returns:__
 
 * `boolean`
   true if object is empty
+
+
+### path
+
+This method allows you to access an element deep in an object's structure by
+giving only the path to the element.
+
+__Arguments:__
+
+* `object`
+  to be searched
+* `path`
+  (string or Array) specifying which element to reference
+* `separator`
+  (string or RegExp) used as separator, defaults to `/`
+
+__Returns:__
+
+* element at the position of the path or `undefined` if not found
+
+__Example:__
+
+``` coffee
+object = require('alinex-util').object
+test =
+  string: 'test'
+  object:
+    numbers:
+      one: 1
+      two: 2
+  list: [
+    one: 11
+  ,
+    two: 12
+  ]
+result = object.path test, '/object/numbers'
+```
+
+This results to:
+
+``` coffee
+result = { one: 1, two: 2 }
+```
+
+### pathSearch
+
+Like path but here you may give a search pattern to find the element. It may
+also find multiple elements which will be returned in a list.
+
+__Arguments:__
+
+* `object`
+  to be searched
+* `path`
+  (string or Array) specifying which element to reference
+* `separator`
+  (string or RegExp) used as separator, defaults to `/`
+
+__Returns:__
+
+* element at the position of the path or `undefined` if not found
+
+__Example:__
+
+``` coffee
+object = require('alinex-util').object
+test =
+  string: 'test'
+  object:
+    numbers:
+      one: 1
+      two: 2
+  list: [
+    one: 11
+  ,
+    two: 12
+  ]
+result = object.pathSearch test, '**/one'
+```
+
+This results to:
+
+``` coffee
+result = 1
+```
+
+__Pattern__
+
+You may specify like in the following examples (using the default separator).
+
+``` text
+name - get first element with this name
+group/sub/name - get element with path
+```
+
+You can search by using asterisk as directory placeholder or a double asterisk to
+go multiple level depth:
+
+``` text
+name/*/min - within any subelement
+name/*/*/min - within any subelement (two level depth)
+name/**/min - within any subelement in any depth
+```
+
+You may also use regexp notation to find the correct element:
+
+``` text
+name/test[AB]/min - pattern match with one missing character
+name/test\d+/min - pattern match with multiple missing characters
+```
+
+See the [Mozilla Developer Network](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+for the possible syntax but without modifier.
 
 
 Array object

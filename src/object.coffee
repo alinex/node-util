@@ -192,10 +192,12 @@ exports.path = (obj, path, separator = '/') ->
 # -------------------------------------------------
 pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
   path = path.split separator if typeof path is 'string'
+  debug "get path #{util.inspect path} from #{util.inspect obj}"
   return obj unless path.length
   cur = path.shift()
   # step over empty paths like //
   cur = path.shift() while cur is '' and path.length
+  return obj if cur is ''
   result = obj
   switch
     # wildcard path
@@ -205,6 +207,7 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
         result.push val for key,val of obj
         return result
       for key,val of obj
+        continue unless typeof val is 'object'
         result = pathSearch val, path[0..]
         return result if result?
       return
@@ -215,6 +218,7 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
       return result if result?
       path.unshift cur
       for key,val of obj
+        continue unless typeof val is 'object'
         result = pathSearch val, path[0..]
         return result if result?
       return
