@@ -15,7 +15,17 @@
   <link rel="stylesheet" href="goToLine.css" />
 </head>
 <body>
-  <div id="sidebar_wrapper">
+  <nav>
+<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='http://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='http://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="lllogo" src="http://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+  </a>
+  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+</div>
+<div class="links">
+  <a href="http://alinex.github.io/blog.html" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
+  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+</div>
+</nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
       <span class="tree">Files</span>
       <span class="headings">Headings</span>
@@ -127,8 +137,10 @@ are generally used for different general class types:</p>
 <li>may extend the base classes</li>
 </ul>
 
-<p>It is one of the modules of the <a href="http://alinex.github.io/node-alinex">Alinex Universe</a>
-following the code standards defined there.</p>
+<blockquote>
+  <p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
+  following the code standards defined in the <a href="http://alinex.github.io/node-alinex">General Docs</a>.</p>
+</blockquote>
 
 
 <div class="pilwrap" id="install">
@@ -139,15 +151,28 @@ following the code standards defined there.</p>
 </div>
 
 
-<p>The easiest way is to let npm add the module directly:</p>
+<p><a href="https://www.npmjs.com/package/alinex-util"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM" title="" />
+ <img src="https://nodei.co/npm-dl/alinex-util.png?months=9&amp;height=3" alt="Downloads" title="" />
+</a></p>
+
+<p>The easiest way is to let npm add the module directly to your modules
+(from within you node modules directory):</p>
 
 
-<div class="highlight"><pre><code>npm install alinex-fs --save
+<div class="highlight"><pre><code>npm install alinex-util --save
 </code></pre></div>
 
 
 
-<p><a href="https://nodei.co/npm/alinex-util/"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;stars=true" alt="NPM" title="" /></a></p>
+<p>And update it to the latest version later:</p>
+
+
+<div class="highlight"><pre><code>npm update alinex-util --save
+</code></pre></div>
+
+
+
+<p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
 
 
 <div class="pilwrap" id="general%20usage">
