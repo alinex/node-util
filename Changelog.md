@@ -4,17 +4,6 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
-Version 0.2.4 (2015-06-24)
--------------------------------------------------
-- Check for objects in extend by name to detect objects created in sandbox.
-- Made badge links npm compatible in documentation.
-- Extended test coverage.
-- Allow parseSeconds and parseMSeconds to also work without spaces as separator.
-- Added parseMSeconds description.
-- Completed tests for number classes.
-- Updated coerage tests.
-- Add coveralls.
-
 Version 0.2.3 (2015-06-15)
 -------------------------------------------------
 - Upgraded dependent modules.
