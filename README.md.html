@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/a3/node-util/README.md", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/a3/node-util/READMEmd", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -97,6 +97,12 @@
       </div>
       <div class="heading h3">
         <a href="#isempty">isempty</a>
+      </div>
+      <div class="heading h3">
+        <a href="#path">path</a>
+      </div>
+      <div class="heading h3">
+        <a href="#pathsearch">pathSearch</a>
       </div>
       <div class="heading h2">
         <a href="#array%20object">Array object</a>
@@ -427,6 +433,24 @@ character used for padding (defaults to ' ')</li>
 <li>the padded text</li>
 </ul>
 
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;5&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">lpad</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;0&#39;</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;005&#39;</span>
+</code></pre></div>
+
+
+
 
 <div class="pilwrap" id="rpad">
   <h3>
@@ -455,6 +479,24 @@ character used for padding (defaults to ' ')</li>
 <li>the padded text</li>
 </ul>
 
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;abc&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">starts</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39; &#39;</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;abc  &#39;</span>
+</code></pre></div>
+
+
+
 
 <div class="pilwrap" id="ucfirst">
   <h3>
@@ -479,6 +521,24 @@ text to be changed</li>
 <li>the same text but with first letter in upper case</li>
 </ul>
 
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">ucfirst</span> <span class="nx">test</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;Abcdefg&#39;</span>
+</code></pre></div>
+
+
+
 
 <div class="pilwrap" id="lcfirst">
   <h3>
@@ -502,6 +562,24 @@ text to be changed</li>
 <ul>
 <li>the same text but with first letter in lower case</li>
 </ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;ABCDEFG&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">lcFirst</span> <span class="nx">test</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;aBCDEFG&#39;</span>
+</code></pre></div>
+
+
 
 
 <div class="pilwrap" id="contains">
@@ -528,6 +606,26 @@ text to be searched for</li>
 <ul>
 <li>(bool) <code>true</code> if phrase is contained in string</li>
 </ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
+<span class="nv">result1 = </span><span class="nx">string</span><span class="p">.</span><span class="nx">contains</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;bc&#39;</span>
+<span class="nv">result2 = </span><span class="nx">string</span><span class="p">.</span><span class="nx">contains</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;gh&#39;</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result1 = </span><span class="kc">true</span>
+<span class="nv">result2 = </span><span class="kc">false</span>
+</code></pre></div>
+
+
 
 
 <div class="pilwrap" id="number%20type">
@@ -805,6 +903,154 @@ to be checked</li>
 <li><code>boolean</code>
 true if object is empty</li>
 </ul>
+
+
+<div class="pilwrap" id="path">
+  <h3>
+    <a href="#path" name="path" class="pilcrow">&#182;</a>
+    path
+  </h3>
+</div>
+
+
+<p>This method allows you to access an element deep in an object's structure by
+giving only the path to the element.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+to be searched</li>
+<li><code>path</code>
+(string or Array) specifying which element to reference</li>
+<li><code>separator</code>
+(string or RegExp) used as separator, defaults to <code>/</code></li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>element at the position of the path or <code>undefined</code> if not found</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
+<span class="nv">test =</span>
+  <span class="nv">string: </span><span class="s">&#39;test&#39;</span>
+  <span class="nv">object:</span>
+    <span class="nv">numbers:</span>
+      <span class="nv">one: </span><span class="mi">1</span>
+      <span class="nv">two: </span><span class="mi">2</span>
+  <span class="nv">list: </span><span class="p">[</span>
+    <span class="nv">one: </span><span class="mi">11</span>
+  <span class="p">,</span>
+    <span class="nv">two: </span><span class="mi">12</span>
+  <span class="p">]</span>
+<span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">path</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;/object/numbers&#39;</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="p">{</span> <span class="nv">one: </span><span class="mi">1</span><span class="p">,</span> <span class="nv">two: </span><span class="mi">2</span> <span class="p">}</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="pathsearch">
+  <h3>
+    <a href="#pathsearch" name="pathsearch" class="pilcrow">&#182;</a>
+    pathSearch
+  </h3>
+</div>
+
+
+<p>Like path but here you may give a search pattern to find the element. It may
+also find multiple elements which will be returned in a list.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+to be searched</li>
+<li><code>path</code>
+(string or Array) specifying which element to reference</li>
+<li><code>separator</code>
+(string or RegExp) used as separator, defaults to <code>/</code></li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>element at the position of the path or <code>undefined</code> if not found</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
+<span class="nv">test =</span>
+  <span class="nv">string: </span><span class="s">&#39;test&#39;</span>
+  <span class="nv">object:</span>
+    <span class="nv">numbers:</span>
+      <span class="nv">one: </span><span class="mi">1</span>
+      <span class="nv">two: </span><span class="mi">2</span>
+  <span class="nv">list: </span><span class="p">[</span>
+    <span class="nv">one: </span><span class="mi">11</span>
+  <span class="p">,</span>
+    <span class="nv">two: </span><span class="mi">12</span>
+  <span class="p">]</span>
+<span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">pathSearch</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;**/one&#39;</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="mi">1</span>
+</code></pre></div>
+
+
+
+<p><strong>Pattern</strong></p>
+
+<p>You may specify like in the following examples (using the default separator).</p>
+
+
+<div class="highlight"><pre><code>name - get first element with this name
+group/sub/name - get element with path
+</code></pre></div>
+
+
+
+<p>You can search by using asterisk as directory placeholder or a double asterisk to
+go multiple level depth:</p>
+
+
+<div class="highlight"><pre><code>name/*/min - within any subelement
+name/*/*/min - within any subelement (two level depth)
+name/**/min - within any subelement in any depth
+</code></pre></div>
+
+
+
+<p>You may also use regexp notation to find the correct element:</p>
+
+
+<div class="highlight"><pre><code>name/test[AB]/min - pattern match with one missing character
+name/test\d+/min - pattern match with multiple missing characters
+</code></pre></div>
+
+
+
+<p>See the <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/RegExp">Mozilla Developer Network</a>
+for the possible syntax but without modifier.</p>
 
 
 <div class="pilwrap" id="array%20object">

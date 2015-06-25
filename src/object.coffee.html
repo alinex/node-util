@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/object.coffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/objectcoffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
   <script src="../fileSearch.js"></script>
@@ -46,6 +46,12 @@
       </div>
       <div class="heading h2">
         <a href="#check%20for%20empty%20objects">Check for empty objects</a>
+      </div>
+      <div class="heading h2">
+        <a href="#access%20path%20in%20object">Access path in object</a>
+      </div>
+      <div class="heading h2">
+        <a href="#find%20path%20in%20object">Find path in object</a>
       </div>
       <div class="heading h2">
         <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
@@ -411,6 +417,7 @@ object may differ to another copy of the same class if generated in the sandbox.
   <span class="nx">obj</span>
 
 
+
 </pre></div>
         </td>
       </tr>
@@ -443,6 +450,7 @@ clone of the given  object.</li>
         <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">module.exports.clone = </span><span class="nf">(obj) -&gt;</span>
   <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">obj</span>
+
 
 
 </pre></div>
@@ -494,6 +502,163 @@ true if object is empty</li>
   <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">0</span>
 
 
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="access%20path%20in%20object">
+  <h2>
+    <a href="#access%20path%20in%20object" name="access%20path%20in%20object" class="pilcrow">&#182;</a>
+    Access path in object
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.path = </span><span class="nf">(obj, path, separator = &#39;/&#39;) -&gt;</span>
+  <span class="nv">path = </span><span class="nx">path</span><span class="p">.</span><span class="nx">split</span> <span class="nx">separator</span> <span class="k">if</span> <span class="k">typeof</span> <span class="nx">path</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
+  <span class="nx">debug</span> <span class="s">&quot;get path </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">path</span><span class="si">}</span><span class="s"> from </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="nv">ref = </span><span class="nx">obj</span>
+  <span class="k">for</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">path</span>
+    <span class="k">continue</span> <span class="k">unless</span> <span class="nx">k</span>
+    <span class="nv">ref = </span><span class="nx">ref</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-23" id="section-23">&#182;</a>
+</div>
+<p>console.log ref</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="k">return</span> <span class="nx">ref</span>
+
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="find%20path%20in%20object">
+  <h2>
+    <a href="#find%20path%20in%20object" name="find%20path%20in%20object" class="pilcrow">&#182;</a>
+    Find path in object
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">pathSearch = exports.pathSearch = </span><span class="nf">(obj, path, separator = &#39;/&#39;) -&gt;</span>
+  <span class="nv">path = </span><span class="nx">path</span><span class="p">.</span><span class="nx">split</span> <span class="nx">separator</span> <span class="k">if</span> <span class="k">typeof</span> <span class="nx">path</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
+  <span class="nx">debug</span> <span class="s">&quot;get path </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">path</span><span class="si">}</span><span class="s"> from </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="k">return</span> <span class="nx">obj</span> <span class="k">unless</span> <span class="nx">path</span><span class="p">.</span><span class="nx">length</span>
+  <span class="nv">cur = </span><span class="nx">path</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-25" id="section-25">&#182;</a>
+</div>
+<p>step over empty paths like //</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nv">cur = </span><span class="nx">path</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span> <span class="k">while</span> <span class="nx">cur</span> <span class="o">is</span> <span class="s">&#39;&#39;</span> <span class="o">and</span> <span class="nx">path</span><span class="p">.</span><span class="nx">length</span>
+  <span class="k">return</span> <span class="nx">obj</span> <span class="k">if</span> <span class="nx">cur</span> <span class="o">is</span> <span class="s">&#39;&#39;</span>
+  <span class="nv">result = </span><span class="nx">obj</span>
+  <span class="k">switch</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-26" id="section-26">&#182;</a>
+</div>
+<p>wildcard path</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="k">when</span> <span class="nx">cur</span> <span class="o">is</span> <span class="s">&#39;*&#39;</span>
+      <span class="k">unless</span> <span class="nx">path</span><span class="p">.</span><span class="nx">length</span>
+        <span class="nv">result = </span><span class="p">[]</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">push</span> <span class="nx">val</span> <span class="k">for</span> <span class="nx">key</span><span class="p">,</span><span class="nx">val</span> <span class="k">of</span> <span class="nx">obj</span>
+        <span class="k">return</span> <span class="nx">result</span>
+      <span class="k">for</span> <span class="nx">key</span><span class="p">,</span><span class="nx">val</span> <span class="k">of</span> <span class="nx">obj</span>
+        <span class="k">continue</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">val</span> <span class="o">is</span> <span class="s">&#39;object&#39;</span>
+        <span class="nv">result = </span><span class="nx">pathSearch</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">path</span><span class="p">[</span><span class="mi">0</span><span class="p">..]</span>
+        <span class="k">return</span> <span class="nx">result</span> <span class="k">if</span> <span class="nx">result</span><span class="o">?</span>
+      <span class="k">return</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-27" id="section-27">&#182;</a>
+</div>
+<p>recursive wildcard</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="k">when</span> <span class="nx">cur</span> <span class="o">is</span> <span class="s">&#39;**&#39;</span>
+      <span class="k">return</span> <span class="nx">obj</span> <span class="k">unless</span> <span class="nx">path</span><span class="p">.</span><span class="nx">length</span>
+      <span class="nv">result = </span><span class="nx">pathSearch</span> <span class="nx">result</span><span class="p">,</span> <span class="nx">path</span><span class="p">[</span><span class="mi">0</span><span class="p">..]</span>
+      <span class="k">return</span> <span class="nx">result</span> <span class="k">if</span> <span class="nx">result</span><span class="o">?</span>
+      <span class="nx">path</span><span class="p">.</span><span class="nx">unshift</span> <span class="nx">cur</span>
+      <span class="k">for</span> <span class="nx">key</span><span class="p">,</span><span class="nx">val</span> <span class="k">of</span> <span class="nx">obj</span>
+        <span class="k">continue</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">val</span> <span class="o">is</span> <span class="s">&#39;object&#39;</span>
+        <span class="nv">result = </span><span class="nx">pathSearch</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">path</span><span class="p">[</span><span class="mi">0</span><span class="p">..]</span>
+        <span class="k">return</span> <span class="nx">result</span> <span class="k">if</span> <span class="nx">result</span><span class="o">?</span>
+      <span class="k">return</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-28" id="section-28">&#182;</a>
+</div>
+<p>regexp matching</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="k">when</span> <span class="nx">cur</span><span class="p">.</span><span class="nx">match</span> <span class="sr">/\W/</span>
+      <span class="nv">cur = </span><span class="k">new</span> <span class="nb">RegExp</span> <span class="s">&quot;^</span><span class="si">#{</span><span class="nx">cur</span><span class="si">}</span><span class="s">$&quot;</span>
+      <span class="nv">result = </span><span class="p">[]</span>
+      <span class="k">for</span> <span class="nx">key</span><span class="p">,</span><span class="nx">val</span> <span class="k">of</span> <span class="nx">obj</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">push</span> <span class="nx">val</span> <span class="k">if</span> <span class="nx">key</span><span class="p">.</span><span class="nx">match</span> <span class="nx">cur</span>
+      <span class="k">return</span> <span class="k">unless</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span>
+      <span class="nv">result = </span><span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">1</span>
+      <span class="nx">result</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-29" id="section-29">&#182;</a>
+</div>
+<p>concrete name</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+    <span class="k">else</span>
+      <span class="nv">result = </span><span class="nx">obj</span><span class="o">?</span><span class="p">[</span><span class="nx">cur</span><span class="p">]</span>
+      <span class="k">return</span> <span class="k">unless</span> <span class="nx">result</span><span class="o">?</span>
+      <span class="k">return</span> <span class="nx">pathSearch</span> <span class="nx">result</span><span class="p">,</span> <span class="nx">path</span> <span class="k">if</span> <span class="nx">path</span><span class="p">.</span><span class="nx">length</span>
+      <span class="nx">result</span>
+
+
+
 </pre></div>
         </td>
       </tr>
@@ -517,10 +682,14 @@ true if object is empty</li>
   <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.extendArrayConcat = </span><span class="nf">(args...) -&gt;</span>
     <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
     <span class="nx">extend</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
-  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.clone = </span><span class="nf">-&gt;</span>
-    <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="k">this</span>
-  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.isempty = </span><span class="nf">-&gt;</span>
-    <span class="nx">isempty</span> <span class="k">this</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.clone = </span><span class="nf">-&gt;</span> <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="k">this</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.isempty = </span><span class="nf">-&gt;</span> <span class="nx">isempty</span> <span class="k">this</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.path = </span><span class="nf">-&gt;</span> <span class="nf">(args...) -&gt;</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
+    <span class="nx">path</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.pathSearch = </span><span class="nf">-&gt;</span> <span class="nf">(args...) -&gt;</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
+    <span class="nx">pathSearch</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
 </pre></div>
         </td>
       </tr>
