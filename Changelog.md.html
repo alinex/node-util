@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/a3/node-util/Changelog.md", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/a3/node-util/Changelogmd", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -15,17 +15,7 @@
   <link rel="stylesheet" href="goToLine.css" />
 </head>
 <body>
-  <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='http://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='http://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="http://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
-  </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
-</div>
-<div class="links">
-  <a href="http://alinex.github.io/blog.html" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
-</div>
-</nav><div id="sidebar_wrapper">
+  <div id="sidebar_wrapper">
     <div id="sidebar_switch">
       <span class="tree">Files</span>
       <span class="headings">Headings</span>
@@ -34,6 +24,9 @@
     <div id="headings">
       <div class="heading h1">
         <a href="#version%20changes">Version changes</a>
+      </div>
+      <div class="heading h2">
+        <a href="#version%200.3.0%20(2015-06-25)">Version 0.3.0 (2015-06-25)</a>
       </div>
       <div class="heading h2">
         <a href="#version%200.2.3%20(2015-06-15)">Version 0.2.3 (2015-06-15)</a>
@@ -102,6 +95,30 @@
 individual versions:</p>
 
 
+<div class="pilwrap" id="version%200.3.0%20(2015-06-25)">
+  <h2>
+    <a href="#version%200.3.0%20(2015-06-25)" name="version%200.3.0%20(2015-06-25)" class="pilcrow">&#182;</a>
+    Version 0.3.0 (2015-06-25)
+  </h2>
+</div>
+
+
+<ul>
+<li>Updated changelog.</li>
+<li>Added extendArrayConcat method and fixed extend with containing arrays.</li>
+<li>Added information for version 0.2.4</li>
+<li>Check for objects in extend by name to detect objects created in sandbox.</li>
+<li>Made badge links npm compatible in documentation.</li>
+<li>Extended test coverage.</li>
+<li>Allow parseSeconds and parseMSeconds to also work without spaces as separator.</li>
+<li>Added parseMSeconds description.</li>
+<li>Completed tests for number classes.</li>
+<li>Updated coerage tests.</li>
+<li>Add coveralls.</li>
+<li>Fixed changelog.</li>
+</ul>
+
+
 <div class="pilwrap" id="version%200.2.3%20(2015-06-15)">
   <h2>
     <a href="#version%200.2.3%20(2015-06-15)" name="version%200.2.3%20(2015-06-15)" class="pilcrow">&#182;</a>
@@ -127,10 +144,8 @@ individual versions:</p>
 <ul>
 <li>Added new method to documentation.</li>
 <li>Added array.unique() method.</li>
-<li>Fixed documentation merge conflicts.</li>
 <li>Merge branch 'master' of <a href='https://github.com/alinex/node-util'>https://github.com/alinex/node-util</a></li>
 <li>Update documentation structure.</li>
-<li>Merge branch 'master' of <a href='https://github.com/alinex/node-util'>https://github.com/alinex/node-util</a></li>
 <li>Converted code examples into coffee-script.</li>
 <li>Format documentation in coffeescript.</li>
 </ul>

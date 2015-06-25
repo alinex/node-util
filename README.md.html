@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/a3/node-util/README.md", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/a3/node-util/READMEmd", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
   <script src="fileSearch.js"></script>
@@ -15,17 +15,7 @@
   <link rel="stylesheet" href="goToLine.css" />
 </head>
 <body>
-  <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='http://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='http://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="http://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
-  </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
-</div>
-<div class="links">
-  <a href="http://alinex.github.io/blog.html" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
-</div>
-</nav><div id="sidebar_wrapper">
+  <div id="sidebar_wrapper">
     <div id="sidebar_switch">
       <span class="tree">Files</span>
       <span class="headings">Headings</span>
@@ -78,13 +68,19 @@
         <a href="#parseint">parseInt</a>
       </div>
       <div class="heading h3">
-        <a href="#parsesecond">parseSecond</a>
+        <a href="#parseseconds">parseSeconds</a>
+      </div>
+      <div class="heading h3">
+        <a href="#parsemseconds">parseMSeconds</a>
       </div>
       <div class="heading h2">
         <a href="#object">Object</a>
       </div>
       <div class="heading h3">
         <a href="#extend">extend</a>
+      </div>
+      <div class="heading h3">
+        <a href="#extendarrayconcat">extendArrayConcat</a>
       </div>
       <div class="heading h3">
         <a href="#clone">clone</a>
@@ -572,10 +568,10 @@ to be analyzed</li>
 <p>To check if you got a number or invalid string use <code>isNaN()</code>.</p>
 
 
-<div class="pilwrap" id="parsesecond">
+<div class="pilwrap" id="parseseconds">
   <h3>
-    <a href="#parsesecond" name="parsesecond" class="pilcrow">&#182;</a>
-    parseSecond
+    <a href="#parseseconds" name="parseseconds" class="pilcrow">&#182;</a>
+    parseSeconds
   </h3>
 </div>
 
@@ -613,6 +609,18 @@ to be analyzed</li>
 </code></pre></div>
 
 
+
+
+<div class="pilwrap" id="parsemseconds">
+  <h3>
+    <a href="#parsemseconds" name="parsemseconds" class="pilcrow">&#182;</a>
+    parseMSeconds
+  </h3>
+</div>
+
+
+<p>Parse human readable time to milliseconds. It will work the same as above and
+you may specify <code>ms</code> as additional unit here.</p>
 
 
 <div class="pilwrap" id="object">
@@ -680,6 +688,18 @@ the given and maybe changed object.</li>
 </code></pre></div>
 
 
+
+
+<div class="pilwrap" id="extendarrayconcat">
+  <h3>
+    <a href="#extendarrayconcat" name="extendarrayconcat" class="pilcrow">&#182;</a>
+    extendArrayConcat
+  </h3>
+</div>
+
+
+<p>This method is like extend but will concat arrays elements directly instead
+of concat the element clones. This keeps the references under the first array.</p>
 
 
 <div class="pilwrap" id="clone">
