@@ -484,7 +484,7 @@ true if object is empty</li>
 </ul>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">isempty = module.exports.isempty = </span><span class="nf">(obj) -&gt;</span>
+<span class="nv">isEmpty = module.exports.isEmpty = </span><span class="nf">(obj) -&gt;</span>
 
 </pre></div>
         </td>
@@ -683,7 +683,7 @@ true if object is empty</li>
     <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
     <span class="nx">extend</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
   <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.clone = </span><span class="nf">-&gt;</span> <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="k">this</span>
-  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.isempty = </span><span class="nf">-&gt;</span> <span class="nx">isempty</span> <span class="k">this</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.isEmpty = </span><span class="nf">-&gt;</span> <span class="nx">isEmpty</span> <span class="k">this</span>
   <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.path = </span><span class="nf">-&gt;</span> <span class="nf">(args...) -&gt;</span>
     <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
     <span class="nx">path</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
