@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.2 (2015-06-26)
+-------------------------------------------------
+- Fixed wrong named method object.isempty to object.isEmpty.
+
 Version 0.3.1 (2015-06-25)
 -------------------------------------------------
 - Enabled all tests.
