@@ -200,17 +200,17 @@ describe "Object", ->
       result = object.extendArrayConcat {}, test
       expect(result, "test-2").to.deep.equal test
 
-  describe "isempty", ->
+  describe "isEmpty", ->
 
     it "should detect empty objects", ->
-      expect(object.isempty(null), "null").to.equal true
-      expect(object.isempty(undefined), "undefined").to.equal true
-      expect(object.isempty([]), "array").to.equal true
-      expect(object.isempty({}), "object").to.equal true
+      expect(object.isEmpty(null), "null").to.equal true
+      expect(object.isEmpty(undefined), "undefined").to.equal true
+      expect(object.isEmpty([]), "array").to.equal true
+      expect(object.isEmpty({}), "object").to.equal true
 
     it "should detect not empty objects", ->
-      expect(object.isempty([4]), "array").to.equal false
-      expect(object.isempty({a:1}), "object").to.equal false
+      expect(object.isEmpty([4]), "array").to.equal false
+      expect(object.isEmpty({a:1}), "object").to.equal false
 
   describe "path", ->
 

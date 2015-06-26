@@ -168,7 +168,7 @@ module.exports.clone = (obj) ->
 #
 # * `boolean`
 #   true if object is empty
-isempty = module.exports.isempty = (obj) ->
+isEmpty = module.exports.isEmpty = (obj) ->
   # true for undefined objects
   return true unless obj?
   return obj.length is 0 if obj.length?
@@ -250,7 +250,7 @@ module.exports.addToPrototype = ->
     args.unshift this
     extend.apply null, args
   Object.prototype.clone = -> extend null, this
-  Object.prototype.isempty = -> isempty this
+  Object.prototype.isEmpty = -> isEmpty this
   Object.prototype.path = -> (args...) ->
     args.unshift this
     path.apply null, args

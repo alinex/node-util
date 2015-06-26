@@ -503,7 +503,7 @@ result = test.clone()
 ```
 
 
-### isempty
+### isEmpty
 
 Check if object is empty or uninitialized.
 
