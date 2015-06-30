@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.4 (2015-06-30)
+-------------------------------------------------
+- Fixed handling of empty strings.
+
 Version 0.3.3 (2015-06-30)
 -------------------------------------------------
 - Code style optimization.
