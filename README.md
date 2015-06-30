@@ -255,6 +255,36 @@ This results to:
 result = 'abc  '
 ```
 
+### trim
+
+Trim given characters
+
+
+__Arguments:__
+
+* `string`
+   text to be trimmed
+* `chars`
+   list of characters to trim off (defaults to ' \n\t')
+
+ __Returns:__
+
+* the padded text
+
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = '/var/local/'
+result = string.trim test, '/'
+```
+
+This results to:
+
+``` coffee
+result = 'var/local'
+```
+
 ### ucFirst
 
 Make first letter upper case.

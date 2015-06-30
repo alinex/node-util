@@ -108,6 +108,28 @@ describe "String", ->
       , "right pad not necessary"
       .to.be.equal 'ab'
 
+  describe "trim", ->
+
+    it "should trim string (default)", ->
+      expect string.trim(' ab\n')
+      , "trim both sides"
+      .to.be.equal 'ab'
+      expect string.trim(' ab\n-')
+      , "trim only left side"
+      .to.be.equal 'ab\n-'
+      expect string.trim('- ab\n')
+      , "trim only right side"
+      .to.be.equal '- ab'
+      expect string.trim('ab')
+      , "trim nothing"
+      .to.be.equal 'ab'
+
+    it "should trim specific char", ->
+      test = '/ab//'
+      expect string.trim(test, '/')
+      , "trim slashes"
+      .to.be.equal 'ab'
+
   describe "ucFirst", ->
 
     it "should make first letter upper case", ->

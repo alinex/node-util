@@ -103,6 +103,24 @@ exports.rpad = (string, length, char = ' ') ->
   return string unless length > string.length
   string + exports.repeat(char, length - string.length)
 
+# Trim given characters
+# -------------------------------------------------
+#
+# __Arguments:__
+#
+# * `string`
+#   text to be trimmed
+# * `chars`
+#   list of characters to trim off (defaults to ' \n\t')
+#
+# __Returns:__
+#
+# * the padded text
+exports.trim = (string, chars = " \n\t") ->
+  string = string.substring 1 while ~chars.indexOf string.charAt 0
+  string = string.substring 0, string.length-1 while ~chars.indexOf string.charAt string.length-1
+  string
+
 # Upper case first character
 # -------------------------------------------------
 # __Arguments:__
