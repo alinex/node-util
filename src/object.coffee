@@ -57,7 +57,7 @@ extend = module.exports.extend = (obj, ext...) ->
       flags += 'm' if src.multiline
       flags += 'y' if src.sticky
       obj = new RegExp src.source, flags
-    else if src.constructor.name != Object.name
+    else if src.constructor.name isnt Object.name
       debug "unknown instance (referenced)"
 #     exact copy/clone not working on instances
 #      obj = extendInstance obj, src
@@ -121,7 +121,7 @@ extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
       flags += 'm' if src.multiline
       flags += 'y' if src.sticky
       obj = new RegExp src.source, flags
-    else if src.constructor.name != Object.name
+    else if src.constructor.name isnt Object.name
       debug "unknown instance (referenced)"
 #     exact copy/clone not working on instances
 #      obj = extendInstance obj, src
@@ -204,9 +204,9 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
     when cur is '*'
       unless path.length
         result = []
-        result.push val for key,val of obj
+        result.push val for key, val of obj
         return result
-      for key,val of obj
+      for key, val of obj
         continue unless typeof val is 'object'
         result = pathSearch val, path[0..]
         return result if result?
@@ -217,7 +217,7 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
       result = pathSearch result, path[0..]
       return result if result?
       path.unshift cur
-      for key,val of obj
+      for key, val of obj
         continue unless typeof val is 'object'
         result = pathSearch val, path[0..]
         return result if result?
@@ -226,7 +226,7 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
     when cur.match /\W/
       cur = new RegExp "^#{cur}$"
       result = []
-      for key,val of obj
+      for key, val of obj
         result.push val if key.match cur
       return unless result.length
       result = result[0] if result.length is 1
