@@ -117,8 +117,9 @@ exports.rpad = (string, length, char = ' ') ->
 #
 # * the padded text
 exports.trim = (string, chars = " \n\t") ->
-  string = string.substring 1 while ~chars.indexOf string.charAt 0
-  string = string.substring 0, string.length-1 while ~chars.indexOf string.charAt string.length-1
+  string = string.substring 1 while string and ~chars.indexOf string.charAt 0
+  while string and ~chars.indexOf string.charAt string.length-1
+    string = string.substring 0, string.length-1
   string
 
 # Upper case first character
