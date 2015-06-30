@@ -60,6 +60,9 @@
         <a href="#rpad">rpad</a>
       </div>
       <div class="heading h3">
+        <a href="#trim">trim</a>
+      </div>
+      <div class="heading h3">
         <a href="#ucfirst">ucFirst</a>
       </div>
       <div class="heading h3">
@@ -493,6 +496,47 @@ character used for padding (defaults to ' ')</li>
 
 
 <div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;abc  &#39;</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="trim">
+  <h3>
+    <a href="#trim" name="trim" class="pilcrow">&#182;</a>
+    trim
+  </h3>
+</div>
+
+
+<p>Trim given characters</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be trimmed</li>
+<li><p><code>chars</code>
+list of characters to trim off (defaults to ' \n\t')</p>
+
+<p><strong>Returns:</strong></p></li>
+<li><p>the padded text</p></li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;/var/local/&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">trim</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;/&#39;</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;var/local&#39;</span>
 </code></pre></div>
 
 

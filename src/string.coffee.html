@@ -51,6 +51,9 @@
         <a href="#right%20pad%20string%20to%20specified%20length">Right pad string to specified length</a>
       </div>
       <div class="heading h2">
+        <a href="#trim%20given%20characters">Trim given characters</a>
+      </div>
+      <div class="heading h2">
         <a href="#upper%20case%20first%20character">Upper case first character</a>
       </div>
       <div class="heading h2">
@@ -265,6 +268,41 @@ character used for padding (defaults to ' ')</li>
   <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">string</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
   <span class="k">return</span> <span class="nx">string</span> <span class="k">unless</span> <span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span>
   <span class="nx">string</span> <span class="o">+</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">char</span><span class="p">,</span> <span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="trim%20given%20characters">
+  <h2>
+    <a href="#trim%20given%20characters" name="trim%20given%20characters" class="pilcrow">&#182;</a>
+    Trim given characters
+  </h2>
+</div>
+
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be trimmed</li>
+<li><code>chars</code>
+list of characters to trim off (defaults to ' \n\t')</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>the padded text</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.trim = </span><span class="nf">(string, chars = &quot; \n\t&quot;) -&gt;</span>
+  <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">substring</span> <span class="mi">1</span> <span class="k">while</span> <span class="o">~</span><span class="nx">chars</span><span class="p">.</span><span class="nx">indexOf</span> <span class="nx">string</span><span class="p">.</span><span class="nx">charAt</span> <span class="mi">0</span>
+  <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">substring</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span> <span class="k">while</span> <span class="o">~</span><span class="nx">chars</span><span class="p">.</span><span class="nx">indexOf</span> <span class="nx">string</span><span class="p">.</span><span class="nx">charAt</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span>
+  <span class="nx">string</span>
 
 
 </pre></div>
