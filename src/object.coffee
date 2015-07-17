@@ -69,6 +69,7 @@ extend = module.exports.extend = (obj, ext...) ->
         # test to assure a key like 'toString' won't map to the standard function
         base = if key in Object.keys(obj) then obj[key] else undefined
         obj[key] = extend base, val
+        delete obj[key] if val is null
   debug "<- #{chalk.grey util.inspect obj}"
   obj
 
@@ -133,6 +134,7 @@ extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
         # test to assure a key like 'toString' won't map to the standard function
         base = if key in Object.keys(obj) then obj[key] else undefined
         obj[key] = extendArrayConcat base, val
+        delete obj[key] if val is null
   debug "<- #{chalk.grey util.inspect obj}"
   obj
 

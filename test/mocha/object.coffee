@@ -131,6 +131,12 @@ describe "Object", ->
       result = object.extend {}, test
       expect(result, "test-2").to.deep.equal test
 
+    it "should remove key if set to null", ->
+      base = { eins: 1 }
+      test = { eins: null, zwei: 2 }
+      result = object.extend base, test
+      expect(result, "deep check").to.deep.equal { zwei: 2 }
+
   describe "extendArrayConcat", ->
 
     it "should clone object", ->
@@ -199,6 +205,12 @@ describe "Object", ->
       test = { toString: {} }
       result = object.extendArrayConcat {}, test
       expect(result, "test-2").to.deep.equal test
+
+    it "should remove key if set to null", ->
+      base = { eins: 1 }
+      test = { eins: null, zwei: 2 }
+      result = object.extendArrayConcat base, test
+      expect(result, "deep check").to.deep.equal { zwei: 2 }
 
   describe "isEmpty", ->
 

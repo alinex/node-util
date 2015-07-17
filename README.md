@@ -487,6 +487,7 @@ test = { eins: 1 }
 test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
 
+To remove a key from the structure by overloading set it's value to null.
 
 ### extendArrayConcat
 
