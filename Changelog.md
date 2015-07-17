@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.5 (2015-07-17)
+-------------------------------------------------
+- Added possibility to remove object keys by setting them to null.
+
 Version 0.3.4 (2015-06-30)
 -------------------------------------------------
 - Fixed handling of empty strings.
