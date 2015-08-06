@@ -107,6 +107,9 @@
       <div class="heading h3">
         <a href="#pathsearch">pathSearch</a>
       </div>
+      <div class="heading h3">
+        <a href="#filter">filter</a>
+      </div>
       <div class="heading h2">
         <a href="#array%20object">Array object</a>
       </div>
@@ -1095,8 +1098,60 @@ name/test\d+/min - pattern match with multiple missing characters
 
 
 
-<p>See the <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/RegExp">Mozilla Developer Network</a>
+<p>See the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp">Mozilla Developer Network</a>
 for the possible syntax but without modifier.</p>
+
+
+<div class="pilwrap" id="filter">
+  <h3>
+    <a href="#filter" name="filter" class="pilcrow">&#182;</a>
+    filter
+  </h3>
+</div>
+
+
+<p>Like the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter</a>
+method of arrays you may filter object entries here.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>object</code>
+to be filtered</li>
+<li><code>allow</code>
+(function) to be called like <code>allow(value, key, object)</code> and if it returns true
+the entry will be copied to the resulting object</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>data object with all or some entries from the original</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
+<span class="nv">test =</span>
+  <span class="nv">one: </span><span class="mi">1</span>
+  <span class="nv">two: </span><span class="mi">2</span>
+  <span class="nv">three: </span><span class="mi">3</span>
+  <span class="nv">four: </span><span class="mi">4</span>
+<span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">filter</span> <span class="nx">test</span><span class="p">,</span> <span class="nf">(value) -&gt;</span> <span class="nx">value</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result =</span>
+  <span class="nv">one: </span><span class="mi">1</span>
+  <span class="nv">two: </span><span class="mi">2</span>
+</code></pre></div>
+
+
 
 
 <div class="pilwrap" id="array%20object">

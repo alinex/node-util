@@ -54,6 +54,9 @@
         <a href="#find%20path%20in%20object">Find path in object</a>
       </div>
       <div class="heading h2">
+        <a href="#filter%20object">Filter object</a>
+      </div>
+      <div class="heading h2">
         <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
       </div>
     </div>
@@ -660,6 +663,30 @@ true if object is empty</li>
       <span class="nx">result</span>
 
 
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="filter%20object">
+  <h2>
+    <a href="#filter%20object" name="filter%20object" class="pilcrow">&#182;</a>
+    Filter object
+  </h2>
+</div>
+
+
+<p>This will create a new object with all keys that pass the test implemented
+by the provided allow(value, key, object)</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">filter = exports.filter = </span><span class="nf">(obj, allow) -&gt;</span>
+  <span class="nv">result = </span><span class="p">{}</span>
+  <span class="k">for</span> <span class="nx">key</span> <span class="k">of</span> <span class="nx">obj</span>
+    <span class="k">if</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">and</span> <span class="nx">allow</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">],</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">obj</span>
+      <span class="nx">result</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+  <span class="nx">result</span>
+
 
 </pre></div>
         </td>
@@ -692,6 +719,9 @@ true if object is empty</li>
   <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.pathSearch = </span><span class="nf">-&gt;</span> <span class="nf">(args...) -&gt;</span>
     <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
     <span class="nx">pathSearch</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nv">prototype.filter = </span><span class="nf">-&gt;</span> <span class="nf">(args...) -&gt;</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
+    <span class="nx">filter</span><span class="p">.</span><span class="nx">apply</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">args</span>
 </pre></div>
         </td>
       </tr>
