@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.6 (2015-08-06)
+-------------------------------------------------
+- Added support for object.filter() like array.filter().
+
 Version 0.3.5 (2015-07-17)
 -------------------------------------------------
 - Added possibility to remove object keys by setting them to null.
