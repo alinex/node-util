@@ -318,6 +318,25 @@ describe "Object", ->
       expect(object.pathSearch(test, '**/st.*')).to.deep.equal test.string
       expect(object.pathSearch(test, '**/o[ne]*')).to.deep.equal 1
 
+  describe "filter", ->
+
+    test =
+      one: 1
+      two: 2
+      three: 3
+      four: 4
+
+    it "should not exclude anything", ->
+      expect(object.filter(test, ( (v, k) -> true ))).to.deep.equal test
+
+    it "should exclude everything", ->
+      expect(object.filter(test, ( (v, k) -> false ))).to.deep.equal {}
+
+    it "should exclude some values", ->
+      expect(object.filter(test, ( (v, k) -> v < 3 ))).to.deep.equal
+        one: 1
+        two: 2
+
   describe "prototype", ->
 
     it "should clone object", ->

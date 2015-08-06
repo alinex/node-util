@@ -240,6 +240,16 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
       return pathSearch result, path if path.length
       result
 
+# Filter object
+# -------------------------------------------------
+# This will create a new object with all keys that pass the test implemented
+# by the provided allow(value, key, object)
+filter = exports.filter = (obj, allow) ->
+  result = {}
+  for key of obj
+    if obj.hasOwnProperty(key) and allow obj[key], key, obj
+      result[key] = obj[key]
+  result
 
 # Add object helpers to the Object class
 # -------------------------------------------------
@@ -259,4 +269,7 @@ module.exports.addToPrototype = ->
   Object.prototype.pathSearch = -> (args...) ->
     args.unshift this
     pathSearch.apply null, args
+  Object.prototype.filter = -> (args...) ->
+    args.unshift this
+    filter.apply null, args
 

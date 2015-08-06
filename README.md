@@ -658,8 +658,46 @@ name/test[AB]/min - pattern match with one missing character
 name/test\d+/min - pattern match with multiple missing characters
 ```
 
-See the [Mozilla Developer Network](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+See the [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 for the possible syntax but without modifier.
+
+
+### filter
+
+Like the [filter](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+method of arrays you may filter object entries here.
+
+__Arguments:__
+
+* `object`
+  to be filtered
+* `allow`
+  (function) to be called like `allow(value, key, object)` and if it returns true
+  the entry will be copied to the resulting object
+
+__Returns:__
+
+* data object with all or some entries from the original
+
+__Example:__
+
+``` coffee
+object = require('alinex-util').object
+test =
+  one: 1
+  two: 2
+  three: 3
+  four: 4
+result = object.filter test, (value) -> value < 3
+```
+
+This results to:
+
+``` coffee
+result =
+  one: 1
+  two: 2
+```
 
 
 Array object
