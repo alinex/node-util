@@ -1,7 +1,9 @@
 # Utility functions for objects.
 # =================================================
 
-debug = require('debug')('util')
+debug = require('debug')('util:object')
+debugPathSearch = require('debug')('util:object:pathsearch')
+debugExtend = require('debug')('util:object:extend')
 util = require 'util'
 chalk = require 'chalk'
 
@@ -26,14 +28,14 @@ chalk = require 'chalk'
 # Use the `constructor.name` for equal object check because the constructor
 # object may differ to another copy of the same class if generated in the sandbox.
 extend = module.exports.extend = (obj, ext...) ->
-  debug "-> extend #{chalk.grey util.inspect obj}"
+  debugExtend "-> extend #{chalk.grey util.inspect obj}"
   # clone if no extenders given
   return extend null, obj if not ext?
   obj = null unless obj
   # use all extenders
   for src in ext
     continue unless src?
-    debug "by #{chalk.grey util.inspect src}"
+    debugExtend "by #{chalk.grey util.inspect src}"
     # empty object
     obj = {} unless obj
     continue if src.constructor?.name is Object.name and not Object.keys(src).length
@@ -44,13 +46,13 @@ extend = module.exports.extend = (obj, ext...) ->
       # array
       obj = [] unless Array.isArray obj
       for val, i in src
-        debug "array[#{i}]"
+        debugExtend "array[#{i}]"
         obj.push extend null, val
     else if src instanceof Date
-      debug "Date"
+      debugExtend "Date"
       obj = new Date src.getTime()
     else if src instanceof RegExp
-      debug "RegExp"
+      debugExtend "RegExp"
       flags = ''
       flags += 'g' if src.global
       flags += 'i' if src.ignoreCase
@@ -58,19 +60,19 @@ extend = module.exports.extend = (obj, ext...) ->
       flags += 'y' if src.sticky
       obj = new RegExp src.source, flags
     else if src.constructor.name isnt Object.name
-      debug "unknown instance (referenced)"
+      debugExtend "unknown instance (referenced)"
 #     exact copy/clone not working on instances
 #      obj = extendInstance obj, src
       obj = src
     else
       # object structure
       for own key, val of src
-        debug "object.#{key} #{chalk.grey util.inspect val}"
+        debugExtend "object.#{key} #{chalk.grey util.inspect val}"
         # test to assure a key like 'toString' won't map to the standard function
         base = if key in Object.keys(obj) then obj[key] else undefined
         obj[key] = extend base, val
         delete obj[key] if val is null
-  debug "<- #{chalk.grey util.inspect obj}"
+  debugExtend "<- #{chalk.grey util.inspect obj}"
   obj
 
 # Extend object (with concat)
@@ -194,7 +196,7 @@ exports.path = (obj, path, separator = '/') ->
 # -------------------------------------------------
 pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
   path = path.split separator if typeof path is 'string'
-  debug "get path #{util.inspect path} from #{util.inspect obj}"
+  debugPathSearch "get path #{util.inspect path} from #{util.inspect obj}"
   return obj unless path.length
   cur = path.shift()
   # step over empty paths like //
