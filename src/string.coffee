@@ -163,6 +163,31 @@ exports.lcFirst = (string) ->
 exports.contains = (string, phrase) ->
   string.indexOf(phrase) isnt -1
 
+# ### WordWrap
+#
+# - width -
+#   maximum amount of characters per line
+# - break
+#   string that will be added whenever it's needed to break the line
+# - cutType
+#   0 = words longer than "maxLength" will not be broken
+#   1 = words will be broken when needed
+#   2 = any word that trespass the limit will be broken
+exports.wordwrap = (str, width = 80, brk = '\n', cut = 1) ->
+  return str unless str and width
+  l = (r = str.split("\n")).length
+  i = -1
+  while ++i < l
+    s = r[i]
+    r[i] = ""
+    while s.length > width
+      j = (if cut is 2 or (j = s.slice(0, width + 1).match(/\S*(\s)?$/))[1] then \
+      width else j.input.length - j[0].length or cut is 1 and m or \
+      j.input.length + (j = s.slice(m).match(/^\S*/)).input.length)
+      r[i] += s.slice(0, j) + ((if (s = s.slice(j)).length then brk else ""))
+    r[i] += s
+  r.join "\n"
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
@@ -183,3 +208,5 @@ exports.addToPrototype = ->
     exports.lcFirst this
   String.prototype.contains = (phrase) ->
     exports.contains this, phrase
+  String.prototype.wordwrap = (width, brk, cut) ->
+    exports.contains this, width, brk, cut

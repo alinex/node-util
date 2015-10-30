@@ -371,6 +371,25 @@ result1 = true
 result2 = false
 ```
 
+### wordwrap
+
+Word wraps a given text as needed.
+
+__Arguments:__
+
+* `width`
+  maximum amount of characters per line
+* `break`
+  string that will be added whenever it's needed to break the line
+* `cutType`
+  0 = words longer than "maxLength" will not be broken
+  1 = words will be broken when needed
+  2 = any word that trespass the limit will be broken
+
+__Returns:__
+
+* (string) returns the new text
+
 
 Number type
 -------------------------------------------------
