@@ -71,6 +71,9 @@
       <div class="heading h3">
         <a href="#contains">contains</a>
       </div>
+      <div class="heading h3">
+        <a href="#wordwrap">wordwrap</a>
+      </div>
       <div class="heading h2">
         <a href="#number%20type">Number type</a>
       </div>
@@ -673,6 +676,36 @@ text to be searched for</li>
 </code></pre></div>
 
 
+
+
+<div class="pilwrap" id="wordwrap">
+  <h3>
+    <a href="#wordwrap" name="wordwrap" class="pilcrow">&#182;</a>
+    wordwrap
+  </h3>
+</div>
+
+
+<p>Word wraps a given text as needed.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>width</code>
+maximum amount of characters per line</li>
+<li><code>break</code>
+string that will be added whenever it's needed to break the line</li>
+<li><code>cutType</code>
+0 = words longer than "maxLength" will not be broken
+1 = words will be broken when needed
+2 = any word that trespass the limit will be broken</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>(string) returns the new text</li>
+</ul>
 
 
 <div class="pilwrap" id="number%20type">

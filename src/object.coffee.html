@@ -75,7 +75,9 @@
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre><span class="nv">debug = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;debug&#39;</span><span class="p">)(</span><span class="s">&#39;util&#39;</span><span class="p">)</span>
+        <td class="code highlight"><div class="highlight"><pre><span class="nv">debug = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;debug&#39;</span><span class="p">)(</span><span class="s">&#39;util:object&#39;</span><span class="p">)</span>
+<span class="nv">debugPathSearch = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;debug&#39;</span><span class="p">)(</span><span class="s">&#39;util:object:pathsearch&#39;</span><span class="p">)</span>
+<span class="nv">debugExtend = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;debug&#39;</span><span class="p">)(</span><span class="s">&#39;util:object:extend&#39;</span><span class="p">)</span>
 <span class="nv">util = </span><span class="nx">require</span> <span class="s">&#39;util&#39;</span>
 <span class="nv">chalk = </span><span class="nx">require</span> <span class="s">&#39;chalk&#39;</span>
 
@@ -118,7 +120,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">extend = module.exports.extend = </span><span class="nf">(obj, ext...) -&gt;</span>
-  <span class="nx">debug</span> <span class="s">&quot;-&gt; extend </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="nx">debugExtend</span> <span class="s">&quot;-&gt; extend </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -147,7 +149,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         <td class="code highlight"><div class="highlight"><pre>
   <span class="k">for</span> <span class="nx">src</span> <span class="k">in</span> <span class="nx">ext</span>
     <span class="k">continue</span> <span class="k">unless</span> <span class="nx">src</span><span class="o">?</span>
-    <span class="nx">debug</span> <span class="s">&quot;by </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">src</span><span class="si">}</span><span class="s">&quot;</span>
+    <span class="nx">debugExtend</span> <span class="s">&quot;by </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">src</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -191,13 +193,13 @@ object may differ to another copy of the same class if generated in the sandbox.
         <td class="code highlight"><div class="highlight"><pre>
       <span class="nv">obj = </span><span class="p">[]</span> <span class="k">unless</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span> <span class="nx">obj</span>
       <span class="k">for</span> <span class="nx">val</span><span class="p">,</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">src</span>
-        <span class="nx">debug</span> <span class="s">&quot;array[</span><span class="si">#{</span><span class="nx">i</span><span class="si">}</span><span class="s">]&quot;</span>
+        <span class="nx">debugExtend</span> <span class="s">&quot;array[</span><span class="si">#{</span><span class="nx">i</span><span class="si">}</span><span class="s">]&quot;</span>
         <span class="nx">obj</span><span class="p">.</span><span class="nx">push</span> <span class="nx">extend</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">val</span>
     <span class="k">else</span> <span class="k">if</span> <span class="nx">src</span> <span class="k">instanceof</span> <span class="nb">Date</span>
-      <span class="nx">debug</span> <span class="s">&quot;Date&quot;</span>
+      <span class="nx">debugExtend</span> <span class="s">&quot;Date&quot;</span>
       <span class="nv">obj = </span><span class="k">new</span> <span class="nb">Date</span> <span class="nx">src</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span>
     <span class="k">else</span> <span class="k">if</span> <span class="nx">src</span> <span class="k">instanceof</span> <span class="nb">RegExp</span>
-      <span class="nx">debug</span> <span class="s">&quot;RegExp&quot;</span>
+      <span class="nx">debugExtend</span> <span class="s">&quot;RegExp&quot;</span>
       <span class="nv">flags = </span><span class="s">&#39;&#39;</span>
       <span class="nx">flags</span> <span class="o">+=</span> <span class="s">&#39;g&#39;</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">global</span>
       <span class="nx">flags</span> <span class="o">+=</span> <span class="s">&#39;i&#39;</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">ignoreCase</span>
@@ -205,7 +207,7 @@ object may differ to another copy of the same class if generated in the sandbox.
       <span class="nx">flags</span> <span class="o">+=</span> <span class="s">&#39;y&#39;</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">sticky</span>
       <span class="nv">obj = </span><span class="k">new</span> <span class="nb">RegExp</span> <span class="nx">src</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span> <span class="nx">flags</span>
     <span class="k">else</span> <span class="k">if</span> <span class="nx">src</span><span class="p">.</span><span class="nx">constructor</span><span class="p">.</span><span class="nx">name</span> <span class="o">isnt</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">name</span>
-      <span class="nx">debug</span> <span class="s">&quot;unknown instance (referenced)&quot;</span>
+      <span class="nx">debugExtend</span> <span class="s">&quot;unknown instance (referenced)&quot;</span>
 
 </pre></div>
         </td>
@@ -238,7 +240,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight"><div class="highlight"><pre>
       <span class="k">for</span> <span class="k">own</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">val</span> <span class="k">of</span> <span class="nx">src</span>
-        <span class="nx">debug</span> <span class="s">&quot;object.</span><span class="si">#{</span><span class="nx">key</span><span class="si">}</span><span class="s"> </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">val</span><span class="si">}</span><span class="s">&quot;</span>
+        <span class="nx">debugExtend</span> <span class="s">&quot;object.</span><span class="si">#{</span><span class="nx">key</span><span class="si">}</span><span class="s"> </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">val</span><span class="si">}</span><span class="s">&quot;</span>
 
 </pre></div>
         </td>
@@ -254,7 +256,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         <span class="nv">base = </span><span class="k">if</span> <span class="nx">key</span> <span class="k">in</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="k">then</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="k">else</span> <span class="kc">undefined</span>
         <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">extend</span> <span class="nx">base</span><span class="p">,</span> <span class="nx">val</span>
         <span class="k">delete</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="k">if</span> <span class="nx">val</span> <span class="o">is</span> <span class="kc">null</span>
-  <span class="nx">debug</span> <span class="s">&quot;&lt;- </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="nx">debugExtend</span> <span class="s">&quot;&lt;- </span><span class="si">#{</span><span class="nx">chalk</span><span class="p">.</span><span class="nx">grey</span> <span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
   <span class="nx">obj</span>
 
 
@@ -561,7 +563,7 @@ true if object is empty</li>
         <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">pathSearch = exports.pathSearch = </span><span class="nf">(obj, path, separator = &#39;/&#39;) -&gt;</span>
   <span class="nv">path = </span><span class="nx">path</span><span class="p">.</span><span class="nx">split</span> <span class="nx">separator</span> <span class="k">if</span> <span class="k">typeof</span> <span class="nx">path</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
-  <span class="nx">debug</span> <span class="s">&quot;get path </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">path</span><span class="si">}</span><span class="s"> from </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="nx">debugPathSearch</span> <span class="s">&quot;get path </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">path</span><span class="si">}</span><span class="s"> from </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
   <span class="k">return</span> <span class="nx">obj</span> <span class="k">unless</span> <span class="nx">path</span><span class="p">.</span><span class="nx">length</span>
   <span class="nv">cur = </span><span class="nx">path</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span>
 
