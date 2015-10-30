@@ -4,6 +4,13 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.7 (2015-10-30)
+-------------------------------------------------
+- Fix version info.
+- Added information for version 0.3.7
+- Added wordwrap function.
+- Make debug more specific.
+
 Version 0.3.6 (2015-08-06)
 -------------------------------------------------
 - Added support for object.filter() like array.filter().
