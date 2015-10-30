@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.8 (2015-10-30)
+-------------------------------------------------
+- Added information for version 0.3.7
+- Fix version info.
+
 Version 0.3.7 (2015-10-30)
 -------------------------------------------------
 - Fix version info.
