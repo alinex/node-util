@@ -143,13 +143,25 @@ describe "String", ->
   describe "lcFirst", ->
 
     it "should make first letter lower case", ->
-      string.addToPrototype()
       expect string.lcFirst 'hello'
       , "use hello"
       .to.be.equal 'hello'
       expect string.lcFirst 'Hello'
       , "use Hello"
       .to.be.equal 'hello'
+
+  describe "wordwrap", ->
+
+    it "should wrap with defaults", ->
+      expect string.wordwrap "A high CPU usage means that the server may not start
+      another task immediately.
+      If the load is also very high the system is overloaded, check if any application
+      goes evil."
+      .to.be.equal """
+      A high CPU usage means that the server may not start another task immediately.
+      If the load is also very high the system is overloaded, check if any application
+      goes evil.
+      """
 
   describe "prototype", ->
 

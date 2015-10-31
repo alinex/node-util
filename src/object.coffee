@@ -274,4 +274,3 @@ module.exports.addToPrototype = ->
   Object.prototype.filter = -> (args...) ->
     args.unshift this
     filter.apply null, args
-

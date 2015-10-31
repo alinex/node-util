@@ -186,7 +186,10 @@ exports.wordwrap = (str, width = 80, brk = '\n', cut = 1) ->
       j.input.length + (j = s.slice(m).match(/^\S*/)).input.length)
       r[i] += s.slice(0, j) + ((if (s = s.slice(j)).length then brk else ""))
     r[i] += s
-  r.join "\n"
+  # remove whitespace before and after breaks
+  re = new RegExp "\\s*#{brk}\\s*", 'g'
+  r.map (e) -> e.replace re, brk
+  .join "\n"
 
 # Add object helpers to the Object class
 # -------------------------------------------------
