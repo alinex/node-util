@@ -65,6 +65,9 @@
       <div class="heading h3">
         <a href="#wordwrap">WordWrap</a>
       </div>
+      <div class="heading h3">
+        <a href="#shorten">Shorten</a>
+      </div>
       <div class="heading h2">
         <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
       </div>
@@ -442,7 +445,58 @@ string that will be added whenever it's needed to break the line</li>
       <span class="nx">j</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="p">(</span><span class="nv">j = </span><span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">m</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^\S*/</span><span class="p">)).</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
       <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="k">if</span> <span class="p">(</span><span class="nv">s = </span><span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">j</span><span class="p">)).</span><span class="nx">length</span> <span class="k">then</span> <span class="nx">brk</span> <span class="k">else</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
     <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">s</span>
-  <span class="nx">r</span><span class="p">.</span><span class="nx">join</span> <span class="s">&quot;\n&quot;</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12">&#182;</a>
+</div>
+<p>remove whitespace before and after breaks</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nv">re = </span><span class="k">new</span> <span class="nb">RegExp</span> <span class="s">&quot;\\s*</span><span class="si">#{</span><span class="nx">brk</span><span class="si">}</span><span class="s">\\s*&quot;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span>
+  <span class="nx">r</span><span class="p">.</span><span class="nx">map</span> <span class="nf">(e) -&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">replace</span> <span class="nx">re</span><span class="p">,</span> <span class="nx">brk</span>
+  <span class="p">.</span><span class="nx">join</span> <span class="s">&quot;\n&quot;</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="shorten">
+  <h3>
+    <a href="#shorten" name="shorten" class="pilcrow">&#182;</a>
+    Shorten
+  </h3>
+</div>
+
+
+<ul>
+<li>limit
+maximum number of characters</li>
+</ul>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.shorten = </span><span class="nf">(str, limit) -&gt;</span>
+  <span class="k">return</span> <span class="nx">str</span> <span class="k">if</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">limit</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14">&#182;</a>
+</div>
+<p>need to shorten</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nv">str = </span><span class="nx">str</span><span class="p">[</span><span class="mi">0</span><span class="p">..</span><span class="nx">limit</span><span class="o">-</span><span class="mi">3</span><span class="p">].</span><span class="nx">replace</span> <span class="sr">/\s.*?$/</span><span class="p">,</span> <span class="s">&#39;&#39;</span>
+  <span class="k">return</span> <span class="nx">str</span> <span class="o">+</span> <span class="s">&#39;...&#39;</span>
 
 
 </pre></div>
@@ -479,7 +533,9 @@ string that will be added whenever it's needed to break the line</li>
   <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.contains = </span><span class="nf">(phrase) -&gt;</span>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">contains</span> <span class="k">this</span><span class="p">,</span> <span class="nx">phrase</span>
   <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.wordwrap = </span><span class="nf">(width, brk, cut) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">contains</span> <span class="k">this</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">brk</span><span class="p">,</span> <span class="nx">cut</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">wordwrap</span> <span class="k">this</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">brk</span><span class="p">,</span> <span class="nx">cut</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.shorten = </span><span class="nf">(limit) -&gt;</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">shorten</span> <span class="k">this</span><span class="p">,</span> <span class="nx">limit</span>
 </pre></div>
         </td>
       </tr>
