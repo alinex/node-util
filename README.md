@@ -391,6 +391,21 @@ __Returns:__
 * (string) returns the new text
 
 
+### shorten
+
+This will shorten the given text and add ellipsis if it is too long. This is done
+word aware.
+
+__Arguments:__
+
+* `limit`
+  maximum number of characters
+
+__Returns:__
+
+* (string) the new text
+
+
 Number type
 -------------------------------------------------
 

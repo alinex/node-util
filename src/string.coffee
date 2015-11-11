@@ -191,6 +191,16 @@ exports.wordwrap = (str, width = 80, brk = '\n', cut = 1) ->
   r.map (e) -> e.replace re, brk
   .join "\n"
 
+# ### Shorten
+#
+# - limit
+#   maximum number of characters
+exports.shorten = (str, limit) ->
+  return str if str.length < limit
+  # need to shorten
+  str = str[0..limit-3].replace /\s.*?$/, ''
+  return str + '...'
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
@@ -212,4 +222,6 @@ exports.addToPrototype = ->
   String.prototype.contains = (phrase) ->
     exports.contains this, phrase
   String.prototype.wordwrap = (width, brk, cut) ->
-    exports.contains this, width, brk, cut
+    exports.wordwrap this, width, brk, cut
+  String.prototype.shorten = (limit) ->
+    exports.shorten this, limit
