@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.9 (2015-11-11)
+-------------------------------------------------
+- Added possibility to shorten text word aware.
+- Fixed wordwrap to not keep whitespace at line start or end.
+
 Version 0.3.8 (2015-10-30)
 -------------------------------------------------
 - Added information for version 0.3.7
