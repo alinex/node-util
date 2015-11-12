@@ -198,7 +198,7 @@ exports.wordwrap = (str, width = 80, brk = '\n', cut = 1) ->
 exports.shorten = (str, limit) ->
   return str if str.length < limit
   # need to shorten
-  str = str[0..limit-3].replace /\s.*?$/, ''
+  str = str[0..limit-3].replace /\s\S*?$/, ''
   return str + '...'
 
 # Add object helpers to the Object class

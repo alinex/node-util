@@ -163,6 +163,19 @@ describe "String", ->
       goes evil.
       """
 
+  describe.only "shorten", ->
+
+    it "should cut long text", ->
+      expect string.shorten "A high CPU usage means that the server may not start
+      another task immediately.
+      If the load is also very high the system is overloaded, check if any application
+      goes evil.", 60
+      .to.be.equal "A high CPU usage means that the server may not start..."
+
+    it "should keep short text the same", ->
+      expect string.shorten 'Hello World!', 60
+      .to.be.equal 'Hello World!'
+
   describe "prototype", ->
 
     it "should match string start", ->
