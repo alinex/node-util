@@ -163,7 +163,7 @@ describe "String", ->
       goes evil.
       """
 
-  describe.only "shorten", ->
+  describe "shorten", ->
 
     it "should cut long text", ->
       expect string.shorten "A high CPU usage means that the server may not start
