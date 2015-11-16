@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.10 (2015-11-16)
+-------------------------------------------------
+- Allow all tests to run.
+- Fix shorten to not cut on first space and add test case.
+
 Version 0.3.9 (2015-11-11)
 -------------------------------------------------
 - Added possibility to shorten text word aware.
