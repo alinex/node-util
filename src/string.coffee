@@ -80,7 +80,7 @@ exports.repeat = (string, n) ->
 # * the padded text
 exports.lpad = (string, length, char = ' ') ->
   string = string.toString() unless typeof string is 'string'
-  return string unless length > string.length
+  return string unless length >= string.length
   exports.repeat(char, length - string.length) + string
 
 # Right pad string to specified length
@@ -100,8 +100,30 @@ exports.lpad = (string, length, char = ' ') ->
 # * the padded text
 exports.rpad = (string, length, char = ' ') ->
   string = string.toString() unless typeof string is 'string'
-  return string unless length > string.length
+  return string unless length >= string.length
   string + exports.repeat(char, length - string.length)
+
+# Center pad string to specified length
+# -------------------------------------------------
+#
+# __Arguments:__
+#
+# * `string`
+#   text to be padded
+# * `n`
+#   final length of text
+# * `char`
+#   character used for padding (defaults to ' ')
+#
+# __Returns:__
+#
+# * the padded text
+exports.cpad = (string, length, char = ' ') ->
+  string = string.toString() unless typeof string is 'string'
+  return string unless length >= string.length
+  lpad = exports.repeat char, Math.floor (length - string.length) / 2
+  rpad = exports.repeat char, Math.ceil (length - string.length) / 2
+  lpad + string + rpad
 
 # Trim given characters
 # -------------------------------------------------
@@ -215,6 +237,8 @@ exports.addToPrototype = ->
     exports.rpad this, n, char
   String.prototype.lpad = (n, char) ->
     exports.lpad this, n, char
+  String.prototype.cpad = (n, char) ->
+    exports.cpad this, n, char
   String.prototype.ucFirst = ->
     exports.ucFirst this
   String.prototype.lcFirst = ->

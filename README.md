@@ -246,7 +246,38 @@ __Example:__
 ``` coffee
 string = require('alinex-util').string
 test = 'abc'
-result = string.starts test, 5, ' '
+result = string.rpad test, 5, ' '
+```
+
+This results to:
+
+``` coffee
+result = 'abc  '
+```
+
+### cpad
+
+Center pad string to specified length. This will add the padding on both sides.
+
+__Arguments:__
+
+* `string`
+   text to be padded
+* `n`
+   final length of text
+* `char`
+   character used for padding (defaults to ' ')
+
+__Returns:__
+
+* the padded text
+
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = 'abc'
+result = string.cpad test, 5, ' '
 ```
 
 This results to:
