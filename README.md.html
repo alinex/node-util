@@ -60,6 +60,9 @@
         <a href="#rpad">rpad</a>
       </div>
       <div class="heading h3">
+        <a href="#cpad">cpad</a>
+      </div>
+      <div class="heading h3">
         <a href="#trim">trim</a>
       </div>
       <div class="heading h3">
@@ -496,7 +499,53 @@ character used for padding (defaults to ' ')</li>
 
 <div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
 <span class="nv">test = </span><span class="s">&#39;abc&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">starts</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39; &#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">rpad</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39; &#39;</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;abc  &#39;</span>
+</code></pre></div>
+
+
+
+
+<div class="pilwrap" id="cpad">
+  <h3>
+    <a href="#cpad" name="cpad" class="pilcrow">&#182;</a>
+    cpad
+  </h3>
+</div>
+
+
+<p>Center pad string to specified length. This will add the padding on both sides.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>string</code>
+text to be padded</li>
+<li><code>n</code>
+final length of text</li>
+<li><code>char</code>
+character used for padding (defaults to ' ')</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>the padded text</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
+<span class="nv">test = </span><span class="s">&#39;abc&#39;</span>
+<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">cpad</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39; &#39;</span>
 </code></pre></div>
 
 
