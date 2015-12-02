@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.11 (2015-12-02)
+-------------------------------------------------
+- Add test case for string.cpad().
+- Add string.cpad() for center text using padding.
+
 Version 0.3.10 (2015-11-16)
 -------------------------------------------------
 - Allow all tests to run.
