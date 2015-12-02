@@ -108,6 +108,29 @@ describe "String", ->
       , "right pad not necessary"
       .to.be.equal 'ab'
 
+  describe "cpad", ->
+
+    it "should center pad string", ->
+      test = 'ab'
+      expect string.cpad(test, 5)
+      , "normal ĉenter pad"
+      .to.be.equal ' ab  '
+
+    it "should center pad string with character", ->
+      test = 'ab'
+      expect string.cpad(test, 5, 'x')
+      , "normal center pad with x"
+      .to.be.equal 'xabxx'
+
+    it "should not pad if not neccessary", ->
+      test = 'ab'
+      expect string.cpad(test, 2)
+      , "center pad not necessary"
+      .to.be.equal 'ab'
+      expect string.cpad(test, 1)
+      , "center pad not necessary"
+      .to.be.equal 'ab'
+
   describe "trim", ->
 
     it "should trim string (default)", ->
