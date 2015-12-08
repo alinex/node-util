@@ -185,6 +185,9 @@ describe "String", ->
       If the load is also very high the system is overloaded, check if any application
       goes evil.
       """
+    it "should not wrap in long words", ->
+      expect string.wordwrap "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)", null, 0
+      .to.be.equal "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)"
 
   describe "shorten", ->
 

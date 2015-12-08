@@ -191,27 +191,16 @@ exports.contains = (string, phrase) ->
 #   maximum amount of characters per line
 # - break
 #   string that will be added whenever it's needed to break the line
-# - cutType
-#   0 = words longer than "maxLength" will not be broken
-#   1 = words will be broken when needed
-#   2 = any word that trespass the limit will be broken
-exports.wordwrap = (str, width = 80, brk = '\n', cut = 1) ->
-  return str unless str and width
-  l = (r = str.split("\n")).length
-  i = -1
-  while ++i < l
-    s = r[i]
-    r[i] = ""
-    while s.length > width
-      j = (if cut is 2 or (j = s.slice(0, width + 1).match(/\S*(\s)?$/))[1] then \
-      width else j.input.length - j[0].length or cut is 1 and width or \
-      j.input.length + (j = s.slice(width).match(/^\S*/)).input.length)
-      r[i] += s.slice(0, j) + ((if (s = s.slice(j)).length then brk else ""))
-    r[i] += s
-  # remove whitespace before and after breaks
-  re = new RegExp "\\s*#{brk}\\s*", 'g'
-  r.map (e) -> e.replace re, brk
-  .join "\n"
+exports.wordwrap = wordwrap = (str, width = 80, brk = '\n') ->
+  if str.length > width
+    p = width
+    while p > 0 and str[p] isnt ' '
+      p--
+    if p > 0
+      left = str.substring(0, p)
+      right = str.substring(p + 1)
+      return left + brk + wordwrap(right, width, brk)
+  str
 
 # ### Shorten
 #
