@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.13 (2015-12-08)
+-------------------------------------------------
+- Use complete changed algorithm for wordwrapping because the old was cutting words with over length.
+
 Version 0.3.12 (2015-12-08)
 -------------------------------------------------
 - Fix use of uninitialized variable in wordwrap.
