@@ -204,8 +204,8 @@ exports.wordwrap = (str, width = 80, brk = '\n', cut = 1) ->
     r[i] = ""
     while s.length > width
       j = (if cut is 2 or (j = s.slice(0, width + 1).match(/\S*(\s)?$/))[1] then \
-      width else j.input.length - j[0].length or cut is 1 and m or \
-      j.input.length + (j = s.slice(m).match(/^\S*/)).input.length)
+      width else j.input.length - j[0].length or cut is 1 and width or \
+      j.input.length + (j = s.slice(width).match(/^\S*/)).input.length)
       r[i] += s.slice(0, j) + ((if (s = s.slice(j)).length then brk else ""))
     r[i] += s
   # remove whitespace before and after breaks
