@@ -467,41 +467,19 @@ text to be searched for</li>
 maximum amount of characters per line</li>
 <li>break
 string that will be added whenever it's needed to break the line</li>
-<li>cutType
-0 = words longer than "maxLength" will not be broken
-1 = words will be broken when needed
-2 = any word that trespass the limit will be broken</li>
 </ul>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.wordwrap = </span><span class="nf">(str, width = 80, brk = &#39;\n&#39;, cut = 1) -&gt;</span>
-  <span class="k">return</span> <span class="nx">str</span> <span class="k">unless</span> <span class="nx">str</span> <span class="o">and</span> <span class="nx">width</span>
-  <span class="nv">l = </span><span class="p">(</span><span class="nv">r = </span><span class="nx">str</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">)).</span><span class="nx">length</span>
-  <span class="nv">i = </span><span class="o">-</span><span class="mi">1</span>
-  <span class="k">while</span> <span class="o">++</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">l</span>
-    <span class="nv">s = </span><span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-    <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
-    <span class="k">while</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">width</span>
-      <span class="nv">j = </span><span class="p">(</span><span class="k">if</span> <span class="nx">cut</span> <span class="o">is</span> <span class="mi">2</span> <span class="o">or</span> <span class="p">(</span><span class="nv">j = </span><span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\S*(\s)?$/</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span> <span class="k">then</span> <span class="o">\</span>
-      <span class="nx">width</span> <span class="k">else</span> <span class="nx">j</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">j</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span> <span class="o">or</span> <span class="nx">cut</span> <span class="o">is</span> <span class="mi">1</span> <span class="o">and</span> <span class="nx">width</span> <span class="o">or</span> <span class="o">\</span>
-      <span class="nx">j</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="p">(</span><span class="nv">j = </span><span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">width</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^\S*/</span><span class="p">)).</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
-      <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="o">+</span> <span class="p">((</span><span class="k">if</span> <span class="p">(</span><span class="nv">s = </span><span class="nx">s</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">j</span><span class="p">)).</span><span class="nx">length</span> <span class="k">then</span> <span class="nx">brk</span> <span class="k">else</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
-    <span class="nx">r</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nx">s</span>
-
-</pre></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-13" id="section-13">&#182;</a>
-</div>
-<p>remove whitespace before and after breaks</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nv">re = </span><span class="k">new</span> <span class="nb">RegExp</span> <span class="s">&quot;\\s*</span><span class="si">#{</span><span class="nx">brk</span><span class="si">}</span><span class="s">\\s*&quot;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span>
-  <span class="nx">r</span><span class="p">.</span><span class="nx">map</span> <span class="nf">(e) -&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">replace</span> <span class="nx">re</span><span class="p">,</span> <span class="nx">brk</span>
-  <span class="p">.</span><span class="nx">join</span> <span class="s">&quot;\n&quot;</span>
+<span class="nv">exports.wordwrap = wordwrap = </span><span class="nf">(str, width = 80, brk = &#39;\n&#39;) -&gt;</span>
+  <span class="k">if</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">width</span>
+    <span class="nv">p = </span><span class="nx">width</span>
+    <span class="k">while</span> <span class="nx">p</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">and</span> <span class="nx">str</span><span class="p">[</span><span class="nx">p</span><span class="p">]</span> <span class="o">isnt</span> <span class="s">&#39; &#39;</span>
+      <span class="nx">p</span><span class="o">--</span>
+    <span class="k">if</span> <span class="nx">p</span> <span class="o">&gt;</span> <span class="mi">0</span>
+      <span class="nv">left = </span><span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+      <span class="nv">right = </span><span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nx">left</span> <span class="o">+</span> <span class="nx">brk</span> <span class="o">+</span> <span class="nx">wordwrap</span><span class="p">(</span><span class="nx">right</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">brk</span><span class="p">)</span>
+  <span class="nx">str</span>
 
 
 </pre></div>
@@ -532,7 +510,7 @@ maximum number of characters</li>
       <tr>
         <td class="docs">
 <div class="pilwrap">
-  <a class="pilcrow" href="#section-15" id="section-15">&#182;</a>
+  <a class="pilcrow" href="#section-14" id="section-14">&#182;</a>
 </div>
 <p>need to shorten</p>
         </td>
