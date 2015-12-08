@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.12 (2015-12-08)
+-------------------------------------------------
+- Fix use of uninitialized variable in wordwrap.
+
 Version 0.3.11 (2015-12-02)
 -------------------------------------------------
 - Add test case for string.cpad().
