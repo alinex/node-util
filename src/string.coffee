@@ -192,14 +192,23 @@ exports.contains = (string, phrase) ->
 # - break
 #   string that will be added whenever it's needed to break the line
 exports.wordwrap = wordwrap = (str, width = 80, brk = '\n') ->
-  if str.length > width
-    p = width
-    while p > 0 and str[p] isnt ' '
-      p--
-    if p > 0
-      left = str.substring(0, p)
-      right = str.substring(p + 1)
-      return left + brk + wordwrap(right, width, brk)
+  # check if string to short
+  return str if str.length <= width
+  # check if already has a break
+  p = str.indexOf brk
+  if -1 < p <= width
+    return str.substring(0, p+1) + wordwrap str.substring(p + 1), width, brk
+  # find possible break in range
+  p = width
+  p-- while p > 0 and str[p] isnt ' '
+  if p > 0
+    return str.substring(0, p) + brk + wordwrap str.substring(p + 1), width, brk
+  # too long, break on next possition
+  p = width
+  p++ while p < str.length and str[p] isnt ' '
+  if p < str.length
+    return str.substring(0, p) + brk + wordwrap str.substring(p + 1), width, brk
+  # not possible to break
   str
 
 # ### Shorten
