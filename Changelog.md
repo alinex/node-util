@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.14 (2015-12-18)
+-------------------------------------------------
+- Fixed bug which breaks in a continuing line to early.
+
 Version 0.3.13 (2015-12-08)
 -------------------------------------------------
 - Use complete changed algorithm for wordwrapping because the old was cutting words with over length.
