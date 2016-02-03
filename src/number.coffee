@@ -14,7 +14,7 @@
 # __Returns:__
 #
 # * `true` if `value` is an integer
-exports.isInteger = isInteger = (value) ->
+exports.isInteger = (value) ->
   value is (value | 0)
 
 # Stricter parse function
@@ -46,7 +46,7 @@ exports.parseInt = parseInteger = (value) ->
 # __Returns:__
 #
 # * `value` as Number or `NaN`
-exports.parseSeconds = parseSeconds = (value) ->
+exports.parseSeconds = (value) ->
   int = parseInteger value
   return int unless isNaN int
   return NaN unless typeof value is 'string'
@@ -75,7 +75,7 @@ exports.parseSeconds = parseSeconds = (value) ->
 # __Returns:__
 #
 # * `value` as Number or `NaN`
-exports.parseMSeconds = parseMSeconds = (value) ->
+exports.parseMSeconds = (value) ->
   int = parseInteger value
   return int unless isNaN int
   return NaN unless typeof value is 'string'

@@ -181,7 +181,7 @@ isEmpty = module.exports.isEmpty = (obj) ->
 
 # Access path in object
 # -------------------------------------------------
-exports.path = (obj, path, separator = '/') ->
+exports.path = path = (obj, path, separator = '/') ->
   path = path.split separator if typeof path is 'string'
   debug "get path #{util.inspect path} from #{util.inspect obj}"
   ref = obj
