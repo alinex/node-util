@@ -1,5 +1,6 @@
 chai = require 'chai'
 expect = chai.expect
+### eslint-env node, mocha ###
 
 describe "Utils", ->
 
@@ -15,15 +16,14 @@ describe "Utils", ->
 
     it "should work on arrays", ->
       utils.addToPrototype()
-      test = [ 1,2,3,4,5 ]
+      test = [1, 2, 3, 4, 5]
       expect test.last()
       , "get last"
       .to.be.equal 5
 
     it "should work on object", ->
       utils.addToPrototype()
-      test = { eins: 1 }
+      test = {eins: 1}
       result = test.clone()
       expect(result, "deep check").to.deep.equal test
       expect(result, "reference").to.not.equal test
-

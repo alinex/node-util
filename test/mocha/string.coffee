@@ -1,5 +1,6 @@
 chai = require 'chai'
 expect = chai.expect
+### eslint-env node, mocha ###
 
 describe "String", ->
 
@@ -197,7 +198,7 @@ describe "String", ->
       Keep in mind that the machine is in the test net and you have to use a valid
       VPN connection for accessing.
       """
-   it "should not wrap in long words", ->
+    it "should not wrap in long words", ->
       expect string.wordwrap "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)", null, 0
       .to.be.equal "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)"
 
