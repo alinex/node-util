@@ -4,6 +4,20 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 0.3.15 (2016-02-04)
+-------------------------------------------------
+- updated ignore files.
+- Updated development tools.
+- Added missing validator.
+- Updated development tools.
+- Updated development tools.
+- Updated development tools.
+- Updated development tools.
+- Updated development tools.
+- Fixed style of test cases.
+- Fixed lint warnings in code.
+- Updated meta data of package and travis build versions.
+
 Version 0.3.14 (2015-12-18)
 -------------------------------------------------
 - Fixed bug which breaks in a continuing line to early.
