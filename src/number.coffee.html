@@ -6,13 +6,9 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/numbercoffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "home/alex/github/node-util/src/number.coffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-  <script src="../fileSearch.js"></script>
-  <script src="../goToLine.js"></script>
-  <link rel="stylesheet" href="../fileSearch.css" />
-  <link rel="stylesheet" href="../goToLine.css" />
 </head>
 <body>
   <nav>
@@ -92,7 +88,7 @@ to be analyzed</li>
 </ul>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.isInteger = isInteger = </span><span class="nf">(value) -&gt;</span>
+<span class="nv">exports.isInteger = </span><span class="nf">(value) -&gt;</span>
   <span class="nx">value</span> <span class="o">is</span> <span class="p">(</span><span class="nx">value</span> <span class="o">|</span> <span class="mi">0</span><span class="p">)</span>
 
 
@@ -160,7 +156,7 @@ to be analyzed</li>
 </ul>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.parseSeconds = parseSeconds = </span><span class="nf">(value) -&gt;</span>
+<span class="nv">exports.parseSeconds = </span><span class="nf">(value) -&gt;</span>
   <span class="nv">int = </span><span class="nx">parseInteger</span> <span class="nx">value</span>
   <span class="k">return</span> <span class="nx">int</span> <span class="k">unless</span> <span class="nb">isNaN</span> <span class="nx">int</span>
   <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
@@ -207,7 +203,7 @@ to be analyzed</li>
 </ul>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.parseMSeconds = parseMSeconds = </span><span class="nf">(value) -&gt;</span>
+<span class="nv">exports.parseMSeconds = </span><span class="nf">(value) -&gt;</span>
   <span class="nv">int = </span><span class="nx">parseInteger</span> <span class="nx">value</span>
   <span class="k">return</span> <span class="nx">int</span> <span class="k">unless</span> <span class="nb">isNaN</span> <span class="nx">int</span>
   <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>

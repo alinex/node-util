@@ -6,13 +6,9 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/a3/node-util/src/objectcoffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "home/alex/github/node-util/src/object.coffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-  <script src="../fileSearch.js"></script>
-  <script src="../goToLine.js"></script>
-  <link rel="stylesheet" href="../fileSearch.css" />
-  <link rel="stylesheet" href="../goToLine.css" />
 </head>
 <body>
   <nav>
@@ -524,7 +520,7 @@ true if object is empty</li>
 
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.path = </span><span class="nf">(obj, path, separator = &#39;/&#39;) -&gt;</span>
+<span class="nv">exports.path = path = </span><span class="nf">(obj, path, separator = &#39;/&#39;) -&gt;</span>
   <span class="nv">path = </span><span class="nx">path</span><span class="p">.</span><span class="nx">split</span> <span class="nx">separator</span> <span class="k">if</span> <span class="k">typeof</span> <span class="nx">path</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
   <span class="nx">debug</span> <span class="s">&quot;get path </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">path</span><span class="si">}</span><span class="s"> from </span><span class="si">#{</span><span class="nx">util</span><span class="p">.</span><span class="nx">inspect</span> <span class="nx">obj</span><span class="si">}</span><span class="s">&quot;</span>
   <span class="nv">ref = </span><span class="nx">obj</span>
