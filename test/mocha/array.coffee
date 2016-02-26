@@ -28,6 +28,74 @@ describe "Array", ->
       , "unique"
       .to.be.deep.equal [1, 2, 3, 4, 5]
 
+  describe "sortBy", ->
+
+    it "should sort objects by column", ->
+      test = [
+        {first: 'Johann Sebastion', last: 'Bach'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Richard', last: 'Wagner'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Franz', last: 'Schubert'}
+      ]
+      expect array.sortBy(test, 'last')
+      , "sortBy last"
+      .to.be.deep.equal [
+        {first: 'Johann Sebastion', last: 'Bach'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Franz', last: 'Schubert'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Richard', last: 'Wagner'}
+      ]
+      expect array.sortBy(test, '-last')
+      , "sortBy last reverse"
+      .to.be.deep.equal [
+        {first: 'Richard', last: 'Wagner'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Franz', last: 'Schubert'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Johann Sebastion', last: 'Bach'}
+      ]
+
+    it "should sort objects by multiple columns", ->
+      test = [
+        {first: 'Johann Sebastion', last: 'Bach'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Richard', last: 'Wagner'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Franz', last: 'Schubert'}
+      ]
+      expect array.sortBy(test, 'last', 'first')
+      , "sortBy last, first"
+      .to.be.deep.equal [
+        {first: 'Johann Sebastion', last: 'Bach'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Franz', last: 'Schubert'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Richard', last: 'Wagner'}
+      ]
+      expect array.sortBy(test, '-last', '-first')
+      , "sortBy last, first reverse"
+      .to.be.deep.equal [
+        {first: 'Richard', last: 'Wagner'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Franz', last: 'Schubert'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Johann Sebastion', last: 'Bach'}
+      ]
+
   describe "prototype", ->
 
     it "should get element", ->
@@ -42,3 +110,25 @@ describe "Array", ->
       expect test.unique()
       , "unique"
       .to.be.deep.equal [1, 2, 3, 4, 5]
+
+    it "should sort objects by column", ->
+      test = [
+        {first: 'Johann Sebastion', last: 'Bach'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Richard', last: 'Wagner'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Franz', last: 'Schubert'}
+      ]
+      expect test.sortBy('last')
+      , "sortBy last"
+      .to.be.deep.equal [
+        {first: 'Johann Sebastion', last: 'Bach'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Franz', last: 'Schubert'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Richard', last: 'Wagner'}
+      ]

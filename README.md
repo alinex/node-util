@@ -840,6 +840,54 @@ test = [ 1,2,2,3,4,1,5 ]
 result = test.unique
 ```
 
+### sortBy
+
+Sort array of objects.
+
+__Arguments:__
+
+* `array`
+  of objects to work on
+
+__Returns:__
+
+* new array in sorted order
+
+__Example:__
+
+``` coffee
+array = require('alinex-util').array
+test = [
+  {first: 'Johann Sebastion', last: 'Bach'}
+  {first: 'Wolfgang Amadeus', last: 'Mozart'}
+  {first: 'Joseph', last: 'Haydn'}
+  {first: 'Richard', last: 'Wagner'}
+  {first: 'Antonio', last: 'Vivaldi'}
+  {first: 'Michael', last: 'Haydn'}
+  {first: 'Franz', last: 'Schubert'}
+]
+# sort by last name ascending and first name descending
+result = array.sortBy test, 'last', '-first'
+```
+
+This results to:
+
+``` coffee
+result = [
+  {first: 'Johann Sebastion', last: 'Bach'}
+  {first: 'Michael', last: 'Haydn'}
+  {first: 'Joseph', last: 'Haydn'}
+  {first: 'Wolfgang Amadeus', last: 'Mozart'}
+  {first: 'Franz', last: 'Schubert'}
+  {first: 'Antonio', last: 'Vivaldi'}
+  {first: 'Richard', last: 'Wagner'}  
+]
+```
+
+Like displayed above you may give one or multiple field names to sort by the
+earlier has precedence. If field name starts with '-' sign it will sort in
+descending order.
+
 
 License
 -------------------------------------------------
