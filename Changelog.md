@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.0.0 (2016-02-26)
+-------------------------------------------------
+- Upgraded builder to newest version.
+- Added sortBy method for arrays.
+
 Version 0.3.15 (2016-02-04)
 -------------------------------------------------
 - updated ignore files.
