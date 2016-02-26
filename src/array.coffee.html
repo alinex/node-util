@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/github/node-util/src/array.coffee", defaultSidebar = true;
+    var relativeDir = "../", thisFile = "home/alex/github/node-util/src/arraycoffee", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
 </head>
@@ -35,7 +35,16 @@
         <a href="#get%20the%20last%20element%20of%20an%20array">Get the last element of an array</a>
       </div>
       <div class="heading h2">
+        <a href="#remove%20duplicates">remove duplicates</a>
+      </div>
+      <div class="heading h2">
+        <a href="#sort%20array%20of%20objects">Sort array of objects</a>
+      </div>
+      <div class="heading h2">
         <a href="#add%20array%20helpers%20to%20the%20object%20class">Add array helpers to the Object class</a>
+      </div>
+      <div class="heading h2">
+        <a href="#helper%20methods">Helper Methods</a>
       </div>
     </div>
   </div>
@@ -85,10 +94,50 @@ offset character position from the end to look for</li>
 <span class="nv">exports.last = </span><span class="nf">(array, back) -&gt;</span>
   <span class="nx">array</span><span class="p">[</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="p">(</span><span class="nx">back</span> <span class="o">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
 
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="remove%20duplicates">
+  <h2>
+    <a href="#remove%20duplicates" name="remove%20duplicates" class="pilcrow">&#182;</a>
+    remove duplicates
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
 <span class="nv">exports.unique = </span><span class="nf">(array) -&gt;</span>
   <span class="nv">output = </span><span class="p">{}</span>
   <span class="nx">output</span><span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">key</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="k">for</span> <span class="nx">key</span> <span class="k">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">...</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span>
   <span class="nx">value</span> <span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">output</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="sort%20array%20of%20objects">
+  <h2>
+    <a href="#sort%20array%20of%20objects" name="sort%20array%20of%20objects" class="pilcrow">&#182;</a>
+    Sort array of objects
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+<span class="nv">exports.sortBy = </span><span class="nf">(array) -&gt;</span>
+  <span class="nv">args = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">arguments</span>
+  <span class="k">switch</span> <span class="nx">args</span><span class="p">.</span><span class="nx">length</span>
+    <span class="k">when</span> <span class="mi">1</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;Missing sort column name.&quot;</span>
+    <span class="k">when</span> <span class="mi">2</span>
+      <span class="nx">array</span><span class="p">.</span><span class="nx">sort</span> <span class="nx">dynamicSort</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span>
+      <span class="nx">array</span><span class="p">.</span><span class="nx">sort</span> <span class="nx">dynamicMultiSort</span><span class="p">.</span><span class="nx">apply</span> <span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">..]</span>
 
 
 </pre></div>
@@ -112,6 +161,69 @@ offset character position from the end to look for</li>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">last</span> <span class="k">this</span><span class="p">,</span> <span class="nx">back</span>
   <span class="nb">Array</span><span class="p">.</span><span class="nv">prototype.unique = </span><span class="nf">-&gt;</span>
     <span class="nx">exports</span><span class="p">.</span><span class="nx">unique</span> <span class="k">this</span>
+  <span class="nb">Array</span><span class="p">.</span><span class="nv">prototype.sortBy = </span><span class="nf">-&gt;</span>
+    <span class="nv">args = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">arguments</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">.</span><span class="nx">apply</span> <span class="k">this</span><span class="p">,</span> <span class="nx">args</span>
+
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap" id="helper%20methods">
+  <h2>
+    <a href="#helper%20methods" name="helper%20methods" class="pilcrow">&#182;</a>
+    Helper Methods
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+
+<span class="nv">dynamicSort = </span><span class="nf">(field) -&gt;</span>
+  <span class="nv">sortOrder = </span><span class="mi">1</span>
+  <span class="k">if</span> <span class="nx">field</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">is</span> <span class="s">&#39;-&#39;</span>
+    <span class="nv">sortOrder = </span><span class="o">-</span><span class="mi">1</span>
+    <span class="nv">field = </span><span class="nx">field</span><span class="p">.</span><span class="nx">substr</span> <span class="mi">1</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7">&#182;</a>
+</div>
+<p>return sort function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nf">(a, b) -&gt;</span>
+    <span class="nv">result = </span><span class="k">if</span> <span class="nx">a</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="k">then</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">a</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="nx">result</span> <span class="o">*</span> <span class="nx">sortOrder</span>
+
+<span class="nv">dynamicMultiSort = </span><span class="nf">-&gt;</span>
+  <span class="nv">args = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
+  <span class="nv">fields = </span><span class="nx">args</span><span class="p">.</span><span class="nx">map</span> <span class="nf">(e) -&gt;</span> <span class="nx">dynamicSort</span> <span class="nx">e</span>
+
+</pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8">&#182;</a>
+</div>
+<p>return sort function</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre>
+  <span class="nf">(a, b) -&gt;</span>
+    <span class="nv">result = </span><span class="mi">0</span>
+    <span class="k">for</span> <span class="nx">sort</span> <span class="k">in</span> <span class="nx">fields</span>
+      <span class="nv">result = </span><span class="nx">sort</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span>
+      <span class="k">return</span> <span class="nx">result</span> <span class="k">if</span> <span class="nx">result</span>
+    <span class="nx">result</span>
 </pre></div>
         </td>
       </tr>

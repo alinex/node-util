@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/github/node-util/README.md", defaultSidebar = true;
+    var relativeDir = "", thisFile = "home/alex/github/node-util/READMEmd", defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
 </head>
@@ -123,6 +123,9 @@
       </div>
       <div class="heading h3">
         <a href="#unique">unique</a>
+      </div>
+      <div class="heading h3">
+        <a href="#sortby">sortBy</a>
       </div>
       <div class="heading h2">
         <a href="#license">License</a>
@@ -1373,6 +1376,69 @@ of elements to work on</li>
 </code></pre></div>
 
 
+
+
+<div class="pilwrap" id="sortby">
+  <h3>
+    <a href="#sortby" name="sortby" class="pilcrow">&#182;</a>
+    sortBy
+  </h3>
+</div>
+
+
+<p>Sort array of objects.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>array</code>
+of objects to work on</li>
+</ul>
+
+<p><strong>Returns:</strong></p>
+
+<ul>
+<li>new array in sorted order</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+
+<div class="highlight"><pre><code><span class="nv">array = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
+<span class="nv">test = </span><span class="p">[</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Johann Sebastion&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Bach&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Wolfgang Amadeus&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Mozart&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Joseph&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Haydn&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Richard&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Wagner&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Antonio&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Vivaldi&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Michael&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Haydn&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Franz&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Schubert&#39;</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="c1"># sort by last name ascending and first name descending</span>
+<span class="nv">result = </span><span class="nx">array</span><span class="p">.</span><span class="nx">sortBy</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;last&#39;</span><span class="p">,</span> <span class="s">&#39;-first&#39;</span>
+</code></pre></div>
+
+
+
+<p>This results to:</p>
+
+
+<div class="highlight"><pre><code><span class="nv">result = </span><span class="p">[</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Johann Sebastion&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Bach&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Michael&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Haydn&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Joseph&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Haydn&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Wolfgang Amadeus&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Mozart&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Franz&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Schubert&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Antonio&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Vivaldi&#39;</span><span class="p">}</span>
+  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Richard&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Wagner&#39;</span><span class="p">}</span>  
+<span class="p">]</span>
+</code></pre></div>
+
+
+
+<p>Like displayed above you may give one or multiple field names to sort by the
+earlier has precedence. If field name starts with '-' sign it will sort in
+descending order.</p>
 
 
 <div class="pilwrap" id="license">
