@@ -6,20 +6,31 @@
   <link rel="stylesheet" media="all" href="doc-style.css" />
   <script src="doc-filelist.js"></script>
   <script>
-    var relativeDir = "", thisFile = "home/alex/github/node-util/READMEmd", defaultSidebar = true;
+    var relativeDir = "";
+    var thisFile = "home/alex/github/node-util/README.md";
+    var defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
-</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head
 <body>
   <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='https://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='https://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="https://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
   </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
 </div>
 <div class="links">
-  <a href="http://alinex.github.io/blog" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
 </div>
 </nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
@@ -28,127 +39,158 @@
     </div>
     <div id="tree"></div>
     <div id="headings">
+
       <div class="heading h1">
-        <a href="#package%3A%20alinex-util">Package: alinex-util</a>
+        <a href="#package-alinex-util">Package: alinex-util</a>
       </div>
+
       <div class="heading h2">
         <a href="#install">Install</a>
       </div>
+
       <div class="heading h2">
-        <a href="#general%20usage">General Usage</a>
+        <a href="#general-usage">General Usage</a>
       </div>
+
       <div class="heading h2">
-        <a href="#string%20type">String type</a>
+        <a href="#string-type">String type</a>
       </div>
+
       <div class="heading h3">
         <a href="#starts">starts</a>
       </div>
+
       <div class="heading h3">
         <a href="#ends">ends</a>
       </div>
+
       <div class="heading h3">
         <a href="#repeat">repeat</a>
       </div>
+
       <div class="heading h3">
         <a href="#lpad">lpad</a>
       </div>
+
       <div class="heading h3">
         <a href="#rpad">rpad</a>
       </div>
+
       <div class="heading h3">
         <a href="#cpad">cpad</a>
       </div>
+
       <div class="heading h3">
         <a href="#trim">trim</a>
       </div>
+
       <div class="heading h3">
         <a href="#ucfirst">ucFirst</a>
       </div>
+
       <div class="heading h3">
         <a href="#lcfirst">lcFirst</a>
       </div>
+
       <div class="heading h3">
         <a href="#contains">contains</a>
       </div>
+
       <div class="heading h3">
         <a href="#wordwrap">wordwrap</a>
       </div>
+
       <div class="heading h3">
         <a href="#shorten">shorten</a>
       </div>
+
       <div class="heading h2">
-        <a href="#number%20type">Number type</a>
+        <a href="#number-type">Number type</a>
       </div>
+
       <div class="heading h3">
         <a href="#isinteger">isInteger</a>
       </div>
+
       <div class="heading h3">
         <a href="#parseint">parseInt</a>
       </div>
+
       <div class="heading h3">
         <a href="#parseseconds">parseSeconds</a>
       </div>
+
       <div class="heading h3">
         <a href="#parsemseconds">parseMSeconds</a>
       </div>
+
       <div class="heading h2">
         <a href="#object">Object</a>
       </div>
+
       <div class="heading h3">
         <a href="#extend">extend</a>
       </div>
+
       <div class="heading h3">
         <a href="#extendarrayconcat">extendArrayConcat</a>
       </div>
+
       <div class="heading h3">
         <a href="#clone">clone</a>
       </div>
+
       <div class="heading h3">
         <a href="#isempty">isEmpty</a>
       </div>
+
       <div class="heading h3">
         <a href="#path">path</a>
       </div>
+
       <div class="heading h3">
         <a href="#pathsearch">pathSearch</a>
       </div>
+
       <div class="heading h3">
         <a href="#filter">filter</a>
       </div>
+
       <div class="heading h2">
-        <a href="#array%20object">Array object</a>
+        <a href="#array-object">Array object</a>
       </div>
+
       <div class="heading h3">
         <a href="#last">last</a>
       </div>
+
       <div class="heading h3">
         <a href="#unique">unique</a>
       </div>
+
       <div class="heading h3">
         <a href="#sortby">sortBy</a>
       </div>
+
       <div class="heading h2">
         <a href="#license">License</a>
       </div>
+
     </div>
   </div>
   <div id="sidebar-toggle"></div>
-  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a><div class="docs markdown">
-<div class="pilwrap" id="package%3A%20alinex-util">
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a>
+    <div class="docs markdown"><div class="pilwrap" id="package-alinex-util">
   <h1>
-    <a href="#package%3A%20alinex-util" name="package%3A%20alinex-util" class="pilcrow">&#182;</a>
-    Package: alinex-util
+    <a href="#package-alinex-util" name="package-alinex-util" class="pilcrow"></a>
+Package: alinex-util
   </h1>
 </div>
-
-
-<p><a href="https://travis-ci.org/alinex/node-util"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status" title="" /></a>
-<a href="https://coveralls.io/r/alinex/node-util?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.svg?branch=master" alt="Coverage Status" title="" /></a>
-<a href="https://gemnasium.com/alinex/node-util"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status" title="" /></a></p>
-
+<p><a href="https://travis-ci.org/alinex/node-util"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/alinex/node-util?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://gemnasium.com/alinex/node-util"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status"></a></p>
 <p>This module will be used as incubator for different small helper methods which
 are generally used for different general class types:</p>
-
 <ul>
 <li>string helper</li>
 <li>number helper</li>
@@ -156,115 +198,67 @@ are generally used for different general class types:</p>
 <li>object helper</li>
 <li>may extend the base classes</li>
 </ul>
-
 <blockquote>
-  <p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
-  following the code standards defined in the <a href="http://alinex.github.io/node-alinex">General Docs</a>.</p>
+<p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
+following the code standards defined in the <a href="http://alinex.github.io/node-alinex">General Docs</a>.</p>
 </blockquote>
-
-
 <div class="pilwrap" id="install">
   <h2>
-    <a href="#install" name="install" class="pilcrow">&#182;</a>
-    Install
+    <a href="#install" name="install" class="pilcrow"></a>
+Install
   </h2>
 </div>
-
-
-<p><a href="https://www.npmjs.com/package/alinex-util"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM" title="" />
- <img src="https://nodei.co/npm-dl/alinex-util.png?months=9&amp;height=3" alt="Downloads" title="" />
+<p><a href="https://www.npmjs.com/package/alinex-util"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM">
+<img src="https://nodei.co/npm-dl/alinex-util.png?months=9&amp;height=3" alt="Downloads">
 </a></p>
-
 <p>The easiest way is to let npm add the module directly to your modules
 (from within you node modules directory):</p>
-
-
-<div class="highlight"><pre><code>npm install alinex-util --save
-</code></pre></div>
-
-
-
+<pre><code class="sh">npm install alinex-util --save
+</code></pre>
 <p>And update it to the latest version later:</p>
-
-
-<div class="highlight"><pre><code>npm update alinex-util --save
-</code></pre></div>
-
-
-
-<p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
-
-
-<div class="pilwrap" id="general%20usage">
+<pre><code class="sh">npm update alinex-util --save
+</code></pre>
+<p>Always have a look at the latest <a href="Changelog.md.html.html">changes</a>.</p>
+<div class="pilwrap" id="general-usage">
   <h2>
-    <a href="#general%20usage" name="general%20usage" class="pilcrow">&#182;</a>
-    General Usage
+    <a href="#general-usage" name="general-usage" class="pilcrow"></a>
+General Usage
   </h2>
 </div>
-
-
 <p>All methods in this package can be called from the resulting function collection:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">util = </span><span class="nx">require</span> <span class="s">&#39;alinex-util&#39;</span>
-<span class="nv">string = </span><span class="nx">util</span><span class="p">.</span><span class="nx">string</span> <span class="c1"># shortcut to the string functions</span>
-<span class="nv">object = </span><span class="nx">util</span><span class="p">.</span><span class="nx">object</span> <span class="c1"># shortcut to the object functions</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+string = util.string <span class="hljs-comment"># shortcut to the string functions</span>
+object = util.object <span class="hljs-comment"># shortcut to the object functions</span>
+</code></pre>
 <p>Or shorter:</p>
-
-
-<div class="highlight"><pre><code><span class="p">{</span><span class="nx">string</span><span class="p">,</span><span class="nx">object</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;alinex-util&#39;</span>
-<span class="nv">array = </span><span class="nx">require</span> <span class="s">&#39;alinex-util/lib/array&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">{string,object} = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+array = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util/lib/array'</span>
+</code></pre>
 <p>Or directly import the needed objects with:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">util = </span><span class="nx">require</span> <span class="s">&#39;alinex-util&#39;</span>
-<span class="nx">util</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span> <span class="c1"># will do it for all</span>
-<span class="nx">util</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span> <span class="c1"># or extend only the Object class</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+util.addToPrototype() <span class="hljs-comment"># will do it for all</span>
+util.object.addToPrototype() <span class="hljs-comment"># or extend only the Object class</span>
+</code></pre>
 <p>Or you may inlcude only the needed types separately:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">x = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
-<span class="nv">y = </span><span class="nx">x</span><span class="p">.</span><span class="nx">clone</span><span class="p">()</span> <span class="c1"># instead of</span>
-<span class="nv">y = </span><span class="nx">util</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">clone</span> <span class="nx">x</span>
-</code></pre></div>
-
-
-
-
-<div class="pilwrap" id="string%20type">
+<pre><code class="coffee">x = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+y = x.clone() <span class="hljs-comment"># instead of</span>
+y = util.object.clone x
+</code></pre>
+<div class="pilwrap" id="string-type">
   <h2>
-    <a href="#string%20type" name="string%20type" class="pilcrow">&#182;</a>
-    String type
+    <a href="#string-type" name="string-type" class="pilcrow"></a>
+String type
   </h2>
 </div>
-
-
-
 <div class="pilwrap" id="starts">
   <h3>
-    <a href="#starts" name="starts" class="pilcrow">&#182;</a>
-    starts
+    <a href="#starts" name="starts" class="pilcrow"></a>
+starts
   </h3>
 </div>
-
-
 <p>This is a handy method to check that a certain string starts with the given
 phrase.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code> (if not called as String method)
 text to be checked</li>
@@ -273,55 +267,32 @@ phrase to match</li>
 <li><code>start</code> (optional)
 offset character position to start looking for</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>true</code> if <code>string</code> starts with <code>literal</code></li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">starts</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;ab&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'abcdefg'</span>
+result = string.starts test, <span class="hljs-string">'ab'</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="kc">true</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">result = <span class="hljs-literal">true</span>
+</code></pre>
 <p>Or the same call using prototype extension:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">starts</span> <span class="s">&#39;ab&#39;</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string.addToPrototype()
+test = <span class="hljs-string">'abcdefg'</span>
+result = test.starts <span class="hljs-string">'ab'</span>
+</code></pre>
 <div class="pilwrap" id="ends">
   <h3>
-    <a href="#ends" name="ends" class="pilcrow">&#182;</a>
-    ends
+    <a href="#ends" name="ends" class="pilcrow"></a>
+ends
   </h3>
 </div>
-
-
 <p>This is a handy method to check that a certain string ends with the given
 phrase.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code> (if not called as String method)
 text to be checked</li>
@@ -330,108 +301,62 @@ phrase to match</li>
 <li><code>back</code> (optional)
 offset character position from the end to look for</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>true</code> if <code>string</code> ends with <code>literal</code></li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">ends</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;fg&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'abcdefg'</span>
+result = string.ends test, <span class="hljs-string">'fg'</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="kc">true</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">result = <span class="hljs-literal">true</span>
+</code></pre>
 <p>Or the same call using prototype extension:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">ends</span> <span class="s">&#39;fg&#39;</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string.addToPrototype()
+test = <span class="hljs-string">'abcdefg'</span>
+result = test.ends <span class="hljs-string">'fg'</span>
+</code></pre>
 <div class="pilwrap" id="repeat">
   <h3>
-    <a href="#repeat" name="repeat" class="pilcrow">&#182;</a>
-    repeat
+    <a href="#repeat" name="repeat" class="pilcrow"></a>
+repeat
   </h3>
 </div>
-
-
 <p>Repeat a given string multiple times.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code> (if not called as String method)
 text to be repeated</li>
 <li><code>n</code>
 number of repeats</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the repeated test</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;ab&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">repeat</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">3</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'ab'</span>
+result = string.repeat test, <span class="hljs-number">3</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;ababab&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">result = <span class="hljs-string">'ababab'</span>
+</code></pre>
 <p>Or the same call using prototype extension:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nv">test = </span><span class="s">&#39;ab&#39;</span>
-<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">repeat</span> <span class="mi">3</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string.addToPrototype()
+test = <span class="hljs-string">'ab'</span>
+result = test.repeat <span class="hljs-number">3</span>
+</code></pre>
 <div class="pilwrap" id="lpad">
   <h3>
-    <a href="#lpad" name="lpad" class="pilcrow">&#182;</a>
-    lpad
+    <a href="#lpad" name="lpad" class="pilcrow"></a>
+lpad
   </h3>
 </div>
-
-
 <p>Left pad string to specified length.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be padded</li>
@@ -440,44 +365,26 @@ final length of text</li>
 <li><code>char</code>
 character used for padding (defaults to ' ')</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the padded text</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;5&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">lpad</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;0&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'5'</span>
+result = string.lpad test, <span class="hljs-number">3</span>, <span class="hljs-string">'0'</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;005&#39;</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">result = <span class="hljs-string">'005'</span>
+</code></pre>
 <div class="pilwrap" id="rpad">
   <h3>
-    <a href="#rpad" name="rpad" class="pilcrow">&#182;</a>
-    rpad
+    <a href="#rpad" name="rpad" class="pilcrow"></a>
+rpad
   </h3>
 </div>
-
-
 <p>Right pad string to specified length.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be padded</li>
@@ -486,44 +393,26 @@ final length of text</li>
 <li><code>char</code>
 character used for padding (defaults to ' ')</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the padded text</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;abc&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">rpad</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39; &#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'abc'</span>
+result = string.rpad test, <span class="hljs-number">5</span>, <span class="hljs-string">' '</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;abc  &#39;</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">result = <span class="hljs-string">'abc  '</span>
+</code></pre>
 <div class="pilwrap" id="cpad">
   <h3>
-    <a href="#cpad" name="cpad" class="pilcrow">&#182;</a>
-    cpad
+    <a href="#cpad" name="cpad" class="pilcrow"></a>
+cpad
   </h3>
 </div>
-
-
 <p>Center pad string to specified length. This will add the padding on both sides.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be padded</li>
@@ -532,550 +421,342 @@ final length of text</li>
 <li><code>char</code>
 character used for padding (defaults to ' ')</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the padded text</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;abc&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">cpad</span> <span class="nx">test</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#39; &#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'abc'</span>
+result = string.cpad test, <span class="hljs-number">5</span>, <span class="hljs-string">' '</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;abc  &#39;</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">result = <span class="hljs-string">'abc  '</span>
+</code></pre>
 <div class="pilwrap" id="trim">
   <h3>
-    <a href="#trim" name="trim" class="pilcrow">&#182;</a>
-    trim
+    <a href="#trim" name="trim" class="pilcrow"></a>
+trim
   </h3>
 </div>
-
-
 <p>Trim given characters</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be trimmed</li>
-<li><p><code>chars</code>
-list of characters to trim off (defaults to ' \n\t')</p>
-
-<p><strong>Returns:</strong></p></li>
-<li><p>the padded text</p></li>
+<li><code>chars</code>
+list of characters to trim off (defaults to ' \n\t')</li>
 </ul>
-
+<p><strong>Returns:</strong></p>
+<ul>
+<li>the padded text</li>
+</ul>
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;/var/local/&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">trim</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;/&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'/var/local/'</span>
+result = string.trim test, <span class="hljs-string">'/'</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;var/local&#39;</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">result = <span class="hljs-string">'var/local'</span>
+</code></pre>
 <div class="pilwrap" id="ucfirst">
   <h3>
-    <a href="#ucfirst" name="ucfirst" class="pilcrow">&#182;</a>
-    ucFirst
+    <a href="#ucfirst" name="ucfirst" class="pilcrow"></a>
+ucFirst
   </h3>
 </div>
-
-
 <p>Make first letter upper case.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code> (if not called as String method)
 text to be changed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the same text but with first letter in upper case</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">ucfirst</span> <span class="nx">test</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'abcdefg'</span>
+result = string.ucfirst test
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;Abcdefg&#39;</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">result = <span class="hljs-string">'Abcdefg'</span>
+</code></pre>
 <div class="pilwrap" id="lcfirst">
   <h3>
-    <a href="#lcfirst" name="lcfirst" class="pilcrow">&#182;</a>
-    lcFirst
+    <a href="#lcfirst" name="lcfirst" class="pilcrow"></a>
+lcFirst
   </h3>
 </div>
-
-
 <p>Make first letter lower case.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code> (if not called as String method)
 text to be changed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the same text but with first letter in lower case</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;ABCDEFG&#39;</span>
-<span class="nv">result = </span><span class="nx">string</span><span class="p">.</span><span class="nx">lcFirst</span> <span class="nx">test</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'ABCDEFG'</span>
+result = string.lcFirst test
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="s">&#39;aBCDEFG&#39;</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">result = <span class="hljs-string">'aBCDEFG'</span>
+</code></pre>
 <div class="pilwrap" id="contains">
   <h3>
-    <a href="#contains" name="contains" class="pilcrow">&#182;</a>
-    contains
+    <a href="#contains" name="contains" class="pilcrow"></a>
+contains
   </h3>
 </div>
-
-
 <p>Is substring contained?</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be check</li>
 <li><code>phrase</code>
 text to be searched for</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>(bool) <code>true</code> if phrase is contained in string</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">string = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">string</span>
-<span class="nv">test = </span><span class="s">&#39;abcdefg&#39;</span>
-<span class="nv">result1 = </span><span class="nx">string</span><span class="p">.</span><span class="nx">contains</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;bc&#39;</span>
-<span class="nv">result2 = </span><span class="nx">string</span><span class="p">.</span><span class="nx">contains</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;gh&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'abcdefg'</span>
+result1 = string.contains test, <span class="hljs-string">'bc'</span>
+result2 = string.contains test, <span class="hljs-string">'gh'</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result1 = </span><span class="kc">true</span>
-<span class="nv">result2 = </span><span class="kc">false</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">result1 = <span class="hljs-literal">true</span>
+result2 = <span class="hljs-literal">false</span>
+</code></pre>
 <div class="pilwrap" id="wordwrap">
   <h3>
-    <a href="#wordwrap" name="wordwrap" class="pilcrow">&#182;</a>
-    wordwrap
+    <a href="#wordwrap" name="wordwrap" class="pilcrow"></a>
+wordwrap
   </h3>
 </div>
-
-
 <p>Word wraps a given text as needed.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>width</code>
 maximum amount of characters per line</li>
 <li><code>break</code>
 string that will be added whenever it's needed to break the line</li>
 <li><code>cutType</code>
-0 = words longer than "maxLength" will not be broken
+0 = words longer than &quot;maxLength&quot; will not be broken
 1 = words will be broken when needed
 2 = any word that trespass the limit will be broken</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>(string) returns the new text</li>
 </ul>
-
-
 <div class="pilwrap" id="shorten">
   <h3>
-    <a href="#shorten" name="shorten" class="pilcrow">&#182;</a>
-    shorten
+    <a href="#shorten" name="shorten" class="pilcrow"></a>
+shorten
   </h3>
 </div>
-
-
 <p>This will shorten the given text and add ellipsis if it is too long. This is done
 word aware.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>limit</code>
 maximum number of characters</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>(string) the new text</li>
 </ul>
-
-
-<div class="pilwrap" id="number%20type">
+<div class="pilwrap" id="number-type">
   <h2>
-    <a href="#number%20type" name="number%20type" class="pilcrow">&#182;</a>
-    Number type
+    <a href="#number-type" name="number-type" class="pilcrow"></a>
+Number type
   </h2>
 </div>
-
-
-
 <div class="pilwrap" id="isinteger">
   <h3>
-    <a href="#isinteger" name="isinteger" class="pilcrow">&#182;</a>
-    isInteger
+    <a href="#isinteger" name="isinteger" class="pilcrow"></a>
+isInteger
   </h3>
 </div>
-
-
 <p>Check for Integer.</p>
-
 <p>This method will check that the given value is an integer.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>value</code>
 to be analyzed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>true</code> if <code>value</code> is an integer</li>
 </ul>
-
-
 <div class="pilwrap" id="parseint">
   <h3>
-    <a href="#parseint" name="parseint" class="pilcrow">&#182;</a>
-    parseInt
+    <a href="#parseint" name="parseint" class="pilcrow"></a>
+parseInt
   </h3>
 </div>
-
-
 <p>Strict parse for Integer.</p>
-
 <p>This will fail on all strings which are no real integer.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>value</code>
 to be analyzed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>value</code> as Number or <code>NaN</code></li>
 </ul>
-
 <p>To check if you got a number or invalid string use <code>isNaN()</code>.</p>
-
-
 <div class="pilwrap" id="parseseconds">
   <h3>
-    <a href="#parseseconds" name="parseseconds" class="pilcrow">&#182;</a>
-    parseSeconds
+    <a href="#parseseconds" name="parseseconds" class="pilcrow"></a>
+parseSeconds
   </h3>
 </div>
-
-
 <p>Parse human readable time to seconds.</p>
-
 <p>This will fail on all strings which are no real integer.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>value</code>
 to be analyzed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>value</code> as Number of seconds or <code>NaN</code></li>
 </ul>
-
 <p>To check if you got a number or invalid string use <code>isNaN()</code>.</p>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="mi">200</span>          <span class="c1"># 200</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s">&#39;200s&#39;</span>       <span class="c1"># 200</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s">&#39;200S&#39;</span>       <span class="c1"># 200</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s">&#39;5m&#39;</span>         <span class="c1"># 300</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s">&#39;1h&#39;</span>         <span class="c1"># 3600</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s">&#39;2.5h&#39;</span>       <span class="c1"># 9000</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s">&#39;1d&#39;</span>         <span class="c1"># 86400</span>
-<span class="nx">number</span><span class="p">.</span><span class="nx">parseSeconds</span> <span class="s">&#39;2h 5m 100s&#39;</span> <span class="c1"># 7600</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">number.parseSeconds <span class="hljs-number">200</span>          <span class="hljs-comment"># 200</span>
+number.parseSeconds <span class="hljs-string">'200s'</span>       <span class="hljs-comment"># 200</span>
+number.parseSeconds <span class="hljs-string">'200S'</span>       <span class="hljs-comment"># 200</span>
+number.parseSeconds <span class="hljs-string">'5m'</span>         <span class="hljs-comment"># 300</span>
+number.parseSeconds <span class="hljs-string">'1h'</span>         <span class="hljs-comment"># 3600</span>
+number.parseSeconds <span class="hljs-string">'2.5h'</span>       <span class="hljs-comment"># 9000</span>
+number.parseSeconds <span class="hljs-string">'1d'</span>         <span class="hljs-comment"># 86400</span>
+number.parseSeconds <span class="hljs-string">'2h 5m 100s'</span> <span class="hljs-comment"># 7600</span>
+</code></pre>
 <div class="pilwrap" id="parsemseconds">
   <h3>
-    <a href="#parsemseconds" name="parsemseconds" class="pilcrow">&#182;</a>
-    parseMSeconds
+    <a href="#parsemseconds" name="parsemseconds" class="pilcrow"></a>
+parseMSeconds
   </h3>
 </div>
-
-
 <p>Parse human readable time to milliseconds. It will work the same as above and
 you may specify <code>ms</code> as additional unit here.</p>
-
-
 <div class="pilwrap" id="object">
   <h2>
-    <a href="#object" name="object" class="pilcrow">&#182;</a>
-    Object
+    <a href="#object" name="object" class="pilcrow"></a>
+Object
   </h2>
 </div>
-
-
-
 <div class="pilwrap" id="extend">
   <h3>
-    <a href="#extend" name="extend" class="pilcrow">&#182;</a>
-    extend
+    <a href="#extend" name="extend" class="pilcrow"></a>
+extend
   </h3>
 </div>
-
-
 <p>Extend an object with another one.</p>
-
 <p>This method will extend a given object with the entries from additional
 objects. Therefore it will do a deep extend.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>object</code> (if not called as Object method)
 base object to be extended</li>
 <li><code>extender</code>...
 multiple extenders may be given with will be cloned into the object.</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>object</code>
 the given and maybe changed object.</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
-<span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
-<span class="nx">object</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">test</span><span class="p">,</span> <span class="p">{</span> <span class="nv">zwei: </span><span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nv">eins: </span><span class="s">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nv">drei: </span><span class="mi">3</span> <span class="p">}</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+object.extend test, { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span> }, { <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="s">&#39;eins&#39;</span><span class="p">,</span> <span class="nv">zwei: </span><span class="mi">2</span><span class="p">,</span> <span class="nv">drei: </span><span class="mi">3</span> <span class="p">}</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">test = { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span>, <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+</code></pre>
 <p>Or the same call using prototype extension:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
-<span class="nx">test</span><span class="p">.</span><span class="nx">extend</span> <span class="p">{</span> <span class="nv">zwei: </span><span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="nv">eins: </span><span class="s">&#39;eins&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nv">drei: </span><span class="mi">3</span> <span class="p">}</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object.addToPrototype()
+test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+test.extend { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span> }, { <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+</code></pre>
 <p>To remove a key from the structure by overloading set it's value to null.</p>
-
-
 <div class="pilwrap" id="extendarrayconcat">
   <h3>
-    <a href="#extendarrayconcat" name="extendarrayconcat" class="pilcrow">&#182;</a>
-    extendArrayConcat
+    <a href="#extendarrayconcat" name="extendarrayconcat" class="pilcrow"></a>
+extendArrayConcat
   </h3>
 </div>
-
-
 <p>This method is like extend but will concat arrays elements directly instead
 of concat the element clones. This keeps the references under the first array.</p>
-
-
 <div class="pilwrap" id="clone">
   <h3>
-    <a href="#clone" name="clone" class="pilcrow">&#182;</a>
-    clone
+    <a href="#clone" name="clone" class="pilcrow"></a>
+clone
   </h3>
 </div>
-
-
 <p>Deep cloning of an object.</p>
-
 <p>This method will create a clone of the given object.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>object</code> (if not called as Object method)
 to be cloned</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>object</code>
 clone of the given  object.</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
-<span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
-<span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">clone</span> <span class="nx">test</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+result = object.clone test
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">result = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+</code></pre>
 <p>Or the same call using prototype extension:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nv">test = </span><span class="p">{</span> <span class="nv">eins: </span><span class="mi">1</span> <span class="p">}</span>
-<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">clone</span><span class="p">()</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object.addToPrototype()
+test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+result = test.clone()
+</code></pre>
 <div class="pilwrap" id="isempty">
   <h3>
-    <a href="#isempty" name="isempty" class="pilcrow">&#182;</a>
-    isEmpty
+    <a href="#isempty" name="isempty" class="pilcrow"></a>
+isEmpty
   </h3>
 </div>
-
-
 <p>Check if object is empty or uninitialized.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>object</code>
 to be checked</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>boolean</code>
 true if object is empty</li>
 </ul>
-
-
 <div class="pilwrap" id="path">
   <h3>
-    <a href="#path" name="path" class="pilcrow">&#182;</a>
-    path
+    <a href="#path" name="path" class="pilcrow"></a>
+path
   </h3>
 </div>
-
-
 <p>This method allows you to access an element deep in an object's structure by
 giving only the path to the element.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>object</code>
 to be searched</li>
@@ -1084,55 +765,37 @@ to be searched</li>
 <li><code>separator</code>
 (string or RegExp) used as separator, defaults to <code>/</code></li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>element at the position of the path or <code>undefined</code> if not found</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
-<span class="nv">test =</span>
-  <span class="nv">string: </span><span class="s">&#39;test&#39;</span>
-  <span class="nv">object:</span>
-    <span class="nv">numbers:</span>
-      <span class="nv">one: </span><span class="mi">1</span>
-      <span class="nv">two: </span><span class="mi">2</span>
-  <span class="nv">list: </span><span class="p">[</span>
-    <span class="nv">one: </span><span class="mi">11</span>
-  <span class="p">,</span>
-    <span class="nv">two: </span><span class="mi">12</span>
-  <span class="p">]</span>
-<span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">path</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;/object/numbers&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+test =
+  <span class="hljs-attribute">string</span>: <span class="hljs-string">'test'</span>
+  <span class="hljs-attribute">object</span>:
+    <span class="hljs-attribute">numbers</span>:
+      <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
+      <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
+  <span class="hljs-attribute">list</span>: [
+    <span class="hljs-attribute">one</span>: <span class="hljs-number">11</span>
+  ,
+    <span class="hljs-attribute">two</span>: <span class="hljs-number">12</span>
+  ]
+result = object.path test, <span class="hljs-string">'/object/numbers'</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="p">{</span> <span class="nv">one: </span><span class="mi">1</span><span class="p">,</span> <span class="nv">two: </span><span class="mi">2</span> <span class="p">}</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee">result = { <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span> }
+</code></pre>
 <div class="pilwrap" id="pathsearch">
   <h3>
-    <a href="#pathsearch" name="pathsearch" class="pilcrow">&#182;</a>
-    pathSearch
+    <a href="#pathsearch" name="pathsearch" class="pilcrow"></a>
+pathSearch
   </h3>
 </div>
-
-
 <p>Like path but here you may give a search pattern to find the element. It may
 also find multiple elements which will be returned in a list.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>object</code>
 to be searched</li>
@@ -1141,89 +804,54 @@ to be searched</li>
 <li><code>separator</code>
 (string or RegExp) used as separator, defaults to <code>/</code></li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>element at the position of the path or <code>undefined</code> if not found</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
-<span class="nv">test =</span>
-  <span class="nv">string: </span><span class="s">&#39;test&#39;</span>
-  <span class="nv">object:</span>
-    <span class="nv">numbers:</span>
-      <span class="nv">one: </span><span class="mi">1</span>
-      <span class="nv">two: </span><span class="mi">2</span>
-  <span class="nv">list: </span><span class="p">[</span>
-    <span class="nv">one: </span><span class="mi">11</span>
-  <span class="p">,</span>
-    <span class="nv">two: </span><span class="mi">12</span>
-  <span class="p">]</span>
-<span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">pathSearch</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;**/one&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+test =
+  <span class="hljs-attribute">string</span>: <span class="hljs-string">'test'</span>
+  <span class="hljs-attribute">object</span>:
+    <span class="hljs-attribute">numbers</span>:
+      <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
+      <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
+  <span class="hljs-attribute">list</span>: [
+    <span class="hljs-attribute">one</span>: <span class="hljs-number">11</span>
+  ,
+    <span class="hljs-attribute">two</span>: <span class="hljs-number">12</span>
+  ]
+result = object.pathSearch test, <span class="hljs-string">'**/one'</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="mi">1</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">result = <span class="hljs-number">1</span>
+</code></pre>
 <p><strong>Pattern</strong></p>
-
 <p>You may specify like in the following examples (using the default separator).</p>
-
-
-<div class="highlight"><pre><code>name - get first element with this name
+<pre><code class="text">name - get first element with this name
 group/sub/name - get element with path
-</code></pre></div>
-
-
-
+</code></pre>
 <p>You can search by using asterisk as directory placeholder or a double asterisk to
 go multiple level depth:</p>
-
-
-<div class="highlight"><pre><code>name/*/min - within any subelement
+<pre><code class="text">name/*/min - within any subelement
 name/*/*/min - within any subelement (two level depth)
 name/**/min - within any subelement in any depth
-</code></pre></div>
-
-
-
+</code></pre>
 <p>You may also use regexp notation to find the correct element:</p>
-
-
-<div class="highlight"><pre><code>name/test[AB]/min - pattern match with one missing character
+<pre><code class="text">name/test[AB]/min - pattern match with one missing character
 name/test\d+/min - pattern match with multiple missing characters
-</code></pre></div>
-
-
-
+</code></pre>
 <p>See the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp">Mozilla Developer Network</a>
 for the possible syntax but without modifier.</p>
-
-
 <div class="pilwrap" id="filter">
   <h3>
-    <a href="#filter" name="filter" class="pilcrow">&#182;</a>
-    filter
+    <a href="#filter" name="filter" class="pilcrow"></a>
+filter
   </h3>
 </div>
-
-
 <p>Like the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter</a>
 method of arrays you may filter object entries here.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>object</code>
 to be filtered</li>
@@ -1231,239 +859,153 @@ to be filtered</li>
 (function) to be called like <code>allow(value, key, object)</code> and if it returns true
 the entry will be copied to the resulting object</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>data object with all or some entries from the original</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">object = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">object</span>
-<span class="nv">test =</span>
-  <span class="nv">one: </span><span class="mi">1</span>
-  <span class="nv">two: </span><span class="mi">2</span>
-  <span class="nv">three: </span><span class="mi">3</span>
-  <span class="nv">four: </span><span class="mi">4</span>
-<span class="nv">result = </span><span class="nx">object</span><span class="p">.</span><span class="nx">filter</span> <span class="nx">test</span><span class="p">,</span> <span class="nf">(value) -&gt;</span> <span class="nx">value</span> <span class="o">&lt;</span> <span class="mi">3</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+test =
+  <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
+  <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
+  <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>
+  <span class="hljs-attribute">four</span>: <span class="hljs-number">4</span>
+result = object.filter test, <span class="hljs-function"><span class="hljs-params">(value)</span> -&gt;</span> value &lt; <span class="hljs-number">3</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result =</span>
-  <span class="nv">one: </span><span class="mi">1</span>
-  <span class="nv">two: </span><span class="mi">2</span>
-</code></pre></div>
-
-
-
-
-<div class="pilwrap" id="array%20object">
+<pre><code class="coffee">result =
+  <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
+  <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
+</code></pre>
+<div class="pilwrap" id="array-object">
   <h2>
-    <a href="#array%20object" name="array%20object" class="pilcrow">&#182;</a>
-    Array object
+    <a href="#array-object" name="array-object" class="pilcrow"></a>
+Array object
   </h2>
 </div>
-
-
-
 <div class="pilwrap" id="last">
   <h3>
-    <a href="#last" name="last" class="pilcrow">&#182;</a>
-    last
+    <a href="#last" name="last" class="pilcrow"></a>
+last
   </h3>
 </div>
-
-
 <p>Get the last element.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>array</code>
 of elements to work on</li>
 <li><code>back</code> (optional)
 offset character position from the end to look for</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>last element value</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">array = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
-<span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
-<span class="nv">result = </span><span class="nx">array</span><span class="p">.</span><span class="nx">last</span> <span class="nx">test</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">array = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array
+test = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span> ]
+result = array.last test
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="mi">5</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">result = <span class="hljs-number">5</span>
+</code></pre>
 <p>Or the same call using prototype extension:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
-<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">last</span><span class="p">()</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array.addToPrototype()
+test = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span> ]
+result = test.last()
+</code></pre>
 <div class="pilwrap" id="unique">
   <h3>
-    <a href="#unique" name="unique" class="pilcrow">&#182;</a>
-    unique
+    <a href="#unique" name="unique" class="pilcrow"></a>
+unique
   </h3>
 </div>
-
-
 <p>Remove duplicate entries from array.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>array</code>
 of elements to work on</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>new array with duplicates removed</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">array = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
-<span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
-<span class="nv">result = </span><span class="nx">array</span><span class="p">.</span><span class="nx">unique</span> <span class="nx">test</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">array = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array
+test = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span> ]
+result = array.unique test
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">result = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
+</code></pre>
 <p>Or the same call using prototype extension:</p>
-
-
-<div class="highlight"><pre><code><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span><span class="p">.</span><span class="nx">addToPrototype</span><span class="p">()</span>
-<span class="nv">test = </span><span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span> <span class="p">]</span>
-<span class="nv">result = </span><span class="nx">test</span><span class="p">.</span><span class="nx">unique</span>
-</code></pre></div>
-
-
-
-
+<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array.addToPrototype()
+test = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span> ]
+result = test.unique
+</code></pre>
 <div class="pilwrap" id="sortby">
   <h3>
-    <a href="#sortby" name="sortby" class="pilcrow">&#182;</a>
-    sortBy
+    <a href="#sortby" name="sortby" class="pilcrow"></a>
+sortBy
   </h3>
 </div>
-
-
 <p>Sort array of objects.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>array</code>
 of objects to work on</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>new array in sorted order</li>
 </ul>
-
 <p><strong>Example:</strong></p>
-
-
-<div class="highlight"><pre><code><span class="nv">array = </span><span class="nx">require</span><span class="p">(</span><span class="s">&#39;alinex-util&#39;</span><span class="p">).</span><span class="nx">array</span>
-<span class="nv">test = </span><span class="p">[</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Johann Sebastion&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Bach&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Wolfgang Amadeus&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Mozart&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Joseph&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Haydn&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Richard&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Wagner&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Antonio&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Vivaldi&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Michael&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Haydn&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Franz&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Schubert&#39;</span><span class="p">}</span>
-<span class="p">]</span>
-<span class="c1"># sort by last name ascending and first name descending</span>
-<span class="nv">result = </span><span class="nx">array</span><span class="p">.</span><span class="nx">sortBy</span> <span class="nx">test</span><span class="p">,</span> <span class="s">&#39;last&#39;</span><span class="p">,</span> <span class="s">&#39;-first&#39;</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">array = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array
+test = [
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Johann Sebastion'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Bach'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Wolfgang Amadeus'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Mozart'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Joseph'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Haydn'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Richard'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Wagner'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Antonio'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Vivaldi'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Michael'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Haydn'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Franz'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Schubert'</span>}
+]
+<span class="hljs-comment"># sort by last name ascending and first name descending</span>
+result = array.sortBy test, <span class="hljs-string">'last'</span>, <span class="hljs-string">'-first'</span>
+</code></pre>
 <p>This results to:</p>
-
-
-<div class="highlight"><pre><code><span class="nv">result = </span><span class="p">[</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Johann Sebastion&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Bach&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Michael&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Haydn&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Joseph&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Haydn&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Wolfgang Amadeus&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Mozart&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Franz&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Schubert&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Antonio&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Vivaldi&#39;</span><span class="p">}</span>
-  <span class="p">{</span><span class="nv">first: </span><span class="s">&#39;Richard&#39;</span><span class="p">,</span> <span class="nv">last: </span><span class="s">&#39;Wagner&#39;</span><span class="p">}</span>  
-<span class="p">]</span>
-</code></pre></div>
-
-
-
+<pre><code class="coffee">result = [
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Johann Sebastion'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Bach'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Michael'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Haydn'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Joseph'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Haydn'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Wolfgang Amadeus'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Mozart'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Franz'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Schubert'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Antonio'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Vivaldi'</span>}
+  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Richard'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Wagner'</span>}  
+]
+</code></pre>
 <p>Like displayed above you may give one or multiple field names to sort by the
 earlier has precedence. If field name starts with '-' sign it will sort in
 descending order.</p>
-
-
 <div class="pilwrap" id="license">
   <h2>
-    <a href="#license" name="license" class="pilcrow">&#182;</a>
-    License
+    <a href="#license" name="license" class="pilcrow"></a>
+License
   </h2>
 </div>
-
-
 <p>Copyright 2014-2016 Alexander Schilling</p>
-
-<p>Licensed under the Apache License, Version 2.0 (the "License");
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at</p>
-
 <blockquote>
-  <p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
 </blockquote>
-
 <p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License.</p></div>
+limitations under the License.</p>
+</div>
   </div>
 </body>
 </html>

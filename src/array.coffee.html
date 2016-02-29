@@ -6,20 +6,31 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/github/node-util/src/arraycoffee", defaultSidebar = true;
+    var relativeDir = "../";
+    var thisFile = "home/alex/github/node-util/src/array.coffee";
+    var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head
 <body>
   <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='https://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='https://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="https://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
   </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
 </div>
 <div class="links">
-  <a href="http://alinex.github.io/blog" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
 </div>
 </nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
@@ -28,207 +39,221 @@
     </div>
     <div id="tree"></div>
     <div id="headings">
+
       <div class="heading h1">
-        <a href="#utility%20functions%20for%20array.">Utility functions for array.</a>
+        <a href="#utility-functions-for-array">Utility functions for array.</a>
       </div>
+
       <div class="heading h2">
-        <a href="#get%20the%20last%20element%20of%20an%20array">Get the last element of an array</a>
+        <a href="#get-the-last-element-of-an-array">Get the last element of an array</a>
       </div>
+
       <div class="heading h2">
-        <a href="#remove%20duplicates">remove duplicates</a>
+        <a href="#remove-duplicates">remove duplicates</a>
       </div>
+
       <div class="heading h2">
-        <a href="#sort%20array%20of%20objects">Sort array of objects</a>
+        <a href="#sort-array-of-objects">Sort array of objects</a>
       </div>
+
       <div class="heading h2">
-        <a href="#add%20array%20helpers%20to%20the%20object%20class">Add array helpers to the Object class</a>
+        <a href="#add-array-helpers-to-the-object-class">Add array helpers to the Object class</a>
       </div>
+
       <div class="heading h2">
-        <a href="#helper%20methods">Helper Methods</a>
+        <a href="#helper-methods">Helper Methods</a>
       </div>
+
     </div>
   </div>
   <div id="sidebar-toggle"></div>
-  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a><div class="background highlight"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a>
+    <div class="background highlight"></div>
 <table cellpadding="0" cellspacing="0">
   <tbody>
+    
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="utility%20functions%20for%20array.">
+          <div class="pilwrap" id="utility-functions-for-array">
   <h1>
-    <a href="#utility%20functions%20for%20array." name="utility%20functions%20for%20array." class="pilcrow">&#182;</a>
-    Utility functions for array.
+    <a href="#utility-functions-for-array" name="utility-functions-for-array" class="pilcrow"></a>
+Utility functions for array.
   </h1>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">
+
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="get%20the%20last%20element%20of%20an%20array">
+          <div class="pilwrap" id="get-the-last-element-of-an-array">
   <h2>
-    <a href="#get%20the%20last%20element%20of%20an%20array" name="get%20the%20last%20element%20of%20an%20array" class="pilcrow">&#182;</a>
-    Get the last element of an array
+    <a href="#get-the-last-element-of-an-array" name="get-the-last-element-of-an-array" class="pilcrow"></a>
+Get the last element of an array
   </h2>
 </div>
-
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>array</code>
 of elements to work on</li>
 <li><code>back</code> (optional)
 offset character position from the end to look for</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>last element value</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.last = </span><span class="nf">(array, back) -&gt;</span>
-  <span class="nx">array</span><span class="p">[</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="p">(</span><span class="nx">back</span> <span class="o">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.last = <span class="hljs-function"><span class="hljs-params">(array, back)</span> -&gt;</span>
+  array[array.length - (back <span class="hljs-keyword">or</span> <span class="hljs-number">0</span>) - <span class="hljs-number">1</span>]
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="remove%20duplicates">
+          <div class="pilwrap" id="remove-duplicates">
   <h2>
-    <a href="#remove%20duplicates" name="remove%20duplicates" class="pilcrow">&#182;</a>
-    remove duplicates
+    <a href="#remove-duplicates" name="remove-duplicates" class="pilcrow"></a>
+remove duplicates
   </h2>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.unique = </span><span class="nf">(array) -&gt;</span>
-  <span class="nv">output = </span><span class="p">{}</span>
-  <span class="nx">output</span><span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">key</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="k">for</span> <span class="nx">key</span> <span class="k">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">...</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span>
-  <span class="nx">value</span> <span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">output</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.unique = <span class="hljs-function"><span class="hljs-params">(array)</span> -&gt;</span>
+  output = {}
+  output[array[key]] = array[key] <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>..array.length]
+  value <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">of</span> output
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="sort%20array%20of%20objects">
+          <div class="pilwrap" id="sort-array-of-objects">
   <h2>
-    <a href="#sort%20array%20of%20objects" name="sort%20array%20of%20objects" class="pilcrow">&#182;</a>
-    Sort array of objects
+    <a href="#sort-array-of-objects" name="sort-array-of-objects" class="pilcrow"></a>
+Sort array of objects
   </h2>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.sortBy = </span><span class="nf">(array) -&gt;</span>
-  <span class="nv">args = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">arguments</span>
-  <span class="k">switch</span> <span class="nx">args</span><span class="p">.</span><span class="nx">length</span>
-    <span class="k">when</span> <span class="mi">1</span>
-      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&quot;Missing sort column name.&quot;</span>
-    <span class="k">when</span> <span class="mi">2</span>
-      <span class="nx">array</span><span class="p">.</span><span class="nx">sort</span> <span class="nx">dynamicSort</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">else</span>
-      <span class="nx">array</span><span class="p">.</span><span class="nx">sort</span> <span class="nx">dynamicMultiSort</span><span class="p">.</span><span class="nx">apply</span> <span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">[</span><span class="mi">1</span><span class="p">..]</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.sortBy = <span class="hljs-function"><span class="hljs-params">(array)</span> -&gt;</span>
+  args = [].slice.call arguments
+  <span class="hljs-keyword">switch</span> args.length
+    <span class="hljs-keyword">when</span> <span class="hljs-number">1</span>
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Error <span class="hljs-string">"Missing sort column name."</span>
+    <span class="hljs-keyword">when</span> <span class="hljs-number">2</span>
+      array.sort dynamicSort args[<span class="hljs-number">1</span>]
+    <span class="hljs-keyword">else</span>
+      array.sort dynamicMultiSort.apply <span class="hljs-keyword">this</span>, args[<span class="hljs-number">1.</span>.]
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="add%20array%20helpers%20to%20the%20object%20class">
+          <div class="pilwrap" id="add-array-helpers-to-the-object-class">
   <h2>
-    <a href="#add%20array%20helpers%20to%20the%20object%20class" name="add%20array%20helpers%20to%20the%20object%20class" class="pilcrow">&#182;</a>
-    Add array helpers to the Object class
+    <a href="#add-array-helpers-to-the-object-class" name="add-array-helpers-to-the-object-class" class="pilcrow"></a>
+Add array helpers to the Object class
   </h2>
 </div>
-
-
 <p>This will allow to call the methods directly on an object.</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.addToPrototype = </span><span class="nf">-&gt;</span>
-  <span class="nb">Array</span><span class="p">.</span><span class="nv">prototype.last = </span><span class="nf">(back) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">last</span> <span class="k">this</span><span class="p">,</span> <span class="nx">back</span>
-  <span class="nb">Array</span><span class="p">.</span><span class="nv">prototype.unique = </span><span class="nf">-&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">unique</span> <span class="k">this</span>
-  <span class="nb">Array</span><span class="p">.</span><span class="nv">prototype.sortBy = </span><span class="nf">-&gt;</span>
-    <span class="nv">args = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="nx">arguments</span>
-    <span class="nx">args</span><span class="p">.</span><span class="nx">unshift</span> <span class="k">this</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">sortBy</span><span class="p">.</span><span class="nx">apply</span> <span class="k">this</span><span class="p">,</span> <span class="nx">args</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.addToPrototype = <span class="hljs-function">-&gt;</span>
+  Array.prototype.last = <span class="hljs-function"><span class="hljs-params">(back)</span> -&gt;</span>
+    exports.last <span class="hljs-keyword">this</span>, back
+  Array.prototype.unique = <span class="hljs-function">-&gt;</span>
+    exports.unique <span class="hljs-keyword">this</span>
+  Array.prototype.sortBy = <span class="hljs-function">-&gt;</span>
+    args = [].slice.call arguments
+    args.unshift <span class="hljs-keyword">this</span>
+    exports.sortBy.apply <span class="hljs-keyword">this</span>, args
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="helper%20methods">
+          <div class="pilwrap" id="helper-methods">
   <h2>
-    <a href="#helper%20methods" name="helper%20methods" class="pilcrow">&#182;</a>
-    Helper Methods
+    <a href="#helper-methods" name="helper-methods" class="pilcrow"></a>
+Helper Methods
   </h2>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-
-<span class="nv">dynamicSort = </span><span class="nf">(field) -&gt;</span>
-  <span class="nv">sortOrder = </span><span class="mi">1</span>
-  <span class="k">if</span> <span class="nx">field</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">is</span> <span class="s">&#39;-&#39;</span>
-    <span class="nv">sortOrder = </span><span class="o">-</span><span class="mi">1</span>
-    <span class="nv">field = </span><span class="nx">field</span><span class="p">.</span><span class="nx">substr</span> <span class="mi">1</span>
-
-</pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript"><span class="hljs-function">
+<span class="hljs-title">dynamicSort</span> = <span class="hljs-params">(field)</span> -&gt;</span>
+  sortOrder = <span class="hljs-number">1</span>
+  <span class="hljs-keyword">if</span> field[<span class="hljs-number">0</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'-'</span>
+    sortOrder = -<span class="hljs-number">1</span>
+    field = field.substr <span class="hljs-number">1</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-7" id="section-7">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
 </div>
 <p>return sort function</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nf">(a, b) -&gt;</span>
-    <span class="nv">result = </span><span class="k">if</span> <span class="nx">a</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="k">then</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">a</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
-    <span class="nx">result</span> <span class="o">*</span> <span class="nx">sortOrder</span>
-
-<span class="nv">dynamicMultiSort = </span><span class="nf">-&gt;</span>
-  <span class="nv">args = </span><span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span>
-  <span class="nv">fields = </span><span class="nx">args</span><span class="p">.</span><span class="nx">map</span> <span class="nf">(e) -&gt;</span> <span class="nx">dynamicSort</span> <span class="nx">e</span>
-
-</pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">  (a, b) -&gt;
+    result = <span class="hljs-keyword">if</span> a[field] &lt; b[field] <span class="hljs-keyword">then</span> -<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> a[field] &gt; b[field] <span class="hljs-keyword">then</span> <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>
+    result * sortOrder
+<span class="hljs-function">
+<span class="hljs-title">dynamicMultiSort</span> = -&gt;</span>
+  args = [].slice.call(arguments)
+  fields = args.map (e) -&gt; dynamicSort e
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-8" id="section-8">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
 </div>
 <p>return sort function</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nf">(a, b) -&gt;</span>
-    <span class="nv">result = </span><span class="mi">0</span>
-    <span class="k">for</span> <span class="nx">sort</span> <span class="k">in</span> <span class="nx">fields</span>
-      <span class="nv">result = </span><span class="nx">sort</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span>
-      <span class="k">return</span> <span class="nx">result</span> <span class="k">if</span> <span class="nx">result</span>
-    <span class="nx">result</span>
-</pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">  (a, b) -&gt;
+    result = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> sort <span class="hljs-keyword">in</span> fields
+      result = sort a, b
+      <span class="hljs-keyword">return</span> result <span class="hljs-keyword">if</span> result
+    result
+
+</pre>
         </td>
       </tr>
+    
   </tbody>
 </table>
+
   </div>
 </body>
 </html>

@@ -6,20 +6,31 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/github/node-util/src/numbercoffee", defaultSidebar = true;
+    var relativeDir = "../";
+    var thisFile = "home/alex/github/node-util/src/number.coffee";
+    var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head
 <body>
   <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='https://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='https://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="https://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
   </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
 </div>
 <div class="links">
-  <a href="http://alinex.github.io/blog" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
 </div>
 </nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
@@ -28,202 +39,198 @@
     </div>
     <div id="tree"></div>
     <div id="headings">
+
       <div class="heading h1">
-        <a href="#utility%20functions%20for%20numbers.">Utility functions for numbers.</a>
+        <a href="#utility-functions-for-numbers">Utility functions for numbers.</a>
       </div>
+
       <div class="heading h2">
-        <a href="#check%20for%20integer">Check for integer</a>
+        <a href="#check-for-integer">Check for integer</a>
       </div>
+
       <div class="heading h2">
-        <a href="#stricter%20parse%20function">Stricter parse function</a>
+        <a href="#stricter-parse-function">Stricter parse function</a>
       </div>
+
       <div class="heading h2">
-        <a href="#read%20time%20interval%20in%20seconds">Read time interval in seconds</a>
+        <a href="#read-time-interval-in-seconds">Read time interval in seconds</a>
       </div>
+
       <div class="heading h2">
-        <a href="#read%20time%20interval%20in%20milliseconds">Read time interval in milliseconds</a>
+        <a href="#read-time-interval-in-milliseconds">Read time interval in milliseconds</a>
       </div>
+
     </div>
   </div>
   <div id="sidebar-toggle"></div>
-  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a><div class="background highlight"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a>
+    <div class="background highlight"></div>
 <table cellpadding="0" cellspacing="0">
   <tbody>
+    
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="utility%20functions%20for%20numbers.">
+          <div class="pilwrap" id="utility-functions-for-numbers">
   <h1>
-    <a href="#utility%20functions%20for%20numbers." name="utility%20functions%20for%20numbers." class="pilcrow">&#182;</a>
-    Utility functions for numbers.
+    <a href="#utility-functions-for-numbers" name="utility-functions-for-numbers" class="pilcrow"></a>
+Utility functions for numbers.
   </h1>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">
+
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="check%20for%20integer">
+          <div class="pilwrap" id="check-for-integer">
   <h2>
-    <a href="#check%20for%20integer" name="check%20for%20integer" class="pilcrow">&#182;</a>
-    Check for integer
+    <a href="#check-for-integer" name="check-for-integer" class="pilcrow"></a>
+Check for integer
   </h2>
 </div>
-
-
 <p>This method will check that the given value is an integer .</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>value</code>
 to be analyzed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>true</code> if <code>value</code> is an integer</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.isInteger = </span><span class="nf">(value) -&gt;</span>
-  <span class="nx">value</span> <span class="o">is</span> <span class="p">(</span><span class="nx">value</span> <span class="o">|</span> <span class="mi">0</span><span class="p">)</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.isInteger = <span class="hljs-function"><span class="hljs-params">(value)</span> -&gt;</span>
+  value <span class="hljs-keyword">is</span> (value | <span class="hljs-number">0</span>)
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="stricter%20parse%20function">
+          <div class="pilwrap" id="stricter-parse-function">
   <h2>
-    <a href="#stricter%20parse%20function" name="stricter%20parse%20function" class="pilcrow">&#182;</a>
-    Stricter parse function
+    <a href="#stricter-parse-function" name="stricter-parse-function" class="pilcrow"></a>
+Stricter parse function
   </h2>
 </div>
-
-
 <p>This will fail on all strings which are no real integer.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>value</code>
 to be analyzed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>value</code> as Number or <code>NaN</code></li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.parseInt = parseInteger = </span><span class="nf">(value) -&gt;</span>
-  <span class="k">return</span> <span class="nb">Number</span> <span class="nx">value</span> <span class="k">if</span> <span class="sr">/^(\-|\+)?([0-9]+|Infinity)$/</span><span class="p">.</span><span class="nx">test</span> <span class="nx">value</span>
-  <span class="kc">NaN</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.parseInt = parseInteger = <span class="hljs-function"><span class="hljs-params">(value)</span> -&gt;</span>
+  <span class="hljs-keyword">return</span> Number value <span class="hljs-keyword">if</span> <span class="hljs-regexp">/^(\-|\+)?([0-9]+|Infinity)$/</span>.test value
+  NaN
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="read%20time%20interval%20in%20seconds">
+          <div class="pilwrap" id="read-time-interval-in-seconds">
   <h2>
-    <a href="#read%20time%20interval%20in%20seconds" name="read%20time%20interval%20in%20seconds" class="pilcrow">&#182;</a>
-    Read time interval in seconds
+    <a href="#read-time-interval-in-seconds" name="read-time-interval-in-seconds" class="pilcrow"></a>
+Read time interval in seconds
   </h2>
 </div>
-
-
 <p>With this parser it is possible to read a time interval in human format
 like: <code>1h 30m</code>.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>value</code>
 to be analyzed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>value</code> as Number or <code>NaN</code></li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.parseSeconds = </span><span class="nf">(value) -&gt;</span>
-  <span class="nv">int = </span><span class="nx">parseInteger</span> <span class="nx">value</span>
-  <span class="k">return</span> <span class="nx">int</span> <span class="k">unless</span> <span class="nb">isNaN</span> <span class="nx">int</span>
-  <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
-  <span class="nv">int = </span><span class="mi">0</span>
-  <span class="k">for</span> <span class="nx">part</span> <span class="k">in</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/([smhd])(\d)/g</span><span class="p">,</span> <span class="s">&#39;$1 $2&#39;</span><span class="p">).</span><span class="nx">split</span> <span class="sr">/\s+/</span>
-    <span class="nv">match = </span><span class="sr">/^([+-]?\d+(?:\.\d+)?)\s*([smhd])$/</span><span class="p">.</span><span class="nx">exec</span> <span class="nx">part</span>
-    <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="nx">match</span>
-    <span class="nv">value = </span><span class="nb">parseFloat</span> <span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="nx">int</span> <span class="o">+=</span> <span class="k">switch</span> <span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-      <span class="k">when</span> <span class="s">&#39;s&#39;</span> <span class="k">then</span> <span class="nx">value</span>
-      <span class="k">when</span> <span class="s">&#39;m&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">60</span>
-      <span class="k">when</span> <span class="s">&#39;h&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">3600</span>
-      <span class="k">when</span> <span class="s">&#39;d&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span>
-  <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span> <span class="nx">int</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.parseSeconds = <span class="hljs-function"><span class="hljs-params">(value)</span> -&gt;</span>
+  int = parseInteger value
+  <span class="hljs-keyword">return</span> int <span class="hljs-keyword">unless</span> isNaN int
+  <span class="hljs-keyword">return</span> NaN <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> value <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
+  int = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span> part <span class="hljs-keyword">in</span> value.toLowerCase().replace(<span class="hljs-regexp">/([smhd])(\d)/g</span>, <span class="hljs-string">'$1 $2'</span>).split <span class="hljs-regexp">/\s+/</span>
+    match = <span class="hljs-regexp">/^([+-]?\d+(?:\.\d+)?)\s*([smhd])$/</span>.exec part
+    <span class="hljs-keyword">return</span> NaN <span class="hljs-keyword">unless</span> match
+    value = parseFloat match[<span class="hljs-number">1</span>]
+    int += <span class="hljs-keyword">switch</span> match[<span class="hljs-number">2</span>]
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'s'</span> <span class="hljs-keyword">then</span> value
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'m'</span> <span class="hljs-keyword">then</span> value * <span class="hljs-number">60</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'h'</span> <span class="hljs-keyword">then</span> value * <span class="hljs-number">3600</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'d'</span> <span class="hljs-keyword">then</span> value * <span class="hljs-number">24</span> * <span class="hljs-number">3600</span>
+  Math.floor int
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="read%20time%20interval%20in%20milliseconds">
+          <div class="pilwrap" id="read-time-interval-in-milliseconds">
   <h2>
-    <a href="#read%20time%20interval%20in%20milliseconds" name="read%20time%20interval%20in%20milliseconds" class="pilcrow">&#182;</a>
-    Read time interval in milliseconds
+    <a href="#read-time-interval-in-milliseconds" name="read-time-interval-in-milliseconds" class="pilcrow"></a>
+Read time interval in milliseconds
   </h2>
 </div>
-
-
 <p>With this parser it is possible to read a time interval in human format
 like: <code>1h 30m</code>.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>value</code>
 to be analyzed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>value</code> as Number or <code>NaN</code></li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.parseMSeconds = </span><span class="nf">(value) -&gt;</span>
-  <span class="nv">int = </span><span class="nx">parseInteger</span> <span class="nx">value</span>
-  <span class="k">return</span> <span class="nx">int</span> <span class="k">unless</span> <span class="nb">isNaN</span> <span class="nx">int</span>
-  <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
-  <span class="nv">int = </span><span class="mi">0</span>
-  <span class="k">for</span> <span class="nx">part</span> <span class="k">in</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/([smhd])(\d)/g</span><span class="p">,</span> <span class="s">&#39;$1 $2&#39;</span><span class="p">).</span><span class="nx">split</span> <span class="sr">/\s+/</span>
-    <span class="nv">match = </span><span class="sr">/^([+-]?\d+(?:\.\d+)?)\s*([smhd]|ms)$/</span><span class="p">.</span><span class="nx">exec</span> <span class="nx">part</span>
-    <span class="k">return</span> <span class="kc">NaN</span> <span class="k">unless</span> <span class="nx">match</span>
-    <span class="nv">value = </span><span class="nb">parseFloat</span> <span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="nx">int</span> <span class="o">+=</span> <span class="k">switch</span> <span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-      <span class="k">when</span> <span class="s">&#39;ms&#39;</span> <span class="k">then</span> <span class="nx">value</span>
-      <span class="k">when</span> <span class="s">&#39;s&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">1000</span>
-      <span class="k">when</span> <span class="s">&#39;m&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">60000</span>
-      <span class="k">when</span> <span class="s">&#39;h&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">3600000</span>
-      <span class="k">when</span> <span class="s">&#39;d&#39;</span> <span class="k">then</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600000</span>
-  <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span> <span class="nx">int</span>
-</pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.parseMSeconds = <span class="hljs-function"><span class="hljs-params">(value)</span> -&gt;</span>
+  int = parseInteger value
+  <span class="hljs-keyword">return</span> int <span class="hljs-keyword">unless</span> isNaN int
+  <span class="hljs-keyword">return</span> NaN <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> value <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
+  int = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span> part <span class="hljs-keyword">in</span> value.toLowerCase().replace(<span class="hljs-regexp">/([smhd])(\d)/g</span>, <span class="hljs-string">'$1 $2'</span>).split <span class="hljs-regexp">/\s+/</span>
+    match = <span class="hljs-regexp">/^([+-]?\d+(?:\.\d+)?)\s*([smhd]|ms)$/</span>.exec part
+    <span class="hljs-keyword">return</span> NaN <span class="hljs-keyword">unless</span> match
+    value = parseFloat match[<span class="hljs-number">1</span>]
+    int += <span class="hljs-keyword">switch</span> match[<span class="hljs-number">2</span>]
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'ms'</span> <span class="hljs-keyword">then</span> value
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'s'</span> <span class="hljs-keyword">then</span> value * <span class="hljs-number">1000</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'m'</span> <span class="hljs-keyword">then</span> value * <span class="hljs-number">60000</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'h'</span> <span class="hljs-keyword">then</span> value * <span class="hljs-number">3600000</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'d'</span> <span class="hljs-keyword">then</span> value * <span class="hljs-number">24</span> * <span class="hljs-number">3600000</span>
+  Math.floor int
+
+</pre>
         </td>
       </tr>
+    
   </tbody>
 </table>
+
   </div>
 </body>
 </html>

@@ -6,20 +6,31 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = "../", thisFile = "home/alex/github/node-util/src/stringcoffee", defaultSidebar = true;
+    var relativeDir = "../";
+    var thisFile = "home/alex/github/node-util/src/string.coffee";
+    var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
-</head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head
 <body>
   <nav>
-<div class="logo"><a href="http://alinex.github.io" onmouseover="lllogo.src='https://alinex.github.io/images/Alinex-200.png'" onmouseout="lllogo.src='https://alinex.github.io/images/Alinex-black-200.png'">
-  <img name="lllogo" src="https://alinex.github.io/images/Alinex-black-200.png" width="150" title="Alinex Universe Homepage" />
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
   </a>
-  <img src="http://alinex.github.io/images/Alinex-200.png" style="display:none" alt="preloading" />
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
 </div>
 <div class="links">
-  <a href="http://alinex.github.io/blog" class="btn btn-primary"><span class="glyphicon-cog"></span> Blog</a>
-  <a href="http://alinex.github.io/code.html" class="btn btn-warning"><span class="glyphicon-pencil"></span> Code</a>
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
 </div>
 </nav><div id="sidebar_wrapper">
     <div id="sidebar_switch">
@@ -28,81 +39,99 @@
     </div>
     <div id="tree"></div>
     <div id="headings">
+
       <div class="heading h1">
-        <a href="#utility%20functions%20for%20strings.">Utility functions for strings.</a>
+        <a href="#utility-functions-for-strings">Utility functions for strings.</a>
       </div>
+
       <div class="heading h2">
-        <a href="#check%20for%20specific%20string%20start">Check for specific string start</a>
+        <a href="#check-for-specific-string-start">Check for specific string start</a>
       </div>
+
       <div class="heading h2">
-        <a href="#check%20for%20specific%20string%20ending">Check for specific string ending</a>
+        <a href="#check-for-specific-string-ending">Check for specific string ending</a>
       </div>
+
       <div class="heading h2">
-        <a href="#repeat%20string%20n%20times">Repeat string n times</a>
+        <a href="#repeat-string-n-times">Repeat string n times</a>
       </div>
+
       <div class="heading h2">
-        <a href="#left%20pad%20string%20to%20specified%20length">Left pad string to specified length</a>
+        <a href="#left-pad-string-to-specified-length">Left pad string to specified length</a>
       </div>
+
       <div class="heading h2">
-        <a href="#right%20pad%20string%20to%20specified%20length">Right pad string to specified length</a>
+        <a href="#right-pad-string-to-specified-length">Right pad string to specified length</a>
       </div>
+
       <div class="heading h2">
-        <a href="#center%20pad%20string%20to%20specified%20length">Center pad string to specified length</a>
+        <a href="#center-pad-string-to-specified-length">Center pad string to specified length</a>
       </div>
+
       <div class="heading h2">
-        <a href="#trim%20given%20characters">Trim given characters</a>
+        <a href="#trim-given-characters">Trim given characters</a>
       </div>
+
       <div class="heading h2">
-        <a href="#upper%20case%20first%20character">Upper case first character</a>
+        <a href="#upper-case-first-character">Upper case first character</a>
       </div>
+
       <div class="heading h2">
-        <a href="#lower%20case%20first%20character">Lower case first character</a>
+        <a href="#lower-case-first-character">Lower case first character</a>
       </div>
+
       <div class="heading h2">
-        <a href="#check%20if%20string%20contains%20substring">Check if string contains substring</a>
+        <a href="#check-if-string-contains-substring">Check if string contains substring</a>
       </div>
+
       <div class="heading h3">
         <a href="#wordwrap">WordWrap</a>
       </div>
+
       <div class="heading h3">
         <a href="#shorten">Shorten</a>
       </div>
+
       <div class="heading h2">
-        <a href="#add%20object%20helpers%20to%20the%20object%20class">Add object helpers to the Object class</a>
+        <a href="#add-object-helpers-to-the-object-class">Add object helpers to the Object class</a>
       </div>
+
     </div>
   </div>
   <div id="sidebar-toggle"></div>
-  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a><div class="background highlight"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a>
+    <div class="background highlight"></div>
 <table cellpadding="0" cellspacing="0">
   <tbody>
+    
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="utility%20functions%20for%20strings.">
+          <div class="pilwrap" id="utility-functions-for-strings">
   <h1>
-    <a href="#utility%20functions%20for%20strings." name="utility%20functions%20for%20strings." class="pilcrow">&#182;</a>
-    Utility functions for strings.
+    <a href="#utility-functions-for-strings" name="utility-functions-for-strings" class="pilcrow"></a>
+Utility functions for strings.
   </h1>
 </div>
 
         </td>
-        <td class="code highlight"><div class="highlight"><pre></pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">
+
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="check%20for%20specific%20string%20start">
+          <div class="pilwrap" id="check-for-specific-string-start">
   <h2>
-    <a href="#check%20for%20specific%20string%20start" name="check%20for%20specific%20string%20start" class="pilcrow">&#182;</a>
-    Check for specific string start
+    <a href="#check-for-specific-string-start" name="check-for-specific-string-start" class="pilcrow"></a>
+Check for specific string start
   </h2>
 </div>
-
-
 <p>Peek at the beginning of a given string to see if it matches a sequence.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be checked</li>
@@ -111,35 +140,30 @@ phrase to match</li>
 <li><code>start</code> (optional)
 offset character position to start looking for</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>true</code> if <code>string</code> starts with <code>literal</code></li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.starts = </span><span class="nf">(string, literal, start) -&gt;</span>
-  <span class="nx">literal</span> <span class="o">is</span> <span class="nx">string</span><span class="p">.</span><span class="nx">substr</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">literal</span><span class="p">.</span><span class="nx">length</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.starts = <span class="hljs-function"><span class="hljs-params">(string, literal, start)</span> -&gt;</span>
+  literal <span class="hljs-keyword">is</span> string.substr start, literal.length
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="check%20for%20specific%20string%20ending">
+          <div class="pilwrap" id="check-for-specific-string-ending">
   <h2>
-    <a href="#check%20for%20specific%20string%20ending" name="check%20for%20specific%20string%20ending" class="pilcrow">&#182;</a>
-    Check for specific string ending
+    <a href="#check-for-specific-string-ending" name="check-for-specific-string-ending" class="pilcrow"></a>
+Check for specific string ending
   </h2>
 </div>
-
-
 <p>Peek at the end of a given string to see if it matches a sequence.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be checked</li>
@@ -148,74 +172,65 @@ phrase to match</li>
 <li><code>back</code> (optional)
 offset character position from the end to look for</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li><code>true</code> if <code>string</code> ends with <code>literal</code></li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.ends = </span><span class="nf">(string, literal, back) -&gt;</span>
-  <span class="nv">len = </span><span class="nx">literal</span><span class="p">.</span><span class="nx">length</span>
-  <span class="nx">literal</span> <span class="o">is</span> <span class="nx">string</span><span class="p">.</span><span class="nx">substr</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">len</span> <span class="o">-</span> <span class="p">(</span><span class="nx">back</span> <span class="o">or</span> <span class="mi">0</span><span class="p">),</span> <span class="nx">len</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.ends = <span class="hljs-function"><span class="hljs-params">(string, literal, back)</span> -&gt;</span>
+  len = literal.length
+  literal <span class="hljs-keyword">is</span> string.substr string.length - len - (back <span class="hljs-keyword">or</span> <span class="hljs-number">0</span>), len
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="repeat%20string%20n%20times">
+          <div class="pilwrap" id="repeat-string-n-times">
   <h2>
-    <a href="#repeat%20string%20n%20times" name="repeat%20string%20n%20times" class="pilcrow">&#182;</a>
-    Repeat string n times
+    <a href="#repeat-string-n-times" name="repeat-string-n-times" class="pilcrow"></a>
+Repeat string n times
   </h2>
 </div>
-
-
 <p>Use clever algorithm to have O(log(n)) string concatenation operations.</p>
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be repeated</li>
 <li><code>n</code>
 number of repeats</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the repeated text</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.repeat = </span><span class="nf">(string, n) -&gt;</span>
-  <span class="nv">res = </span><span class="s">&#39;&#39;</span>
-  <span class="k">while</span> <span class="nx">n</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="nx">res</span> <span class="o">+=</span> <span class="nx">string</span> <span class="k">if</span> <span class="nx">n</span> <span class="o">&amp;</span> <span class="mi">1</span>
-    <span class="nx">n</span> <span class="o">&gt;&gt;&gt;=</span> <span class="mi">1</span>
-    <span class="nx">string</span> <span class="o">+=</span> <span class="nx">string</span>
-  <span class="nx">res</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.repeat = <span class="hljs-function"><span class="hljs-params">(string, n)</span> -&gt;</span>
+  res = <span class="hljs-string">''</span>
+  <span class="hljs-keyword">while</span> n &gt; <span class="hljs-number">0</span>
+    res += string <span class="hljs-keyword">if</span> n &amp; <span class="hljs-number">1</span>
+    n &gt;&gt;&gt;= <span class="hljs-number">1</span>
+    string += string
+  res
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="left%20pad%20string%20to%20specified%20length">
+          <div class="pilwrap" id="left-pad-string-to-specified-length">
   <h2>
-    <a href="#left%20pad%20string%20to%20specified%20length" name="left%20pad%20string%20to%20specified%20length" class="pilcrow">&#182;</a>
-    Left pad string to specified length
+    <a href="#left-pad-string-to-specified-length" name="left-pad-string-to-specified-length" class="pilcrow"></a>
+Left pad string to specified length
   </h2>
 </div>
-
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be padded</li>
@@ -224,35 +239,31 @@ final length of text</li>
 <li><code>char</code>
 character used for padding (defaults to ' ')</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the padded text</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.lpad = </span><span class="nf">(string, length, char = &#39; &#39;) -&gt;</span>
-  <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">string</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
-  <span class="k">return</span> <span class="nx">string</span> <span class="k">unless</span> <span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span>
-  <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">char</span><span class="p">,</span> <span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">+</span> <span class="nx">string</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.lpad = <span class="hljs-function"><span class="hljs-params">(string, length, char = <span class="hljs-string">' '</span>)</span> -&gt;</span>
+  string = string.toString() <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> string <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
+  <span class="hljs-keyword">return</span> string <span class="hljs-keyword">unless</span> length &gt;= string.length
+  exports.repeat(char, length - string.length) + string
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="right%20pad%20string%20to%20specified%20length">
+          <div class="pilwrap" id="right-pad-string-to-specified-length">
   <h2>
-    <a href="#right%20pad%20string%20to%20specified%20length" name="right%20pad%20string%20to%20specified%20length" class="pilcrow">&#182;</a>
-    Right pad string to specified length
+    <a href="#right-pad-string-to-specified-length" name="right-pad-string-to-specified-length" class="pilcrow"></a>
+Right pad string to specified length
   </h2>
 </div>
-
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be padded</li>
@@ -261,35 +272,31 @@ final length of text</li>
 <li><code>char</code>
 character used for padding (defaults to ' ')</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the padded text</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.rpad = </span><span class="nf">(string, length, char = &#39; &#39;) -&gt;</span>
-  <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">string</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
-  <span class="k">return</span> <span class="nx">string</span> <span class="k">unless</span> <span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span>
-  <span class="nx">string</span> <span class="o">+</span> <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">char</span><span class="p">,</span> <span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.rpad = <span class="hljs-function"><span class="hljs-params">(string, length, char = <span class="hljs-string">' '</span>)</span> -&gt;</span>
+  string = string.toString() <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> string <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
+  <span class="hljs-keyword">return</span> string <span class="hljs-keyword">unless</span> length &gt;= string.length
+  string + exports.repeat(char, length - string.length)
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="center%20pad%20string%20to%20specified%20length">
+          <div class="pilwrap" id="center-pad-string-to-specified-length">
   <h2>
-    <a href="#center%20pad%20string%20to%20specified%20length" name="center%20pad%20string%20to%20specified%20length" class="pilcrow">&#182;</a>
-    Center pad string to specified length
+    <a href="#center-pad-string-to-specified-length" name="center-pad-string-to-specified-length" class="pilcrow"></a>
+Center pad string to specified length
   </h2>
 </div>
-
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be padded</li>
@@ -298,331 +305,320 @@ final length of text</li>
 <li><code>char</code>
 character used for padding (defaults to ' ')</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the padded text</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.cpad = </span><span class="nf">(string, length, char = &#39; &#39;) -&gt;</span>
-  <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="k">unless</span> <span class="k">typeof</span> <span class="nx">string</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
-  <span class="k">return</span> <span class="nx">string</span> <span class="k">unless</span> <span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span>
-  <span class="nv">lpad = </span><span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span> <span class="nx">char</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span> <span class="p">(</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-  <span class="nv">rpad = </span><span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span> <span class="nx">char</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span> <span class="p">(</span><span class="nx">length</span> <span class="o">-</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-  <span class="nx">lpad</span> <span class="o">+</span> <span class="nx">string</span> <span class="o">+</span> <span class="nx">rpad</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.cpad = <span class="hljs-function"><span class="hljs-params">(string, length, char = <span class="hljs-string">' '</span>)</span> -&gt;</span>
+  string = string.toString() <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> string <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
+  <span class="hljs-keyword">return</span> string <span class="hljs-keyword">unless</span> length &gt;= string.length
+  lpad = exports.repeat char, Math.floor (length - string.length) / <span class="hljs-number">2</span>
+  rpad = exports.repeat char, Math.ceil (length - string.length) / <span class="hljs-number">2</span>
+  lpad + string + rpad
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="trim%20given%20characters">
+          <div class="pilwrap" id="trim-given-characters">
   <h2>
-    <a href="#trim%20given%20characters" name="trim%20given%20characters" class="pilcrow">&#182;</a>
-    Trim given characters
+    <a href="#trim-given-characters" name="trim-given-characters" class="pilcrow"></a>
+Trim given characters
   </h2>
 </div>
-
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be trimmed</li>
 <li><code>chars</code>
 list of characters to trim off (defaults to ' \n\t')</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the padded text</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.trim = </span><span class="nf">(string, chars = &quot; \n\t&quot;) -&gt;</span>
-  <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">substring</span> <span class="mi">1</span> <span class="k">while</span> <span class="nx">string</span> <span class="o">and</span> <span class="o">~</span><span class="nx">chars</span><span class="p">.</span><span class="nx">indexOf</span> <span class="nx">string</span><span class="p">.</span><span class="nx">charAt</span> <span class="mi">0</span>
-  <span class="k">while</span> <span class="nx">string</span> <span class="o">and</span> <span class="o">~</span><span class="nx">chars</span><span class="p">.</span><span class="nx">indexOf</span> <span class="nx">string</span><span class="p">.</span><span class="nx">charAt</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span>
-    <span class="nv">string = </span><span class="nx">string</span><span class="p">.</span><span class="nx">substring</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">string</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span>
-  <span class="nx">string</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.trim = <span class="hljs-function"><span class="hljs-params">(string, chars = <span class="hljs-string">" \n\t"</span>)</span> -&gt;</span>
+  string = string.substring <span class="hljs-number">1</span> <span class="hljs-keyword">while</span> string <span class="hljs-keyword">and</span> ~chars.indexOf string.charAt <span class="hljs-number">0</span>
+  <span class="hljs-keyword">while</span> string <span class="hljs-keyword">and</span> ~chars.indexOf string.charAt string.length-<span class="hljs-number">1</span>
+    string = string.substring <span class="hljs-number">0</span>, string.length-<span class="hljs-number">1</span>
+  string
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="upper%20case%20first%20character">
+          <div class="pilwrap" id="upper-case-first-character">
   <h2>
-    <a href="#upper%20case%20first%20character" name="upper%20case%20first%20character" class="pilcrow">&#182;</a>
-    Upper case first character
+    <a href="#upper-case-first-character" name="upper-case-first-character" class="pilcrow"></a>
+Upper case first character
   </h2>
 </div>
-
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be changed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the text with first letter upper case</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.ucFirst = </span><span class="nf">(string) -&gt;</span>
-  <span class="nx">string</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span> <span class="o">+</span> <span class="nx">string</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.ucFirst = <span class="hljs-function"><span class="hljs-params">(string)</span> -&gt;</span>
+  string.charAt(<span class="hljs-number">0</span>).toUpperCase() + string.slice(<span class="hljs-number">1</span>)
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="lower%20case%20first%20character">
+          <div class="pilwrap" id="lower-case-first-character">
   <h2>
-    <a href="#lower%20case%20first%20character" name="lower%20case%20first%20character" class="pilcrow">&#182;</a>
-    Lower case first character
+    <a href="#lower-case-first-character" name="lower-case-first-character" class="pilcrow"></a>
+Lower case first character
   </h2>
 </div>
-
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be changed</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>the text with first letter lower case</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.lcFirst = </span><span class="nf">(string) -&gt;</span>
-  <span class="nx">string</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">+</span> <span class="nx">string</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.lcFirst = <span class="hljs-function"><span class="hljs-params">(string)</span> -&gt;</span>
+  string.charAt(<span class="hljs-number">0</span>).toLowerCase() + string.slice(<span class="hljs-number">1</span>)
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="check%20if%20string%20contains%20substring">
+          <div class="pilwrap" id="check-if-string-contains-substring">
   <h2>
-    <a href="#check%20if%20string%20contains%20substring" name="check%20if%20string%20contains%20substring" class="pilcrow">&#182;</a>
-    Check if string contains substring
+    <a href="#check-if-string-contains-substring" name="check-if-string-contains-substring" class="pilcrow"></a>
+Check if string contains substring
   </h2>
 </div>
-
-
 <p><strong>Arguments:</strong></p>
-
 <ul>
 <li><code>string</code>
 text to be check</li>
 <li><code>phrase</code>
 text to be searched for</li>
 </ul>
-
 <p><strong>Returns:</strong></p>
-
 <ul>
 <li>(bool) <code>true</code> if phrase is contained in string</li>
 </ul>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.contains = </span><span class="nf">(string, phrase) -&gt;</span>
-  <span class="nx">string</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">phrase</span><span class="p">)</span> <span class="o">isnt</span> <span class="o">-</span><span class="mi">1</span>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.contains = <span class="hljs-function"><span class="hljs-params">(string, phrase)</span> -&gt;</span>
+  string.indexOf(phrase) <span class="hljs-keyword">isnt</span> -<span class="hljs-number">1</span>
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="wordwrap">
+          <div class="pilwrap" id="wordwrap">
   <h3>
-    <a href="#wordwrap" name="wordwrap" class="pilcrow">&#182;</a>
-    WordWrap
+    <a href="#wordwrap" name="wordwrap" class="pilcrow"></a>
+WordWrap
   </h3>
 </div>
-
-
 <ul>
 <li>width -
 maximum amount of characters per line</li>
 <li>break
 string that will be added whenever it's needed to break the line</li>
 </ul>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.wordwrap = wordwrap = </span><span class="nf">(str, width = 80, brk = &#39;\n&#39;) -&gt;</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.wordwrap = wordwrap = <span class="hljs-function"><span class="hljs-params">(str, width = <span class="hljs-number">80</span>, brk = <span class="hljs-string">'\n'</span>)</span> -&gt;</span>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-13" id="section-13">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
 </div>
 <p>check if string to short</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="k">return</span> <span class="nx">str</span> <span class="k">if</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="nx">width</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> str <span class="hljs-keyword">if</span> str.length &lt;= width
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-14" id="section-14">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
 </div>
 <p>check if already has a break</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nv">p = </span><span class="nx">str</span><span class="p">.</span><span class="nx">indexOf</span> <span class="nx">brk</span>
-  <span class="k">if</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="nx">p</span> <span class="o">&lt;=</span> <span class="nx">width</span>
-    <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">wordwrap</span> <span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">brk</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  p = str.indexOf brk
+  <span class="hljs-keyword">if</span> -<span class="hljs-number">1</span> &lt; p &lt;= width
+    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p+<span class="hljs-number">1</span>) + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-15" id="section-15">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-15" id="section-15"></a>
 </div>
 <p>find possible break in range</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nv">p = </span><span class="nx">width</span>
-  <span class="nx">p</span><span class="o">--</span> <span class="k">while</span> <span class="nx">p</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">and</span> <span class="nx">str</span><span class="p">[</span><span class="nx">p</span><span class="p">]</span> <span class="o">isnt</span> <span class="s">&#39; &#39;</span>
-  <span class="k">if</span> <span class="nx">p</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">+</span> <span class="nx">brk</span> <span class="o">+</span> <span class="nx">wordwrap</span> <span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">brk</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  p = width
+  p-- <span class="hljs-keyword">while</span> p &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> str[p] <span class="hljs-keyword">isnt</span> <span class="hljs-string">' '</span>
+  <span class="hljs-keyword">if</span> p &gt; <span class="hljs-number">0</span>
+    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p) + brk + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-16" id="section-16">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-16" id="section-16"></a>
 </div>
 <p>too long, break on next possition</p>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nv">p = </span><span class="nx">width</span>
-  <span class="nx">p</span><span class="o">++</span> <span class="k">while</span> <span class="nx">p</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">and</span> <span class="nx">str</span><span class="p">[</span><span class="nx">p</span><span class="p">]</span> <span class="o">isnt</span> <span class="s">&#39; &#39;</span>
-  <span class="k">if</span> <span class="nx">p</span> <span class="o">&lt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span>
-    <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">+</span> <span class="nx">brk</span> <span class="o">+</span> <span class="nx">wordwrap</span> <span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">brk</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  p = width
+  p++ <span class="hljs-keyword">while</span> p &lt; str.length <span class="hljs-keyword">and</span> str[p] <span class="hljs-keyword">isnt</span> <span class="hljs-string">' '</span>
+  <span class="hljs-keyword">if</span> p &lt; str.length
+    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p) + brk + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-17" id="section-17">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-17" id="section-17"></a>
 </div>
 <p>not possible to break</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nx">str</span>
+        <td class="code highlight">
+          <pre class="coffeescript">  str
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="shorten">
+          <div class="pilwrap" id="shorten">
   <h3>
-    <a href="#shorten" name="shorten" class="pilcrow">&#182;</a>
-    Shorten
+    <a href="#shorten" name="shorten" class="pilcrow"></a>
+Shorten
   </h3>
 </div>
-
-
 <ul>
 <li>limit
 maximum number of characters</li>
 </ul>
-        </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.shorten = </span><span class="nf">(str, limit) -&gt;</span>
-  <span class="k">return</span> <span class="nx">str</span> <span class="k">if</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">limit</span>
 
-</pre></div>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.shorten = <span class="hljs-function"><span class="hljs-params">(str, limit)</span> -&gt;</span>
+  <span class="hljs-keyword">return</span> str <span class="hljs-keyword">if</span> str.length &lt; limit
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-19" id="section-19">&#182;</a>
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-19" id="section-19"></a>
 </div>
 <p>need to shorten</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-  <span class="nv">str = </span><span class="nx">str</span><span class="p">[</span><span class="mi">0</span><span class="p">..</span><span class="nx">limit</span><span class="o">-</span><span class="mi">3</span><span class="p">].</span><span class="nx">replace</span> <span class="sr">/\s\S*?$/</span><span class="p">,</span> <span class="s">&#39;&#39;</span>
-  <span class="k">return</span> <span class="nx">str</span> <span class="o">+</span> <span class="s">&#39;...&#39;</span>
+        <td class="code highlight">
+          <pre class="coffeescript">  str = str[<span class="hljs-number">0.</span>.limit-<span class="hljs-number">3</span>].replace <span class="hljs-regexp">/\s\S*?$/</span>, <span class="hljs-string">''</span>
+  <span class="hljs-keyword">return</span> str + <span class="hljs-string">'...'</span>
 
-
-</pre></div>
+</pre>
         </td>
       </tr>
+    
       <tr>
         <td class="docs">
-<div class="pilwrap" id="add%20object%20helpers%20to%20the%20object%20class">
+          <div class="pilwrap" id="add-object-helpers-to-the-object-class">
   <h2>
-    <a href="#add%20object%20helpers%20to%20the%20object%20class" name="add%20object%20helpers%20to%20the%20object%20class" class="pilcrow">&#182;</a>
-    Add object helpers to the Object class
+    <a href="#add-object-helpers-to-the-object-class" name="add-object-helpers-to-the-object-class" class="pilcrow"></a>
+Add object helpers to the Object class
   </h2>
 </div>
-
-
 <p>This will allow to call the methods directly on an object.</p>
+
         </td>
-        <td class="code highlight"><div class="highlight"><pre>
-<span class="nv">exports.addToPrototype = </span><span class="nf">-&gt;</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.starts = </span><span class="nf">(literal, start) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">starts</span> <span class="k">this</span><span class="p">,</span> <span class="nx">literal</span><span class="p">,</span> <span class="nx">start</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.ends = </span><span class="nf">(literal, back) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">ends</span> <span class="k">this</span><span class="p">,</span> <span class="nx">literal</span><span class="p">,</span> <span class="nx">back</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.repeat = </span><span class="nf">(n) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">repeat</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.rpad = </span><span class="nf">(n, char) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">rpad</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">char</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.lpad = </span><span class="nf">(n, char) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">lpad</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">char</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.cpad = </span><span class="nf">(n, char) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">cpad</span> <span class="k">this</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">char</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.ucFirst = </span><span class="nf">-&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">ucFirst</span> <span class="k">this</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.lcFirst = </span><span class="nf">-&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">lcFirst</span> <span class="k">this</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.contains = </span><span class="nf">(phrase) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">contains</span> <span class="k">this</span><span class="p">,</span> <span class="nx">phrase</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.wordwrap = </span><span class="nf">(width, brk, cut) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">wordwrap</span> <span class="k">this</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">brk</span><span class="p">,</span> <span class="nx">cut</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nv">prototype.shorten = </span><span class="nf">(limit) -&gt;</span>
-    <span class="nx">exports</span><span class="p">.</span><span class="nx">shorten</span> <span class="k">this</span><span class="p">,</span> <span class="nx">limit</span>
-</pre></div>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.addToPrototype = <span class="hljs-function">-&gt;</span>
+  String.prototype.starts = <span class="hljs-function"><span class="hljs-params">(literal, start)</span> -&gt;</span>
+    exports.starts <span class="hljs-keyword">this</span>, literal, start
+  String.prototype.ends = <span class="hljs-function"><span class="hljs-params">(literal, back)</span> -&gt;</span>
+    exports.ends <span class="hljs-keyword">this</span>, literal, back
+  String.prototype.repeat = <span class="hljs-function"><span class="hljs-params">(n)</span> -&gt;</span>
+    exports.repeat <span class="hljs-keyword">this</span>, n
+  String.prototype.rpad = <span class="hljs-function"><span class="hljs-params">(n, char)</span> -&gt;</span>
+    exports.rpad <span class="hljs-keyword">this</span>, n, char
+  String.prototype.lpad = <span class="hljs-function"><span class="hljs-params">(n, char)</span> -&gt;</span>
+    exports.lpad <span class="hljs-keyword">this</span>, n, char
+  String.prototype.cpad = <span class="hljs-function"><span class="hljs-params">(n, char)</span> -&gt;</span>
+    exports.cpad <span class="hljs-keyword">this</span>, n, char
+  String.prototype.ucFirst = <span class="hljs-function">-&gt;</span>
+    exports.ucFirst <span class="hljs-keyword">this</span>
+  String.prototype.lcFirst = <span class="hljs-function">-&gt;</span>
+    exports.lcFirst <span class="hljs-keyword">this</span>
+  String.prototype.contains = <span class="hljs-function"><span class="hljs-params">(phrase)</span> -&gt;</span>
+    exports.contains <span class="hljs-keyword">this</span>, phrase
+  String.prototype.wordwrap = <span class="hljs-function"><span class="hljs-params">(width, brk, cut)</span> -&gt;</span>
+    exports.wordwrap <span class="hljs-keyword">this</span>, width, brk, cut
+  String.prototype.shorten = <span class="hljs-function"><span class="hljs-params">(limit)</span> -&gt;</span>
+    exports.shorten <span class="hljs-keyword">this</span>, limit
+
+</pre>
         </td>
       </tr>
+    
   </tbody>
 </table>
+
   </div>
 </body>
 </html>
