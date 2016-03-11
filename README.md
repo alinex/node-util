@@ -15,7 +15,7 @@ are generally used for different general class types:
 - may extend the base classes
 
 > It is one of the modules of the [Alinex Universe](http://alinex.github.io/code.html)
-> following the code standards defined in the [General Docs](http://alinex.github.io/node-alinex).
+> following the code standards defined in the [General Docs](http://alinex.github.io/develop).
 
 
 Install
