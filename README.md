@@ -452,6 +452,30 @@ __Returns:__
 
 * (array) the new list
 
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = 'one,two,three\n1,2,3\n4,5,6'
+list = string.toList test, /\n/
+table = string.toList test, /\n/, /,/
+```
+
+This results to:
+
+``` coffee
+list = [
+  'one,teo,three'
+  '1,2,3'
+  '4,5,6'
+]
+table = [
+  ['one', 'two', 'three']
+  ['1', '2', '3']
+  ['4', '5', '6']
+]
+```
+
 
 Number type
 -------------------------------------------------
