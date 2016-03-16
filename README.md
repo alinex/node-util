@@ -437,6 +437,22 @@ __Returns:__
 * (string) the new text
 
 
+### toList
+
+Convert text into list or list of array (recordset).
+
+__Arguments:__
+
+* `rowDelimiter`
+  text or regular expression to divide into lines (default '\n')
+* `colDelimiter`
+  text or regular expression to divide into columns
+
+__Returns:__
+
+* (array) the new list
+
+
 Number type
 -------------------------------------------------
 

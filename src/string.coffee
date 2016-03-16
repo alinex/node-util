@@ -221,6 +221,13 @@ exports.shorten = (str, limit) ->
   str = str[0..limit-3].replace /\s\S*?$/, ''
   return str + '...'
 
+# ### Convert to list
+exports.toList = (text, rowDelimiter = /\n/, colDelimiter) ->
+  list = text.split rowDelimiter
+  return list unless colDelimiter
+  list.map (e) -> e.split colDelimiter
+
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
@@ -247,3 +254,5 @@ exports.addToPrototype = ->
     exports.wordwrap this, width, brk, cut
   String.prototype.shorten = (limit) ->
     exports.shorten this, limit
+  String.prototype.toList = (rowDelimiter, colDelimiter) ->
+    exports.toList this, rowDelimiter, colDelimiter
