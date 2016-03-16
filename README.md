@@ -781,6 +781,41 @@ result =
 ```
 
 
+### lcKeys
+
+Make the keys within a deep object all lowercase.
+
+__Arguments:__
+
+* `object`
+  to be optimized
+
+__Returns:__
+
+* data object with all keys in lowercase
+
+__Example:__
+
+``` coffee
+object = require('alinex-util').object
+test =
+  One: 1
+  TWO:
+    three: 3
+    fouR: 4
+result = object.lcKeys test
+```
+
+Will result in:
+
+``` coffee
+result =
+  one: 1
+  two:
+    three: 3
+    four: 4
+```
+
 Array object
 -------------------------------------------------
 

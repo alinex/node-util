@@ -253,6 +253,17 @@ filter = exports.filter = (obj, allow) ->
       result[key] = obj[key]
   result
 
+
+# Make object's keys to lowercase
+# -------------------------------------------------
+lcKeys = exports.lcKeys = (obj) ->
+  return obj if typeof obj isnt 'object' or Array.isArray obj
+  lc = {}
+  for key, val of obj
+    lc[key.toLowerCase()] = lcKeys val
+  lc
+
+
 # Add object helpers to the Object class
 # -------------------------------------------------
 # This will allow to call the methods directly on an object.
@@ -274,3 +285,4 @@ module.exports.addToPrototype = ->
   Object.prototype.filter = -> (args...) ->
     args.unshift this
     filter.apply null, args
+  Object.prototype.lcKeys = -> lcKeys this
