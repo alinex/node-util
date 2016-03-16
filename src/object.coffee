@@ -259,8 +259,8 @@ filter = exports.filter = (obj, allow) ->
 lcKeys = exports.lcKeys = (obj) ->
   return obj if typeof obj isnt 'object' or Array.isArray obj
   lc = {}
-  for key, val of obj
-    lc[key.toLowerCase()] = lcKeys val
+  for key in Object.keys obj
+    lc[key.toLowerCase()] = lcKeys obj[key]
   lc
 
 

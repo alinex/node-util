@@ -215,6 +215,34 @@ describe "String", ->
       expect string.shorten 'Hello World!', 60
       .to.be.equal 'Hello World!'
 
+  describe "toList", ->
+
+    test = 'one,two,three\n1,2,3\n4,5,6'
+
+    it "should convert to simple list (default separator)", ->
+      expect string.toList test
+      .to.be.deep.equal [
+        'one,two,three'
+        '1,2,3'
+        '4,5,6'
+      ]
+
+    it "should convert to simple list", ->
+      expect string.toList test, /\n/
+      .to.be.deep.equal [
+        'one,two,three'
+        '1,2,3'
+        '4,5,6'
+      ]
+
+    it "should convert to table", ->
+      expect string.toList test, /\n/, /,/
+      .to.be.deep.equal [
+        ['one', 'two', 'three']
+        ['1', '2', '3']
+        ['4', '5', '6']
+      ]
+
   describe "prototype", ->
 
     it "should match string start", ->

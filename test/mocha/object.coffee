@@ -338,6 +338,23 @@ describe "Object", ->
         one: 1
         two: 2
 
+  describe "lcKeys", ->
+
+    test =
+      One: 1
+      TWO:
+        three: 3
+        fouR: 4
+
+    it "should make keys lowercase", ->
+      console.log object.lcKeys test
+      expect object.lcKeys test
+      .to.deep.equal
+        one: 1
+        two:
+          three: 3
+          four: 4
+
   describe "prototype", ->
 
     it "should clone object", ->
