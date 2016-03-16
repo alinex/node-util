@@ -4,6 +4,15 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.0 (2016-03-16)
+-------------------------------------------------
+- Upgraded builder and chalk.
+- Added tests and fixed bug in object lcKeys.
+- Extend examples.
+- Add method to make object keys lowercase.
+- Add possibility to easily convert text to list or table.
+- Fixed general link in README.
+
 Version 1.0.0 (2016-02-26)
 -------------------------------------------------
 - Upgraded builder to newest version.
