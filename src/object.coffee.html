@@ -73,6 +73,10 @@
       </div>
 
       <div class="heading h2">
+        <a href="#make-objects-keys-to-lowercase">Make object&#39;s keys to lowercase</a>
+      </div>
+
+      <div class="heading h2">
         <a href="#add-object-helpers-to-the-object-class">Add object helpers to the Object class</a>
       </div>
 
@@ -101,9 +105,7 @@ debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'de
 debugPathSearch = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'util:object:pathsearch'</span>)
 debugExtend = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'util:object:extend'</span>)
 util = <span class="hljs-built_in">require</span> <span class="hljs-string">'util'</span>
-chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'chalk'</span>
-
-</pre>
+chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'chalk'</span></pre>
         </td>
       </tr>
     
@@ -136,8 +138,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">extend = <span class="hljs-built_in">module</span>.exports.extend = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span>
-  debugExtend <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span>
-</pre>
+  debugExtend <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span></pre>
         </td>
       </tr>
     
@@ -151,8 +152,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">return</span> extend <span class="hljs-literal">null</span>, obj <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ext?
-  obj = <span class="hljs-literal">null</span> <span class="hljs-keyword">unless</span> obj
-</pre>
+  obj = <span class="hljs-literal">null</span> <span class="hljs-keyword">unless</span> obj</pre>
         </td>
       </tr>
     
@@ -167,8 +167,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">for</span> src <span class="hljs-keyword">in</span> ext
     <span class="hljs-keyword">continue</span> <span class="hljs-keyword">unless</span> src?
-    debugExtend <span class="hljs-string">"by <span class="hljs-subst">#{chalk.grey util.inspect src}</span>"</span>
-</pre>
+    debugExtend <span class="hljs-string">"by <span class="hljs-subst">#{chalk.grey util.inspect src}</span>"</span></pre>
         </td>
       </tr>
     
@@ -183,8 +182,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         <td class="code highlight">
           <pre class="coffeescript">    obj = {} <span class="hljs-keyword">unless</span> obj
     <span class="hljs-keyword">continue</span> <span class="hljs-keyword">if</span> src.constructor?.name <span class="hljs-keyword">is</span> Object.name <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> Object.keys(src).length
-    <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> src <span class="hljs-keyword">isnt</span> <span class="hljs-string">'object'</span>
-</pre>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> src <span class="hljs-keyword">isnt</span> <span class="hljs-string">'object'</span></pre>
         </td>
       </tr>
     
@@ -198,8 +196,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">      obj = src
-    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> Array.isArray src
-</pre>
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> Array.isArray src</pre>
         </td>
       </tr>
     
@@ -228,8 +225,7 @@ object may differ to another copy of the same class if generated in the sandbox.
       flags += <span class="hljs-string">'y'</span> <span class="hljs-keyword">if</span> src.sticky
       obj = <span class="hljs-keyword">new</span> RegExp src.source, flags
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> src.constructor.name <span class="hljs-keyword">isnt</span> Object.name
-      debugExtend <span class="hljs-string">"unknown instance (referenced)"</span>
-</pre>
+      debugExtend <span class="hljs-string">"unknown instance (referenced)"</span></pre>
         </td>
       </tr>
     
@@ -245,8 +241,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">      obj = src
-    <span class="hljs-keyword">else</span>
-</pre>
+    <span class="hljs-keyword">else</span></pre>
         </td>
       </tr>
     
@@ -260,8 +255,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">      <span class="hljs-keyword">for</span> own key, val <span class="hljs-keyword">of</span> src
-        debugExtend <span class="hljs-string">"object.<span class="hljs-subst">#{key}</span> <span class="hljs-subst">#{chalk.grey util.inspect val}</span>"</span>
-</pre>
+        debugExtend <span class="hljs-string">"object.<span class="hljs-subst">#{key}</span> <span class="hljs-subst">#{chalk.grey util.inspect val}</span>"</span></pre>
         </td>
       </tr>
     
@@ -278,9 +272,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         obj[key] = extend base, val
         <span class="hljs-keyword">delete</span> obj[key] <span class="hljs-keyword">if</span> val <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>
   debugExtend <span class="hljs-string">"&lt;- <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span>
-  obj
-
-</pre>
+  obj</pre>
         </td>
       </tr>
     
@@ -312,8 +304,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">extendArrayConcat = <span class="hljs-built_in">module</span>.exports.extendArrayConcat = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span>
-  debug <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span>
-</pre>
+  debug <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span></pre>
         </td>
       </tr>
     
@@ -327,8 +318,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">return</span> extendArrayConcat <span class="hljs-literal">null</span>, obj <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ext?
-  obj = <span class="hljs-literal">null</span> <span class="hljs-keyword">unless</span> obj
-</pre>
+  obj = <span class="hljs-literal">null</span> <span class="hljs-keyword">unless</span> obj</pre>
         </td>
       </tr>
     
@@ -346,8 +336,7 @@ object may differ to another copy of the same class if generated in the sandbox.
     debug <span class="hljs-string">"by <span class="hljs-subst">#{chalk.grey util.inspect src}</span>"</span>
     obj = {} <span class="hljs-keyword">unless</span> obj
     <span class="hljs-keyword">continue</span> <span class="hljs-keyword">if</span> src.constructor?.name <span class="hljs-keyword">is</span> Object.name <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> Object.keys(src).length
-    <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> src <span class="hljs-keyword">isnt</span> <span class="hljs-string">'object'</span>
-</pre>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> src <span class="hljs-keyword">isnt</span> <span class="hljs-string">'object'</span></pre>
         </td>
       </tr>
     
@@ -362,8 +351,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         <td class="code highlight">
           <pre class="coffeescript">      obj = src
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> Array.isArray src
-      debug <span class="hljs-string">"array concat"</span>
-</pre>
+      debug <span class="hljs-string">"array concat"</span></pre>
         </td>
       </tr>
     
@@ -390,8 +378,7 @@ object may differ to another copy of the same class if generated in the sandbox.
       flags += <span class="hljs-string">'y'</span> <span class="hljs-keyword">if</span> src.sticky
       obj = <span class="hljs-keyword">new</span> RegExp src.source, flags
     <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> src.constructor.name <span class="hljs-keyword">isnt</span> Object.name
-      debug <span class="hljs-string">"unknown instance (referenced)"</span>
-</pre>
+      debug <span class="hljs-string">"unknown instance (referenced)"</span></pre>
         </td>
       </tr>
     
@@ -407,8 +394,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">      obj = src
-    <span class="hljs-keyword">else</span>
-</pre>
+    <span class="hljs-keyword">else</span></pre>
         </td>
       </tr>
     
@@ -422,8 +408,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">      <span class="hljs-keyword">for</span> own key, val <span class="hljs-keyword">of</span> src
-        debug <span class="hljs-string">"object.<span class="hljs-subst">#{key}</span> <span class="hljs-subst">#{chalk.grey util.inspect val}</span>"</span>
-</pre>
+        debug <span class="hljs-string">"object.<span class="hljs-subst">#{key}</span> <span class="hljs-subst">#{chalk.grey util.inspect val}</span>"</span></pre>
         </td>
       </tr>
     
@@ -440,10 +425,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         obj[key] = extendArrayConcat base, val
         <span class="hljs-keyword">delete</span> obj[key] <span class="hljs-keyword">if</span> val <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>
   debug <span class="hljs-string">"&lt;- <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span>
-  obj
-
-
-</pre>
+  obj</pre>
         </td>
       </tr>
     
@@ -470,10 +452,7 @@ clone of the given  object.</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.clone = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span>
-  extend <span class="hljs-literal">null</span>, obj
-
-
-</pre>
+  extend <span class="hljs-literal">null</span>, obj</pre>
         </td>
       </tr>
     
@@ -500,8 +479,7 @@ true if object is empty</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">isEmpty = <span class="hljs-built_in">module</span>.exports.isEmpty = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span>
-</pre>
+          <pre class="coffeescript">isEmpty = <span class="hljs-built_in">module</span>.exports.isEmpty = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -516,10 +494,7 @@ true if object is empty</li>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">unless</span> obj?
   <span class="hljs-keyword">return</span> obj.length <span class="hljs-keyword">is</span> <span class="hljs-number">0</span> <span class="hljs-keyword">if</span> obj.length?
-  Object.keys(obj).length <span class="hljs-keyword">is</span> <span class="hljs-number">0</span>
-
-
-</pre>
+  Object.keys(obj).length <span class="hljs-keyword">is</span> <span class="hljs-number">0</span></pre>
         </td>
       </tr>
     
@@ -540,8 +515,7 @@ Access path in object
   ref = obj
   <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> path
     <span class="hljs-keyword">continue</span> <span class="hljs-keyword">unless</span> k
-    ref = ref[k]
-</pre>
+    ref = ref[k]</pre>
         </td>
       </tr>
     
@@ -554,10 +528,7 @@ Access path in object
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">return</span> ref
-
-
-</pre>
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> ref</pre>
         </td>
       </tr>
     
@@ -576,8 +547,7 @@ Find path in object
   path = path.split separator <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> path <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
   debugPathSearch <span class="hljs-string">"get path <span class="hljs-subst">#{util.inspect path}</span> from <span class="hljs-subst">#{util.inspect obj}</span>"</span>
   <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">unless</span> path.length
-  cur = path.shift()
-</pre>
+  cur = path.shift()</pre>
         </td>
       </tr>
     
@@ -593,8 +563,7 @@ Find path in object
           <pre class="coffeescript">  cur = path.shift() <span class="hljs-keyword">while</span> cur <span class="hljs-keyword">is</span> <span class="hljs-string">''</span> <span class="hljs-keyword">and</span> path.length
   <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">if</span> cur <span class="hljs-keyword">is</span> <span class="hljs-string">''</span>
   result = obj
-  <span class="hljs-keyword">switch</span>
-</pre>
+  <span class="hljs-keyword">switch</span></pre>
         </td>
       </tr>
     
@@ -616,8 +585,7 @@ Find path in object
         <span class="hljs-keyword">continue</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> val <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
         result = pathSearch val, path[<span class="hljs-number">0.</span>.]
         <span class="hljs-keyword">return</span> result <span class="hljs-keyword">if</span> result?
-      <span class="hljs-keyword">return</span>
-</pre>
+      <span class="hljs-keyword">return</span></pre>
         </td>
       </tr>
     
@@ -639,8 +607,7 @@ Find path in object
         <span class="hljs-keyword">continue</span> <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> val <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
         result = pathSearch val, path[<span class="hljs-number">0.</span>.]
         <span class="hljs-keyword">return</span> result <span class="hljs-keyword">if</span> result?
-      <span class="hljs-keyword">return</span>
-</pre>
+      <span class="hljs-keyword">return</span></pre>
         </td>
       </tr>
     
@@ -660,8 +627,7 @@ Find path in object
         result.push val <span class="hljs-keyword">if</span> key.match cur
       <span class="hljs-keyword">return</span> <span class="hljs-keyword">unless</span> result.length
       result = result[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> result.length <span class="hljs-keyword">is</span> <span class="hljs-number">1</span>
-      result
-</pre>
+      result</pre>
         </td>
       </tr>
     
@@ -678,9 +644,7 @@ Find path in object
       result = obj?[cur]
       <span class="hljs-keyword">return</span> <span class="hljs-keyword">unless</span> result?
       <span class="hljs-keyword">return</span> pathSearch result, path <span class="hljs-keyword">if</span> path.length
-      result
-
-</pre>
+      result</pre>
         </td>
       </tr>
     
@@ -702,9 +666,27 @@ by the provided allow(value, key, object)</p>
   <span class="hljs-keyword">for</span> key <span class="hljs-keyword">of</span> obj
     <span class="hljs-keyword">if</span> obj.hasOwnProperty(key) <span class="hljs-keyword">and</span> allow obj[key], key, obj
       result[key] = obj[key]
-  result
+  result</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="make-objects-keys-to-lowercase">
+  <h2>
+    <a href="#make-objects-keys-to-lowercase" name="make-objects-keys-to-lowercase" class="pilcrow"></a>
+Make object's keys to lowercase
+  </h2>
+</div>
 
-</pre>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">lcKeys = exports.lcKeys = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span>
+  <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">isnt</span> <span class="hljs-string">'object'</span> <span class="hljs-keyword">or</span> Array.isArray obj
+  lc = {}
+  <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> Object.keys obj
+    lc[key.toLowerCase()] = lcKeys obj[key]
+  lc</pre>
         </td>
       </tr>
     
@@ -738,8 +720,7 @@ Add object helpers to the Object class
   Object.prototype.filter = <span class="hljs-function">-&gt;</span> (args...) -&gt;
     args.unshift <span class="hljs-keyword">this</span>
     filter.apply <span class="hljs-literal">null</span>, args
-
-</pre>
+  Object.prototype.lcKeys = <span class="hljs-function">-&gt;</span> lcKeys <span class="hljs-keyword">this</span></pre>
         </td>
       </tr>
     

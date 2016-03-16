@@ -111,9 +111,7 @@ offset character position from the end to look for</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.last = <span class="hljs-function"><span class="hljs-params">(array, back)</span> -&gt;</span>
-  array[array.length - (back <span class="hljs-keyword">or</span> <span class="hljs-number">0</span>) - <span class="hljs-number">1</span>]
-
-</pre>
+  array[array.length - (back <span class="hljs-keyword">or</span> <span class="hljs-number">0</span>) - <span class="hljs-number">1</span>]</pre>
         </td>
       </tr>
     
@@ -131,9 +129,7 @@ remove duplicates
           <pre class="coffeescript">exports.unique = <span class="hljs-function"><span class="hljs-params">(array)</span> -&gt;</span>
   output = {}
   output[array[key]] = array[key] <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>..array.length]
-  value <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">of</span> output
-
-</pre>
+  value <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">of</span> output</pre>
         </td>
       </tr>
     
@@ -156,9 +152,7 @@ Sort array of objects
     <span class="hljs-keyword">when</span> <span class="hljs-number">2</span>
       array.sort dynamicSort args[<span class="hljs-number">1</span>]
     <span class="hljs-keyword">else</span>
-      array.sort dynamicMultiSort.apply <span class="hljs-keyword">this</span>, args[<span class="hljs-number">1.</span>.]
-
-</pre>
+      array.sort dynamicMultiSort.apply <span class="hljs-keyword">this</span>, args[<span class="hljs-number">1.</span>.]</pre>
         </td>
       </tr>
     
@@ -182,9 +176,7 @@ Add array helpers to the Object class
   Array.prototype.sortBy = <span class="hljs-function">-&gt;</span>
     args = [].slice.call arguments
     args.unshift <span class="hljs-keyword">this</span>
-    exports.sortBy.apply <span class="hljs-keyword">this</span>, args
-
-</pre>
+    exports.sortBy.apply <span class="hljs-keyword">this</span>, args</pre>
         </td>
       </tr>
     
@@ -204,8 +196,7 @@ Helper Methods
   sortOrder = <span class="hljs-number">1</span>
   <span class="hljs-keyword">if</span> field[<span class="hljs-number">0</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'-'</span>
     sortOrder = -<span class="hljs-number">1</span>
-    field = field.substr <span class="hljs-number">1</span>
-</pre>
+    field = field.substr <span class="hljs-number">1</span></pre>
         </td>
       </tr>
     
@@ -224,8 +215,7 @@ Helper Methods
 <span class="hljs-function">
 <span class="hljs-title">dynamicMultiSort</span> = -&gt;</span>
   args = [].slice.call(arguments)
-  fields = args.map (e) -&gt; dynamicSort e
-</pre>
+  fields = args.map (e) -&gt; dynamicSort e</pre>
         </td>
       </tr>
     
@@ -243,9 +233,7 @@ Helper Methods
     <span class="hljs-keyword">for</span> sort <span class="hljs-keyword">in</span> fields
       result = sort a, b
       <span class="hljs-keyword">return</span> result <span class="hljs-keyword">if</span> result
-    result
-
-</pre>
+    result</pre>
         </td>
       </tr>
     

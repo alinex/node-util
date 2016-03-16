@@ -92,6 +92,10 @@
         <a href="#shorten">Shorten</a>
       </div>
 
+      <div class="heading h3">
+        <a href="#convert-to-list">Convert to list</a>
+      </div>
+
       <div class="heading h2">
         <a href="#add-object-helpers-to-the-object-class">Add object helpers to the Object class</a>
       </div>
@@ -146,9 +150,7 @@ offset character position to start looking for</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.starts = <span class="hljs-function"><span class="hljs-params">(string, literal, start)</span> -&gt;</span>
-  literal <span class="hljs-keyword">is</span> string.substr start, literal.length
-
-</pre>
+  literal <span class="hljs-keyword">is</span> string.substr start, literal.length</pre>
         </td>
       </tr>
     
@@ -179,9 +181,7 @@ offset character position from the end to look for</li>
         <td class="code highlight">
           <pre class="coffeescript">exports.ends = <span class="hljs-function"><span class="hljs-params">(string, literal, back)</span> -&gt;</span>
   len = literal.length
-  literal <span class="hljs-keyword">is</span> string.substr string.length - len - (back <span class="hljs-keyword">or</span> <span class="hljs-number">0</span>), len
-
-</pre>
+  literal <span class="hljs-keyword">is</span> string.substr string.length - len - (back <span class="hljs-keyword">or</span> <span class="hljs-number">0</span>), len</pre>
         </td>
       </tr>
     
@@ -214,9 +214,7 @@ number of repeats</li>
     res += string <span class="hljs-keyword">if</span> n &amp; <span class="hljs-number">1</span>
     n &gt;&gt;&gt;= <span class="hljs-number">1</span>
     string += string
-  res
-
-</pre>
+  res</pre>
         </td>
       </tr>
     
@@ -247,9 +245,7 @@ character used for padding (defaults to ' ')</li>
           <pre class="coffeescript">exports.lpad = <span class="hljs-function"><span class="hljs-params">(string, length, char = <span class="hljs-string">' '</span>)</span> -&gt;</span>
   string = string.toString() <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> string <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
   <span class="hljs-keyword">return</span> string <span class="hljs-keyword">unless</span> length &gt;= string.length
-  exports.repeat(char, length - string.length) + string
-
-</pre>
+  exports.repeat(char, length - string.length) + string</pre>
         </td>
       </tr>
     
@@ -280,9 +276,7 @@ character used for padding (defaults to ' ')</li>
           <pre class="coffeescript">exports.rpad = <span class="hljs-function"><span class="hljs-params">(string, length, char = <span class="hljs-string">' '</span>)</span> -&gt;</span>
   string = string.toString() <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> string <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
   <span class="hljs-keyword">return</span> string <span class="hljs-keyword">unless</span> length &gt;= string.length
-  string + exports.repeat(char, length - string.length)
-
-</pre>
+  string + exports.repeat(char, length - string.length)</pre>
         </td>
       </tr>
     
@@ -315,9 +309,7 @@ character used for padding (defaults to ' ')</li>
   <span class="hljs-keyword">return</span> string <span class="hljs-keyword">unless</span> length &gt;= string.length
   lpad = exports.repeat char, Math.floor (length - string.length) / <span class="hljs-number">2</span>
   rpad = exports.repeat char, Math.ceil (length - string.length) / <span class="hljs-number">2</span>
-  lpad + string + rpad
-
-</pre>
+  lpad + string + rpad</pre>
         </td>
       </tr>
     
@@ -347,9 +339,7 @@ list of characters to trim off (defaults to ' \n\t')</li>
   string = string.substring <span class="hljs-number">1</span> <span class="hljs-keyword">while</span> string <span class="hljs-keyword">and</span> ~chars.indexOf string.charAt <span class="hljs-number">0</span>
   <span class="hljs-keyword">while</span> string <span class="hljs-keyword">and</span> ~chars.indexOf string.charAt string.length-<span class="hljs-number">1</span>
     string = string.substring <span class="hljs-number">0</span>, string.length-<span class="hljs-number">1</span>
-  string
-
-</pre>
+  string</pre>
         </td>
       </tr>
     
@@ -374,9 +364,7 @@ text to be changed</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.ucFirst = <span class="hljs-function"><span class="hljs-params">(string)</span> -&gt;</span>
-  string.charAt(<span class="hljs-number">0</span>).toUpperCase() + string.slice(<span class="hljs-number">1</span>)
-
-</pre>
+  string.charAt(<span class="hljs-number">0</span>).toUpperCase() + string.slice(<span class="hljs-number">1</span>)</pre>
         </td>
       </tr>
     
@@ -401,9 +389,7 @@ text to be changed</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.lcFirst = <span class="hljs-function"><span class="hljs-params">(string)</span> -&gt;</span>
-  string.charAt(<span class="hljs-number">0</span>).toLowerCase() + string.slice(<span class="hljs-number">1</span>)
-
-</pre>
+  string.charAt(<span class="hljs-number">0</span>).toLowerCase() + string.slice(<span class="hljs-number">1</span>)</pre>
         </td>
       </tr>
     
@@ -430,9 +416,7 @@ text to be searched for</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.contains = <span class="hljs-function"><span class="hljs-params">(string, phrase)</span> -&gt;</span>
-  string.indexOf(phrase) <span class="hljs-keyword">isnt</span> -<span class="hljs-number">1</span>
-
-</pre>
+  string.indexOf(phrase) <span class="hljs-keyword">isnt</span> -<span class="hljs-number">1</span></pre>
         </td>
       </tr>
     
@@ -453,8 +437,7 @@ string that will be added whenever it's needed to break the line</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">exports.wordwrap = wordwrap = <span class="hljs-function"><span class="hljs-params">(str, width = <span class="hljs-number">80</span>, brk = <span class="hljs-string">'\n'</span>)</span> -&gt;</span>
-</pre>
+          <pre class="coffeescript">exports.wordwrap = wordwrap = <span class="hljs-function"><span class="hljs-params">(str, width = <span class="hljs-number">80</span>, brk = <span class="hljs-string">'\n'</span>)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -467,8 +450,7 @@ string that will be added whenever it's needed to break the line</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">return</span> str <span class="hljs-keyword">if</span> str.length &lt;= width
-</pre>
+          <pre class="coffeescript">  <span class="hljs-keyword">return</span> str <span class="hljs-keyword">if</span> str.length &lt;= width</pre>
         </td>
       </tr>
     
@@ -483,8 +465,7 @@ string that will be added whenever it's needed to break the line</li>
         <td class="code highlight">
           <pre class="coffeescript">  p = str.indexOf brk
   <span class="hljs-keyword">if</span> -<span class="hljs-number">1</span> &lt; p &lt;= width
-    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p+<span class="hljs-number">1</span>) + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk
-</pre>
+    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p+<span class="hljs-number">1</span>) + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk</pre>
         </td>
       </tr>
     
@@ -500,8 +481,7 @@ string that will be added whenever it's needed to break the line</li>
           <pre class="coffeescript">  p = width
   p-- <span class="hljs-keyword">while</span> p &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> str[p] <span class="hljs-keyword">isnt</span> <span class="hljs-string">' '</span>
   <span class="hljs-keyword">if</span> p &gt; <span class="hljs-number">0</span>
-    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p) + brk + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk
-</pre>
+    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p) + brk + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk</pre>
         </td>
       </tr>
     
@@ -517,8 +497,7 @@ string that will be added whenever it's needed to break the line</li>
           <pre class="coffeescript">  p = width
   p++ <span class="hljs-keyword">while</span> p &lt; str.length <span class="hljs-keyword">and</span> str[p] <span class="hljs-keyword">isnt</span> <span class="hljs-string">' '</span>
   <span class="hljs-keyword">if</span> p &lt; str.length
-    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p) + brk + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk
-</pre>
+    <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p) + brk + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk</pre>
         </td>
       </tr>
     
@@ -531,9 +510,7 @@ string that will be added whenever it's needed to break the line</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  str
-
-</pre>
+          <pre class="coffeescript">  str</pre>
         </td>
       </tr>
     
@@ -553,8 +530,7 @@ maximum number of characters</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.shorten = <span class="hljs-function"><span class="hljs-params">(str, limit)</span> -&gt;</span>
-  <span class="hljs-keyword">return</span> str <span class="hljs-keyword">if</span> str.length &lt; limit
-</pre>
+  <span class="hljs-keyword">return</span> str <span class="hljs-keyword">if</span> str.length &lt; limit</pre>
         </td>
       </tr>
     
@@ -568,9 +544,25 @@ maximum number of characters</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  str = str[<span class="hljs-number">0.</span>.limit-<span class="hljs-number">3</span>].replace <span class="hljs-regexp">/\s\S*?$/</span>, <span class="hljs-string">''</span>
-  <span class="hljs-keyword">return</span> str + <span class="hljs-string">'...'</span>
+  <span class="hljs-keyword">return</span> str + <span class="hljs-string">'...'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="convert-to-list">
+  <h3>
+    <a href="#convert-to-list" name="convert-to-list" class="pilcrow"></a>
+Convert to list
+  </h3>
+</div>
 
-</pre>
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">exports.toList = <span class="hljs-function"><span class="hljs-params">(text, rowDelimiter = <span class="hljs-regexp">/\n/</span>, colDelimiter)</span> -&gt;</span>
+  list = text.split rowDelimiter
+  <span class="hljs-keyword">return</span> list <span class="hljs-keyword">unless</span> colDelimiter
+  list.map (e) -&gt; e.split colDelimiter</pre>
         </td>
       </tr>
     
@@ -609,8 +601,8 @@ Add object helpers to the Object class
     exports.wordwrap <span class="hljs-keyword">this</span>, width, brk, cut
   String.prototype.shorten = <span class="hljs-function"><span class="hljs-params">(limit)</span> -&gt;</span>
     exports.shorten <span class="hljs-keyword">this</span>, limit
-
-</pre>
+  String.prototype.toList = <span class="hljs-function"><span class="hljs-params">(rowDelimiter, colDelimiter)</span> -&gt;</span>
+    exports.toList <span class="hljs-keyword">this</span>, rowDelimiter, colDelimiter</pre>
         </td>
       </tr>
     

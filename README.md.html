@@ -104,6 +104,10 @@
         <a href="#shorten">shorten</a>
       </div>
 
+      <div class="heading h3">
+        <a href="#tolist">toList</a>
+      </div>
+
       <div class="heading h2">
         <a href="#number-type">Number type</a>
       </div>
@@ -156,6 +160,10 @@
         <a href="#filter">filter</a>
       </div>
 
+      <div class="heading h3">
+        <a href="#lckeys">lcKeys</a>
+      </div>
+
       <div class="heading h2">
         <a href="#array-object">Array object</a>
       </div>
@@ -200,7 +208,7 @@ are generally used for different general class types:</p>
 </ul>
 <blockquote>
 <p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
-following the code standards defined in the <a href="http://alinex.github.io/node-alinex">General Docs</a>.</p>
+following the code standards defined in the <a href="http://alinex.github.io/develop">General Docs</a>.</p>
 </blockquote>
 <div class="pilwrap" id="install">
   <h2>
@@ -574,6 +582,42 @@ maximum number of characters</li>
 <ul>
 <li>(string) the new text</li>
 </ul>
+<div class="pilwrap" id="tolist">
+  <h3>
+    <a href="#tolist" name="tolist" class="pilcrow"></a>
+toList
+  </h3>
+</div>
+<p>Convert text into list or list of array (recordset).</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>rowDelimiter</code>
+text or regular expression to divide into lines (default '\n')</li>
+<li><code>colDelimiter</code>
+text or regular expression to divide into columns</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>(array) the new list</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'one,two,three\n1,2,3\n4,5,6'</span>
+list = string.toList test, <span class="hljs-regexp">/\n/</span>
+table = string.toList test, <span class="hljs-regexp">/\n/</span>, <span class="hljs-regexp">/,/</span>
+</code></pre>
+<p>This results to:</p>
+<pre><code class="coffee">list = [
+  <span class="hljs-string">'one,teo,three'</span>
+  <span class="hljs-string">'1,2,3'</span>
+  <span class="hljs-string">'4,5,6'</span>
+]
+table = [
+  [<span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'three'</span>]
+  [<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span>]
+  [<span class="hljs-string">'4'</span>, <span class="hljs-string">'5'</span>, <span class="hljs-string">'6'</span>]
+]
+</code></pre>
 <div class="pilwrap" id="number-type">
   <h2>
     <a href="#number-type" name="number-type" class="pilcrow"></a>
@@ -876,6 +920,38 @@ result = object.filter test, <span class="hljs-function"><span class="hljs-param
 <pre><code class="coffee">result =
   <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
   <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
+</code></pre>
+<div class="pilwrap" id="lckeys">
+  <h3>
+    <a href="#lckeys" name="lckeys" class="pilcrow"></a>
+lcKeys
+  </h3>
+</div>
+<p>Make the keys within a deep object all lowercase.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>object</code>
+to be optimized</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>data object with all keys in lowercase</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+test =
+  <span class="hljs-attribute">One</span>: <span class="hljs-number">1</span>
+  <span class="hljs-attribute">TWO</span>:
+    <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>
+    <span class="hljs-attribute">fouR</span>: <span class="hljs-number">4</span>
+result = object.lcKeys test
+</code></pre>
+<p>Will result in:</p>
+<pre><code class="coffee">result =
+  <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
+  <span class="hljs-attribute">two</span>:
+    <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>
+    <span class="hljs-attribute">four</span>: <span class="hljs-number">4</span>
 </code></pre>
 <div class="pilwrap" id="array-object">
   <h2>
