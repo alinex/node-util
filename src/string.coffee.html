@@ -562,7 +562,13 @@ Convert to list
           <pre class="coffeescript">exports.toList = <span class="hljs-function"><span class="hljs-params">(text, rowDelimiter = <span class="hljs-regexp">/\n/</span>, colDelimiter)</span> -&gt;</span>
   list = text.split rowDelimiter
   <span class="hljs-keyword">return</span> list <span class="hljs-keyword">unless</span> colDelimiter
-  list.map (e) -&gt; e.split colDelimiter</pre>
+  list.map (e) -&gt; e.split colDelimiter
+
+exports.toRegExp = <span class="hljs-function"><span class="hljs-params">(text)</span> -&gt;</span>
+  <span class="hljs-keyword">return</span> text <span class="hljs-keyword">unless</span> <span class="hljs-keyword">typeof</span> text <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
+  match = text.match <span class="hljs-regexp">/^\/(.*)\/([gim])?$/</span>
+  <span class="hljs-keyword">return</span> text <span class="hljs-keyword">unless</span> match
+  <span class="hljs-keyword">new</span> RegExp match[<span class="hljs-number">1</span>], match[<span class="hljs-number">2</span>]</pre>
         </td>
       </tr>
     
@@ -602,7 +608,9 @@ Add object helpers to the Object class
   String.prototype.shorten = <span class="hljs-function"><span class="hljs-params">(limit)</span> -&gt;</span>
     exports.shorten <span class="hljs-keyword">this</span>, limit
   String.prototype.toList = <span class="hljs-function"><span class="hljs-params">(rowDelimiter, colDelimiter)</span> -&gt;</span>
-    exports.toList <span class="hljs-keyword">this</span>, rowDelimiter, colDelimiter</pre>
+    exports.toList <span class="hljs-keyword">this</span>, rowDelimiter, colDelimiter
+  String.prototype.toRegExp = <span class="hljs-function">-&gt;</span>
+    exports.toRegExp <span class="hljs-keyword">this</span></pre>
         </td>
       </tr>
     

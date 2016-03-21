@@ -108,6 +108,10 @@
         <a href="#tolist">toList</a>
       </div>
 
+      <div class="heading h3">
+        <a href="#toregexp">toRegExp</a>
+      </div>
+
       <div class="heading h2">
         <a href="#number-type">Number type</a>
       </div>
@@ -617,6 +621,23 @@ table = [
   [<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span>]
   [<span class="hljs-string">'4'</span>, <span class="hljs-string">'5'</span>, <span class="hljs-string">'6'</span>]
 ]
+</code></pre>
+<div class="pilwrap" id="toregexp">
+  <h3>
+    <a href="#toregexp" name="toregexp" class="pilcrow"></a>
+toRegExp
+  </h3>
+</div>
+<p>Convert text into regular expression object if possible..</p>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>(RegExp) or the string as it was</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+test = <span class="hljs-string">'/\n/'</span>
+test = string.toRegExp test
+list = string.split test
 </code></pre>
 <div class="pilwrap" id="number-type">
   <h2>
