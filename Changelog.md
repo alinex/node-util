@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.1 (2016-03-21)
+-------------------------------------------------
+- Upgraded builder.
+- Allow array delimiter to be given as regexp string.
+
 Version 1.1.0 (2016-03-16)
 -------------------------------------------------
 - Upgraded builder and chalk.
