@@ -243,6 +243,16 @@ describe "String", ->
         ['4', '5', '6']
       ]
 
+  describe "toRegExp", ->
+
+    it "should convert text", ->
+      expect string.toRegExp '/a/'
+      .to.be.instanceOf RegExp
+
+    it "should keep other text", ->
+      expect string.toRegExp 'Hello World!'
+      .to.be.equal 'Hello World!'
+
   describe "prototype", ->
 
     it "should match string start", ->

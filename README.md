@@ -476,6 +476,23 @@ table = [
 ]
 ```
 
+### toRegExp
+
+Convert text into regular expression object if possible..
+
+__Returns:__
+
+* (RegExp) or the string as it was
+
+__Example:__
+
+``` coffee
+string = require('alinex-util').string
+test = '/\n/'
+test = string.toRegExp test
+list = string.split test
+```
+
 
 Number type
 -------------------------------------------------

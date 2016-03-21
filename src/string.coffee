@@ -227,6 +227,12 @@ exports.toList = (text, rowDelimiter = /\n/, colDelimiter) ->
   return list unless colDelimiter
   list.map (e) -> e.split colDelimiter
 
+exports.toRegExp = (text) ->
+  return text unless typeof text is 'string'
+  match = text.match /^\/(.*)\/([gim])?$/
+  return text unless match
+  new RegExp match[1], match[2]
+
 
 # Add object helpers to the Object class
 # -------------------------------------------------
@@ -256,3 +262,5 @@ exports.addToPrototype = ->
     exports.shorten this, limit
   String.prototype.toList = (rowDelimiter, colDelimiter) ->
     exports.toList this, rowDelimiter, colDelimiter
+  String.prototype.toRegExp = ->
+    exports.toRegExp this
