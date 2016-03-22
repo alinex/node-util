@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.2 (2016-03-22)
+-------------------------------------------------
+- Fix array.unique to also work on object lists.
+
 Version 1.1.1 (2016-03-21)
 -------------------------------------------------
 - Upgraded builder.
