@@ -28,6 +28,12 @@ describe "Array", ->
       , "unique"
       .to.be.deep.equal [1, 2, 3, 4, 5]
 
+    it "should remove duplicate objects", ->
+      test = [{a: 1}, {b: 1}, {a: 1}, {c: 1}]
+      expect array.unique(test)
+      , "unique"
+      .to.be.deep.equal [{a: 1}, {b: 1}, {c: 1}]
+
   describe "sortBy", ->
 
     it "should sort objects by column", ->
