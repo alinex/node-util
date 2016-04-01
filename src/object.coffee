@@ -95,7 +95,7 @@ extend = module.exports.extend = (obj, ext...) ->
 # Use the `constructor.name` for equal object check because the constructor
 # object may differ to another copy of the same class if generated in the sandbox.
 extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
-  debug "-> extend #{chalk.grey util.inspect obj}"
+  debug "-> extend #{chalk.grey util.inspect obj} (with concat)"
   # clone if no extenders given
   return extendArrayConcat null, obj if not ext?
   obj = null unless obj
@@ -113,6 +113,70 @@ extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
       # array
       obj = [] unless Array.isArray obj
       obj.push.apply obj, src
+    else if src instanceof Date
+      debug "Date"
+      obj = new Date src.getTime()
+    else if src instanceof RegExp
+      debug "RegExp"
+      flags = ''
+      flags += 'g' if src.global
+      flags += 'i' if src.ignoreCase
+      flags += 'm' if src.multiline
+      flags += 'y' if src.sticky
+      obj = new RegExp src.source, flags
+    else if src.constructor.name isnt Object.name
+      debug "unknown instance (referenced)"
+#     exact copy/clone not working on instances
+#      obj = extendInstance obj, src
+      obj = src
+    else
+      # object structure
+      for own key, val of src
+        debug "object.#{key} #{chalk.grey util.inspect val}"
+        # test to assure a key like 'toString' won't map to the standard function
+        base = if key in Object.keys(obj) then obj[key] else undefined
+        obj[key] = extendArrayConcat base, val
+        delete obj[key] if val is null
+  debug "<- #{chalk.grey util.inspect obj}"
+  obj
+
+
+# Extend object (with replace of arrays)
+# -------------------------------------------------
+# This method is like extend but will concat arrays elements directly instead
+# of concat the element clones. This keeps the references under the first array.
+#
+# __Arguments:__
+#
+# * `object`
+#   base object to be extended
+# * `extender`...
+#   multiple extenders may be given with will be cloned into the object.
+#
+# __Returns:__
+#
+# * `object`
+#   the given and maybe changed object.
+#
+# Use the `constructor.name` for equal object check because the constructor
+# object may differ to another copy of the same class if generated in the sandbox.
+extendArrayReplace = module.exports.extendArrayReplace = (obj, ext...) ->
+  debug "-> extend #{chalk.grey util.inspect obj} (with replace)"
+  # clone if no extenders given
+  return extendArrayConcat null, obj if not ext?
+  obj = null unless obj
+  # use all extenders
+  for src in ext
+    continue unless src?
+    debug "by #{chalk.grey util.inspect src}"
+    obj = {} unless obj
+    continue if src.constructor?.name is Object.name and not Object.keys(src).length
+    if typeof src isnt 'object'
+      # simple variables or function
+      obj = src
+    else if Array.isArray src
+      debug "array replace"
+      obj = src
     else if src instanceof Date
       debug "Date"
       obj = new Date src.getTime()
@@ -273,7 +337,10 @@ module.exports.addToPrototype = ->
     extend.apply null, args
   Object.prototype.extendArrayConcat = (args...) ->
     args.unshift this
-    extend.apply null, args
+    extendArrayConcat.apply null, args
+  Object.prototype.extendArrayReplace = (args...) ->
+    args.unshift this
+    extendArrayReplace.apply null, args
   Object.prototype.clone = -> extend null, this
   Object.prototype.isEmpty = -> isEmpty this
   Object.prototype.path = -> (args...) ->

@@ -616,6 +616,10 @@ To remove a key from the structure by overloading set it's value to null.
 This method is like extend but will concat arrays elements directly instead
 of concat the element clones. This keeps the references under the first array.
 
+### extendArrayReplace
+
+This method is like extend but will replace arrays elements directly instead
+of concat the element clones.
 
 ### clone
 
