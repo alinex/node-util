@@ -229,7 +229,7 @@ exports.toList = (text, rowDelimiter = /\n/, colDelimiter) ->
 
 exports.toRegExp = (text) ->
   return text unless typeof text is 'string'
-  match = text.match /^\/(.*)\/([gim])?$/
+  match = text.match /^\/(.*)\/([gim]+)?$/
   return text unless match
   new RegExp match[1], match[2]
 
