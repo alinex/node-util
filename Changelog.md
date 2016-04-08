@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.4 (2016-04-08)
+-------------------------------------------------
+- Transform directly included whitespaces like \t into it' string representation befor regexp conversion.
+- Allow multiple flags for regexp conversion.
+
 Version 1.1.3 (2016-04-01)
 -------------------------------------------------
 - Upgraded builder and chalk.
