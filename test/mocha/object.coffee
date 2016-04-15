@@ -26,10 +26,29 @@ describe "Object", ->
       expect(result, "reference").to.not.equal test
 
     it "should clone array of arrays", ->
-      test = [1, [2], 3]
+      test = [[1, [2], 3]]
       result = object.clone test
       expect(result, "deep check").to.deep.equal test
       expect(result, "reference").to.not.equal test
+      expect(result[0], "reference.list").to.not.equal test[0]
+      expect(result[0][1], "reference.list").to.not.equal test[0][1]
+
+    it "should clone object of arrays", ->
+      test = {a: [1, [2], 3]}
+      result = object.clone test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+      expect(result.a, "reference.object").to.not.equal test.a
+      expect(result.a[1], "reference.object.list").to.not.equal test.a[1]
+
+    it "should clone array of objects", ->
+      test = [{name: 'Anzahl', anzahl: '1734'}]
+      result = object.clone test
+      expect(result, "deep check").to.deep.equal test
+      test[0].anzahl = 9999
+      expect(result, "reference").to.not.equal test
+      expect(result[0], "reference.object").to.not.equal test[0]
+      expect(result[0].anzahl, "reference.object.list").to.not.equal test[0].anzahl
 
     it "should clone date", ->
       test = new Date()

@@ -28,16 +28,15 @@ chalk = require 'chalk'
 # Use the `constructor.name` for equal object check because the constructor
 # object may differ to another copy of the same class if generated in the sandbox.
 extend = module.exports.extend = (obj, ext...) ->
-  debugExtend "-> extend #{chalk.grey util.inspect obj}"
   # clone if no extenders given
   return extend null, obj if not ext?
-  obj = null unless obj
+  obj = {} unless obj
+  debugExtend "-> extend #{chalk.grey util.inspect obj}"
   # use all extenders
   for src in ext
     continue unless src?
     debugExtend "by #{chalk.grey util.inspect src}"
     # empty object
-    obj = {} unless obj
     continue if src.constructor?.name is Object.name and not Object.keys(src).length
     if typeof src isnt 'object'
       # simple variables or function
@@ -70,8 +69,10 @@ extend = module.exports.extend = (obj, ext...) ->
         debugExtend "object.#{key} #{chalk.grey util.inspect val}"
         # test to assure a key like 'toString' won't map to the standard function
         base = if key in Object.keys(obj) then obj[key] else undefined
-        obj[key] = extend base, val
-        delete obj[key] if val is null
+        if val is null
+          delete obj[key]
+        else
+          obj[key] = extend null, base, val
   debugExtend "<- #{chalk.grey util.inspect obj}"
   obj
 
