@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 1.1.6 (2016-04-15)
+-------------------------------------------------
+- Fixed bug in object clone.
+
 Version 1.1.5 (2016-04-15)
 -------------------------------------------------
 - Small optimization on object clone.

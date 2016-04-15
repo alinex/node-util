@@ -1,6 +1,6 @@
 {
   "name": "alinex-util",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Different small helper methods which are generally used",
   "copyright": "Alexander Schilling 2014-2016",
   "private": false,
