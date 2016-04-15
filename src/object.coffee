@@ -30,12 +30,13 @@ chalk = require 'chalk'
 extend = module.exports.extend = (obj, ext...) ->
   # clone if no extenders given
   return extend null, obj if not ext?
-  obj = {} unless obj
+  obj = null unless obj
   debugExtend "-> extend #{chalk.grey util.inspect obj}"
   # use all extenders
   for src in ext
     continue unless src?
-    debugExtend "by #{chalk.grey util.inspect src}"
+    debugExtend "   by #{chalk.grey util.inspect src}"
+    obj = {} unless obj
     # empty object
     continue if src.constructor?.name is Object.name and not Object.keys(src).length
     if typeof src isnt 'object'
@@ -69,10 +70,8 @@ extend = module.exports.extend = (obj, ext...) ->
         debugExtend "object.#{key} #{chalk.grey util.inspect val}"
         # test to assure a key like 'toString' won't map to the standard function
         base = if key in Object.keys(obj) then obj[key] else undefined
-        if val is null
-          delete obj[key]
-        else
-          obj[key] = extend null, base, val
+        obj[key] = extend null, base, val
+        delete obj[key] if val is null
   debugExtend "<- #{chalk.grey util.inspect obj}"
   obj
 
