@@ -141,8 +141,7 @@ object may differ to another copy of the same class if generated in the sandbox.
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">extend = <span class="hljs-built_in">module</span>.exports.extend = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span>
-  debugExtend <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span></pre>
+          <pre class="coffeescript">extend = <span class="hljs-built_in">module</span>.exports.extend = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -156,7 +155,8 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">return</span> extend <span class="hljs-literal">null</span>, obj <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ext?
-  obj = <span class="hljs-literal">null</span> <span class="hljs-keyword">unless</span> obj</pre>
+  obj = {} <span class="hljs-keyword">unless</span> obj
+  debugExtend <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span></pre>
         </td>
       </tr>
     
@@ -184,8 +184,7 @@ object may differ to another copy of the same class if generated in the sandbox.
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">    obj = {} <span class="hljs-keyword">unless</span> obj
-    <span class="hljs-keyword">continue</span> <span class="hljs-keyword">if</span> src.constructor?.name <span class="hljs-keyword">is</span> Object.name <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> Object.keys(src).length
+          <pre class="coffeescript">    <span class="hljs-keyword">continue</span> <span class="hljs-keyword">if</span> src.constructor?.name <span class="hljs-keyword">is</span> Object.name <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> Object.keys(src).length
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> src <span class="hljs-keyword">isnt</span> <span class="hljs-string">'object'</span></pre>
         </td>
       </tr>
@@ -273,8 +272,10 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">        base = <span class="hljs-keyword">if</span> key <span class="hljs-keyword">in</span> Object.keys(obj) <span class="hljs-keyword">then</span> obj[key] <span class="hljs-keyword">else</span> <span class="hljs-literal">undefined</span>
-        obj[key] = extend base, val
-        <span class="hljs-keyword">delete</span> obj[key] <span class="hljs-keyword">if</span> val <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>
+        <span class="hljs-keyword">if</span> val <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>
+          <span class="hljs-keyword">delete</span> obj[key]
+        <span class="hljs-keyword">else</span>
+          obj[key] = extend <span class="hljs-literal">null</span>, base, val
   debugExtend <span class="hljs-string">"&lt;- <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span>
   obj</pre>
         </td>
