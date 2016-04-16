@@ -19,7 +19,7 @@ chalk = require 'chalk'
 #
 # * `object`
 #   clone of the given  object.
-clone = exports.clone = (obj) ->
+clone = module.exports = (obj) ->
   # null, undefined values check
   return obj unless obj
   debug "-> #{chalk.grey util.inspect obj}"

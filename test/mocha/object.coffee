@@ -447,19 +447,3 @@ describe "Object", ->
         two:
           three: 3
           four: 4
-
-  describe "prototype", ->
-
-    it "should clone object", ->
-      object.addToPrototype()
-      test = {eins: 1}
-      result = test.clone()
-      expect(result, "deep check").to.deep.equal test
-      expect(result, "reference").to.not.equal test
-
-    it "should add integer attribute", ->
-      object.addToPrototype()
-      test = {eins: 1}
-      test.extend {drei: 3}
-      expect(test, "contains key eins").to.include.keys 'eins'
-      expect(test, "contains key drei").to.include.keys 'drei'
