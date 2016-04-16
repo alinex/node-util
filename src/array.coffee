@@ -37,18 +37,6 @@ exports.sortBy = (array) ->
     else
       array.sort dynamicMultiSort.apply this, args[1..]
 
-# Add array helpers to the Object class
-# -------------------------------------------------
-# This will allow to call the methods directly on an object.
-exports.addToPrototype = ->
-  Array.prototype.last = (back) ->
-    exports.last this, back
-  Array.prototype.unique = ->
-    exports.unique this
-  Array.prototype.sortBy = ->
-    args = [].slice.call arguments
-    args.unshift this
-    exports.sortBy.apply this, args
 
 # Helper Methods
 # -------------------------------------------------

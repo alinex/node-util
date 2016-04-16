@@ -163,7 +163,7 @@ clone = exports.clone = (obj) ->
 #
 # * `boolean`
 #   true if object is empty
-isEmpty = module.exports.isEmpty = (obj) ->
+module.exports.isEmpty = (obj) ->
   # true for undefined objects
   return true unless obj?
   return obj.length is 0 if obj.length?
@@ -172,7 +172,7 @@ isEmpty = module.exports.isEmpty = (obj) ->
 
 # Access path in object
 # -------------------------------------------------
-exports.path = path = (obj, path, separator = '/') ->
+exports.path = (obj, path, separator = '/') ->
   path = path.split separator if typeof path is 'string'
   debug "get path #{util.inspect path} from #{util.inspect obj}"
   ref = obj
@@ -237,7 +237,7 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
 # -------------------------------------------------
 # This will create a new object with all keys that pass the test implemented
 # by the provided allow(value, key, object)
-filter = exports.filter = (obj, allow) ->
+exports.filter = (obj, allow) ->
   result = {}
   for key of obj
     if obj.hasOwnProperty(key) and allow obj[key], key, obj
@@ -253,24 +253,3 @@ lcKeys = exports.lcKeys = (obj) ->
   for key in Object.keys obj
     lc[key.toLowerCase()] = lcKeys obj[key]
   lc
-
-
-# Add object helpers to the Object class
-# -------------------------------------------------
-# This will allow to call the methods directly on an object.
-module.exports.addToPrototype = ->
-  Object.prototype.extend = (args...) ->
-    args.unshift this
-    extend.apply null, args
-  Object.prototype.clone = -> extend null, this
-  Object.prototype.isEmpty = -> isEmpty this
-  Object.prototype.path = -> (args...) ->
-    args.unshift this
-    path.apply null, args
-  Object.prototype.pathSearch = -> (args...) ->
-    args.unshift this
-    pathSearch.apply null, args
-  Object.prototype.filter = -> (args...) ->
-    args.unshift this
-    filter.apply null, args
-  Object.prototype.lcKeys = -> lcKeys this

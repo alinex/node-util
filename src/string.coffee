@@ -235,35 +235,3 @@ exports.toRegExp = (text) ->
   .match /^\/(.*)\/([gim]+)?$/
   return text unless match
   new RegExp match[1], match[2]
-
-
-# Add object helpers to the Object class
-# -------------------------------------------------
-# This will allow to call the methods directly on an object.
-exports.addToPrototype = ->
-  String.prototype.starts = (literal, start) ->
-    exports.starts this, literal, start
-  String.prototype.ends = (literal, back) ->
-    exports.ends this, literal, back
-  String.prototype.repeat = (n) ->
-    exports.repeat this, n
-  String.prototype.rpad = (n, char) ->
-    exports.rpad this, n, char
-  String.prototype.lpad = (n, char) ->
-    exports.lpad this, n, char
-  String.prototype.cpad = (n, char) ->
-    exports.cpad this, n, char
-  String.prototype.ucFirst = ->
-    exports.ucFirst this
-  String.prototype.lcFirst = ->
-    exports.lcFirst this
-  String.prototype.contains = (phrase) ->
-    exports.contains this, phrase
-  String.prototype.wordwrap = (width, brk, cut) ->
-    exports.wordwrap this, width, brk, cut
-  String.prototype.shorten = (limit) ->
-    exports.shorten this, limit
-  String.prototype.toList = (rowDelimiter, colDelimiter) ->
-    exports.toList this, rowDelimiter, colDelimiter
-  String.prototype.toRegExp = ->
-    exports.toRegExp this

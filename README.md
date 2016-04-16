@@ -8,11 +8,11 @@ Package: alinex-util
 This module will be used as incubator for different small helper methods which
 are generally used for different general class types:
 
+- general helper
 - string helper
 - number helper
 - array helper
 - object helper
-- may extend the base classes
 
 > It is one of the modules of the [Alinex Universe](http://alinex.github.io/code.html)
 > following the code standards defined in the [General Docs](http://alinex.github.io/develop).
@@ -44,34 +44,32 @@ Always have a look at the latest [changes](Changelog.md).
 General Usage
 -------------------------------------------------
 
-All methods in this package can be called from the resulting function collection:
+All methods in this package can be called from the util object:
 
 ``` coffee
 util = require 'alinex-util'
 string = util.string # shortcut to the string functions
 object = util.object # shortcut to the object functions
+raw = { eins: 1 }
+copy = util.clone raw
 ```
 
-Or shorter:
+Or you may directly import only the needed objects with:
 
 ``` coffee
-{string,object} = require 'alinex-util'
+{string, object} = require 'alinex-util'
 array = require 'alinex-util/lib/array'
 ```
-Or directly import the needed objects with:
 
-``` coffee
-util = require 'alinex-util'
-util.addToPrototype() # will do it for all
-util.object.addToPrototype() # or extend only the Object class
-```
-Or you may inlcude only the needed types separately:
+The first line loaded all but uses only some methods, while the second line
+only loads the needed type library.
 
-``` coffee
-x = { eins: 1 }
-y = x.clone() # instead of
-y = util.object.clone x
-```
+The library may be used as replacement for the node util package because it also
+exports the 'inspect()' method which is the only needed method from this core
+package.
+
+See the description below for each of the contained methods.
+
 
 String type
 -------------------------------------------------
