@@ -4,6 +4,7 @@
 debug = require('debug')('util:object')
 debugPathSearch = require('debug')('util:object:pathsearch')
 debugExtend = require('debug')('util:object:extend')
+debugClone = require('debug')('util:object:clone')
 util = require 'util'
 chalk = require 'chalk'
 
@@ -27,9 +28,20 @@ chalk = require 'chalk'
 #
 # Use the `constructor.name` for equal object check because the constructor
 # object may differ to another copy of the same class if generated in the sandbox.
-extend = module.exports.extend = (obj, ext...) ->
-  # clone if no extenders given
-  return extend null, obj if not ext?
+
+# extend (array concat)
+# ['CLEANUP_BEFORE', 1, 2] -> for empty array
+# {CLEANUP_BEFORE: true} -> for empty object
+# extend (array replace)
+# 'ARRAY_REPLACE' as first element
+
+extend = exports.extend = (obj, ext...) ->
+  # read mode
+  if typeof ext[0] is 'string' and ext[0] in ['ARRAY_REPLACE']
+    mode = ext.shift()
+  # return if no extenders given
+  return obj if not ext?
+  # run over extenders
   obj = null unless obj
   debugExtend "-> extend #{chalk.grey util.inspect obj}"
   # use all extenders
@@ -39,169 +51,33 @@ extend = module.exports.extend = (obj, ext...) ->
     obj = {} unless obj
     # empty object
     continue if src.constructor?.name is Object.name and not Object.keys(src).length
-    if typeof src isnt 'object'
-      # simple variables or function
-      obj = src
-    else if Array.isArray src
-      # array
+    # arrays
+    if Array.isArray src
       obj = [] unless Array.isArray obj
-      for val, i in src
-        debugExtend "array[#{i}]"
-        obj.push extend null, val
-    else if src instanceof Date
-      debugExtend "Date"
-      obj = new Date src.getTime()
-    else if src instanceof RegExp
-      debugExtend "RegExp"
-      flags = ''
-      flags += 'g' if src.global
-      flags += 'i' if src.ignoreCase
-      flags += 'm' if src.multiline
-      flags += 'y' if src.sticky
-      obj = new RegExp src.source, flags
-    else if src.constructor.name isnt Object.name
-      debugExtend "unknown instance (referenced)"
-#     exact copy/clone not working on instances
-#      obj = extendInstance obj, src
-      obj = src
-    else
-      # object structure
-      for own key, val of src
-        debugExtend "object.#{key} #{chalk.grey util.inspect val}"
-        # test to assure a key like 'toString' won't map to the standard function
-        base = if key in Object.keys(obj) then obj[key] else undefined
-        obj[key] = extend null, base, val
-        delete obj[key] if val is null
+      obj = [] if mode is 'ARRAY_REPLACE'
+      if src[0]? is 'CLEANUP_BEFORE'
+        obj = []
+        src.shift()
+      obj.push n for n in obj
+      continue
+    # object literal
+    if typeof src is 'object'
+      # check that this is a literal
+      if not src.prototype
+        if src.CLEANUP_BEFORE
+          obj = {}
+          delete src.CLEANUP_BEFORE
+        obj = {} if Array.isArray obj or not typeof obj is 'object'
+        for own k, v of src
+          # test to assure a key like 'toString' won't map to the standard function
+          base = if k in Object.keys(obj) then obj[k] else undefined
+          obj[k] = extend mode, base, v
+          delete obj[k] if v is null
+        continue
+    # all other
+    obj = src
+  # return resulting obj
   debugExtend "<- #{chalk.grey util.inspect obj}"
-  obj
-
-# Extend object (with concat)
-# -------------------------------------------------
-# This method is like extend but will concat arrays elements directly instead
-# of concat the element clones. This keeps the references under the first array.
-#
-# __Arguments:__
-#
-# * `object`
-#   base object to be extended
-# * `extender`...
-#   multiple extenders may be given with will be cloned into the object.
-#
-# __Returns:__
-#
-# * `object`
-#   the given and maybe changed object.
-#
-# Use the `constructor.name` for equal object check because the constructor
-# object may differ to another copy of the same class if generated in the sandbox.
-extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
-  debug "-> extend #{chalk.grey util.inspect obj} (with concat)"
-  # clone if no extenders given
-  return extendArrayConcat null, obj if not ext?
-  obj = null unless obj
-  # use all extenders
-  for src in ext
-    continue unless src?
-    debug "by #{chalk.grey util.inspect src}"
-    obj = {} unless obj
-    continue if src.constructor?.name is Object.name and not Object.keys(src).length
-    if typeof src isnt 'object'
-      # simple variables or function
-      obj = src
-    else if Array.isArray src
-      debug "array concat"
-      # array
-      obj = [] unless Array.isArray obj
-      obj.push.apply obj, src
-    else if src instanceof Date
-      debug "Date"
-      obj = new Date src.getTime()
-    else if src instanceof RegExp
-      debug "RegExp"
-      flags = ''
-      flags += 'g' if src.global
-      flags += 'i' if src.ignoreCase
-      flags += 'm' if src.multiline
-      flags += 'y' if src.sticky
-      obj = new RegExp src.source, flags
-    else if src.constructor.name isnt Object.name
-      debug "unknown instance (referenced)"
-#     exact copy/clone not working on instances
-#      obj = extendInstance obj, src
-      obj = src
-    else
-      # object structure
-      for own key, val of src
-        debug "object.#{key} #{chalk.grey util.inspect val}"
-        # test to assure a key like 'toString' won't map to the standard function
-        base = if key in Object.keys(obj) then obj[key] else undefined
-        obj[key] = extendArrayConcat base, val
-        delete obj[key] if val is null
-  debug "<- #{chalk.grey util.inspect obj}"
-  obj
-
-
-# Extend object (with replace of arrays)
-# -------------------------------------------------
-# This method is like extend but will concat arrays elements directly instead
-# of concat the element clones. This keeps the references under the first array.
-#
-# __Arguments:__
-#
-# * `object`
-#   base object to be extended
-# * `extender`...
-#   multiple extenders may be given with will be cloned into the object.
-#
-# __Returns:__
-#
-# * `object`
-#   the given and maybe changed object.
-#
-# Use the `constructor.name` for equal object check because the constructor
-# object may differ to another copy of the same class if generated in the sandbox.
-extendArrayReplace = module.exports.extendArrayReplace = (obj, ext...) ->
-  debug "-> extend #{chalk.grey util.inspect obj} (with replace)"
-  # clone if no extenders given
-  return extendArrayConcat null, obj if not ext?
-  obj = null unless obj
-  # use all extenders
-  for src in ext
-    continue unless src?
-    debug "by #{chalk.grey util.inspect src}"
-    obj = {} unless obj
-    continue if src.constructor?.name is Object.name and not Object.keys(src).length
-    if typeof src isnt 'object'
-      # simple variables or function
-      obj = src
-    else if Array.isArray src
-      debug "array replace"
-      obj = src
-    else if src instanceof Date
-      debug "Date"
-      obj = new Date src.getTime()
-    else if src instanceof RegExp
-      debug "RegExp"
-      flags = ''
-      flags += 'g' if src.global
-      flags += 'i' if src.ignoreCase
-      flags += 'm' if src.multiline
-      flags += 'y' if src.sticky
-      obj = new RegExp src.source, flags
-    else if src.constructor.name isnt Object.name
-      debug "unknown instance (referenced)"
-#     exact copy/clone not working on instances
-#      obj = extendInstance obj, src
-      obj = src
-    else
-      # object structure
-      for own key, val of src
-        debug "object.#{key} #{chalk.grey util.inspect val}"
-        # test to assure a key like 'toString' won't map to the standard function
-        base = if key in Object.keys(obj) then obj[key] else undefined
-        obj[key] = extendArrayConcat base, val
-        delete obj[key] if val is null
-  debug "<- #{chalk.grey util.inspect obj}"
   obj
 
 
@@ -218,8 +94,59 @@ extendArrayReplace = module.exports.extendArrayReplace = (obj, ext...) ->
 #
 # * `object`
 #   clone of the given  object.
-module.exports.clone = (obj) ->
-  extend null, obj
+clone = exports.clone = (obj) ->
+  # null, undefined values check
+  return obj unless obj
+  debugClone "-> #{chalk.grey util.inspect obj}"
+  # return primitive types
+  if typeof obj in ['number', 'string', 'boolean']
+    debugClone chalk.grey "   is primitive"
+    return obj
+  # return basic types
+  for type in [Number, String, Boolean, Date]
+    if obj instanceof type
+      debugClone chalk.grey "   is #{type}"
+      return new type obj
+  # regexp
+  if obj instanceof RegExp
+    debugClone chalk.grey "   is RegExp"
+    flags = ''
+    flags += 'g' if obj.global
+    flags += 'i' if obj.ignoreCase
+    flags += 'm' if obj.multiline
+    flags += 'y' if obj.sticky
+    return new RegExp obj.source, flags
+  # arrays
+  if Array.isArray obj
+    debugClone chalk.grey "   clone array..."
+    res = []
+    res[i] = clone n for n, i in obj
+    return res
+  if typeof obj is 'object'
+    # testing that this is DOM
+    if obj.nodeType and typeof obj.cloneNode is 'function'
+      debugClone chalk.grey "   clone DOM node..."
+      return obj.cloneNode true
+#    if typeof obj.clone is 'function'
+#      debugClone chalk.grey "   using clone() method"
+#      return obj.clone true
+    if obj.constructor.name isnt Object.name
+      debugClone chalk.grey "   keep object"
+      return obj
+    # check that this is a literal
+    if not obj.prototype
+      debugClone chalk.grey "   clone object"
+      res = {}
+      res[i] = clone v for i, v of obj
+      return res
+    ###
+    # create new object
+    if obj.constructor
+      return new (obj.constructor)
+    ###
+    # just keep the reference
+    debugClone chalk.grey "   keep other"
+    return obj
 
 
 # Check for empty objects
@@ -335,12 +262,6 @@ module.exports.addToPrototype = ->
   Object.prototype.extend = (args...) ->
     args.unshift this
     extend.apply null, args
-  Object.prototype.extendArrayConcat = (args...) ->
-    args.unshift this
-    extendArrayConcat.apply null, args
-  Object.prototype.extendArrayReplace = (args...) ->
-    args.unshift this
-    extendArrayReplace.apply null, args
   Object.prototype.clone = -> extend null, this
   Object.prototype.isEmpty = -> isEmpty this
   Object.prototype.path = -> (args...) ->
