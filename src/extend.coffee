@@ -1,20 +1,32 @@
 # Utility functions for objects.
 # =================================================
 
+# Node modules
+# -------------------------------------------------
 debug = require('debug')('util:extend')
 util = require 'util'
 chalk = require 'chalk'
-
+# internal modules
 clone = require './clone'
+
+
+# Indention
+# -------------------------------------------------
+# Because the function works synchrone, the indent variable can be used accross
+# all calls to show the level in the debug messages. It is set to 3 spaces for
+# the initial call increased by 3 every subcall.
+indent = ''
+
 
 # Extend object
 # -------------------------------------------------
 # This method will extend a given object with the entries from additional
-# objects. Therefore it will do a deep extend and make all elements from the
-# added objects cloned.
+# objects. Therefore it will do a deep extend.
 #
 # __Arguments:__
 #
+# * `mode`
+#   optional string 'MODE ...' defining how the extend should work
 # * `object`
 #   base object to be extended
 # * `extender`...
@@ -25,32 +37,34 @@ clone = require './clone'
 # * `object`
 #   the given and maybe changed object.
 #
-# Use the `constructor.name` for equal object check because the constructor
-# object may differ to another copy of the same class if generated in the sandbox.
-
-# extend (array concat)
-# ['CLEANUP_BEFORE', 1, 2] -> for empty array
-# {CLEANUP_BEFORE: true} -> for empty object
-# extend (array replace)
-# 'MODE CLONE ARRAY_REPLACE' as first element
-indent = ''
-
-extend = module.exports = (obj, ext...) ->
+# __Modes:__
+#
+# Multiple modes can be used with space as separator:
+#
+# * `CLONE` - clone object and all extenders before extending, keeps the resulting
+#   objects untouched
+# * `ARRAY_REPLACE` - for all arrays, replace the previouse array completely instead
+#   of extending them
+# * `ARRAY_OVERWRITE` - overwrite the same index instead of extending the array
+#
+# Also it is possible to replace the previous settings on demand. Therefore the
+# first element in the array should be 'CLEANUP_BEFORE' or if an object the
+# property 'CLENUP_BEFORE' should be set to true.
+extend = module.exports = (ext...) ->
   indent += '   '
   # read mode
   mode = []
   if typeof ext[0] is 'string' and ext[0]?.indexOf 'MODE' is 0
     mode = ext.shift().split(' ')
     mode.shift()
+  # return if no object given
+  return null unless ext.length
   # clone all if defined
-  if 'CLONE' in mode
-    obj = clone obj
-    ext = clone ext if ext.length
-  # return if no extenders given
-  return obj if not ext?
+  ext = clone ext if 'CLONE' in mode
   # run over extenders
-  obj = null unless obj
+  obj = ext.shift()
   debug "#{indent[3..]}-> extend #{chalk.grey util.inspect obj}"
+  debug "#{indent[3..]}   using mode: #{mode.join ', '}"
   # use all extenders
   for src in ext
     continue unless src?
@@ -67,10 +81,13 @@ extend = module.exports = (obj, ext...) ->
         obj = src
         obj.shift()
         continue
-      if not Array.isArray obj or 'ARRAY_REPLACE' in mode
+      if 'ARRAY_REPLACE' in mode or not Array.isArray obj
         obj = src
         continue
-      obj.push n for n in obj
+      if 'ARRAY_OVERWRITE' in mode
+        obj[i] = extend "MODE #{mode.join ' '}", obj[i], n for n, i in src
+      else
+        obj.push n for n in src
       continue
     # all other
     unless typeof src is 'object'
@@ -86,10 +103,17 @@ extend = module.exports = (obj, ext...) ->
         obj = src
         continue
       for own k, v of src
+        if v is null
+          delete obj[k]
+          continue
         # test to assure a key like 'toString' won't map to the standard function
-        base = if k in Object.keys(obj) then obj[k] else undefined
-        obj[k] = extend mode, base, v
-        delete obj[k] if v is null
+        obj[k] = if k in Object.keys(obj)
+          if mode.length
+            extend "MODE #{mode.join ' '}", obj[k], v
+          else
+            extend obj[k], v
+        else
+          v
       continue
   # return resulting obj
   indent = indent[3..]

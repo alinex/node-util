@@ -71,6 +71,98 @@ package.
 See the description below for each of the contained methods.
 
 
+All types
+-------------------------------------------------
+The methods which are usable for all types are directly accessible in the main
+module. All others are used through a collection named after their type.
+
+### inspect
+
+The [inspect](https://nodejs.org/api/util.html#util_util_inspect_object_options)
+method is from the node js util package directly inherited. Use it like described
+there.
+
+### clone
+
+This method will create a clone of the given object.
+As possible all methods will be cloned, but if object instances are used they
+will be referenced.
+
+__Arguments:__
+
+* `object`
+  to be cloned
+
+__Returns:__
+
+* `object`
+  clone of the given object.
+
+__Example:__
+
+``` coffee
+clone = require('alinex-util').clone
+test = { eins: 1 }
+result = clone test
+```
+
+This results to:
+
+``` coffee
+result = { eins: 1 }
+```
+
+### extend
+
+Extend an object with another one.
+
+This method will extend a given object with the entries from additional
+objects. Therefore it will do a deep extend.
+
+__Arguments:__
+
+* `mode` (optional) string 'MODE ...' defining how the extend should work
+* `object` (if not called as Object method)
+  base object to be extended
+* `extender`...
+  multiple extenders may be given with will be cloned into the object.
+
+__Returns:__
+
+* `object`
+  the given and maybe changed object.
+
+__Modes:__
+
+Multiple modes can be used with space as separator:
+
+* `CLONE` - clone object and all extenders before extending, keeps the resulting
+ objects untouched
+* `ARRAY_REPLACE` - for all arrays, replace the previouse array completely instead
+ of extending them
+* `ARRAY_OVERWRITE` - overwrite the same index instead of extending the array
+
+Also it is possible to replace the previous settings on demand. Therefore the
+first element in the array should be 'CLEANUP_BEFORE' or if an object the
+property 'CLENUP_BEFORE' should be set to true.
+
+__Example:__
+
+``` coffee
+extend = require('alinex-util').extend
+test = { eins: 1 }
+extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
+```
+
+This results to:
+
+``` coffee
+test = { zwei: 2, eins: 'eins', drei: 3 }
+```
+
+But keep in mind that this will change the first object, to the result, too.
+
+
 String type
 -------------------------------------------------
 
@@ -566,7 +658,7 @@ you may specify `ms` as additional unit here.
 Object
 -------------------------------------------------
 
-### extend
+### extend (deprecated)
 
 Extend an object with another one.
 
@@ -609,17 +701,17 @@ test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 
 To remove a key from the structure by overloading set it's value to null.
 
-### extendArrayConcat
+### extendArrayConcat (deprecated)
 
 This method is like extend but will concat arrays elements directly instead
 of concat the element clones. This keeps the references under the first array.
 
-### extendArrayReplace
+### extendArrayReplace (deprecated)
 
 This method is like extend but will replace arrays elements directly instead
 of concat the element clones.
 
-### clone
+### clone (deprecated)
 
 Deep cloning of an object.
 
@@ -634,29 +726,6 @@ __Returns:__
 
 * `object`
   clone of the given  object.
-
-__Example:__
-
-``` coffee
-object = require('alinex-util').object
-test = { eins: 1 }
-result = object.clone test
-```
-
-This results to:
-
-``` coffee
-result = { eins: 1 }
-```
-
-Or the same call using prototype extension:
-
-``` coffee
-require('alinex-util').object.addToPrototype()
-test = { eins: 1 }
-result = test.clone()
-```
-
 
 ### isEmpty
 

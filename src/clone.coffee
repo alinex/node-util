@@ -1,14 +1,26 @@
 # Utility functions for objects.
 # =================================================
 
+# Node modules
+# -------------------------------------------------
 debug = require('debug')('util:clone')
 util = require 'util'
 chalk = require 'chalk'
 
 
+# Indention
+# -------------------------------------------------
+# Because the function works synchrone, the indent variable can be used accross
+# all calls to show the level in the debug messages. It is set to 3 spaces for
+# the initial call increased by 3 every subcall.
+indent = ''
+
+
 # Deep cloning object
 # -------------------------------------------------
 # This method will create a clone of the given object.
+# As possible all methods will be cloned, but if object instances are used they
+# will be referenced.
 #
 # __Arguments:__
 #
@@ -19,7 +31,6 @@ chalk = require 'chalk'
 #
 # * `object`
 #   clone of the given  object.
-indent = ''
 clone = module.exports = (obj) ->
   indent += '   '
   # null, undefined values check
