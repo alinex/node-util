@@ -4,58 +4,64 @@ expect = chai.expect
 
 {extend} = require '../../src/index'
 
-describe.only "Extend", ->
+describe "Extend", ->
 
-  it "should keep object if only one", ->
-    test = null
-    result = extend test
-    expect(result, "deep check").to.deep.equal test
-    expect(result, "reference").to.equal test
-    test = {eins: 1}
-    result = extend test
-    expect(result, "deep check").to.deep.equal test
-    expect(result, "reference").to.equal test
+  describe "default mode", ->
 
-  it "should keep object if empty ones added", ->
-    test = null
-    result = extend test, null, undefined
-    expect(result, "deep check").to.deep.equal test
-    expect(result, "reference").to.equal test
-    test = {eins: 1}
-    result = extend test, null, undefined
-    expect(result, "deep check").to.deep.equal test
-    expect(result, "reference").to.equal test
+    it "should keep object if only one", ->
+      test = null
+      result = extend test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.equal test
+      test = {eins: 1}
+      result = extend test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.equal test
 
+    it "should keep object if empty ones added", ->
+      test = null
+      result = extend test, null, undefined
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.equal test
+      test = {eins: 1}
+      result = extend test, null, undefined
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.equal test
 
-  it "should keep object if empty ones before", ->
-    test = null
-    result = extend null, undefined, test
-    expect(result, "deep check 1").to.deep.equal test
-    expect(result, "reference 1").to.equal test
-    test = {eins: 1}
-    result = extend null, undefined, test
-    expect(result, "deep check 2").to.deep.equal test
-    expect(result, "reference 2").to.equal test
+    it "should keep object if empty ones before", ->
+      test = null
+      result = extend null, undefined, test
+      expect(result, "deep check 1").to.deep.equal test
+      expect(result, "reference 1").to.equal test
+      test = {eins: 1}
+      result = extend null, undefined, test
+      expect(result, "deep check 2").to.deep.equal test
+      expect(result, "reference 2").to.equal test
 
+  describe.only "clone mode", ->
 
-  it "should clone object", ->
-    test = {eins: 1}
-    result = object.extend null, test
-    expect(result, "deep check").to.deep.equal test
-    expect(result, "reference").to.not.equal test
+    it "should clone object", ->
+      test = null
+      result = extend test, 'MODE CLONE'
+      expect(result, "deep check").to.deep.equal test
+      test = {eins: 1}
+      result = extend test, 'MODE CLONE'
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
 
-  it "should let object untouched for empty extenders", ->
-    test = {eins: 1}
-    orig = object.extend null, test
-    object.extend test, {}
-    expect(test, "deep check").to.deep.equal orig
-    expect(test, "reference").to.not.equal orig
-    test = object.extend test, {}
-    expect(test, "deep check").to.deep.equal orig
-    expect(test, "reference").to.not.equal orig
-    test = object.extend test
-    expect(test, "deep check").to.deep.equal orig
-    expect(test, "reference").to.not.equal orig
+    it "should let object untouched for empty extenders", ->
+      test = {eins: 1}
+      result = extend null, 'MODE CLONE', test
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+      test = extend test, 'MODE CLONE', {}
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+      test = extend test, 'MODE CLONE'
+      expect(result, "deep check").to.deep.equal test
+      expect(result, "reference").to.not.equal test
+
+  describe "xxxx", ->
 
   it "should clone into empty object", ->
     test = {eins: 1}

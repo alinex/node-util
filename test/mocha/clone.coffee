@@ -6,6 +6,12 @@ expect = chai.expect
 
 describe "Clone", ->
 
+  it "should copy null", ->
+    test = null
+    result = clone test
+    expect(result, "deep check").to.deep.equal test
+    expect(result, "reference").to.equal test
+
   it "should clone object", ->
     test = {eins: 1}
     result = clone test

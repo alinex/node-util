@@ -45,7 +45,7 @@ extend = module.exports = (obj, ext...) ->
   # clone all if defined
   if 'CLONE' in mode
     obj = clone obj
-    ext = clone ext
+    ext = clone ext if ext.length
   # return if no extenders given
   return obj if not ext?
   # run over extenders
@@ -92,6 +92,6 @@ extend = module.exports = (obj, ext...) ->
         delete obj[k] if v is null
       continue
   # return resulting obj
-  debug "#{indent[3..]}<- #{chalk.grey util.inspect obj}"
   indent = indent[3..]
+  debug "#{indent}<- #{chalk.grey util.inspect obj}"
   obj
