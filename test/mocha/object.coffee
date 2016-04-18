@@ -440,7 +440,6 @@ describe "Object", ->
         fouR: 4
 
     it "should make keys lowercase", ->
-      console.log object.lcKeys test
       expect object.lcKeys test
       .to.deep.equal
         one: 1

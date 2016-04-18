@@ -109,22 +109,58 @@ describe "Extend", ->
       expect(result[0], "test-1").to.not.equal test1[0]
       expect(result[1], "test-2").to.not.equal test2[0]
 
-  describe "array replace mode", ->
+  describe "array modes", ->
 
-    it "should replace array elements", ->
-      test1 = [{one: 'eins'}]
-      test2 = [{one: 'two'}]
+    it "should replace array elements completely", ->
+      test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
+      test2 = {a: [4, 5, 6], b: [4, 5, 6], c: [4, 5, 6]}
       result = extend 'MODE ARRAY_REPLACE', test1, test2
-      expect(result[0], "test-1").to.not.equal test1[0]
-      expect(result[0], "test-2").to.equal test2[0]
+      expect(result, "test-1").to.deep.equal test2
+      expect(result.a, "test-2").to.equal test2.a
 
-  describe "array overwrite mode", ->
+    it "should replace array elements in one level", ->
+      test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
+      test2 = {a: [4, 5, 6], b: ['MODE ARRAY_REPLACE', 4, 5, 6], c: [4, 5, 6]}
+      result = extend test1, test2
+      expect(result, "test-1").to.deep.equal
+        a: [ 1, 2, 3, 4, 5, 6 ]
+        b: [ 4, 5, 6 ]
+        c: [ 1, 2, 3, 4, 5, 6 ]
+      expect(result.b, "test-2").to.equal test2.b
 
-    it "should overwrite array elements", ->
-      test1 = [{one: 'eins'}]
-      test2 = [{one: 'two'}]
+    it "should overwrite array elements completely", ->
+      test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
+      test2 = {a: [4, 5], b: [4, 5, 6], c: [null, 5, 6]}
       result = extend 'MODE ARRAY_OVERWRITE', test1, test2
-      expect(result[0], "test-1").to.equal test1[0]
-      expect(result[0], "test-2").to.deep.equal test1[0]
-      expect(result[0], "test-3").to.deep.equal test2[0]
-      expect(result[0].one, "test-4").to.equal test2[0].one
+      expect(result, "test-1").to.deep.equal {a: [ 4, 5, 3 ], b: [ 4, 5, 6 ], c: [ 1, 5, 6 ]}
+      expect(result.b, "test-2").to.not.equal test2.b
+      expect(result.b, "test-3").to.deep.equal test2.b
+
+    it "should overwrite array elements completely", ->
+      test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
+      test2 = {a: [4, 5], b: [4, 5, 6], c: ['MODE ARRAY_OVERWRITE', null, 5, 6]}
+      result = extend test1, test2
+      expect(result, "test-1").to.deep.equal
+        a: [ 1, 2, 3, 4, 5 ]
+        b: [ 1, 2, 3, 4, 5, 6 ]
+        c: [ 1, 5, 6 ]
+
+  describe "object modes", ->
+
+    it "should replace object elements completely", ->
+      test1 = {test: {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}}
+      test2 = {test: {a: [4, 5, 6], b: [4, 5, 6], d: [4, 5, 6]}}
+      result = extend 'MODE OBJECT_REPLACE', test1, test2
+      expect(result, "test-1").to.deep.equal
+        test: {a: [ 4, 5, 6 ], b: [ 4, 5, 6 ], d: [ 4, 5, 6 ]}
+      expect(result.test.d, "test-2").to.equal test2.test.d
+
+    it "should replace object in one level", ->
+      test1 = {test: {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}, test2: [1, 2, 3]}
+      test2 = {test: {OBJECT_REPLACE: true, a: [4, 5, 6], b: [4, 5, 6], d: [4, 5, 6]}}
+      result = extend test1, test2
+      expect(result, "test-1").to.deep.equal
+        test: {a: [ 4, 5, 6 ], b: [ 4, 5, 6 ], d: [ 4, 5, 6 ]}
+        test2: [1, 2, 3]
+      expect(result.test.d, "test-2").to.equal test2.test.d
+      expect(result.test2, "test-2").to.deep.equal test1.test2

@@ -42,29 +42,41 @@ indent = ''
 # Multiple modes can be used with space as separator:
 #
 # * `CLONE` - clone object and all extenders before extending, keeps the resulting
-#   objects untouched
+#   objects untouched (works only globally)
+# * `ARRAY_CONCAT` - (default) if no other array-mode set, will concat additional
+#   elements
 # * `ARRAY_REPLACE` - for all arrays, replace the previouse array completely instead
 #   of extending them
 # * `ARRAY_OVERWRITE` - overwrite the same index instead of extending the array
+# * `OBJECT_EXTEND` - (default) if no other object-mode given, will add/replace
+#   properties with the new ones
+# * `OBJECT_REPLACE` - will always replace the object completely with the new one,
+#   if the keys are different
 #
-# Also it is possible to replace the previous settings on demand. Therefore the
-# first element in the array should be 'CLEANUP_BEFORE' or if an object the
-# property 'CLENUP_BEFORE' should be set to true.
+# This mode may also be changed on any specific element by giving a different mode
+# just for this operation in the extending element itself. Therefore an array
+# should has the mode as first element or an object as an attribute.
+#
+# ``` coffee
+# test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
+# test2 = {a: ['MODE ARRAY_REPLACE', 4, 5, 6], b: [4, 5, 6], c: ['a']}
+# ext = extend test1, test2
+# ```
 extend = module.exports = (ext...) ->
   indent += '   '
   # read mode
   mode = []
   if typeof ext[0] is 'string' and ext[0]?.indexOf 'MODE' is 0
-    mode = ext.shift().split(' ')
-    mode.shift()
+    mode = ext.shift().split(' ')[1..]
   # return if no object given
   return null unless ext.length
-  # clone all if defined
+  # clone all if defined, and remove flag
   ext = clone ext if 'CLONE' in mode
+  mode = mode.filter (e) -> e isnt 'CLONE'
   # run over extenders
   obj = ext.shift()
   debug "#{indent[3..]}-> extend #{chalk.grey util.inspect obj}"
-  debug "#{indent[3..]}   using mode: #{mode.join ', '}"
+  debug "#{indent[3..]}   using mode: #{mode.join ', '}" if mode.length
   # use all extenders
   for src in ext
     continue unless src?
@@ -77,17 +89,21 @@ extend = module.exports = (ext...) ->
       continue
     # arrays
     if Array.isArray src
-      if src[0]? is 'CLEANUP_BEFORE'
+      # check for changed mode
+      cmode = if typeof src[0] is 'string' and src[0].indexOf 'MODE ' is 0
+        n = src.shift().split(' ')[1..]
+        debug "#{indent[3..]}   change mode: #{n.join ', '}"
+        n
+      else mode
+      # extend depending on mode
+      if 'ARRAY_REPLACE' in cmode or not Array.isArray obj
         obj = src
-        obj.shift()
         continue
-      if 'ARRAY_REPLACE' in mode or not Array.isArray obj
-        obj = src
-        continue
-      if 'ARRAY_OVERWRITE' in mode
+      if 'ARRAY_OVERWRITE' in cmode
         obj[i] = extend "MODE #{mode.join ' '}", obj[i], n for n, i in src
-      else
-        obj.push n for n in src
+        continue
+      # default setting ARRAY_CONCAT
+      obj.push n for n in src
       continue
     # all other
     unless typeof src is 'object'
@@ -95,13 +111,21 @@ extend = module.exports = (ext...) ->
       continue
     # check that this is a literal
     if not src.prototype
-      if src.CLEANUP_BEFORE
-        obj = src
-        delete obj.CLEANUP_BEFORE
-        continue
+      # check for changed mode
+      cmode = mode
+      if src.OBJECT_REPLACE
+        cmode = ['OBJECT_REPLACE']
+        delete src.OBJECT_REPLACE
+        debug "#{indent[3..]}   change mode: #{cmode.join ', '}"
+      # replace if different type
       if not obj? or Array.isArray obj or not typeof obj is 'object'
         obj = src
         continue
+      # replace object
+      if 'OBJECT_REPLACE' in cmode and Object.keys(obj).join(',') isnt Object.keys(src).join(',')
+        obj = src
+        continue
+      # extend based on OBJECT_EXTEND mode
       for own k, v of src
         if v is null
           delete obj[k]

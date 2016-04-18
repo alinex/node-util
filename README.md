@@ -52,6 +52,7 @@ string = util.string # shortcut to the string functions
 object = util.object # shortcut to the object functions
 raw = { eins: 1 }
 copy = util.clone raw
+console.log util.inspect copy
 ```
 
 Or you may directly import only the needed objects with:
@@ -81,6 +82,20 @@ module. All others are used through a collection named after their type.
 The [inspect](https://nodejs.org/api/util.html#util_util_inspect_object_options)
 method is from the node js util package directly inherited. Use it like described
 there.
+
+__Arguments:__
+
+* `object` to be cloned
+* `options` (optional) object with:
+  - `showHidden` - if true then the object's non-enumerable and symbol properties
+    will be shown too. Defaults to false.
+  - `depth` - tells inspect how many times to recurse while formatting the object.
+    This is useful for inspecting large complicated objects. Defaults to 2. To make
+    it recurse indefinitely pass null.
+  - `colors` - if true, then the output will be styled with ANSI color codes.
+    Defaults to false. Colors are customizable, see Customizing util.inspect colors.
+  - `customInspect` - if false, then custom inspect(depth, opts) functions defined
+    on the objects being inspected won't be called. Defaults to true.
 
 ### clone
 
@@ -137,14 +152,20 @@ __Modes:__
 Multiple modes can be used with space as separator:
 
 * `CLONE` - clone object and all extenders before extending, keeps the resulting
- objects untouched
+  objects untouched (works only globally)
+* `ARRAY_CONCAT` - (default) if no other array-mode set, will concat additional
+  elements
 * `ARRAY_REPLACE` - for all arrays, replace the previouse array completely instead
- of extending them
+  of extending them
 * `ARRAY_OVERWRITE` - overwrite the same index instead of extending the array
+* `OBJECT_EXTEND` - (default) if no other object-mode given, will add/replace
+  properties with the new ones
+* `OBJECT_REPLACE` - will always replace the object completely with the new one,
+  if the keys are different
 
-Also it is possible to replace the previous settings on demand. Therefore the
-first element in the array should be 'CLEANUP_BEFORE' or if an object the
-property 'CLENUP_BEFORE' should be set to true.
+This mode may also be changed on any specific element by giving a different mode
+just for this operation in the extending element itself. Therefore an array
+should has the mode as first element or an object as an attribute.
 
 __Example:__
 
@@ -161,6 +182,29 @@ test = { zwei: 2, eins: 'eins', drei: 3 }
 ```
 
 But keep in mind that this will change the first object, to the result, too.
+
+You may set a mode globally or in a specific level like described show:
+
+``` coffee
+test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
+test2 = {a: [4, 5, 6], c: ['a']}
+ext = extend 'MODE ARRAY_REPLACE', test1, test2
+# ext = {a: [4, 5, 6], b: [1, 2, 3], c: ['a']}
+```
+
+``` coffee
+test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
+test2 = {a: ['MODE ARRAY_REPLACE', 4, 5, 6], c: ['a']}
+ext = extend test1, test2
+# ext = {a: [4, 5, 6], b: [1, 2, 3], c: [1, 2, 3, 'a']}
+```
+
+``` coffee
+test1 = {t1: {a: 1, b: 2, c: 3}, t2: {d: 4, e: 5, f: 6}}
+test2 = {t1: {OBJECT_REPLACE: true, a: 4, b: 5}, t2: {d: 9}}
+ext = extend test1, test2
+# ext = {t1: {a: 4, b: 5}, t2: {d: 9, e: 5, f: 6}}
+```
 
 
 String type

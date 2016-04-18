@@ -7,6 +7,11 @@ debugExtend = require('debug')('util:object:extend')
 util = require 'util'
 chalk = require 'chalk'
 
+deprecatedExtend = false
+deprecatedExtendArrayConcat = false
+deprecatedExtendArrayReplace = false
+deprecatedClone = false
+
 # Extend object
 # -------------------------------------------------
 # This method will extend a given object with the entries from additional
@@ -28,6 +33,9 @@ chalk = require 'chalk'
 # Use the `constructor.name` for equal object check because the constructor
 # object may differ to another copy of the same class if generated in the sandbox.
 extend = module.exports.extend = (obj, ext...) ->
+  unless deprecatedExtend
+    console.warn "object.extend() in alinex-util is deprecated since v 2.0.0"
+    deprecatedExtend = true
   # clone if no extenders given
   return extend null, obj if not ext?
   obj = null unless obj
@@ -95,6 +103,9 @@ extend = module.exports.extend = (obj, ext...) ->
 # Use the `constructor.name` for equal object check because the constructor
 # object may differ to another copy of the same class if generated in the sandbox.
 extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
+  unless deprecatedExtendArrayConcat
+    console.warn "object.extendArrayConcat() in alinex-util is deprecated since v 2.0.0"
+    deprecatedExtendArrayConcat = true
   debug "-> extend #{chalk.grey util.inspect obj} (with concat)"
   # clone if no extenders given
   return extendArrayConcat null, obj if not ext?
@@ -160,7 +171,10 @@ extendArrayConcat = module.exports.extendArrayConcat = (obj, ext...) ->
 #
 # Use the `constructor.name` for equal object check because the constructor
 # object may differ to another copy of the same class if generated in the sandbox.
-extendArrayReplace = module.exports.extendArrayReplace = (obj, ext...) ->
+module.exports.extendArrayReplace = (obj, ext...) ->
+  unless deprecatedExtendArrayReplace
+    console.warn "object.extendArrayReplace() in alinex-util is deprecated since v 2.0.0"
+    deprecatedExtendArrayReplace = true
   debug "-> extend #{chalk.grey util.inspect obj} (with replace)"
   # clone if no extenders given
   return extendArrayConcat null, obj if not ext?
@@ -219,6 +233,9 @@ extendArrayReplace = module.exports.extendArrayReplace = (obj, ext...) ->
 # * `object`
 #   clone of the given  object.
 module.exports.clone = (obj) ->
+  unless deprecatedClone
+    console.warn "object.clone() in alinex-util is deprecated since v 2.0.0"
+    deprecatedClone = true
   extend null, obj
 
 
@@ -236,7 +253,7 @@ module.exports.clone = (obj) ->
 #
 # * `boolean`
 #   true if object is empty
-isEmpty = module.exports.isEmpty = (obj) ->
+module.exports.isEmpty = (obj) ->
   # true for undefined objects
   return true unless obj?
   return obj.length is 0 if obj.length?
@@ -245,7 +262,7 @@ isEmpty = module.exports.isEmpty = (obj) ->
 
 # Access path in object
 # -------------------------------------------------
-exports.path = path = (obj, path, separator = '/') ->
+exports.path = (obj, path, separator = '/') ->
   path = path.split separator if typeof path is 'string'
   debug "get path #{util.inspect path} from #{util.inspect obj}"
   ref = obj
@@ -310,7 +327,7 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
 # -------------------------------------------------
 # This will create a new object with all keys that pass the test implemented
 # by the provided allow(value, key, object)
-filter = exports.filter = (obj, allow) ->
+exports.filter = (obj, allow) ->
   result = {}
   for key of obj
     if obj.hasOwnProperty(key) and allow obj[key], key, obj
