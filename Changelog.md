@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.0.3 (2016-04-18)
+-------------------------------------------------
+- Fix building of npm package.
+
 Version 2.0.2 (2016-04-18)
 -------------------------------------------------
 - Fix overwrite to only wotk if enabled.
