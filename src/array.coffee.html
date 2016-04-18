@@ -57,10 +57,6 @@
       </div>
 
       <div class="heading h2">
-        <a href="#add-array-helpers-to-the-object-class">Add array helpers to the Object class</a>
-      </div>
-
-      <div class="heading h2">
         <a href="#helper-methods">Helper Methods</a>
       </div>
 
@@ -158,30 +154,6 @@ Sort array of objects
     
       <tr>
         <td class="docs">
-          <div class="pilwrap" id="add-array-helpers-to-the-object-class">
-  <h2>
-    <a href="#add-array-helpers-to-the-object-class" name="add-array-helpers-to-the-object-class" class="pilcrow"></a>
-Add array helpers to the Object class
-  </h2>
-</div>
-<p>This will allow to call the methods directly on an object.</p>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript">exports.addToPrototype = <span class="hljs-function">-&gt;</span>
-  Array.prototype.last = <span class="hljs-function"><span class="hljs-params">(back)</span> -&gt;</span>
-    exports.last <span class="hljs-keyword">this</span>, back
-  Array.prototype.unique = <span class="hljs-function">-&gt;</span>
-    exports.unique <span class="hljs-keyword">this</span>
-  Array.prototype.sortBy = <span class="hljs-function">-&gt;</span>
-    args = [].slice.call arguments
-    args.unshift <span class="hljs-keyword">this</span>
-    exports.sortBy.apply <span class="hljs-keyword">this</span>, args</pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
           <div class="pilwrap" id="helper-methods">
   <h2>
     <a href="#helper-methods" name="helper-methods" class="pilcrow"></a>
@@ -203,7 +175,7 @@ Helper Methods
       <tr>
         <td class="docs">
           <div class="pilwrap">
-  <a class="pilcrow" href="#section-7" id="section-7"></a>
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
 </div>
 <p>return sort function</p>
 
@@ -222,7 +194,7 @@ Helper Methods
       <tr>
         <td class="docs">
           <div class="pilwrap">
-  <a class="pilcrow" href="#section-8" id="section-8"></a>
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
 </div>
 <p>return sort function</p>
 

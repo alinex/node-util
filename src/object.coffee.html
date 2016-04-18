@@ -80,10 +80,6 @@
         <a href="#make-objects-keys-to-lowercase">Make object&#39;s keys to lowercase</a>
       </div>
 
-      <div class="heading h2">
-        <a href="#add-object-helpers-to-the-object-class">Add object helpers to the Object class</a>
-      </div>
-
     </div>
   </div>
   <div id="sidebar-toggle"></div>
@@ -109,7 +105,12 @@ debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'de
 debugPathSearch = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'util:object:pathsearch'</span>)
 debugExtend = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'util:object:extend'</span>)
 util = <span class="hljs-built_in">require</span> <span class="hljs-string">'util'</span>
-chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'chalk'</span></pre>
+chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'chalk'</span>
+
+deprecatedExtend = <span class="hljs-literal">false</span>
+deprecatedExtendArrayConcat = <span class="hljs-literal">false</span>
+deprecatedExtendArrayReplace = <span class="hljs-literal">false</span>
+deprecatedClone = <span class="hljs-literal">false</span></pre>
         </td>
       </tr>
     
@@ -141,7 +142,10 @@ object may differ to another copy of the same class if generated in the sandbox.
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">extend = <span class="hljs-built_in">module</span>.exports.extend = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span></pre>
+          <pre class="coffeescript">extend = <span class="hljs-built_in">module</span>.exports.extend = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span>
+  <span class="hljs-keyword">unless</span> deprecatedExtend
+    <span class="hljs-built_in">console</span>.warn <span class="hljs-string">"object.extend() in alinex-util is deprecated since v 2.0.0"</span>
+    deprecatedExtend = <span class="hljs-literal">true</span></pre>
         </td>
       </tr>
     
@@ -155,7 +159,7 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">return</span> extend <span class="hljs-literal">null</span>, obj <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ext?
-  obj = {} <span class="hljs-keyword">unless</span> obj
+  obj = <span class="hljs-literal">null</span> <span class="hljs-keyword">unless</span> obj
   debugExtend <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span></pre>
         </td>
       </tr>
@@ -171,7 +175,8 @@ object may differ to another copy of the same class if generated in the sandbox.
         <td class="code highlight">
           <pre class="coffeescript">  <span class="hljs-keyword">for</span> src <span class="hljs-keyword">in</span> ext
     <span class="hljs-keyword">continue</span> <span class="hljs-keyword">unless</span> src?
-    debugExtend <span class="hljs-string">"by <span class="hljs-subst">#{chalk.grey util.inspect src}</span>"</span></pre>
+    debugExtend <span class="hljs-string">"   by <span class="hljs-subst">#{chalk.grey util.inspect src}</span>"</span>
+    obj = {} <span class="hljs-keyword">unless</span> obj</pre>
         </td>
       </tr>
     
@@ -272,10 +277,8 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">        base = <span class="hljs-keyword">if</span> key <span class="hljs-keyword">in</span> Object.keys(obj) <span class="hljs-keyword">then</span> obj[key] <span class="hljs-keyword">else</span> <span class="hljs-literal">undefined</span>
-        <span class="hljs-keyword">if</span> val <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>
-          <span class="hljs-keyword">delete</span> obj[key]
-        <span class="hljs-keyword">else</span>
-          obj[key] = extend <span class="hljs-literal">null</span>, base, val
+        obj[key] = extend <span class="hljs-literal">null</span>, base, val
+        <span class="hljs-keyword">delete</span> obj[key] <span class="hljs-keyword">if</span> val <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>
   debugExtend <span class="hljs-string">"&lt;- <span class="hljs-subst">#{chalk.grey util.inspect obj}</span>"</span>
   obj</pre>
         </td>
@@ -309,6 +312,9 @@ object may differ to another copy of the same class if generated in the sandbox.
         </td>
         <td class="code highlight">
           <pre class="coffeescript">extendArrayConcat = <span class="hljs-built_in">module</span>.exports.extendArrayConcat = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span>
+  <span class="hljs-keyword">unless</span> deprecatedExtendArrayConcat
+    <span class="hljs-built_in">console</span>.warn <span class="hljs-string">"object.extendArrayConcat() in alinex-util is deprecated since v 2.0.0"</span>
+    deprecatedExtendArrayConcat = <span class="hljs-literal">true</span>
   debug <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span> (with concat)"</span></pre>
         </td>
       </tr>
@@ -461,7 +467,10 @@ object may differ to another copy of the same class if generated in the sandbox.
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">extendArrayReplace = <span class="hljs-built_in">module</span>.exports.extendArrayReplace = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span>
+          <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.extendArrayReplace = <span class="hljs-function"><span class="hljs-params">(obj, ext...)</span> -&gt;</span>
+  <span class="hljs-keyword">unless</span> deprecatedExtendArrayReplace
+    <span class="hljs-built_in">console</span>.warn <span class="hljs-string">"object.extendArrayReplace() in alinex-util is deprecated since v 2.0.0"</span>
+    deprecatedExtendArrayReplace = <span class="hljs-literal">true</span>
   debug <span class="hljs-string">"-&gt; extend <span class="hljs-subst">#{chalk.grey util.inspect obj}</span> (with replace)"</span></pre>
         </td>
       </tr>
@@ -597,6 +606,9 @@ clone of the given  object.</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.clone = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span>
+  <span class="hljs-keyword">unless</span> deprecatedClone
+    <span class="hljs-built_in">console</span>.warn <span class="hljs-string">"object.clone() in alinex-util is deprecated since v 2.0.0"</span>
+    deprecatedClone = <span class="hljs-literal">true</span>
   extend <span class="hljs-literal">null</span>, obj</pre>
         </td>
       </tr>
@@ -624,7 +636,7 @@ true if object is empty</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">isEmpty = <span class="hljs-built_in">module</span>.exports.isEmpty = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span></pre>
+          <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.isEmpty = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span></pre>
         </td>
       </tr>
     
@@ -654,7 +666,7 @@ Access path in object
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">exports.path = path = <span class="hljs-function"><span class="hljs-params">(obj, path, separator = <span class="hljs-string">'/'</span>)</span> -&gt;</span>
+          <pre class="coffeescript">exports.path = <span class="hljs-function"><span class="hljs-params">(obj, path, separator = <span class="hljs-string">'/'</span>)</span> -&gt;</span>
   path = path.split separator <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> path <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span>
   debug <span class="hljs-string">"get path <span class="hljs-subst">#{util.inspect path}</span> from <span class="hljs-subst">#{util.inspect obj}</span>"</span>
   ref = obj
@@ -806,7 +818,7 @@ by the provided allow(value, key, object)</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">filter = exports.filter = <span class="hljs-function"><span class="hljs-params">(obj, allow)</span> -&gt;</span>
+          <pre class="coffeescript">exports.filter = <span class="hljs-function"><span class="hljs-params">(obj, allow)</span> -&gt;</span>
   result = {}
   <span class="hljs-keyword">for</span> key <span class="hljs-keyword">of</span> obj
     <span class="hljs-keyword">if</span> obj.hasOwnProperty(key) <span class="hljs-keyword">and</span> allow obj[key], key, obj
@@ -832,43 +844,6 @@ Make object's keys to lowercase
   <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> Object.keys obj
     lc[key.toLowerCase()] = lcKeys obj[key]
   lc</pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
-          <div class="pilwrap" id="add-object-helpers-to-the-object-class">
-  <h2>
-    <a href="#add-object-helpers-to-the-object-class" name="add-object-helpers-to-the-object-class" class="pilcrow"></a>
-Add object helpers to the Object class
-  </h2>
-</div>
-<p>This will allow to call the methods directly on an object.</p>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports.addToPrototype = <span class="hljs-function">-&gt;</span>
-  Object.prototype.extend = <span class="hljs-function"><span class="hljs-params">(args...)</span> -&gt;</span>
-    args.unshift <span class="hljs-keyword">this</span>
-    extend.apply <span class="hljs-literal">null</span>, args
-  Object.prototype.extendArrayConcat = <span class="hljs-function"><span class="hljs-params">(args...)</span> -&gt;</span>
-    args.unshift <span class="hljs-keyword">this</span>
-    extendArrayConcat.apply <span class="hljs-literal">null</span>, args
-  Object.prototype.extendArrayReplace = <span class="hljs-function"><span class="hljs-params">(args...)</span> -&gt;</span>
-    args.unshift <span class="hljs-keyword">this</span>
-    extendArrayReplace.apply <span class="hljs-literal">null</span>, args
-  Object.prototype.clone = <span class="hljs-function">-&gt;</span> extend <span class="hljs-literal">null</span>, <span class="hljs-keyword">this</span>
-  Object.prototype.isEmpty = <span class="hljs-function">-&gt;</span> isEmpty <span class="hljs-keyword">this</span>
-  Object.prototype.path = <span class="hljs-function">-&gt;</span> (args...) -&gt;
-    args.unshift <span class="hljs-keyword">this</span>
-    path.apply <span class="hljs-literal">null</span>, args
-  Object.prototype.pathSearch = <span class="hljs-function">-&gt;</span> (args...) -&gt;
-    args.unshift <span class="hljs-keyword">this</span>
-    pathSearch.apply <span class="hljs-literal">null</span>, args
-  Object.prototype.filter = <span class="hljs-function">-&gt;</span> (args...) -&gt;
-    args.unshift <span class="hljs-keyword">this</span>
-    filter.apply <span class="hljs-literal">null</span>, args
-  Object.prototype.lcKeys = <span class="hljs-function">-&gt;</span> lcKeys <span class="hljs-keyword">this</span></pre>
         </td>
       </tr>
     

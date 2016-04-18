@@ -96,10 +96,6 @@
         <a href="#convert-to-list">Convert to list</a>
       </div>
 
-      <div class="heading h2">
-        <a href="#add-object-helpers-to-the-object-class">Add object helpers to the Object class</a>
-      </div>
-
     </div>
   </div>
   <div id="sidebar-toggle"></div>
@@ -572,48 +568,6 @@ exports.toRegExp = <span class="hljs-function"><span class="hljs-params">(text)<
   .match <span class="hljs-regexp">/^\/(.*)\/([gim]+)?$/</span>
   <span class="hljs-keyword">return</span> text <span class="hljs-keyword">unless</span> match
   <span class="hljs-keyword">new</span> RegExp match[<span class="hljs-number">1</span>], match[<span class="hljs-number">2</span>]</pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
-          <div class="pilwrap" id="add-object-helpers-to-the-object-class">
-  <h2>
-    <a href="#add-object-helpers-to-the-object-class" name="add-object-helpers-to-the-object-class" class="pilcrow"></a>
-Add object helpers to the Object class
-  </h2>
-</div>
-<p>This will allow to call the methods directly on an object.</p>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript">exports.addToPrototype = <span class="hljs-function">-&gt;</span>
-  String.prototype.starts = <span class="hljs-function"><span class="hljs-params">(literal, start)</span> -&gt;</span>
-    exports.starts <span class="hljs-keyword">this</span>, literal, start
-  String.prototype.ends = <span class="hljs-function"><span class="hljs-params">(literal, back)</span> -&gt;</span>
-    exports.ends <span class="hljs-keyword">this</span>, literal, back
-  String.prototype.repeat = <span class="hljs-function"><span class="hljs-params">(n)</span> -&gt;</span>
-    exports.repeat <span class="hljs-keyword">this</span>, n
-  String.prototype.rpad = <span class="hljs-function"><span class="hljs-params">(n, char)</span> -&gt;</span>
-    exports.rpad <span class="hljs-keyword">this</span>, n, char
-  String.prototype.lpad = <span class="hljs-function"><span class="hljs-params">(n, char)</span> -&gt;</span>
-    exports.lpad <span class="hljs-keyword">this</span>, n, char
-  String.prototype.cpad = <span class="hljs-function"><span class="hljs-params">(n, char)</span> -&gt;</span>
-    exports.cpad <span class="hljs-keyword">this</span>, n, char
-  String.prototype.ucFirst = <span class="hljs-function">-&gt;</span>
-    exports.ucFirst <span class="hljs-keyword">this</span>
-  String.prototype.lcFirst = <span class="hljs-function">-&gt;</span>
-    exports.lcFirst <span class="hljs-keyword">this</span>
-  String.prototype.contains = <span class="hljs-function"><span class="hljs-params">(phrase)</span> -&gt;</span>
-    exports.contains <span class="hljs-keyword">this</span>, phrase
-  String.prototype.wordwrap = <span class="hljs-function"><span class="hljs-params">(width, brk, cut)</span> -&gt;</span>
-    exports.wordwrap <span class="hljs-keyword">this</span>, width, brk, cut
-  String.prototype.shorten = <span class="hljs-function"><span class="hljs-params">(limit)</span> -&gt;</span>
-    exports.shorten <span class="hljs-keyword">this</span>, limit
-  String.prototype.toList = <span class="hljs-function"><span class="hljs-params">(rowDelimiter, colDelimiter)</span> -&gt;</span>
-    exports.toList <span class="hljs-keyword">this</span>, rowDelimiter, colDelimiter
-  String.prototype.toRegExp = <span class="hljs-function">-&gt;</span>
-    exports.toRegExp <span class="hljs-keyword">this</span></pre>
         </td>
       </tr>
     

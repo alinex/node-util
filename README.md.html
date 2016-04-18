@@ -53,6 +53,22 @@
       </div>
 
       <div class="heading h2">
+        <a href="#all-types">All types</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#inspect">inspect</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#clone">clone</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#extend">extend</a>
+      </div>
+
+      <div class="heading h2">
         <a href="#string-type">String type</a>
       </div>
 
@@ -137,19 +153,19 @@
       </div>
 
       <div class="heading h3">
-        <a href="#extend">extend</a>
+        <a href="#extend-deprecated">extend (deprecated)</a>
       </div>
 
       <div class="heading h3">
-        <a href="#extendarrayconcat">extendArrayConcat</a>
+        <a href="#extendarrayconcat-deprecated">extendArrayConcat (deprecated)</a>
       </div>
 
       <div class="heading h3">
-        <a href="#extendarrayreplace">extendArrayReplace</a>
+        <a href="#extendarrayreplace-deprecated">extendArrayReplace (deprecated)</a>
       </div>
 
       <div class="heading h3">
-        <a href="#clone">clone</a>
+        <a href="#clone-deprecated">clone (deprecated)</a>
       </div>
 
       <div class="heading h3">
@@ -208,11 +224,11 @@ Package: alinex-util
 <p>This module will be used as incubator for different small helper methods which
 are generally used for different general class types:</p>
 <ul>
+<li>general helper</li>
 <li>string helper</li>
 <li>number helper</li>
 <li>array helper</li>
 <li>object helper</li>
-<li>may extend the base classes</li>
 </ul>
 <blockquote>
 <p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Universe</a>
@@ -241,24 +257,149 @@ Install
 General Usage
   </h2>
 </div>
-<p>All methods in this package can be called from the resulting function collection:</p>
+<p>All methods in this package can be called from the util object:</p>
 <pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 string = util.string <span class="hljs-comment"># shortcut to the string functions</span>
 object = util.object <span class="hljs-comment"># shortcut to the object functions</span>
+raw = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+copy = util.clone raw
+<span class="hljs-built_in">console</span>.log util.inspect copy
 </code></pre>
-<p>Or shorter:</p>
-<pre><code class="coffee">{string,object} = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+<p>Or you may directly import only the needed objects with:</p>
+<pre><code class="coffee">{string, object} = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 array = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util/lib/array'</span>
 </code></pre>
-<p>Or directly import the needed objects with:</p>
-<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
-util.addToPrototype() <span class="hljs-comment"># will do it for all</span>
-util.object.addToPrototype() <span class="hljs-comment"># or extend only the Object class</span>
+<p>The first line loaded all but uses only some methods, while the second line
+only loads the needed type library.</p>
+<p>The library may be used as replacement for the node util package because it also
+exports the 'inspect()' method which is the only needed method from this core
+package.</p>
+<p>See the description below for each of the contained methods.</p>
+<div class="pilwrap" id="all-types">
+  <h2>
+    <a href="#all-types" name="all-types" class="pilcrow"></a>
+All types
+  </h2>
+</div>
+<p>The methods which are usable for all types are directly accessible in the main
+module. All others are used through a collection named after their type.</p>
+<div class="pilwrap" id="inspect">
+  <h3>
+    <a href="#inspect" name="inspect" class="pilcrow"></a>
+inspect
+  </h3>
+</div>
+<p>The <a href="https://nodejs.org/api/util.html#util_util_inspect_object_options">inspect</a>
+method is from the node js util package directly inherited. Use it like described
+there.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>object</code> to be cloned</li>
+<li><code>options</code> (optional) object with:
+<ul>
+<li><code>showHidden</code> - if true then the object's non-enumerable and symbol properties
+will be shown too. Defaults to false.</li>
+<li><code>depth</code> - tells inspect how many times to recurse while formatting the object.
+This is useful for inspecting large complicated objects. Defaults to 2. To make
+it recurse indefinitely pass null.</li>
+<li><code>colors</code> - if true, then the output will be styled with ANSI color codes.
+Defaults to false. Colors are customizable, see Customizing util.inspect colors.</li>
+<li><code>customInspect</code> - if false, then custom inspect(depth, opts) functions defined
+on the objects being inspected won't be called. Defaults to true.</li>
+</ul>
+</li>
+</ul>
+<div class="pilwrap" id="clone">
+  <h3>
+    <a href="#clone" name="clone" class="pilcrow"></a>
+clone
+  </h3>
+</div>
+<p>This method will create a clone of the given object.
+As possible all methods will be cloned, but if object instances are used they
+will be referenced.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>object</code>
+to be cloned</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>object</code>
+clone of the given object.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="coffee">clone = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).clone
+test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+result = clone test
 </code></pre>
-<p>Or you may inlcude only the needed types separately:</p>
-<pre><code class="coffee">x = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
-y = x.clone() <span class="hljs-comment"># instead of</span>
-y = util.object.clone x
+<p>This results to:</p>
+<pre><code class="coffee">result = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+</code></pre>
+<div class="pilwrap" id="extend">
+  <h3>
+    <a href="#extend" name="extend" class="pilcrow"></a>
+extend
+  </h3>
+</div>
+<p>Extend an object with another one.</p>
+<p>This method will extend a given object with the entries from additional
+objects. Therefore it will do a deep extend.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>mode</code> (optional) string 'MODE ...' defining how the extend should work</li>
+<li><code>object</code> (if not called as Object method)
+base object to be extended</li>
+<li><code>extender</code>...
+multiple extenders may be given with will be cloned into the object.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>object</code>
+the given and maybe changed object.</li>
+</ul>
+<p><strong>Modes:</strong></p>
+<p>Multiple modes can be used with space as separator:</p>
+<ul>
+<li><code>CLONE</code> - clone object and all extenders before extending, keeps the resulting
+objects untouched (works only globally)</li>
+<li><code>ARRAY_CONCAT</code> - (default) if no other array-mode set, will concat additional
+elements</li>
+<li><code>ARRAY_REPLACE</code> - for all arrays, replace the previouse array completely instead
+of extending them</li>
+<li><code>ARRAY_OVERWRITE</code> - overwrite the same index instead of extending the array</li>
+<li><code>OBJECT_EXTEND</code> - (default) if no other object-mode given, will add/replace
+properties with the new ones</li>
+<li><code>OBJECT_REPLACE</code> - will always replace the object completely with the new one,
+if the keys are different</li>
+</ul>
+<p>This mode may also be changed on any specific element by giving a different mode
+just for this operation in the extending element itself. Therefore an array
+should has the mode as first element or an object as an attribute.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="coffee">extend = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).extend
+test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+extend test, { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span> }, { <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+</code></pre>
+<p>This results to:</p>
+<pre><code class="coffee">test = { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span>, <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+</code></pre>
+<p>But keep in mind that this will change the first object, to the result, too.</p>
+<p>You may set a mode globally or in a specific level like described show:</p>
+<pre><code class="coffee">test1 = {<span class="hljs-attribute">a</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">b</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}
+test2 = {<span class="hljs-attribute">a</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-string">'a'</span>]}
+ext = extend <span class="hljs-string">'MODE ARRAY_REPLACE'</span>, test1, test2
+<span class="hljs-comment"># ext = {a: [4, 5, 6], b: [1, 2, 3], c: ['a']}</span>
+</code></pre>
+<pre><code class="coffee">test1 = {<span class="hljs-attribute">a</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">b</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}
+test2 = {<span class="hljs-attribute">a</span>: [<span class="hljs-string">'MODE ARRAY_REPLACE'</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-string">'a'</span>]}
+ext = extend test1, test2
+<span class="hljs-comment"># ext = {a: [4, 5, 6], b: [1, 2, 3], c: [1, 2, 3, 'a']}</span>
+</code></pre>
+<pre><code class="coffee">test1 = {<span class="hljs-attribute">t1</span>: {<span class="hljs-attribute">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">c</span>: <span class="hljs-number">3</span>}, <span class="hljs-attribute">t2</span>: {<span class="hljs-attribute">d</span>: <span class="hljs-number">4</span>, <span class="hljs-attribute">e</span>: <span class="hljs-number">5</span>, <span class="hljs-attribute">f</span>: <span class="hljs-number">6</span>}}
+test2 = {<span class="hljs-attribute">t1</span>: {<span class="hljs-attribute">OBJECT_REPLACE</span>: <span class="hljs-literal">true</span>, <span class="hljs-attribute">a</span>: <span class="hljs-number">4</span>, <span class="hljs-attribute">b</span>: <span class="hljs-number">5</span>}, <span class="hljs-attribute">t2</span>: {<span class="hljs-attribute">d</span>: <span class="hljs-number">9</span>}}
+ext = extend test1, test2
+<span class="hljs-comment"># ext = {t1: {a: 4, b: 5}, t2: {d: 9, e: 5, f: 6}}</span>
 </code></pre>
 <div class="pilwrap" id="string-type">
   <h2>
@@ -726,10 +867,10 @@ you may specify <code>ms</code> as additional unit here.</p>
 Object
   </h2>
 </div>
-<div class="pilwrap" id="extend">
+<div class="pilwrap" id="extend-deprecated">
   <h3>
-    <a href="#extend" name="extend" class="pilcrow"></a>
-extend
+    <a href="#extend-deprecated" name="extend-deprecated" class="pilcrow"></a>
+extend (deprecated)
   </h3>
 </div>
 <p>Extend an object with another one.</p>
@@ -761,26 +902,26 @@ test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</
 test.extend { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span> }, { <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
 </code></pre>
 <p>To remove a key from the structure by overloading set it's value to null.</p>
-<div class="pilwrap" id="extendarrayconcat">
+<div class="pilwrap" id="extendarrayconcat-deprecated">
   <h3>
-    <a href="#extendarrayconcat" name="extendarrayconcat" class="pilcrow"></a>
-extendArrayConcat
+    <a href="#extendarrayconcat-deprecated" name="extendarrayconcat-deprecated" class="pilcrow"></a>
+extendArrayConcat (deprecated)
   </h3>
 </div>
 <p>This method is like extend but will concat arrays elements directly instead
 of concat the element clones. This keeps the references under the first array.</p>
-<div class="pilwrap" id="extendarrayreplace">
+<div class="pilwrap" id="extendarrayreplace-deprecated">
   <h3>
-    <a href="#extendarrayreplace" name="extendarrayreplace" class="pilcrow"></a>
-extendArrayReplace
+    <a href="#extendarrayreplace-deprecated" name="extendarrayreplace-deprecated" class="pilcrow"></a>
+extendArrayReplace (deprecated)
   </h3>
 </div>
 <p>This method is like extend but will replace arrays elements directly instead
 of concat the element clones.</p>
-<div class="pilwrap" id="clone">
+<div class="pilwrap" id="clone-deprecated">
   <h3>
-    <a href="#clone" name="clone" class="pilcrow"></a>
-clone
+    <a href="#clone-deprecated" name="clone-deprecated" class="pilcrow"></a>
+clone (deprecated)
   </h3>
 </div>
 <p>Deep cloning of an object.</p>
@@ -795,19 +936,6 @@ to be cloned</li>
 <li><code>object</code>
 clone of the given  object.</li>
 </ul>
-<p><strong>Example:</strong></p>
-<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
-test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
-result = object.clone test
-</code></pre>
-<p>This results to:</p>
-<pre><code class="coffee">result = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
-</code></pre>
-<p>Or the same call using prototype extension:</p>
-<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object.addToPrototype()
-test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
-result = test.clone()
-</code></pre>
 <div class="pilwrap" id="isempty">
   <h3>
     <a href="#isempty" name="isempty" class="pilcrow"></a>

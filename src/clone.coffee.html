@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>clone.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "home/alex/github/node-util/src/clone.coffee";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /></head>
+<body>
+  <nav>
+<div class="logo"><a href="http://alinex.github.io"
+  onmouseover="logo.src='https://alinex.github.io/images/Alinex-200.png'"
+  onmouseout="logo.src='https://alinex.github.io/images/Alinex-black-200.png'">
+  <img name="logo" src="https://alinex.github.io/images/Alinex-black-200.png"
+    width="150" title="Alinex Universe Homepage" />
+  </a>
+  <img src="http://alinex.github.io/images/Alinex-200.png"
+    style="display:none" alt="preloading" />
+</div>
+<div class="links">
+  <a href="http://alinex.github.io/blog"
+    class="btn btn-primary"><span class="glyphicon-pencil"></span> Blog</a>
+  <a href="http://alinex.github.io/develop"
+    class="btn btn-primary"><span class="glyphicon-book"></span> Develop</a>
+  <a href="http://alinex.github.io/code.html"
+    class="btn btn-warning"><span class="glyphicon-cog"></span> Code</a>
+</div>
+</nav><div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+      <div class="heading h1">
+        <a href="#utility-functions-for-objects">Utility functions for objects.</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#node-modules">Node modules</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#indention">Indention</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#deep-cloning-object">Deep cloning object</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#sticky-not-standardized-till-yet">sticky not standardized till yet</a>
+      </div>
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container" tabindex="0"><a id="fork" href="https://github.com/alinex/node-util" title="Fork me on GitHub"></a>
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="utility-functions-for-objects">
+  <h1>
+    <a href="#utility-functions-for-objects" name="utility-functions-for-objects" class="pilcrow"></a>
+Utility functions for objects.
+  </h1>
+</div>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="node-modules">
+  <h2>
+    <a href="#node-modules" name="node-modules" class="pilcrow"></a>
+Node modules
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'util:clone'</span>)
+util = <span class="hljs-built_in">require</span> <span class="hljs-string">'util'</span>
+chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'chalk'</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="indention">
+  <h2>
+    <a href="#indention" name="indention" class="pilcrow"></a>
+Indention
+  </h2>
+</div>
+<p>Because the function works synchrone, the indent variable can be used accross
+all calls to show the level in the debug messages. It is set to 3 spaces for
+the initial call increased by 3 every subcall.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">indent = <span class="hljs-string">''</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="deep-cloning-object">
+  <h2>
+    <a href="#deep-cloning-object" name="deep-cloning-object" class="pilcrow"></a>
+Deep cloning object
+  </h2>
+</div>
+<p>This method will create a clone of the given object.
+As possible all methods will be cloned, but if object instances are used they
+will be referenced.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>object</code>
+to be cloned</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>object</code>
+clone of the given  object.</li>
+</ul>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">clone = <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span>
+  indent += <span class="hljs-string">'   '</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>null, undefined values check</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent[<span class="hljs-number">3.</span>.]}</span>-&gt; <span class="hljs-subst">#{util.inspect obj}</span>"</span>
+  <span class="hljs-keyword">unless</span> obj
+    indent = indent[<span class="hljs-number">3.</span>.]
+    debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is undefined"</span>
+    <span class="hljs-keyword">return</span> obj</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>return primitive types</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">in</span> [<span class="hljs-string">'number'</span>, <span class="hljs-string">'string'</span>, <span class="hljs-string">'boolean'</span>]
+    indent = indent[<span class="hljs-number">3.</span>.]
+    debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is primitive"</span>
+    <span class="hljs-keyword">return</span> obj</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>return basic types</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">for</span> type <span class="hljs-keyword">in</span> [Number, String, Boolean, Date]
+    <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">instanceof</span> type
+      indent = indent[<span class="hljs-number">3.</span>.]
+      debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is <span class="hljs-subst">#{type}</span>"</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> type obj</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>regexp</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">instanceof</span> RegExp
+    indent = indent[<span class="hljs-number">3.</span>.]
+    debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is RegExp"</span>
+    flags = <span class="hljs-string">''</span>
+    flags += <span class="hljs-string">'g'</span> <span class="hljs-keyword">if</span> obj.<span class="hljs-built_in">global</span>
+    flags += <span class="hljs-string">'i'</span> <span class="hljs-keyword">if</span> obj.ignoreCase
+    flags += <span class="hljs-string">'m'</span> <span class="hljs-keyword">if</span> obj.multiline</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap" id="sticky-not-standardized-till-yet">
+  <h2>
+    <a href="#sticky-not-standardized-till-yet" name="sticky-not-standardized-till-yet" class="pilcrow"></a>
+sticky not standardized till yet
+  </h2>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    flags += <span class="hljs-string">'y'</span> <span class="hljs-keyword">if</span> obj.sticky</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>
