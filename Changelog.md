@@ -4,6 +4,16 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.0.0 (2016-04-18)
+-------------------------------------------------
+- Extended test coverage.
+- Made old clone and extend methods deprecated.
+- Document new extend and clone methods.
+- Optimize debugging of clone and extend with indents.
+- Added clone mode to extend but keep references as possible else.
+- Remove addToPrototype functions.
+- Make new clone and extend methods as seperate function.
+
 Version 1.1.6 (2016-04-15)
 -------------------------------------------------
 - Fixed bug in object clone.
