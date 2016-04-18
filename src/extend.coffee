@@ -109,36 +109,35 @@ extend = module.exports = (ext...) ->
     unless typeof src is 'object'
       obj = src
       continue
-    # check that this is a literal
-    if not src.prototype
-      # check for changed mode
-      cmode = mode
-      if src.OBJECT_REPLACE
-        cmode = ['OBJECT_REPLACE']
-        delete src.OBJECT_REPLACE
-        debug "#{indent[3..]}   change mode: #{cmode.join ', '}"
-      # replace if different type
-      if not obj? or Array.isArray obj or not typeof obj is 'object'
-        obj = src
-        continue
-      # replace object
-      if 'OBJECT_REPLACE' in cmode and Object.keys(obj).join(',') isnt Object.keys(src).join(',')
-        obj = src
-        continue
-      # extend based on OBJECT_EXTEND mode
-      for own k, v of src
-        if v is null
-          delete obj[k]
-          continue
-        # test to assure a key like 'toString' won't map to the standard function
-        obj[k] = if k in Object.keys(obj)
-          if mode.length
-            extend "MODE #{mode.join ' '}", obj[k], v
-          else
-            extend obj[k], v
-        else
-          v
+    # this is a literal
+    # check for changed mode
+    cmode = mode
+    if src.OBJECT_REPLACE
+      cmode = ['OBJECT_REPLACE']
+      delete src.OBJECT_REPLACE
+      debug "#{indent[3..]}   change mode: #{cmode.join ', '}"
+    # replace if different type
+    if not(obj?) or Array.isArray(obj) or typeof obj isnt 'object' or
+    obj.constructor.name isnt Object.name
+      obj = src
       continue
+    # replace object
+    if 'OBJECT_REPLACE' in cmode and Object.keys(obj).join(',') isnt Object.keys(src).join(',')
+      obj = src
+      continue
+    # extend based on OBJECT_EXTEND mode
+    for own k, v of src
+      if v is null
+        delete obj[k]
+        continue
+      # test to assure a key like 'toString' won't map to the standard function
+      obj[k] = if k in Object.keys(obj)
+        if mode.length
+          extend "MODE #{mode.join ' '}", obj[k], v
+        else
+          extend obj[k], v
+      else
+        v
   # return resulting obj
   indent = indent[3..]
   debug "#{indent}<- #{chalk.grey util.inspect obj}"

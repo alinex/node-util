@@ -58,7 +58,9 @@ clone = module.exports = (obj) ->
     flags += 'g' if obj.global
     flags += 'i' if obj.ignoreCase
     flags += 'm' if obj.multiline
+    ### sticky not standardized till yet
     flags += 'y' if obj.sticky
+    ###
     return new RegExp obj.source, flags
   # arrays
   if Array.isArray obj
@@ -67,32 +69,22 @@ clone = module.exports = (obj) ->
     indent = indent[3..]
     debug chalk.grey "#{indent}<- cloned array..."
     return res
-  if typeof obj is 'object'
-    # testing that this is DOM
-    if obj.nodeType and typeof obj.cloneNode is 'function'
-      indent = indent[3..]
-      debug chalk.grey "#{indent}<- cloned DOM node..."
-      return obj.cloneNode true
+  # typeof obj is 'object'
+  # testing that this is DOM
+  if obj.nodeType and typeof obj.cloneNode is 'function'
+    indent = indent[3..]
+    debug chalk.grey "#{indent}<- cloned DOM node..."
+    return obj.cloneNode true
 #    if typeof obj.clone is 'function'
 #      debug chalk.grey "   using clone() method"
 #      return obj.clone true
-    if obj.constructor.name isnt Object.name
-      indent = indent[3..]
-      debug chalk.grey "#{indent}<- keep object"
-      return obj
-    # check that this is a literal
-    if not obj.prototype
-      res = {}
-      res[i] = clone v for i, v of obj
-      indent = indent[3..]
-      debug chalk.grey "#{indent}<- cloned object"
-      return res
-    ###
-    # create new object
-    if obj.constructor
-      return new (obj.constructor)
-    ###
-    # just keep the reference
+  if obj.constructor.name isnt Object.name
     indent = indent[3..]
-    debug chalk.grey "#{indent}<- keep other"
+    debug chalk.grey "#{indent}<- keep class object"
     return obj
+  # this is a literal
+  res = {}
+  res[i] = clone v for i, v of obj
+  indent = indent[3..]
+  debug chalk.grey "#{indent}<- cloned object"
+  return res

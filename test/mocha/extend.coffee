@@ -8,6 +8,10 @@ describe "Extend", ->
 
   describe "default mode", ->
 
+    it "should get null if nothing given", ->
+      result = extend()
+      expect(result, "exist").to.not.exist
+
     it "should keep object if only one", ->
       test = null
       result = extend test
@@ -78,6 +82,12 @@ describe "Extend", ->
       test = {eins: null, zwei: 2}
       result = extend base, test
       expect(result, "deep check").to.deep.equal {zwei: 2}
+
+    it "should replace on extending class instance", ->
+      base = new Error '1'
+      test = new Error '2'
+      result = extend base, test
+      expect(result, "deep check").to.equal test
 
   describe "clone mode", ->
 

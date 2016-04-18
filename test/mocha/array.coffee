@@ -37,6 +37,11 @@ describe "Array", ->
   describe "sortBy", ->
 
     it "should sort objects by column", ->
+      expect ->
+        array.sortBy([])
+      .to.throw Error
+
+    it "should sort objects by column", ->
       test = [
         {first: 'Johann Sebastion', last: 'Bach'}
         {first: 'Wolfgang Amadeus', last: 'Mozart'}
@@ -101,3 +106,17 @@ describe "Array", ->
         {first: 'Joseph', last: 'Haydn'}
         {first: 'Johann Sebastion', last: 'Bach'}
       ]
+
+    it "should sort identical entries", ->
+      test = [
+        {first: 'Johann Sebastion', last: 'Bach'}
+        {first: 'Wolfgang Amadeus', last: 'Mozart'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Michael', last: 'Haydn'}
+        {first: 'Joseph', last: 'Haydn'}
+        {first: 'Richard', last: 'Wagner'}
+        {first: 'Antonio', last: 'Vivaldi'}
+        {first: 'Franz', last: 'Schubert'}
+      ]
+      expect array.sortBy(test, 'last', 'first')
+      , "sortBy last, first"

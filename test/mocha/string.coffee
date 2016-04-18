@@ -86,6 +86,12 @@ describe "String", ->
       , "left pad not necessary"
       .to.be.equal 'ab'
 
+    it "should pad integer using toString()", ->
+      test = new Number 10
+      expect string.lpad(test, 5)
+      , "normal left pad"
+      .to.be.equal '   10'
+
   describe "rpad", ->
 
     it "should right pad string", ->
@@ -109,6 +115,12 @@ describe "String", ->
       , "right pad not necessary"
       .to.be.equal 'ab'
 
+    it "should pad integer using toString()", ->
+      test = new Number 10
+      expect string.rpad(test, 5)
+      , "normal left pad"
+      .to.be.equal '10   '
+
   describe "cpad", ->
 
     it "should center pad string", ->
@@ -131,6 +143,12 @@ describe "String", ->
       expect string.cpad(test, 1)
       , "center pad not necessary"
       .to.be.equal 'ab'
+
+    it "should pad integer using toString()", ->
+      test = new Number 10
+      expect string.cpad(test, 5)
+      , "normal left pad"
+      .to.be.equal ' 10  '
 
   describe "trim", ->
 
@@ -174,6 +192,19 @@ describe "String", ->
       , "use Hello"
       .to.be.equal 'hello'
 
+  describe "contains", ->
+
+    it "should check if phrase is present in text", ->
+      expect string.contains 'hello', 'h'
+      , "use hello -> h"
+      .to.be.true
+      expect string.contains 'hello', 'll'
+      , "use hello -> h"
+      .to.be.true
+      expect string.contains 'hello', 'LL'
+      , "use hello -> h"
+      .to.be.false
+
   describe "wordwrap", ->
 
     it "should wrap with defaults", ->
@@ -201,6 +232,10 @@ describe "String", ->
     it "should not wrap in long words", ->
       expect string.wordwrap "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)", null, 0
       .to.be.equal "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)"
+
+    it "should not wrap short text", ->
+      expect string.wordwrap "This is\nashort text.", 78
+      .to.be.equal "This is\nashort text."
 
   describe "shorten", ->
 
@@ -252,3 +287,7 @@ describe "String", ->
     it "should keep other text", ->
       expect string.toRegExp 'Hello World!'
       .to.be.equal 'Hello World!'
+
+    it "should return object if no string", ->
+      expect string.toRegExp Number 5
+      .to.be.equal 5
