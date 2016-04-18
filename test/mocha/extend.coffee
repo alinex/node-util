@@ -121,6 +121,15 @@ describe "Extend", ->
 
   describe "array modes", ->
 
+    it "should concat array elements completely", ->
+      test1 = {a: [1, 2, 3], b: ['1', '2', '3'], c: [1, 2, 3]}
+      test2 = {a: [4, 5, 6], b: ['4', '5', '6'], c: [4, 5, 6]}
+      result = extend test1, test2
+      expect(result, "test-1").to.deep.equal
+        a: [1, 2, 3, 4, 5, 6]
+        b: ['1', '2', '3', '4', '5', '6']
+        c: [1, 2, 3, 4, 5, 6]
+
     it "should replace array elements completely", ->
       test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
       test2 = {a: [4, 5, 6], b: [4, 5, 6], c: [4, 5, 6]}

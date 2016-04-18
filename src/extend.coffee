@@ -90,7 +90,7 @@ extend = module.exports = (ext...) ->
     # arrays
     if Array.isArray src
       # check for changed mode
-      cmode = if typeof src[0] is 'string' and src[0].indexOf 'MODE ' is 0
+      cmode = if typeof src[0] is 'string' and src[0][0..4] is 'MODE '
         n = src.shift().split(' ')[1..]
         debug "#{indent[3..]}   change mode: #{n.join ', '}"
         n
