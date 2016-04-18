@@ -43,6 +43,7 @@ indent = ''
 #
 # * `CLONE` - clone object and all extenders before extending, keeps the resulting
 #   objects untouched (works only globally)
+# * `OVERWRITE` - allow overwrite of array and object mode in specific elements
 # * `ARRAY_CONCAT` - (default) if no other array-mode set, will concat additional
 #   elements
 # * `ARRAY_REPLACE` - for all arrays, replace the previouse array completely instead
@@ -56,12 +57,6 @@ indent = ''
 # This mode may also be changed on any specific element by giving a different mode
 # just for this operation in the extending element itself. Therefore an array
 # should has the mode as first element or an object as an attribute.
-#
-# ``` coffee
-# test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
-# test2 = {a: ['MODE ARRAY_REPLACE', 4, 5, 6], b: [4, 5, 6], c: ['a']}
-# ext = extend test1, test2
-# ```
 extend = module.exports = (ext...) ->
   indent += '   '
   # read mode
@@ -90,10 +85,10 @@ extend = module.exports = (ext...) ->
     # arrays
     if Array.isArray src
       # check for changed mode
-      cmode = if typeof src[0] is 'string' and src[0][0..4] is 'MODE '
-        n = src.shift().split(' ')[1..]
-        debug "#{indent[3..]}   change mode: #{n.join ', '}"
-        n
+      cmode = mode
+      if 'OVERWRITE' in mode and typeof src[0] is 'string' and src[0][0..4] is 'MODE '
+        cmode = src.shift().split(' ')[1..]
+        debug "#{indent[3..]}   change mode: #{cmode.join ', '}"
       else mode
       # extend depending on mode
       if 'ARRAY_REPLACE' in cmode or not Array.isArray obj
@@ -112,7 +107,7 @@ extend = module.exports = (ext...) ->
     # this is a literal
     # check for changed mode
     cmode = mode
-    if src.OBJECT_REPLACE
+    if 'OVERWRITE' in mode and src.OBJECT_REPLACE
       cmode = ['OBJECT_REPLACE']
       delete src.OBJECT_REPLACE
       debug "#{indent[3..]}   change mode: #{cmode.join ', '}"

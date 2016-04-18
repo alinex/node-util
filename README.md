@@ -153,6 +153,7 @@ Multiple modes can be used with space as separator:
 
 * `CLONE` - clone object and all extenders before extending, keeps the resulting
   objects untouched (works only globally)
+* `OVERWRITE` - allow overwrite of array and object mode in specific elements
 * `ARRAY_CONCAT` - (default) if no other array-mode set, will concat additional
   elements
 * `ARRAY_REPLACE` - for all arrays, replace the previouse array completely instead
@@ -164,7 +165,8 @@ Multiple modes can be used with space as separator:
   if the keys are different
 
 This mode may also be changed on any specific element by giving a different mode
-just for this operation in the extending element itself. Therefore an array
+just for this operation in the extending element itself. Therefore it has to be
+enabled with 'MODE OVERWRITE' gölobally and then an array
 should has the mode as first element or an object as an attribute.
 
 __Example:__

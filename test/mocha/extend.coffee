@@ -140,7 +140,7 @@ describe "Extend", ->
     it "should replace array elements in one level", ->
       test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
       test2 = {a: [4, 5, 6], b: ['MODE ARRAY_REPLACE', 4, 5, 6], c: [4, 5, 6]}
-      result = extend test1, test2
+      result = extend 'MODE OVERWRITE', test1, test2
       expect(result, "test-1").to.deep.equal
         a: [ 1, 2, 3, 4, 5, 6 ]
         b: [ 4, 5, 6 ]
@@ -158,7 +158,7 @@ describe "Extend", ->
     it "should overwrite array elements completely", ->
       test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
       test2 = {a: [4, 5], b: [4, 5, 6], c: ['MODE ARRAY_OVERWRITE', null, 5, 6]}
-      result = extend test1, test2
+      result = extend 'MODE OVERWRITE', test1, test2
       expect(result, "test-1").to.deep.equal
         a: [ 1, 2, 3, 4, 5 ]
         b: [ 1, 2, 3, 4, 5, 6 ]
@@ -177,7 +177,7 @@ describe "Extend", ->
     it "should replace object in one level", ->
       test1 = {test: {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}, test2: [1, 2, 3]}
       test2 = {test: {OBJECT_REPLACE: true, a: [4, 5, 6], b: [4, 5, 6], d: [4, 5, 6]}}
-      result = extend test1, test2
+      result = extend 'MODE OVERWRITE', test1, test2
       expect(result, "test-1").to.deep.equal
         test: {a: [ 4, 5, 6 ], b: [ 4, 5, 6 ], d: [ 4, 5, 6 ]}
         test2: [1, 2, 3]
