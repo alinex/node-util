@@ -28,7 +28,7 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "scripts": {
-    "prepublish": "/home/alex/github/node-builder/bin/builder -c compile --uglify",
+    "prepublish": "node_modules/.bin/builder -c compile --uglify",
     "test": "node_modules/.bin/builder -c test"
   },
   "directories": {
