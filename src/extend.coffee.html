@@ -157,6 +157,7 @@ the given and maybe changed object.</li>
 <ul>
 <li><code>CLONE</code> - clone object and all extenders before extending, keeps the resulting
 objects untouched (works only globally)</li>
+<li><code>OVERWRITE</code> - allow overwrite of array and object mode in specific elements</li>
 <li><code>ARRAY_CONCAT</code> - (default) if no other array-mode set, will concat additional
 elements</li>
 <li><code>ARRAY_REPLACE</code> - for all arrays, replace the previouse array completely instead
@@ -170,10 +171,6 @@ if the keys are different</li>
 <p>This mode may also be changed on any specific element by giving a different mode
 just for this operation in the extending element itself. Therefore an array
 should has the mode as first element or an object as an attribute.</p>
-<pre><code class="coffee">test1 = {<span class="hljs-attribute">a</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">b</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}
-test2 = {<span class="hljs-attribute">a</span>: [<span class="hljs-string">'MODE ARRAY_REPLACE'</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], <span class="hljs-attribute">b</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-string">'a'</span>]}
-ext = extend test1, test2
-</code></pre>
 
         </td>
         <td class="code highlight">
@@ -304,10 +301,10 @@ ext = extend test1, test2
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">      cmode = <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> src[<span class="hljs-number">0</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span> <span class="hljs-keyword">and</span> src[<span class="hljs-number">0</span>][<span class="hljs-number">0.</span><span class="hljs-number">.4</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'MODE '</span>
-        n = src.shift().split(<span class="hljs-string">' '</span>)[<span class="hljs-number">1.</span>.]
-        debug <span class="hljs-string">"<span class="hljs-subst">#{indent[<span class="hljs-number">3.</span>.]}</span>   change mode: <span class="hljs-subst">#{n.join <span class="hljs-string">', '</span>}</span>"</span>
-        n
+          <pre class="coffeescript">      cmode = mode
+      <span class="hljs-keyword">if</span> <span class="hljs-string">'OVERWRITE'</span> <span class="hljs-keyword">in</span> mode <span class="hljs-keyword">and</span> <span class="hljs-keyword">typeof</span> src[<span class="hljs-number">0</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'string'</span> <span class="hljs-keyword">and</span> src[<span class="hljs-number">0</span>][<span class="hljs-number">0.</span><span class="hljs-number">.4</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'MODE '</span>
+        cmode = src.shift().split(<span class="hljs-string">' '</span>)[<span class="hljs-number">1.</span>.]
+        debug <span class="hljs-string">"<span class="hljs-subst">#{indent[<span class="hljs-number">3.</span>.]}</span>   change mode: <span class="hljs-subst">#{cmode.join <span class="hljs-string">', '</span>}</span>"</span>
       <span class="hljs-keyword">else</span> mode</pre>
         </td>
       </tr>
@@ -370,7 +367,7 @@ check for changed mode</p>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">    cmode = mode
-    <span class="hljs-keyword">if</span> src.OBJECT_REPLACE
+    <span class="hljs-keyword">if</span> <span class="hljs-string">'OVERWRITE'</span> <span class="hljs-keyword">in</span> mode <span class="hljs-keyword">and</span> src.OBJECT_REPLACE
       cmode = [<span class="hljs-string">'OBJECT_REPLACE'</span>]
       <span class="hljs-keyword">delete</span> src.OBJECT_REPLACE
       debug <span class="hljs-string">"<span class="hljs-subst">#{indent[<span class="hljs-number">3.</span>.]}</span>   change mode: <span class="hljs-subst">#{cmode.join <span class="hljs-string">', '</span>}</span>"</span></pre>

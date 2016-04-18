@@ -363,6 +363,7 @@ the given and maybe changed object.</li>
 <ul>
 <li><code>CLONE</code> - clone object and all extenders before extending, keeps the resulting
 objects untouched (works only globally)</li>
+<li><code>OVERWRITE</code> - allow overwrite of array and object mode in specific elements</li>
 <li><code>ARRAY_CONCAT</code> - (default) if no other array-mode set, will concat additional
 elements</li>
 <li><code>ARRAY_REPLACE</code> - for all arrays, replace the previouse array completely instead
@@ -374,7 +375,8 @@ properties with the new ones</li>
 if the keys are different</li>
 </ul>
 <p>This mode may also be changed on any specific element by giving a different mode
-just for this operation in the extending element itself. Therefore an array
+just for this operation in the extending element itself. Therefore it has to be
+enabled with 'MODE OVERWRITE' gölobally and then an array
 should has the mode as first element or an object as an attribute.</p>
 <p><strong>Example:</strong></p>
 <pre><code class="coffee">extend = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).extend
