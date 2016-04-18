@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.0.1 (2016-04-18)
+-------------------------------------------------
+- Fix bug in detection of inline mode change.
+
 Version 2.0.0 (2016-04-18)
 -------------------------------------------------
 - Extended test coverage.
