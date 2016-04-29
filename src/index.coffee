@@ -14,3 +14,4 @@ module.exports =
   object: require './object'
   array: require './array'
   number: require './number'
+  function: require './function'
