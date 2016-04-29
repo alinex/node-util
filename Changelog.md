@@ -4,6 +4,16 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.1.0 (2016-04-29)
+-------------------------------------------------
+Moved once... from alinex-async to make this module obsolete.
+
+- Fixed more builder 2.0 calls.
+- Fix builer calls for 2.0
+- Upgraded builder package.
+- Upgraded builder package.
+- Added once... methods from alinex-async.
+
 Version 2.0.3 (2016-04-18)
 -------------------------------------------------
 - Fix building of npm package.
