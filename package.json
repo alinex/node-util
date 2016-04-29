@@ -28,8 +28,8 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "scripts": {
-    "prepublish": "node_modules/.bin/builder -c compile --uglify",
-    "test": "node_modules/.bin/builder -c test"
+    "prepublish": "node_modules/.bin/builder compile --uglify",
+    "test": "node_modules/.bin/builder test"
   },
   "directories": {
     "lib": "./lib"
