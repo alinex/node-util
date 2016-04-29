@@ -1098,6 +1098,133 @@ earlier has precedence. If field name starts with '-' sign it will sort in
 descending order.
 
 
+
+Function Wrapper
+-------------------------------------------------
+
+The following functions are used to wrap functions to give them more functionality.
+You will get a resulting function which can be called any time.
+
+In all of the following methods you may give an optional context to use as first
+parameter. So to call it from class do so like:
+
+``` coffee
+class = Test
+  init: util.function.once this, (cb) ->
+    # method...
+    cb null, @status
+```
+
+That allows your function to access class members and methods. Keep in mind to use
+`=>` if you use sub functions.
+
+If you use it in `module.exports` then do it as follows:
+
+``` coffee
+module.exports =
+  anyMethod: (cb) ->
+  # and so on
+
+module.exports.init = util.function.once module.exports, (cb) ->
+  # method...
+  @anyMethod cb
+```
+
+Like you see above you have to declare this method separately so that the `util.function.once`
+method can access the now already defined module.exports object.
+
+### once
+
+The second and later calls will return with the same result:
+
+``` coffee
+fn = util.function.once (cb) ->
+  time = process.hrtime()
+  setTimeout ->
+    cb null, time[1]
+  , 1000
+```
+
+Use this to make some initializations which only have to run once but neither
+function may start because it is not done:
+
+``` coffee
+async.parallel [ fn, fn ], (err, results) ->
+  # same as with `once.atime` it will come here exactly after the
+  # first call finished because the second one will get the
+  # result the same time
+  # results here will be the same integer, twice
+  fn (err, result) ->
+    # and this call will return imediately with the previous result
+```
+
+### onceSkip
+
+A function may be wrapped with the once method:
+
+``` coffee
+fn = util.function.onceSkip (a, b, cb) -> cb null, a + b
+```
+
+And now you can call the function as normal but on the second call it will
+return imediately without running the code:
+
+``` coffee
+fn 2, 3, (err, x) ->
+  // x will now be 5
+  fn 2, 9, (err, x) ->
+    // err will now be set on the second call
+```
+
+You may use this helper in case of initialization (wait) there a specific
+method have to run once before any other call can succeed. Or then events
+are involved and an error event will trigger the callback and the end event will
+do the same.
+
+### onceThrow
+
+Throw an error if it is called a second time:
+
+``` coffee
+fn = util.function.onceThrow (a, b, cb) -> cb null, a + b
+```
+
+If you call this method multiple times it will throw an exception:
+
+``` coffee
+fn 2, 3, (err, x) ->
+  # x will now be 5
+  fn 2, 9, (err, x) ->
+    # will neither get there because an exception is thrown above
+```
+
+### onceTime
+
+Only run it once at a time, queue following requests and send them the result
+of the next run. All calls get the same result, but then the process is already
+started it will list the following calls for the next round. This assures that
+their result is from the newest data set because you may changed something
+while the first run was already working.
+
+``` coffee
+fn = util.function.onceTime (cb) ->
+  time = process.hrtime()
+  setTimeout ->
+    cb null, time[1]
+  , 1000
+```
+
+And now you may call it multiple times but it will not run more than once
+simultaneously. But all simultaneous calls will get the same result.
+
+``` coffee
+async.parallel [ fn, fn ], (err, results) ->
+  # will come here exactly after the first call finished (because the
+  # second will do so the same time)
+  # results here will be the same integer, twice
+```
+
+
 License
 -------------------------------------------------
 
