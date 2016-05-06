@@ -462,7 +462,7 @@ describe "Object", ->
       expect(object.isCyclic test2).to.equal true
       expect(object.isCyclic test3).to.equal true
 
-  describe.only "getCyclic", ->
+  describe "getCyclic", ->
 
     test1 =
       one: [1]

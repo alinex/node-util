@@ -85,3 +85,15 @@ describe "Clone", ->
     result = clone test
     expect(result, "deep check").to.deep.equal test
     expect(result, "reference").to.not.equal test
+
+  it "should clone circular references", ->
+    test =
+      eins: 1
+      zwei: [2]
+    test.drei = test.zwei
+    result = clone test
+    expect(result, "deep check").to.deep.equal test
+    expect(result, "reference").to.not.equal test
+    result.drei[0] = 3
+    console.log result.drei, result.zwei
+    expect(result.drei, "reference kept").to.equal result.zwei
