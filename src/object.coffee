@@ -343,3 +343,15 @@ lcKeys = exports.lcKeys = (obj) ->
   for key in Object.keys obj
     lc[key.toLowerCase()] = lcKeys obj[key]
   lc
+
+exports.isCyclic = (obj) ->
+  checked = []
+  detect = (obj) ->
+    if obj and typeof obj is 'object'
+      return true if obj in checked
+      checked.push obj
+      for key of obj
+        if obj.hasOwnProperty(key) and detect obj[key]
+          return true
+    false
+  detect obj

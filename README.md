@@ -48,8 +48,6 @@ All methods in this package can be called from the util object:
 
 ``` coffee
 util = require 'alinex-util'
-string = util.string # shortcut to the string functions
-object = util.object # shortcut to the object functions
 raw = { eins: 1 }
 copy = util.clone raw
 console.log util.inspect copy
@@ -116,9 +114,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-clone = require('alinex-util').clone
+util = require 'alinex-util'
 test = { eins: 1 }
-result = clone test
+result = util.clone test
 ```
 
 This results to:
@@ -172,9 +170,9 @@ should has the mode as first element or an object as an attribute.
 __Example:__
 
 ``` coffee
-extend = require('alinex-util').extend
+util = require 'alinex-util'
 test = { eins: 1 }
-extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
+util.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
 
 This results to:
@@ -190,21 +188,21 @@ You may set a mode globally or in a specific level like described show:
 ``` coffee
 test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
 test2 = {a: [4, 5, 6], c: ['a']}
-ext = extend 'MODE ARRAY_REPLACE', test1, test2
+ext = util.extend 'MODE ARRAY_REPLACE', test1, test2
 # ext = {a: [4, 5, 6], b: [1, 2, 3], c: ['a']}
 ```
 
 ``` coffee
 test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
 test2 = {a: ['MODE ARRAY_REPLACE', 4, 5, 6], c: ['a']}
-ext = extend test1, test2
+ext = util.extend test1, test2
 # ext = {a: [4, 5, 6], b: [1, 2, 3], c: [1, 2, 3, 'a']}
 ```
 
 ``` coffee
 test1 = {t1: {a: 1, b: 2, c: 3}, t2: {d: 4, e: 5, f: 6}}
 test2 = {t1: {OBJECT_REPLACE: true, a: 4, b: 5}, t2: {d: 9}}
-ext = extend test1, test2
+ext = util.extend test1, test2
 # ext = {t1: {a: 4, b: 5}, t2: {d: 9, e: 5, f: 6}}
 ```
 
@@ -233,23 +231,15 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'abcdefg'
-result = string.starts test, 'ab'
+result = util.string.starts test, 'ab'
 ```
 
 This results to:
 
-``` coffee
+``` text
 result = true
-```
-
-Or the same call using prototype extension:
-
-``` coffee
-require('alinex-util').string.addToPrototype()
-test = 'abcdefg'
-result = test.starts 'ab'
 ```
 
 ### ends
@@ -273,23 +263,15 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'abcdefg'
-result = string.ends test, 'fg'
+result = util.string.ends test, 'fg'
 ```
 
 This results to:
 
 ``` coffee
 result = true
-```
-
-Or the same call using prototype extension:
-
-``` coffee
-require('alinex-util').string.addToPrototype()
-test = 'abcdefg'
-result = test.ends 'fg'
 ```
 
 ### repeat
@@ -310,23 +292,15 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'ab'
-result = string.repeat test, 3
+result = util.string.repeat test, 3
 ```
 
 This results to:
 
 ``` coffee
 result = 'ababab'
-```
-
-Or the same call using prototype extension:
-
-``` coffee
-require('alinex-util').string.addToPrototype()
-test = 'ab'
-result = test.repeat 3
 ```
 
 ### lpad
@@ -349,9 +323,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = '5'
-result = string.lpad test, 3, '0'
+result = util.string.lpad test, 3, '0'
 ```
 
 This results to:
@@ -380,9 +354,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'abc'
-result = string.rpad test, 5, ' '
+result = util.string.rpad test, 5, ' '
 ```
 
 This results to:
@@ -411,9 +385,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'abc'
-result = string.cpad test, 5, ' '
+result = util.string.cpad test, 5, ' '
 ```
 
 This results to:
@@ -441,9 +415,9 @@ __Arguments:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = '/var/local/'
-result = string.trim test, '/'
+result = util.string.trim test, '/'
 ```
 
 This results to:
@@ -468,9 +442,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'abcdefg'
-result = string.ucfirst test
+result = util.string.ucfirst test
 ```
 
 This results to:
@@ -496,9 +470,9 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'ABCDEFG'
-result = string.lcFirst test
+result = util.string.lcFirst test
 ```
 
 This results to:
@@ -525,10 +499,10 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'abcdefg'
-result1 = string.contains test, 'bc'
-result2 = string.contains test, 'gh'
+result1 = util.string.contains test, 'bc'
+result2 = util.string.contains test, 'gh'
 ```
 
 This results to:
@@ -591,10 +565,10 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = 'one,two,three\n1,2,3\n4,5,6'
-list = string.toList test, /\n/
-table = string.toList test, /\n/, /,/
+list = util.string.toList test, /\n/
+table = util.string.toList test, /\n/, /,/
 ```
 
 This results to:
@@ -623,10 +597,10 @@ __Returns:__
 __Example:__
 
 ``` coffee
-string = require('alinex-util').string
+util = require 'alinex-util'
 test = '/\n/'
-test = string.toRegExp test
-list = string.split test
+test = util.string.toRegExp test
+list = util.string.split test
 ```
 
 
@@ -704,6 +678,30 @@ you may specify `ms` as additional unit here.
 Object
 -------------------------------------------------
 
+### isCyclic
+
+This will check an object if it contains circular references.
+
+__Arguments:__
+
+* `object` (if not called as Object method)
+  base object to be extended
+
+__Returns:__
+
+* `boolean`
+  true if the object contains circular references
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = { eins: 1 }
+util.object.isCyclic test # will be false
+test.zwei = test.eins
+util.object.isCyclic test # will be true
+```
+
 ### extend (deprecated)
 
 Extend an object with another one.
@@ -726,23 +724,15 @@ __Returns:__
 __Example:__
 
 ``` coffee
-object = require('alinex-util').object
+util = require 'alinex-util'
 test = { eins: 1 }
-object.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
+util.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
 
 This results to:
 
 ``` coffee
 test = { eins: 'eins', zwei: 2, drei: 3 }
-```
-
-Or the same call using prototype extension:
-
-``` coffee
-require('alinex-util').object.addToPrototype()
-test = { eins: 1 }
-test.extend { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
 ```
 
 To remove a key from the structure by overloading set it's value to null.
@@ -809,7 +799,7 @@ __Returns:__
 __Example:__
 
 ``` coffee
-object = require('alinex-util').object
+util = require 'alinex-util'
 test =
   string: 'test'
   object:
@@ -821,7 +811,7 @@ test =
   ,
     two: 12
   ]
-result = object.path test, '/object/numbers'
+result = util.object.path test, '/object/numbers'
 ```
 
 This results to:
@@ -851,7 +841,7 @@ __Returns:__
 __Example:__
 
 ``` coffee
-object = require('alinex-util').object
+util = require 'alinex-util'
 test =
   string: 'test'
   object:
@@ -863,7 +853,7 @@ test =
   ,
     two: 12
   ]
-result = object.pathSearch test, '**/one'
+result = util.object.pathSearch test, '**/one'
 ```
 
 This results to:
@@ -921,13 +911,13 @@ __Returns:__
 __Example:__
 
 ``` coffee
-object = require('alinex-util').object
+util = require 'alinex-util'
 test =
   one: 1
   two: 2
   three: 3
   four: 4
-result = object.filter test, (value) -> value < 3
+result = util.object.filter test, (value) -> value < 3
 ```
 
 This results to:
@@ -955,13 +945,13 @@ __Returns:__
 __Example:__
 
 ``` coffee
-object = require('alinex-util').object
+util = require 'alinex-util'
 test =
   One: 1
   TWO:
     three: 3
     fouR: 4
-result = object.lcKeys test
+result = util.object.lcKeys test
 ```
 
 Will result in:
@@ -995,23 +985,15 @@ __Returns:__
 __Example:__
 
 ``` coffee
-array = require('alinex-util').array
+util = require 'alinex-util'
 test = [ 1,2,3,4,5 ]
-result = array.last test
+result = util.array.last test
 ```
 
 This results to:
 
 ``` coffee
 result = 5
-```
-
-Or the same call using prototype extension:
-
-``` coffee
-require('alinex-util').array.addToPrototype()
-test = [ 1,2,3,4,5 ]
-result = test.last()
 ```
 
 ### unique
@@ -1030,23 +1012,15 @@ __Returns:__
 __Example:__
 
 ``` coffee
-array = require('alinex-util').array
+util = require 'alinex-util'
 test = [ 1,2,2,3,4,1,5 ]
-result = array.unique test
+result = util.array.unique test
 ```
 
 This results to:
 
 ``` coffee
 result = [1,2,3,4,5]
-```
-
-Or the same call using prototype extension:
-
-``` coffee
-require('alinex-util').array.addToPrototype()
-test = [ 1,2,2,3,4,1,5 ]
-result = test.unique
 ```
 
 ### sortBy
@@ -1065,7 +1039,7 @@ __Returns:__
 __Example:__
 
 ``` coffee
-array = require('alinex-util').array
+util = require 'alinex-util'
 test = [
   {first: 'Johann Sebastion', last: 'Bach'}
   {first: 'Wolfgang Amadeus', last: 'Mozart'}
@@ -1076,7 +1050,7 @@ test = [
   {first: 'Franz', last: 'Schubert'}
 ]
 # sort by last name ascending and first name descending
-result = array.sortBy test, 'last', '-first'
+result = util.array.sortBy test, 'last', '-first'
 ```
 
 This results to:
