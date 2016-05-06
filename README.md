@@ -105,6 +105,8 @@ __Arguments:__
 
 * `object`
   to be cloned
+* `depth`
+  (optional) maximum level of cloning deper levels will be referenced
 
 __Returns:__
 

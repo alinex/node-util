@@ -8,14 +8,6 @@ util = require 'util'
 chalk = require 'chalk'
 
 
-# Indention
-# -------------------------------------------------
-# Because the function works synchrone, the indent variable can be used accross
-# all calls to show the level in the debug messages. It is set to 3 spaces for
-# the initial call increased by 3 every subcall.
-indent = ''
-
-
 # Deep cloning object
 # -------------------------------------------------
 # This method will create a clone of the given object.
@@ -31,17 +23,22 @@ indent = ''
 #
 # * `object`
 #   clone of the given  object.
-clone = module.exports = (obj) ->
+module.exports = (obj, depth) ->
   # internal variables
+  indent = ''
   cloned = []
   # clone method
-  doClone = (obj) ->
+  doClone = (obj, depth) ->
     indent += '   '
     # null, undefined values check
     debug chalk.grey "#{indent[3..]}-> #{util.inspect obj}"
     unless obj
       indent = indent[3..]
       debug chalk.grey "#{indent}<- is undefined"
+      return obj
+    if depth? and depth is 0
+      indent = indent[3..]
+      debug chalk.grey "#{indent}<- max depth reached"
       return obj
     # return primitive types
     if typeof obj in ['number', 'string', 'boolean']
@@ -76,7 +73,7 @@ clone = module.exports = (obj) ->
     if Array.isArray obj
       res = []
       cloned.push [obj, res]
-      res[i] = doClone n for n, i in obj
+      res[i] = doClone n, depth-1 for n, i in obj
       indent = indent[3..]
       debug chalk.grey "#{indent}<- cloned array..."
       return res
@@ -95,9 +92,9 @@ clone = module.exports = (obj) ->
     # this is a literal
     res = {}
     cloned.push [obj, res]
-    res[i] = doClone v for i, v of obj
+    res[i] = doClone v, depth-1 for i, v of obj
     indent = indent[3..]
     debug chalk.grey "#{indent}<- cloned object"
     return res
   # run cloning
-  doClone obj
+  doClone obj, depth

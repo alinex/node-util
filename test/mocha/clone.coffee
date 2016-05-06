@@ -95,5 +95,21 @@ describe "Clone", ->
     expect(result, "deep check").to.deep.equal test
     expect(result, "reference").to.not.equal test
     result.drei[0] = 3
-    console.log result.drei, result.zwei
     expect(result.drei, "reference kept").to.equal result.zwei
+
+  it "should clone defined depth", ->
+    test =
+      one:
+        value: 1
+        two:
+          value: 1
+          three:
+            value : 1
+    result = clone test, 3
+    expect(result, "deep check").to.deep.equal test
+    expect(result, "reference").to.not.equal test
+    test.one.value = 1
+    test.one.two.value = 2
+    test.one.two.three.value = 3
+    expect(result.one.two, "reference").to.not.equal test.one.two
+    expect(result.one.two.three, "reference kept").to.equal test.one.two.three
