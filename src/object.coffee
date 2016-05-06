@@ -355,3 +355,16 @@ exports.isCyclic = (obj) ->
           return true
     false
   detect obj
+
+exports.getCyclic = (obj) ->
+  checked = []
+  cyclic = []
+  detect = (obj) ->
+    if obj and typeof obj is 'object'
+      if obj in checked and not (obj in cyclic)
+        return cyclic.push obj
+      checked.push obj
+      for key of obj
+        detect obj[key] if obj.hasOwnProperty key
+  detect obj
+  cyclic

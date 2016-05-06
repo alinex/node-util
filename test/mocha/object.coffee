@@ -461,3 +461,18 @@ describe "Object", ->
       expect(object.isCyclic test1).to.equal false
       expect(object.isCyclic test2).to.equal true
       expect(object.isCyclic test3).to.equal true
+
+  describe.only "getCyclic", ->
+
+    test1 =
+      one: [1]
+    test2 =
+      one: [1]
+    test2.two = test2.one
+    test3 =
+      sub: test2
+
+    it "should detect cylic", ->
+      expect(object.getCyclic(test1), 'test 1').to.deep.equal []
+      expect(object.getCyclic(test2), 'test 2').to.deep.equal [test2.one]
+      expect(object.getCyclic(test3), 'test 3').to.deep.equal [test2.one]

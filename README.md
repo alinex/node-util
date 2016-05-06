@@ -685,7 +685,7 @@ This will check an object if it contains circular references.
 __Arguments:__
 
 * `object` (if not called as Object method)
-  base object to be extended
+  base object to be checked
 
 __Returns:__
 
@@ -700,6 +700,30 @@ test = { eins: 1 }
 util.object.isCyclic test # will be false
 test.zwei = test.eins
 util.object.isCyclic test # will be true
+```
+
+### getCyclic
+
+Detects circular references but instead of only checking it list all cyclic objects.
+
+__Arguments:__
+
+* `object` (if not called as Object method)
+  base object to be checked
+
+__Returns:__
+
+* `array`
+  list of objects which are circular
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = { eins: 1 }
+util.object.getCyclic test # empty list []
+test.zwei = test.eins
+util.object.getCyclic test # [{ eins: 1 }]
 ```
 
 ### extend (deprecated)
