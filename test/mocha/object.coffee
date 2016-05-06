@@ -446,3 +446,18 @@ describe "Object", ->
         two:
           three: 3
           four: 4
+
+  describe "isCyclic", ->
+
+    test1 =
+      one: [1]
+    test2 =
+      one: [1]
+    test2.two = test2.one
+    test3 =
+      sub: test2
+
+    it "should detect cylic", ->
+      expect(object.isCyclic test1).to.equal false
+      expect(object.isCyclic test2).to.equal true
+      expect(object.isCyclic test3).to.equal true
