@@ -6,11 +6,18 @@ debugPathSearch = require('debug')('util:object:pathsearch')
 debugExtend = require('debug')('util:object:extend')
 util = require 'util'
 chalk = require 'chalk'
+# internal helpers
+format = require './object-format'
+
 
 deprecatedExtend = false
 deprecatedExtendArrayConcat = false
 deprecatedExtendArrayReplace = false
 deprecatedClone = false
+
+# ### Include Transformers
+exports.format = format.format
+exports.parse = format.parse
 
 # Extend object
 # -------------------------------------------------
