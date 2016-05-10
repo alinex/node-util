@@ -4,6 +4,18 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.2.0 (2016-05-10)
+-------------------------------------------------
+- Upgraded builder package.
+- Remove object parse/format into external package: formatter.
+- Parse and format of JSON possible.
+- Add cloning depth as parameter.
+- Also copy with circular references.
+- Add method to get cylcic objects.
+- Adding tests for isCycliv.
+- Update examples in documentation and added object.isCyclic.
+- Added v6 for travis but didn't activate, yet.
+
 Version 2.1.0 (2016-04-29)
 -------------------------------------------------
 Moved once... from alinex-async to make this module obsolete.
