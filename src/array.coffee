@@ -23,7 +23,7 @@ exports.last = (array, back) ->
 exports.unique = (array) ->
   output = {}
   output[JSON.stringify array[key]] = array[key] for key in [0...array.length]
-  value for key, value of output
+  value for _, value of output
 
 # Sort array of objects
 # -------------------------------------------------
