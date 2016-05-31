@@ -7,7 +7,7 @@
   <script src="../doc-filelist.js"></script>
   <script>
     var relativeDir = "../";
-    var thisFile = "home/alex/github/node-util/src/clone.coffee";
+    var thisFile = "src/clone.coffee";
     var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
@@ -46,10 +46,6 @@
 
       <div class="heading h2">
         <a href="#node-modules">Node modules</a>
-      </div>
-
-      <div class="heading h2">
-        <a href="#indention">Indention</a>
       </div>
 
       <div class="heading h2">
@@ -103,24 +99,6 @@ chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'ch
     
       <tr>
         <td class="docs">
-          <div class="pilwrap" id="indention">
-  <h2>
-    <a href="#indention" name="indention" class="pilcrow"></a>
-Indention
-  </h2>
-</div>
-<p>Because the function works synchrone, the indent variable can be used accross
-all calls to show the level in the debug messages. It is set to 3 spaces for
-the initial call increased by 3 every subcall.</p>
-
-        </td>
-        <td class="code highlight">
-          <pre class="coffeescript">indent = <span class="hljs-string">''</span></pre>
-        </td>
-      </tr>
-    
-      <tr>
-        <td class="docs">
           <div class="pilwrap" id="deep-cloning-object">
   <h2>
     <a href="#deep-cloning-object" name="deep-cloning-object" class="pilcrow"></a>
@@ -143,8 +121,21 @@ clone of the given  object.</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">clone = <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span>
-  indent += <span class="hljs-string">'   '</span></pre>
+          <pre class="coffeescript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">(obj, depth)</span> -&gt;</span></pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>internal variables</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">  indent = <span class="hljs-string">''</span>
+  cloned = []</pre>
         </td>
       </tr>
     
@@ -153,15 +144,12 @@ clone of the given  object.</li>
           <div class="pilwrap">
   <a class="pilcrow" href="#section-5" id="section-5"></a>
 </div>
-<p>null, undefined values check</p>
+<p>clone method</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent[<span class="hljs-number">3.</span>.]}</span>-&gt; <span class="hljs-subst">#{util.inspect obj}</span>"</span>
-  <span class="hljs-keyword">unless</span> obj
-    indent = indent[<span class="hljs-number">3.</span>.]
-    debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is undefined"</span>
-    <span class="hljs-keyword">return</span> obj</pre>
+          <pre class="coffeescript"><span class="hljs-function">  <span class="hljs-title">doClone</span> = <span class="hljs-params">(obj, depth)</span> -&gt;</span>
+    indent += <span class="hljs-string">'   '</span></pre>
         </td>
       </tr>
     
@@ -170,14 +158,19 @@ clone of the given  object.</li>
           <div class="pilwrap">
   <a class="pilcrow" href="#section-6" id="section-6"></a>
 </div>
-<p>return primitive types</p>
+<p>null, undefined values check</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">in</span> [<span class="hljs-string">'number'</span>, <span class="hljs-string">'string'</span>, <span class="hljs-string">'boolean'</span>]
-    indent = indent[<span class="hljs-number">3.</span>.]
-    debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is primitive"</span>
-    <span class="hljs-keyword">return</span> obj</pre>
+          <pre class="coffeescript">    debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent[<span class="hljs-number">3.</span>.]}</span>-&gt; <span class="hljs-subst">#{util.inspect obj}</span>"</span>
+    <span class="hljs-keyword">unless</span> obj
+      indent = indent[<span class="hljs-number">3.</span>.]
+      debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is undefined"</span>
+      <span class="hljs-keyword">return</span> obj
+    <span class="hljs-keyword">if</span> depth? <span class="hljs-keyword">and</span> depth <span class="hljs-keyword">is</span> <span class="hljs-number">0</span>
+      indent = indent[<span class="hljs-number">3.</span>.]
+      debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- max depth reached"</span>
+      <span class="hljs-keyword">return</span> obj</pre>
         </td>
       </tr>
     
@@ -186,15 +179,14 @@ clone of the given  object.</li>
           <div class="pilwrap">
   <a class="pilcrow" href="#section-7" id="section-7"></a>
 </div>
-<p>return basic types</p>
+<p>return primitive types</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">for</span> type <span class="hljs-keyword">in</span> [Number, String, Boolean, Date]
-    <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">instanceof</span> type
+          <pre class="coffeescript">    <span class="hljs-keyword">if</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">in</span> [<span class="hljs-string">'number'</span>, <span class="hljs-string">'string'</span>, <span class="hljs-string">'boolean'</span>]
       indent = indent[<span class="hljs-number">3.</span>.]
-      debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is <span class="hljs-subst">#{type}</span>"</span>
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> type obj</pre>
+      debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is primitive"</span>
+      <span class="hljs-keyword">return</span> obj</pre>
         </td>
       </tr>
     
@@ -203,17 +195,34 @@ clone of the given  object.</li>
           <div class="pilwrap">
   <a class="pilcrow" href="#section-8" id="section-8"></a>
 </div>
+<p>return basic types</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="coffeescript">    <span class="hljs-keyword">for</span> type <span class="hljs-keyword">in</span> [Number, String, Boolean, Date]
+      <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">instanceof</span> type
+        indent = indent[<span class="hljs-number">3.</span>.]
+        debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is <span class="hljs-subst">#{type}</span>"</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> type obj</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
 <p>regexp</p>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">instanceof</span> RegExp
-    indent = indent[<span class="hljs-number">3.</span>.]
-    debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is RegExp"</span>
-    flags = <span class="hljs-string">''</span>
-    flags += <span class="hljs-string">'g'</span> <span class="hljs-keyword">if</span> obj.<span class="hljs-built_in">global</span>
-    flags += <span class="hljs-string">'i'</span> <span class="hljs-keyword">if</span> obj.ignoreCase
-    flags += <span class="hljs-string">'m'</span> <span class="hljs-keyword">if</span> obj.multiline</pre>
+          <pre class="coffeescript">    <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">instanceof</span> RegExp
+      indent = indent[<span class="hljs-number">3.</span>.]
+      debug chalk.grey <span class="hljs-string">"<span class="hljs-subst">#{indent}</span>&lt;- is RegExp"</span>
+      flags = <span class="hljs-string">''</span>
+      flags += <span class="hljs-string">'g'</span> <span class="hljs-keyword">if</span> obj.<span class="hljs-built_in">global</span>
+      flags += <span class="hljs-string">'i'</span> <span class="hljs-keyword">if</span> obj.ignoreCase
+      flags += <span class="hljs-string">'m'</span> <span class="hljs-keyword">if</span> obj.multiline</pre>
         </td>
       </tr>
     
@@ -228,14 +237,14 @@ sticky not standardized till yet
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">    flags += <span class="hljs-string">'y'</span> <span class="hljs-keyword">if</span> obj.sticky</pre>
+          <pre class="coffeescript">      flags += <span class="hljs-string">'y'</span> <span class="hljs-keyword">if</span> obj.sticky</pre>
         </td>
       </tr>
     
       <tr>
         <td class="docs">
           <div class="pilwrap">
-  <a class="pilcrow" href="#section-10" id="section-10"></a>
+  <a class="pilcrow" href="#section-11" id="section-11"></a>
 </div>
 
         </td>

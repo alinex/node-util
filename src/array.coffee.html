@@ -7,7 +7,7 @@
   <script src="../doc-filelist.js"></script>
   <script>
     var relativeDir = "../";
-    var thisFile = "home/alex/github/node-util/src/array.coffee";
+    var thisFile = "src/array.coffee";
     var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
@@ -125,7 +125,7 @@ remove duplicates
           <pre class="coffeescript">exports.unique = <span class="hljs-function"><span class="hljs-params">(array)</span> -&gt;</span>
   output = {}
   output[JSON.stringify array[key]] = array[key] <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> [<span class="hljs-number">0.</span>..array.length]
-  value <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">of</span> output</pre>
+  value <span class="hljs-keyword">for</span> _, value <span class="hljs-keyword">of</span> output</pre>
         </td>
       </tr>
     
@@ -167,7 +167,7 @@ Helper Methods
 <span class="hljs-title">dynamicSort</span> = <span class="hljs-params">(field)</span> -&gt;</span>
   sortOrder = <span class="hljs-number">1</span>
   <span class="hljs-keyword">if</span> field[<span class="hljs-number">0</span>] <span class="hljs-keyword">is</span> <span class="hljs-string">'-'</span>
-    sortOrder = -<span class="hljs-number">1</span>
+    sortOrder = <span class="hljs-number">-1</span>
     field = field.substr <span class="hljs-number">1</span></pre>
         </td>
       </tr>
@@ -182,7 +182,7 @@ Helper Methods
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  (a, b) -&gt;
-    result = <span class="hljs-keyword">if</span> a[field] &lt; b[field] <span class="hljs-keyword">then</span> -<span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> a[field] &gt; b[field] <span class="hljs-keyword">then</span> <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>
+    result = <span class="hljs-keyword">if</span> a[field] &lt; b[field] <span class="hljs-keyword">then</span> <span class="hljs-number">-1</span> <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> a[field] &gt; b[field] <span class="hljs-keyword">then</span> <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>
     result * sortOrder
 <span class="hljs-function">
 <span class="hljs-title">dynamicMultiSort</span> = -&gt;</span>

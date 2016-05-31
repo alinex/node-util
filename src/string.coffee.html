@@ -7,7 +7,7 @@
   <script src="../doc-filelist.js"></script>
   <script>
     var relativeDir = "../";
-    var thisFile = "home/alex/github/node-util/src/string.coffee";
+    var thisFile = "src/string.coffee";
     var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
@@ -333,8 +333,8 @@ list of characters to trim off (defaults to ' \n\t')</li>
         <td class="code highlight">
           <pre class="coffeescript">exports.trim = <span class="hljs-function"><span class="hljs-params">(string, chars = <span class="hljs-string">" \n\t"</span>)</span> -&gt;</span>
   string = string.substring <span class="hljs-number">1</span> <span class="hljs-keyword">while</span> string <span class="hljs-keyword">and</span> ~chars.indexOf string.charAt <span class="hljs-number">0</span>
-  <span class="hljs-keyword">while</span> string <span class="hljs-keyword">and</span> ~chars.indexOf string.charAt string.length-<span class="hljs-number">1</span>
-    string = string.substring <span class="hljs-number">0</span>, string.length-<span class="hljs-number">1</span>
+  <span class="hljs-keyword">while</span> string <span class="hljs-keyword">and</span> ~chars.indexOf string.charAt string.length<span class="hljs-number">-1</span>
+    string = string.substring <span class="hljs-number">0</span>, string.length<span class="hljs-number">-1</span>
   string</pre>
         </td>
       </tr>
@@ -412,7 +412,7 @@ text to be searched for</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">exports.contains = <span class="hljs-function"><span class="hljs-params">(string, phrase)</span> -&gt;</span>
-  string.indexOf(phrase) <span class="hljs-keyword">isnt</span> -<span class="hljs-number">1</span></pre>
+  string.indexOf(phrase) <span class="hljs-keyword">isnt</span> <span class="hljs-number">-1</span></pre>
         </td>
       </tr>
     
@@ -460,7 +460,7 @@ string that will be added whenever it's needed to break the line</li>
         </td>
         <td class="code highlight">
           <pre class="coffeescript">  p = str.indexOf brk
-  <span class="hljs-keyword">if</span> -<span class="hljs-number">1</span> &lt; p &lt;= width
+  <span class="hljs-keyword">if</span> <span class="hljs-number">-1</span> &lt; p &lt;= width
     <span class="hljs-keyword">return</span> str.substring(<span class="hljs-number">0</span>, p+<span class="hljs-number">1</span>) + wordwrap str.substring(p + <span class="hljs-number">1</span>), width, brk</pre>
         </td>
       </tr>
@@ -539,7 +539,7 @@ maximum number of characters</li>
 
         </td>
         <td class="code highlight">
-          <pre class="coffeescript">  str = str[<span class="hljs-number">0.</span>.limit-<span class="hljs-number">3</span>].replace <span class="hljs-regexp">/\s\S*?$/</span>, <span class="hljs-string">''</span>
+          <pre class="coffeescript">  str = str[<span class="hljs-number">0.</span>.limit<span class="hljs-number">-3</span>].replace <span class="hljs-regexp">/\s\S*?$/</span>, <span class="hljs-string">''</span>
   <span class="hljs-keyword">return</span> str + <span class="hljs-string">'...'</span></pre>
         </td>
       </tr>

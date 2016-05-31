@@ -7,7 +7,7 @@
   <script src="doc-filelist.js"></script>
   <script>
     var relativeDir = "";
-    var thisFile = "home/alex/github/node-util/README.md";
+    var thisFile = "README.md";
     var defaultSidebar = true;
   </script>
   <script src="doc-script.js"></script>
@@ -153,6 +153,14 @@
       </div>
 
       <div class="heading h3">
+        <a href="#iscyclic">isCyclic</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#getcyclic">getCyclic</a>
+      </div>
+
+      <div class="heading h3">
         <a href="#extend-deprecated">extend (deprecated)</a>
       </div>
 
@@ -205,6 +213,26 @@
       </div>
 
       <div class="heading h2">
+        <a href="#function-wrapper">Function Wrapper</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#once">once</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#onceskip">onceSkip</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#oncethrow">onceThrow</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#oncetime">onceTime</a>
+      </div>
+
+      <div class="heading h2">
         <a href="#license">License</a>
       </div>
 
@@ -250,7 +278,7 @@ Install
 <p>And update it to the latest version later:</p>
 <pre><code class="sh">npm update alinex-util --save
 </code></pre>
-<p>Always have a look at the latest <a href="Changelog.md.html.html">changes</a>.</p>
+<p>Always have a look at the latest <a href="Changelog.md.html">changes</a>.</p>
 <div class="pilwrap" id="general-usage">
   <h2>
     <a href="#general-usage" name="general-usage" class="pilcrow"></a>
@@ -259,9 +287,7 @@ General Usage
 </div>
 <p>All methods in this package can be called from the util object:</p>
 <pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
-string = util.string <span class="hljs-comment"># shortcut to the string functions</span>
-object = util.object <span class="hljs-comment"># shortcut to the object functions</span>
-raw = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+raw = { eins: <span class="hljs-number">1</span> }
 copy = util.clone raw
 <span class="hljs-built_in">console</span>.log util.inspect copy
 </code></pre>
@@ -322,6 +348,8 @@ will be referenced.</p>
 <ul>
 <li><code>object</code>
 to be cloned</li>
+<li><code>depth</code>
+(optional) maximum level of cloning deper levels will be referenced</li>
 </ul>
 <p><strong>Returns:</strong></p>
 <ul>
@@ -329,12 +357,12 @@ to be cloned</li>
 clone of the given object.</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">clone = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).clone
-test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
-result = clone test
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+test = { eins: <span class="hljs-number">1</span> }
+result = util.clone test
 </code></pre>
 <p>This results to:</p>
-<pre><code class="coffee">result = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
+<pre><code class="coffee">result = { eins: <span class="hljs-number">1</span> }
 </code></pre>
 <div class="pilwrap" id="extend">
   <h3>
@@ -379,28 +407,28 @@ just for this operation in the extending element itself. Therefore it has to be
 enabled with 'MODE OVERWRITE' gölobally and then an array
 should has the mode as first element or an object as an attribute.</p>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">extend = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).extend
-test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
-extend test, { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span> }, { <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+test = { eins: <span class="hljs-number">1</span> }
+util.extend test, { zwei: <span class="hljs-number">2</span> }, { eins: <span class="hljs-string">'eins'</span> }, { drei: <span class="hljs-number">3</span> }
 </code></pre>
 <p>This results to:</p>
-<pre><code class="coffee">test = { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span>, <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+<pre><code class="coffee">test = { zwei: <span class="hljs-number">2</span>, eins: <span class="hljs-string">'eins'</span>, drei: <span class="hljs-number">3</span> }
 </code></pre>
 <p>But keep in mind that this will change the first object, to the result, too.</p>
 <p>You may set a mode globally or in a specific level like described show:</p>
-<pre><code class="coffee">test1 = {<span class="hljs-attribute">a</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">b</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}
-test2 = {<span class="hljs-attribute">a</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-string">'a'</span>]}
-ext = extend <span class="hljs-string">'MODE ARRAY_REPLACE'</span>, test1, test2
+<pre><code class="coffee">test1 = {a: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], b: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], c: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}
+test2 = {a: [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], c: [<span class="hljs-string">'a'</span>]}
+ext = util.extend <span class="hljs-string">'MODE ARRAY_REPLACE'</span>, test1, test2
 <span class="hljs-comment"># ext = {a: [4, 5, 6], b: [1, 2, 3], c: ['a']}</span>
 </code></pre>
-<pre><code class="coffee">test1 = {<span class="hljs-attribute">a</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">b</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}
-test2 = {<span class="hljs-attribute">a</span>: [<span class="hljs-string">'MODE ARRAY_REPLACE'</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], <span class="hljs-attribute">c</span>: [<span class="hljs-string">'a'</span>]}
-ext = extend test1, test2
+<pre><code class="coffee">test1 = {a: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], b: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], c: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]}
+test2 = {a: [<span class="hljs-string">'MODE ARRAY_REPLACE'</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>], c: [<span class="hljs-string">'a'</span>]}
+ext = util.extend test1, test2
 <span class="hljs-comment"># ext = {a: [4, 5, 6], b: [1, 2, 3], c: [1, 2, 3, 'a']}</span>
 </code></pre>
-<pre><code class="coffee">test1 = {<span class="hljs-attribute">t1</span>: {<span class="hljs-attribute">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">c</span>: <span class="hljs-number">3</span>}, <span class="hljs-attribute">t2</span>: {<span class="hljs-attribute">d</span>: <span class="hljs-number">4</span>, <span class="hljs-attribute">e</span>: <span class="hljs-number">5</span>, <span class="hljs-attribute">f</span>: <span class="hljs-number">6</span>}}
-test2 = {<span class="hljs-attribute">t1</span>: {<span class="hljs-attribute">OBJECT_REPLACE</span>: <span class="hljs-literal">true</span>, <span class="hljs-attribute">a</span>: <span class="hljs-number">4</span>, <span class="hljs-attribute">b</span>: <span class="hljs-number">5</span>}, <span class="hljs-attribute">t2</span>: {<span class="hljs-attribute">d</span>: <span class="hljs-number">9</span>}}
-ext = extend test1, test2
+<pre><code class="coffee">test1 = {t1: {a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span>, c: <span class="hljs-number">3</span>}, t2: {d: <span class="hljs-number">4</span>, e: <span class="hljs-number">5</span>, f: <span class="hljs-number">6</span>}}
+test2 = {t1: {OBJECT_REPLACE: <span class="hljs-literal">true</span>, a: <span class="hljs-number">4</span>, b: <span class="hljs-number">5</span>}, t2: {d: <span class="hljs-number">9</span>}}
+ext = util.extend test1, test2
 <span class="hljs-comment"># ext = {t1: {a: 4, b: 5}, t2: {d: 9, e: 5, f: 6}}</span>
 </code></pre>
 <div class="pilwrap" id="string-type">
@@ -431,17 +459,12 @@ offset character position to start looking for</li>
 <li><code>true</code> if <code>string</code> starts with <code>literal</code></li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'abcdefg'</span>
-result = string.starts test, <span class="hljs-string">'ab'</span>
+result = util.string.starts test, <span class="hljs-string">'ab'</span>
 </code></pre>
 <p>This results to:</p>
-<pre><code class="coffee">result = <span class="hljs-literal">true</span>
-</code></pre>
-<p>Or the same call using prototype extension:</p>
-<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string.addToPrototype()
-test = <span class="hljs-string">'abcdefg'</span>
-result = test.starts <span class="hljs-string">'ab'</span>
+<pre><code class="text">result = true
 </code></pre>
 <div class="pilwrap" id="ends">
   <h3>
@@ -465,17 +488,12 @@ offset character position from the end to look for</li>
 <li><code>true</code> if <code>string</code> ends with <code>literal</code></li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'abcdefg'</span>
-result = string.ends test, <span class="hljs-string">'fg'</span>
+result = util.string.ends test, <span class="hljs-string">'fg'</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-literal">true</span>
-</code></pre>
-<p>Or the same call using prototype extension:</p>
-<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string.addToPrototype()
-test = <span class="hljs-string">'abcdefg'</span>
-result = test.ends <span class="hljs-string">'fg'</span>
 </code></pre>
 <div class="pilwrap" id="repeat">
   <h3>
@@ -496,17 +514,12 @@ number of repeats</li>
 <li>the repeated test</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'ab'</span>
-result = string.repeat test, <span class="hljs-number">3</span>
+result = util.string.repeat test, <span class="hljs-number">3</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-string">'ababab'</span>
-</code></pre>
-<p>Or the same call using prototype extension:</p>
-<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string.addToPrototype()
-test = <span class="hljs-string">'ab'</span>
-result = test.repeat <span class="hljs-number">3</span>
 </code></pre>
 <div class="pilwrap" id="lpad">
   <h3>
@@ -529,9 +542,9 @@ character used for padding (defaults to ' ')</li>
 <li>the padded text</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'5'</span>
-result = string.lpad test, <span class="hljs-number">3</span>, <span class="hljs-string">'0'</span>
+result = util.string.lpad test, <span class="hljs-number">3</span>, <span class="hljs-string">'0'</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-string">'005'</span>
@@ -557,9 +570,9 @@ character used for padding (defaults to ' ')</li>
 <li>the padded text</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'abc'</span>
-result = string.rpad test, <span class="hljs-number">5</span>, <span class="hljs-string">' '</span>
+result = util.string.rpad test, <span class="hljs-number">5</span>, <span class="hljs-string">' '</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-string">'abc  '</span>
@@ -585,9 +598,9 @@ character used for padding (defaults to ' ')</li>
 <li>the padded text</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'abc'</span>
-result = string.cpad test, <span class="hljs-number">5</span>, <span class="hljs-string">' '</span>
+result = util.string.cpad test, <span class="hljs-number">5</span>, <span class="hljs-string">' '</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-string">'abc  '</span>
@@ -611,9 +624,9 @@ list of characters to trim off (defaults to ' \n\t')</li>
 <li>the padded text</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'/var/local/'</span>
-result = string.trim test, <span class="hljs-string">'/'</span>
+result = util.string.trim test, <span class="hljs-string">'/'</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-string">'var/local'</span>
@@ -635,9 +648,9 @@ text to be changed</li>
 <li>the same text but with first letter in upper case</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'abcdefg'</span>
-result = string.ucfirst test
+result = util.string.ucfirst test
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-string">'Abcdefg'</span>
@@ -659,9 +672,9 @@ text to be changed</li>
 <li>the same text but with first letter in lower case</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'ABCDEFG'</span>
-result = string.lcFirst test
+result = util.string.lcFirst test
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-string">'aBCDEFG'</span>
@@ -685,10 +698,10 @@ text to be searched for</li>
 <li>(bool) <code>true</code> if phrase is contained in string</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'abcdefg'</span>
-result1 = string.contains test, <span class="hljs-string">'bc'</span>
-result2 = string.contains test, <span class="hljs-string">'gh'</span>
+result1 = util.string.contains test, <span class="hljs-string">'bc'</span>
+result2 = util.string.contains test, <span class="hljs-string">'gh'</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result1 = <span class="hljs-literal">true</span>
@@ -752,10 +765,10 @@ text or regular expression to divide into columns</li>
 <li>(array) the new list</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'one,two,three\n1,2,3\n4,5,6'</span>
-list = string.toList test, <span class="hljs-regexp">/\n/</span>
-table = string.toList test, <span class="hljs-regexp">/\n/</span>, <span class="hljs-regexp">/,/</span>
+list = util.string.toList test, <span class="hljs-regexp">/\n/</span>
+table = util.string.toList test, <span class="hljs-regexp">/\n/</span>, <span class="hljs-regexp">/,/</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">list = [
@@ -781,10 +794,10 @@ toRegExp
 <li>(RegExp) or the string as it was</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">string = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).string
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = <span class="hljs-string">'/\n/'</span>
-test = string.toRegExp test
-list = string.split test
+test = util.string.toRegExp test
+list = util.string.split test
 </code></pre>
 <div class="pilwrap" id="number-type">
   <h2>
@@ -869,6 +882,54 @@ you may specify <code>ms</code> as additional unit here.</p>
 Object
   </h2>
 </div>
+<div class="pilwrap" id="iscyclic">
+  <h3>
+    <a href="#iscyclic" name="iscyclic" class="pilcrow"></a>
+isCyclic
+  </h3>
+</div>
+<p>This will check an object if it contains circular references.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>object</code> (if not called as Object method)
+base object to be checked</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>boolean</code>
+true if the object contains circular references</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+test = { eins: <span class="hljs-number">1</span> }
+util.object.isCyclic test <span class="hljs-comment"># will be false</span>
+test.zwei = test.eins
+util.object.isCyclic test <span class="hljs-comment"># will be true</span>
+</code></pre>
+<div class="pilwrap" id="getcyclic">
+  <h3>
+    <a href="#getcyclic" name="getcyclic" class="pilcrow"></a>
+getCyclic
+  </h3>
+</div>
+<p>Detects circular references but instead of only checking it list all cyclic objects.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>object</code> (if not called as Object method)
+base object to be checked</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>array</code>
+list of objects which are circular</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+test = { eins: <span class="hljs-number">1</span> }
+util.object.getCyclic test <span class="hljs-comment"># empty list []</span>
+test.zwei = test.eins
+util.object.getCyclic test <span class="hljs-comment"># [{ eins: 1 }]</span>
+</code></pre>
 <div class="pilwrap" id="extend-deprecated">
   <h3>
     <a href="#extend-deprecated" name="extend-deprecated" class="pilcrow"></a>
@@ -891,17 +952,12 @@ multiple extenders may be given with will be cloned into the object.</li>
 the given and maybe changed object.</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
-test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
-object.extend test, { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span> }, { <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
+test = { eins: <span class="hljs-number">1</span> }
+util.extend test, { zwei: <span class="hljs-number">2</span> }, { eins: <span class="hljs-string">'eins'</span> }, { drei: <span class="hljs-number">3</span> }
 </code></pre>
 <p>This results to:</p>
-<pre><code class="coffee">test = { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span>, <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
-</code></pre>
-<p>Or the same call using prototype extension:</p>
-<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object.addToPrototype()
-test = { <span class="hljs-attribute">eins</span>: <span class="hljs-number">1</span> }
-test.extend { <span class="hljs-attribute">zwei</span>: <span class="hljs-number">2</span> }, { <span class="hljs-attribute">eins</span>: <span class="hljs-string">'eins'</span> }, { <span class="hljs-attribute">drei</span>: <span class="hljs-number">3</span> }
+<pre><code class="coffee">test = { eins: <span class="hljs-string">'eins'</span>, zwei: <span class="hljs-number">2</span>, drei: <span class="hljs-number">3</span> }
 </code></pre>
 <p>To remove a key from the structure by overloading set it's value to null.</p>
 <div class="pilwrap" id="extendarrayconcat-deprecated">
@@ -977,22 +1033,22 @@ to be searched</li>
 <li>element at the position of the path or <code>undefined</code> if not found</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test =
-  <span class="hljs-attribute">string</span>: <span class="hljs-string">'test'</span>
-  <span class="hljs-attribute">object</span>:
-    <span class="hljs-attribute">numbers</span>:
-      <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
-      <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
-  <span class="hljs-attribute">list</span>: [
-    <span class="hljs-attribute">one</span>: <span class="hljs-number">11</span>
+  string: <span class="hljs-string">'test'</span>
+  object:
+    numbers:
+      one: <span class="hljs-number">1</span>
+      two: <span class="hljs-number">2</span>
+  list: [
+    one: <span class="hljs-number">11</span>
   ,
-    <span class="hljs-attribute">two</span>: <span class="hljs-number">12</span>
+    two: <span class="hljs-number">12</span>
   ]
-result = object.path test, <span class="hljs-string">'/object/numbers'</span>
+result = util.object.path test, <span class="hljs-string">'/object/numbers'</span>
 </code></pre>
 <p>This results to:</p>
-<pre><code class="coffee">result = { <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span> }
+<pre><code class="coffee">result = { one: <span class="hljs-number">1</span>, two: <span class="hljs-number">2</span> }
 </code></pre>
 <div class="pilwrap" id="pathsearch">
   <h3>
@@ -1016,19 +1072,19 @@ to be searched</li>
 <li>element at the position of the path or <code>undefined</code> if not found</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test =
-  <span class="hljs-attribute">string</span>: <span class="hljs-string">'test'</span>
-  <span class="hljs-attribute">object</span>:
-    <span class="hljs-attribute">numbers</span>:
-      <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
-      <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
-  <span class="hljs-attribute">list</span>: [
-    <span class="hljs-attribute">one</span>: <span class="hljs-number">11</span>
+  string: <span class="hljs-string">'test'</span>
+  object:
+    numbers:
+      one: <span class="hljs-number">1</span>
+      two: <span class="hljs-number">2</span>
+  list: [
+    one: <span class="hljs-number">11</span>
   ,
-    <span class="hljs-attribute">two</span>: <span class="hljs-number">12</span>
+    two: <span class="hljs-number">12</span>
   ]
-result = object.pathSearch test, <span class="hljs-string">'**/one'</span>
+result = util.object.pathSearch test, <span class="hljs-string">'**/one'</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-number">1</span>
@@ -1071,18 +1127,18 @@ the entry will be copied to the resulting object</li>
 <li>data object with all or some entries from the original</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test =
-  <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
-  <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
-  <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>
-  <span class="hljs-attribute">four</span>: <span class="hljs-number">4</span>
-result = object.filter test, <span class="hljs-function"><span class="hljs-params">(value)</span> -&gt;</span> value &lt; <span class="hljs-number">3</span>
+  one: <span class="hljs-number">1</span>
+  two: <span class="hljs-number">2</span>
+  three: <span class="hljs-number">3</span>
+  four: <span class="hljs-number">4</span>
+result = util.object.filter test, <span class="hljs-function"><span class="hljs-params">(value)</span> -&gt;</span> value &lt; <span class="hljs-number">3</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result =
-  <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
-  <span class="hljs-attribute">two</span>: <span class="hljs-number">2</span>
+  one: <span class="hljs-number">1</span>
+  two: <span class="hljs-number">2</span>
 </code></pre>
 <div class="pilwrap" id="lckeys">
   <h3>
@@ -1101,20 +1157,20 @@ to be optimized</li>
 <li>data object with all keys in lowercase</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">object = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).object
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test =
-  <span class="hljs-attribute">One</span>: <span class="hljs-number">1</span>
-  <span class="hljs-attribute">TWO</span>:
-    <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>
-    <span class="hljs-attribute">fouR</span>: <span class="hljs-number">4</span>
-result = object.lcKeys test
+  One: <span class="hljs-number">1</span>
+  TWO:
+    three: <span class="hljs-number">3</span>
+    fouR: <span class="hljs-number">4</span>
+result = util.object.lcKeys test
 </code></pre>
 <p>Will result in:</p>
 <pre><code class="coffee">result =
-  <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>
-  <span class="hljs-attribute">two</span>:
-    <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>
-    <span class="hljs-attribute">four</span>: <span class="hljs-number">4</span>
+  one: <span class="hljs-number">1</span>
+  two:
+    three: <span class="hljs-number">3</span>
+    four: <span class="hljs-number">4</span>
 </code></pre>
 <div class="pilwrap" id="array-object">
   <h2>
@@ -1141,17 +1197,12 @@ offset character position from the end to look for</li>
 <li>last element value</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">array = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span> ]
-result = array.last test
+result = util.array.last test
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = <span class="hljs-number">5</span>
-</code></pre>
-<p>Or the same call using prototype extension:</p>
-<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array.addToPrototype()
-test = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span> ]
-result = test.last()
 </code></pre>
 <div class="pilwrap" id="unique">
   <h3>
@@ -1170,17 +1221,12 @@ of elements to work on</li>
 <li>new array with duplicates removed</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">array = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span> ]
-result = array.unique test
+result = util.array.unique test
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]
-</code></pre>
-<p>Or the same call using prototype extension:</p>
-<pre><code class="coffee"><span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array.addToPrototype()
-test = [ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span> ]
-result = test.unique
 </code></pre>
 <div class="pilwrap" id="sortby">
   <h3>
@@ -1199,33 +1245,143 @@ of objects to work on</li>
 <li>new array in sorted order</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="coffee">array = <span class="hljs-built_in">require</span>(<span class="hljs-string">'alinex-util'</span>).array
+<pre><code class="coffee">util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span>
 test = [
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Johann Sebastion'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Bach'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Wolfgang Amadeus'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Mozart'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Joseph'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Haydn'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Richard'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Wagner'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Antonio'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Vivaldi'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Michael'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Haydn'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Franz'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Schubert'</span>}
+  {first: <span class="hljs-string">'Johann Sebastion'</span>, last: <span class="hljs-string">'Bach'</span>}
+  {first: <span class="hljs-string">'Wolfgang Amadeus'</span>, last: <span class="hljs-string">'Mozart'</span>}
+  {first: <span class="hljs-string">'Joseph'</span>, last: <span class="hljs-string">'Haydn'</span>}
+  {first: <span class="hljs-string">'Richard'</span>, last: <span class="hljs-string">'Wagner'</span>}
+  {first: <span class="hljs-string">'Antonio'</span>, last: <span class="hljs-string">'Vivaldi'</span>}
+  {first: <span class="hljs-string">'Michael'</span>, last: <span class="hljs-string">'Haydn'</span>}
+  {first: <span class="hljs-string">'Franz'</span>, last: <span class="hljs-string">'Schubert'</span>}
 ]
 <span class="hljs-comment"># sort by last name ascending and first name descending</span>
-result = array.sortBy test, <span class="hljs-string">'last'</span>, <span class="hljs-string">'-first'</span>
+result = util.array.sortBy test, <span class="hljs-string">'last'</span>, <span class="hljs-string">'-first'</span>
 </code></pre>
 <p>This results to:</p>
 <pre><code class="coffee">result = [
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Johann Sebastion'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Bach'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Michael'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Haydn'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Joseph'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Haydn'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Wolfgang Amadeus'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Mozart'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Franz'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Schubert'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Antonio'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Vivaldi'</span>}
-  {<span class="hljs-attribute">first</span>: <span class="hljs-string">'Richard'</span>, <span class="hljs-attribute">last</span>: <span class="hljs-string">'Wagner'</span>}  
+  {first: <span class="hljs-string">'Johann Sebastion'</span>, last: <span class="hljs-string">'Bach'</span>}
+  {first: <span class="hljs-string">'Michael'</span>, last: <span class="hljs-string">'Haydn'</span>}
+  {first: <span class="hljs-string">'Joseph'</span>, last: <span class="hljs-string">'Haydn'</span>}
+  {first: <span class="hljs-string">'Wolfgang Amadeus'</span>, last: <span class="hljs-string">'Mozart'</span>}
+  {first: <span class="hljs-string">'Franz'</span>, last: <span class="hljs-string">'Schubert'</span>}
+  {first: <span class="hljs-string">'Antonio'</span>, last: <span class="hljs-string">'Vivaldi'</span>}
+  {first: <span class="hljs-string">'Richard'</span>, last: <span class="hljs-string">'Wagner'</span>}  
 ]
 </code></pre>
 <p>Like displayed above you may give one or multiple field names to sort by the
 earlier has precedence. If field name starts with '-' sign it will sort in
 descending order.</p>
+<div class="pilwrap" id="function-wrapper">
+  <h2>
+    <a href="#function-wrapper" name="function-wrapper" class="pilcrow"></a>
+Function Wrapper
+  </h2>
+</div>
+<p>The following functions are used to wrap functions to give them more functionality.
+You will get a resulting function which can be called any time.</p>
+<p>In all of the following methods you may give an optional context to use as first
+parameter. So to call it from class do so like:</p>
+<pre><code class="coffee">class = Test
+  init: util.function.once this, (cb) -&gt;
+    # method...
+    cb null, @status
+</code></pre>
+<p>That allows your function to access class members and methods. Keep in mind to use
+<code>=&gt;</code> if you use sub functions.</p>
+<p>If you use it in <code>module.exports</code> then do it as follows:</p>
+<pre><code class="coffee"><span class="hljs-built_in">module</span>.exports =
+  anyMethod: <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span>
+  <span class="hljs-comment"># and so on</span>
+
+<span class="hljs-built_in">module</span>.exports.init = util.function.once <span class="hljs-built_in">module</span>.exports, <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span>
+  <span class="hljs-comment"># method...</span>
+  @anyMethod cb
+</code></pre>
+<p>Like you see above you have to declare this method separately so that the <code>util.function.once</code>
+method can access the now already defined module.exports object.</p>
+<div class="pilwrap" id="once">
+  <h3>
+    <a href="#once" name="once" class="pilcrow"></a>
+once
+  </h3>
+</div>
+<p>The second and later calls will return with the same result:</p>
+<pre><code class="coffee">fn = util.function.once (cb) -&gt;
+  time = process.hrtime()
+  setTimeout -&gt;
+    cb <span class="hljs-literal">null</span>, time[<span class="hljs-number">1</span>]
+  , <span class="hljs-number">1000</span>
+</code></pre>
+<p>Use this to make some initializations which only have to run once but neither
+function may start because it is not done:</p>
+<pre><code class="coffee">async.parallel [ fn, fn ], <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
+  <span class="hljs-comment"># same as with `once.atime` it will come here exactly after the</span>
+  <span class="hljs-comment"># first call finished because the second one will get the</span>
+  <span class="hljs-comment"># result the same time</span>
+  <span class="hljs-comment"># results here will be the same integer, twice</span>
+  fn (err, result) -&gt;
+    <span class="hljs-comment"># and this call will return imediately with the previous result</span>
+</code></pre>
+<div class="pilwrap" id="onceskip">
+  <h3>
+    <a href="#onceskip" name="onceskip" class="pilcrow"></a>
+onceSkip
+  </h3>
+</div>
+<p>A function may be wrapped with the once method:</p>
+<pre><code class="coffee">fn = util.function.onceSkip (a, b, cb) -&gt; cb <span class="hljs-literal">null</span>, a + b
+</code></pre>
+<p>And now you can call the function as normal but on the second call it will
+return imediately without running the code:</p>
+<pre><code class="coffee">fn <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span>
+  <span class="hljs-regexp">//</span> x will now be <span class="hljs-number">5</span>
+  fn <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span>
+    <span class="hljs-regexp">//</span> err will now be set <span class="hljs-literal">on</span> the second call
+</code></pre>
+<p>You may use this helper in case of initialization (wait) there a specific
+method have to run once before any other call can succeed. Or then events
+are involved and an error event will trigger the callback and the end event will
+do the same.</p>
+<div class="pilwrap" id="oncethrow">
+  <h3>
+    <a href="#oncethrow" name="oncethrow" class="pilcrow"></a>
+onceThrow
+  </h3>
+</div>
+<p>Throw an error if it is called a second time:</p>
+<pre><code class="coffee">fn = util.function.onceThrow (a, b, cb) -&gt; cb <span class="hljs-literal">null</span>, a + b
+</code></pre>
+<p>If you call this method multiple times it will throw an exception:</p>
+<pre><code class="coffee">fn <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span>
+  <span class="hljs-comment"># x will now be 5</span>
+  fn <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span>
+    <span class="hljs-comment"># will neither get there because an exception is thrown above</span>
+</code></pre>
+<div class="pilwrap" id="oncetime">
+  <h3>
+    <a href="#oncetime" name="oncetime" class="pilcrow"></a>
+onceTime
+  </h3>
+</div>
+<p>Only run it once at a time, queue following requests and send them the result
+of the next run. All calls get the same result, but then the process is already
+started it will list the following calls for the next round. This assures that
+their result is from the newest data set because you may changed something
+while the first run was already working.</p>
+<pre><code class="coffee">fn = util.function.onceTime (cb) -&gt;
+  time = process.hrtime()
+  setTimeout -&gt;
+    cb <span class="hljs-literal">null</span>, time[<span class="hljs-number">1</span>]
+  , <span class="hljs-number">1000</span>
+</code></pre>
+<p>And now you may call it multiple times but it will not run more than once
+simultaneously. But all simultaneous calls will get the same result.</p>
+<pre><code class="coffee">async.parallel [ fn, fn ], <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span>
+  <span class="hljs-comment"># will come here exactly after the first call finished (because the</span>
+  <span class="hljs-comment"># second will do so the same time)</span>
+  <span class="hljs-comment"># results here will be the same integer, twice</span>
+</code></pre>
 <div class="pilwrap" id="license">
   <h2>
     <a href="#license" name="license" class="pilcrow"></a>

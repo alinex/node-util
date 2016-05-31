@@ -7,7 +7,7 @@
   <script src="../doc-filelist.js"></script>
   <script>
     var relativeDir = "../";
-    var thisFile = "home/alex/github/node-util/src/object.coffee";
+    var thisFile = "src/object.coffee";
     var defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
@@ -106,6 +106,7 @@ debugPathSearch = <span class="hljs-built_in">require</span>(<span class="hljs-s
 debugExtend = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'util:object:extend'</span>)
 util = <span class="hljs-built_in">require</span> <span class="hljs-string">'util'</span>
 chalk = <span class="hljs-built_in">require</span> <span class="hljs-string">'chalk'</span>
+
 
 deprecatedExtend = <span class="hljs-literal">false</span>
 deprecatedExtendArrayConcat = <span class="hljs-literal">false</span>
@@ -843,7 +844,32 @@ Make object's keys to lowercase
   lc = {}
   <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> Object.keys obj
     lc[key.toLowerCase()] = lcKeys obj[key]
-  lc</pre>
+  lc
+
+exports.isCyclic = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span>
+  checked = []
+<span class="hljs-function">  <span class="hljs-title">detect</span> = <span class="hljs-params">(obj)</span> -&gt;</span>
+    <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">and</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">in</span> checked
+      checked.push obj
+      <span class="hljs-keyword">for</span> key <span class="hljs-keyword">of</span> obj
+        <span class="hljs-keyword">if</span> obj.hasOwnProperty(key) <span class="hljs-keyword">and</span> detect obj[key]
+          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    <span class="hljs-literal">false</span>
+  detect obj
+
+exports.getCyclic = <span class="hljs-function"><span class="hljs-params">(obj)</span> -&gt;</span>
+  checked = []
+  cyclic = []
+<span class="hljs-function">  <span class="hljs-title">detect</span> = <span class="hljs-params">(obj)</span> -&gt;</span>
+    <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">and</span> <span class="hljs-keyword">typeof</span> obj <span class="hljs-keyword">is</span> <span class="hljs-string">'object'</span>
+      <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">in</span> checked <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> (obj <span class="hljs-keyword">in</span> cyclic)
+        <span class="hljs-keyword">return</span> cyclic.push obj
+      checked.push obj
+      <span class="hljs-keyword">for</span> key <span class="hljs-keyword">of</span> obj
+        detect obj[key] <span class="hljs-keyword">if</span> obj.hasOwnProperty key
+  detect obj
+  cyclic</pre>
         </td>
       </tr>
     
