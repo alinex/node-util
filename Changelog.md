@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.3.0 (2016-06-12)
+-------------------------------------------------
+- Upgraded builder package.
+- Add number.isNumber check.
+- Optimize code.
+
 Version 2.2.0 (2016-05-10)
 -------------------------------------------------
 - Upgraded builder package.
