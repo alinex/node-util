@@ -624,6 +624,21 @@ __Returns:__
 
 * `true` if `value` is an integer
 
+### isNumber
+
+Check for number.
+
+This method will check that the given value is a number.
+
+__Arguments:__
+
+* `value`
+  to be analyzed
+
+__Returns:__
+
+* `true` if `value` is a number
+
 ### parseInt
 
 Strict parse for Integer.

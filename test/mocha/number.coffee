@@ -67,6 +67,62 @@ describe "Number", ->
       , "use []"
       .to.be.false
 
+  describe "isNumber", ->
+
+    it "should succeed on real integers", ->
+      expect number.isNumber(6)
+      , "use 6"
+      .to.be.true
+      expect number.isNumber(0)
+      , "use 0"
+      .to.be.true
+      expect number.isNumber(-12)
+      , "use -12"
+      .to.be.true
+      expect number.isNumber(1200000)
+      , "use 1200000"
+      .to.be.true
+      expect number.isNumber(12.000)
+      , "use 12.000"
+      .to.be.true
+
+    it "should succeed on string integers", ->
+      expect number.isNumber('6')
+      , "use '6'"
+      .to.be.true
+      expect number.isNumber('0')
+      , "use '0'"
+      .to.be.true
+      expect number.isNumber('-12')
+      , "use '-12'"
+      .to.be.true
+      expect number.isNumber('1200000')
+      , "use '1200000'"
+      .to.be.true
+      expect number.isNumber('12.000')
+      , "use '12.000'"
+      .to.be.true
+
+    it "should fail on undefined values", ->
+      expect number.isNumber()
+      , "use undefined"
+      .to.be.false
+
+    it "should fail on strings", ->
+      expect number.isNumber('hello')
+      , "use 'hello'"
+      .to.be.false
+
+    it "should fail on objects", ->
+      expect number.isNumber({})
+      , "use {}"
+      .to.be.false
+
+    it "should fail on arrays", ->
+      expect number.isNumber([])
+      , "use []"
+      .to.be.false
+
   describe "parseInt", ->
 
     it "should succeed on normal values", ->

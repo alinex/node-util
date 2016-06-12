@@ -4,7 +4,7 @@
 
 # Check for integer
 # -------------------------------------------------
-# This method will check that the given value is an integer .
+# This method will check that the given value is an integer.
 #
 # __Arguments:__
 #
@@ -16,6 +16,21 @@
 # * `true` if `value` is an integer
 exports.isInteger = (value) ->
   value is (value | 0)
+
+# Check for number
+# -------------------------------------------------
+# This method will check that the given value is a number.
+#
+# __Arguments:__
+#
+# * `value`
+#   to be analyzed
+#
+# __Returns:__
+#
+# * `true` if `value` is a number
+exports.isNumber = (value) ->
+  not(isNaN parseFloat value) and isFinite value
 
 # Stricter parse function
 # -------------------------------------------------
