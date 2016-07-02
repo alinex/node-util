@@ -191,25 +191,38 @@ exports.contains = (string, phrase) ->
 #   maximum amount of characters per line
 # - break
 #   string that will be added whenever it's needed to break the line
-exports.wordwrap = wordwrap = (str, width = 80, brk = '\n') ->
-  # check if string to short
-  return str if str.length <= width
-  # check if already has a break
-  p = str.indexOf brk
-  if -1 < p <= width
-    return str.substring(0, p+1) + wordwrap str.substring(p + 1), width, brk
-  # find possible break in range
-  p = width
-  p-- while p > 0 and str[p] isnt ' '
-  if p > 0
-    return str.substring(0, p) + brk + wordwrap str.substring(p + 1), width, brk
-  # too long, break on next possition
-  p = width
-  p++ while p < str.length and str[p] isnt ' '
-  if p < str.length
-    return str.substring(0, p) + brk + wordwrap str.substring(p + 1), width, brk
-  # not possible to break
-  str
+exports.wordwrap = (str, width = 80, brk = '\n') ->
+  wrap = ''
+  loop
+    # check if string to short
+    if str.length <= width
+      wrap += str
+      break
+    # check if already has a break
+    p = str.indexOf brk
+    if -1 < p <= width
+      wrap += str[0..p]
+      str = str[p+1..]
+      continue
+    # find possible break in range
+    p = width
+    p-- while p > 0 and str[p] isnt ' '
+    if p > 0
+      wrap += str[0..p-1] + brk
+      str = str[p+1..]
+      continue
+    # too long, break on next possition
+    p = width
+    p++ while p < str.length and str[p] isnt ' '
+    if p < str.length
+      wrap += str[0..p-1] + brk
+      str = str[p+1..]
+      continue
+    # not possible to break
+    wrap += str
+    break
+  wrap
+
 
 # ### Shorten
 #
