@@ -4,6 +4,11 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.3.1 (2016-07-02)
+-------------------------------------------------
+- Upgrade builder package.
+- Remove recursion on wordwrap for better performance.
+
 Version 2.3.0 (2016-06-12)
 -------------------------------------------------
 - Upgraded builder package.
