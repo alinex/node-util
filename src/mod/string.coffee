@@ -279,10 +279,11 @@ __Example:__
 
 ``` coffee
 util = require 'alinex-util'
-test = """
-All necessary parts are on the same machine, so that you only have to bring this machine to work. Backups of the data are made on vs10152.
-
-Keep in mind that the machine is in the test net and you have to use a valid VPN connection for accessing.
+test = "All necessary parts are on the same machine, so that you only have to bring this
+machine to work. Backups of the data are made on vs10152.
+\n\n
+Keep in mind that the machine is in the test net and you have to use a valid VPN
+connection for accessing.
 """
 result = util.string.wordwrap test, 78
 ```
@@ -400,7 +401,7 @@ table = [
 @return {Array} the new list or list of arrays
 ###
 exports.toList = (text, rowDelimiter = /\n/, colDelimiter) ->
-  debug "split to list (#{util.inspect rowDelimiter}/#{util.inspect colDelimiter}):\n#{str}"
+  debug "split to list (#{util.inspect rowDelimiter}/#{util.inspect colDelimiter}):\n#{text}"
   list = text.split rowDelimiter
   return list unless colDelimiter
   list.map (e) -> e.split colDelimiter
