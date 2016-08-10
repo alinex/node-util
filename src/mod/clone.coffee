@@ -1,5 +1,26 @@
-# Utility functions for objects.
-# =================================================
+###
+Clone Method
+=================================================
+This method will create a clone of the given object.
+As possible all methods will be cloned, but if object instances are used they
+will be referenced.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = { eins: 1 }
+result = util.clone test
+```
+
+This results to:
+
+``` coffee
+result = { eins: 1 }
+result is test = false
+```
+###
+
 
 # Node modules
 # -------------------------------------------------
@@ -8,21 +29,15 @@ util = require 'util'
 chalk = require 'chalk'
 
 
-# Deep cloning object
+# External Methods
 # -------------------------------------------------
-# This method will create a clone of the given object.
-# As possible all methods will be cloned, but if object instances are used they
-# will be referenced.
-#
-# __Arguments:__
-#
-# * `object`
-#   to be cloned
-#
-# __Returns:__
-#
-# * `object`
-#   clone of the given  object.
+
+###
+@name clone()
+@param {Object} obj the object to be cloned
+@param {Integer} [depth] maximum level of cloning deper levels will be referenced
+@return {Object} the cloned object
+###
 module.exports = (obj, depth) ->
   # internal variables
   indent = ''
@@ -59,9 +74,7 @@ module.exports = (obj, depth) ->
       flags += 'g' if obj.global
       flags += 'i' if obj.ignoreCase
       flags += 'm' if obj.multiline
-      ### sticky not standardized till yet
-      flags += 'y' if obj.sticky
-      ###
+      #flags += 'y' if obj.sticky # sticky not standardized till yet
       return new RegExp obj.source, flags
     # cyclic references
     debug chalk.grey "#{indent}++", util.inspect cloned
@@ -77,7 +90,6 @@ module.exports = (obj, depth) ->
       indent = indent[3..]
       debug chalk.grey "#{indent}<- cloned array..."
       return res
-    # typeof obj is 'object'
     # testing that this is DOM
     if obj.nodeType and typeof obj.cloneNode is 'function'
       indent = indent[3..]
@@ -98,3 +110,24 @@ module.exports = (obj, depth) ->
     return res
   # run cloning
   doClone obj, depth
+
+###
+Debugging
+--------------------------------------------------
+Debugging is possible using environment setting:
+
+    DEBUG=util:clone    -> shows each level of cloning
+
+    util:clone -> { maxCpu: '95%', maxLoad: '400%' } +0ms
+    util:clone    ++ [] +0ms
+    util:clone    -> '95%' +0ms
+    util:clone    <- is primitive +0ms
+    util:clone    -> '400%' +0ms
+    util:clone    <- is primitive +0ms
+    util:clone <- cloned object +0ms
+    util:clone -> { nice: -20 } +0ms
+    util:clone    ++ [] +0ms
+    util:clone    -> -20 +0ms
+    util:clone    <- is primitive +0ms
+    util:clone <- cloned object +0ms
+###

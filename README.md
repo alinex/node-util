@@ -1,9 +1,11 @@
-Package: alinex-util
+Alinex Util: Readme
 =================================================
 
 [![Build Status](https://travis-ci.org/alinex/node-util.svg?branch=master)](https://travis-ci.org/alinex/node-util)
 [![Coverage Status](https://coveralls.io/repos/alinex/node-util/badge.svg?branch=master)](https://coveralls.io/r/alinex/node-util?branch=master)
 [![Dependency Status](https://gemnasium.com/alinex/node-util.png)](https://gemnasium.com/alinex/node-util)
+[![GitHub](https://assets-cdn.github.com/favicon.ico)](https://github.com/alinex/node-util "Code on GitHub")
+<!-- {.right} -->
 
 This module will be used as incubator for different small helper methods which
 are generally used for different general class types:
@@ -17,6 +19,10 @@ are generally used for different general class types:
 > It is one of the modules of the [Alinex Namespace](http://alinex.github.io/code.html)
 > following the code standards defined in the [General Docs](http://alinex.github.io/develop).
 
+__Read the complete documentation under
+[https://alinex.github.io/node-util](https://alinex.github.io/node-util).__
+<!-- {p: .hide} -->
+
 
 Install
 -------------------------------------------------
@@ -25,20 +31,14 @@ Install
  ![Downloads](https://nodei.co/npm-dl/alinex-util.png?months=9&height=3)
 ](https://www.npmjs.com/package/alinex-util)
 
+> See the {@link Changelog.md} for a list of changes in recent versions.
+
 The easiest way is to let npm add the module directly to your modules
 (from within you node modules directory):
 
 ``` sh
 npm install alinex-util --save
 ```
-
-And update it to the latest version later:
-
-``` sh
-npm update alinex-util --save
-```
-
-Always have a look at the latest [changes](Changelog.md).
 
 
 General Usage
@@ -57,156 +57,19 @@ Or you may directly import only the needed objects with:
 
 ``` coffee
 {string, object} = require 'alinex-util'
-array = require 'alinex-util/lib/array'
+array = require 'alinex-util/lib/mod/array'
 ```
 
-The first line loaded all but uses only some methods, while the second line
-only loads the needed type library.
+The first example load all methods, while the second example
+only load the needed type library.
 
 The library may be used as replacement for the node util package because it also
-exports the 'inspect()' method which is the only needed method from this core
-package.
-
-See the description below for each of the contained methods.
+exports the {@link util.inspect} method from NodeJS core which is the only really
+needed method from this package.
 
 
-All types
--------------------------------------------------
-The methods which are usable for all types are directly accessible in the main
-module. All others are used through a collection named after their type.
 
-### inspect
 
-The [inspect](https://nodejs.org/api/util.html#util_util_inspect_object_options)
-method is from the node js util package directly inherited. Use it like described
-there.
-
-__Arguments:__
-
-* `object` to be cloned
-* `options` (optional) object with:
-  - `showHidden` - if true then the object's non-enumerable and symbol properties
-    will be shown too. Defaults to false.
-  - `depth` - tells inspect how many times to recurse while formatting the object.
-    This is useful for inspecting large complicated objects. Defaults to 2. To make
-    it recurse indefinitely pass null.
-  - `colors` - if true, then the output will be styled with ANSI color codes.
-    Defaults to false. Colors are customizable, see Customizing util.inspect colors.
-  - `customInspect` - if false, then custom inspect(depth, opts) functions defined
-    on the objects being inspected won't be called. Defaults to true.
-
-### clone
-
-This method will create a clone of the given object.
-As possible all methods will be cloned, but if object instances are used they
-will be referenced.
-
-__Arguments:__
-
-* `object`
-  to be cloned
-* `depth`
-  (optional) maximum level of cloning deper levels will be referenced
-
-__Returns:__
-
-* `object`
-  clone of the given object.
-
-__Example:__
-
-``` coffee
-util = require 'alinex-util'
-test = { eins: 1 }
-result = util.clone test
-```
-
-This results to:
-
-``` coffee
-result = { eins: 1 }
-```
-
-### extend
-
-Extend an object with another one.
-
-This method will extend a given object with the entries from additional
-objects. Therefore it will do a deep extend.
-
-__Arguments:__
-
-* `mode` (optional) string 'MODE ...' defining how the extend should work
-* `object` (if not called as Object method)
-  base object to be extended
-* `extender`...
-  multiple extenders may be given with will be cloned into the object.
-
-__Returns:__
-
-* `object`
-  the given and maybe changed object.
-
-__Modes:__
-
-Multiple modes can be used with space as separator:
-
-* `CLONE` - clone object and all extenders before extending, keeps the resulting
-  objects untouched (works only globally)
-* `OVERWRITE` - allow overwrite of array and object mode in specific elements
-* `ARRAY_CONCAT` - (default) if no other array-mode set, will concat additional
-  elements
-* `ARRAY_REPLACE` - for all arrays, replace the previouse array completely instead
-  of extending them
-* `ARRAY_OVERWRITE` - overwrite the same index instead of extending the array
-* `OBJECT_EXTEND` - (default) if no other object-mode given, will add/replace
-  properties with the new ones
-* `OBJECT_REPLACE` - will always replace the object completely with the new one,
-  if the keys are different
-
-This mode may also be changed on any specific element by giving a different mode
-just for this operation in the extending element itself. Therefore it has to be
-enabled with 'MODE OVERWRITE' gölobally and then an array
-should has the mode as first element or an object as an attribute.
-
-__Example:__
-
-``` coffee
-util = require 'alinex-util'
-test = { eins: 1 }
-util.extend test, { zwei: 2 }, { eins: 'eins' }, { drei: 3 }
-```
-
-This results to:
-
-``` coffee
-test = { zwei: 2, eins: 'eins', drei: 3 }
-```
-
-But keep in mind that this will change the first object, to the result, too.
-
-You may set a mode globally or in a specific level like described show:
-
-``` coffee
-test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
-test2 = {a: [4, 5, 6], c: ['a']}
-ext = util.extend 'MODE ARRAY_REPLACE', test1, test2
-# ext = {a: [4, 5, 6], b: [1, 2, 3], c: ['a']}
-```
-
-``` coffee
-test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
-test2 = {a: ['MODE ARRAY_REPLACE', 4, 5, 6], c: ['a']}
-ext = util.extend test1, test2
-# ext = {a: [4, 5, 6], b: [1, 2, 3], c: [1, 2, 3, 'a']}
-```
-
-``` coffee
-test1 = {t1: {a: 1, b: 2, c: 3}, t2: {d: 4, e: 5, f: 6}}
-test2 = {t1: {OBJECT_REPLACE: true, a: 4, b: 5}, t2: {d: 9}}
-ext = util.extend test1, test2
-# ext = {t1: {a: 4, b: 5}, t2: {d: 9, e: 5, f: 6}}
-```
 
 
 String type
