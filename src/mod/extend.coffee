@@ -188,4 +188,12 @@ Debugging is possible using environment setting:
 
     DEBUG=util:extend    -> shows each level of cloning
 
+    util:extend -> extend { eins: 1 } +0ms
+    util:extend    by { zwei: 2 } +1ms
+    util:extend    by { eins: 'eins' } +0ms
+    util:extend    -> extend 1 +0ms
+    util:extend       by 'eins' +0ms
+    util:extend    <- 'eins' +0ms
+    util:extend    by { drei: 3 } +0ms
+    util:extend <- { eins: 'eins', zwei: 2, drei: 3 } +0ms
 ###
