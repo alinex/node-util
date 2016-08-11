@@ -94,6 +94,7 @@ descending order.
 @param {String} sort... sort column name (if prepended with '-' it will sort in
 descending order)
 @return {Array<Object>} new array in sorted order
+@throw {Error} Missing sort column name.
 ###
 exports.sortBy = (array) ->
   args = [].slice.call arguments
