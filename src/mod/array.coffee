@@ -1,32 +1,100 @@
-# Utility functions for array.
-# =================================================
+###
+Array Methods
+=================================================
+###
 
+###
+Get the last element.
 
-# Get the last element of an array
-# -------------------------------------------------
-#
-# __Arguments:__
-#
-# * `array`
-#   of elements to work on
-# * `back` (optional)
-#   offset character position from the end to look for
-#
-# __Returns:__
-#
-# * last element value
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = [ 1,2,3,4,5 ]
+result = util.array.last test
+```
+
+This results to:
+
+``` coffee
+result = 5
+```
+
+@param {Array} array to read from
+@param {Integer} back offset character position from the end to look for
+@return last element value
+###
 exports.last = (array, back) ->
   array[array.length - (back or 0) - 1]
 
-# remove duplicates
-# -------------------------------------------------
+###
+Remove duplicate entries from array.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = [ 1,2,2,3,4,1,5 ]
+result = util.array.unique test
+```
+
+This results to:
+
+``` coffee
+result = [1,2,3,4,5]
+```
+
+@param {Array} array to to be checked
+@return {Array} new array with duplicates removed
+###
 exports.unique = (array) ->
   output = {}
   output[JSON.stringify array[key]] = array[key] for key in [0...array.length]
   value for _, value of output
 
-# Sort array of objects
-# -------------------------------------------------
+###
+Sort array of objects.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = [
+  {first: 'Johann Sebastion', last: 'Bach'}
+  {first: 'Wolfgang Amadeus', last: 'Mozart'}
+  {first: 'Joseph', last: 'Haydn'}
+  {first: 'Richard', last: 'Wagner'}
+  {first: 'Antonio', last: 'Vivaldi'}
+  {first: 'Michael', last: 'Haydn'}
+  {first: 'Franz', last: 'Schubert'}
+]
+# sort by last name ascending and first name descending
+result = util.array.sortBy test, 'last', '-first'
+```
+
+This results to:
+
+``` coffee
+result = [
+  {first: 'Johann Sebastion', last: 'Bach'}
+  {first: 'Michael', last: 'Haydn'}
+  {first: 'Joseph', last: 'Haydn'}
+  {first: 'Wolfgang Amadeus', last: 'Mozart'}
+  {first: 'Franz', last: 'Schubert'}
+  {first: 'Antonio', last: 'Vivaldi'}
+  {first: 'Richard', last: 'Wagner'}
+]
+```
+
+Like displayed above you may give one or multiple field names to sort by the
+earlier has precedence. If field name starts with '-' sign it will sort in
+descending order.
+
+@param {Array<Object>} array to to be checked
+@param {String} sort... sort column name (if prepended with '-' it will sort in
+descending order)
+@return {Array<Object>} new array in sorted order
+###
 exports.sortBy = (array) ->
   args = [].slice.call arguments
   switch args.length
@@ -41,6 +109,13 @@ exports.sortBy = (array) ->
 # Helper Methods
 # -------------------------------------------------
 
+# Sort comparator using the given Object column.
+#
+# @param {String} column name to sort after
+# @return {Integer} how to sort
+# -1 - correct order
+# 0 - equal values
+# 1 - change order
 dynamicSort = (field) ->
   sortOrder = 1
   if field[0] is '-'
@@ -51,6 +126,13 @@ dynamicSort = (field) ->
     result = if a[field] < b[field] then -1 else if a[field] > b[field] then 1 else 0
     result * sortOrder
 
+# Sort comparator supporting multiple columns.
+#
+# @param {String} column... name to sort after
+# @return {Integer} how to sort
+# -1 - correct order
+# 0 - equal values
+# 1 - change order
 dynamicMultiSort = ->
   args = [].slice.call(arguments)
   fields = args.map (e) -> dynamicSort e
