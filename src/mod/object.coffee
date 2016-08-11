@@ -218,9 +218,34 @@ exports.filter = (obj, allow) ->
       result[key] = obj[key]
   result
 
+###
+Make the keys within a deep object all lowercase.
 
-# Make object's keys to lowercase
-# -------------------------------------------------
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test =
+  One: 1
+  TWO:
+    three: 3
+    fouR: 4
+result = util.object.lcKeys test
+```
+
+Will result in:
+
+``` coffee
+result =
+  one: 1
+  two:
+    three: 3
+    four: 4
+```
+
+@param {Object} obj to be optimized
+@return {Object} data object with all keys in lowercase
+###
 lcKeys = exports.lcKeys = (obj) ->
   return obj if typeof obj isnt 'object' or Array.isArray obj
   lc = {}
@@ -228,6 +253,22 @@ lcKeys = exports.lcKeys = (obj) ->
     lc[key.toLowerCase()] = lcKeys obj[key]
   lc
 
+###
+This will check an object if it contains circular references.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = { eins: 1 }
+util.object.isCyclic test # will be false
+test.zwei = test.eins
+util.object.isCyclic test # will be true
+```
+
+@param {Object} obj to be checked
+@return {Boolean} `true` if the object contains circular references
+###
 exports.isCyclic = (obj) ->
   checked = []
   detect = (obj) ->
@@ -240,6 +281,22 @@ exports.isCyclic = (obj) ->
     false
   detect obj
 
+###
+Detects circular references but instead of only checking it list all cyclic objects.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = { eins: 1 }
+util.object.getCyclic test # empty list []
+test.zwei = test.eins
+util.object.getCyclic test # [{ eins: 1 }]
+```
+
+@param {Object} obj to be checked
+@return {Array} list of objects which are circular
+###
 exports.getCyclic = (obj) ->
   checked = []
   cyclic = []
