@@ -22,7 +22,7 @@ Debugging
 This module uses the {@link debug} module so you may anytime call your app with
 the environment setting `DEBUG=util:*` but keep in mind that this will output a
 lot of information. So better use the concrete setting in each module. Most have one
-defined after their name:
+defined with their name:
 
     DEBUG=util:*      -> complete util package
     DEBUG=util:clone  -> only clone method

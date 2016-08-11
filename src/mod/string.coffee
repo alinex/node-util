@@ -437,6 +437,8 @@ Debugging
 --------------------------------------------------
 Debugging is possible using environment setting:
 
-    DEBUG=util:string    -> each method call
+```
+DEBUG=util:string    -> each method call
+```
 
 ###

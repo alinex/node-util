@@ -186,7 +186,9 @@ Debugging
 --------------------------------------------------
 Debugging is possible using environment setting:
 
-    DEBUG=util:extend    -> shows each level of cloning
+```
+DEBUG=util:extend    -> shows each level of cloning
+```
 
     util:extend -> extend { eins: 1 } +0ms
     util:extend    by { zwei: 2 } +1ms

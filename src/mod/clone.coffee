@@ -116,7 +116,9 @@ Debugging
 --------------------------------------------------
 Debugging is possible using environment setting:
 
-    DEBUG=util:clone    -> shows each level of cloning
+```
+DEBUG=util:clone    -> shows each level of cloning
+```
 
     util:clone -> { maxCpu: '95%', maxLoad: '400%' } +0ms
     util:clone    ++ [] +0ms
