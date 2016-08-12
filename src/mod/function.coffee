@@ -290,7 +290,8 @@ module.exports.onceTime = (context, func) ->
     started = true
     # add the time callback
     args.push ->
-      debug "time ##{func.__id}: #{chalk.grey idargs} done with result
+      debug "time ##{func.__id}: #{chalk.grey idargs} done with
+      result
       #{chalk.grey util.inspect arguments}"
       # start sending back and reopening method
       started = false

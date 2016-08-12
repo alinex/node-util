@@ -8,7 +8,6 @@ Object Methods
 # -----------------------------------------------
 debug = require('debug')('util:object')
 debugPathSearch = require('debug')('util:object:pathsearch')
-chalk = require 'chalk'
 util = require 'util'
 
 
@@ -70,66 +69,59 @@ exports.path = (obj, path, separator = '/') ->
     ref = ref[k]
   return ref
 
-###
-Like path but here you may give a search pattern to find the element. It may
-also find multiple elements which will be returned in a list.
-
-__Example:__
-
-``` coffee
-util = require 'alinex-util'
-test =
-  string: 'test'
-  object:
-    numbers:
-      one: 1
-      two: 2
-  list: [
-    one: 11
-  ,
-    two: 12
-  ]
-result = util.object.pathSearch test, '**/one'
-```
-
-This results to:
-
-``` coffee
-result = 1
-```
-
-__Pattern__
-
-You may specify like in the following examples (using the default separator).
-
-``` text
-name - get first element with this name
-group/sub/name - get element with path
-```
-
-You can search by using asterisk as directory placeholder or a double asterisk to
-go multiple level depth:
-
-``` text
-name/*/min - within any subelement
-name/*/*/min - within any subelement (two level depth)
-name/**/min - within any subelement in any depth
-```
-
-You may also use regexp notation to find the correct element:
-
-``` text
-name/test[AB]/min - pattern match with one missing character
-name/test\d+/min - pattern match with multiple missing characters
-```
-
-See {@link RegExp()} for the possible syntax but without modifier.
-
-@param {Object} object to be searched
-@param {String|Array} path specifying which element to reference
-@param {String|RegExp} [separator=/] used as separator
-@return element at the position of the path or `undefined` if not found
-###
+#####
+# Like path but here you may give a search pattern to find the element. It may
+# also find multiple elements which will be returned in a list.
+#
+# __Example:__
+#
+# ``` coffee
+# util = require 'alinex-util'
+# test =
+#   string: 'test'
+#   object:
+#     numbers:
+#       one: 1
+#       two: 2
+#   list: [
+#     one: 11
+#   ,
+#     two: 12
+#   ]
+# result = util.object.pathSearch test, '**/one'
+# ```
+#
+# This results to:
+#
+# ``` coffee
+# result = 1
+# ```
+#
+# __Pattern__
+#
+# You may specify like in the following examples (using the default separator).
+#
+#     name - get first element with this name
+#     group/sub/name - get element with path
+#
+# You can search by using asterisk as directory placeholder or a double asterisk to
+# go multiple level depth:
+#
+#     name/*/min - within any subelement
+#     name/*/*/min - within any subelement (two level depth)
+#     name/**/min - within any subelement in any depth
+#
+# You may also use regexp notation to find the correct element:
+#
+#     name/test[AB]/min - pattern match with one missing character
+#     name/test\d+/min - pattern match with multiple missing characters
+#
+# See {@link RegExp} for the possible syntax but without modifier.
+#
+# @param {Object} object to be searched
+# @param {String|Array} path specifying which element to reference
+# @param {String|RegExp} [separator=/] used as separator
+# @return element at the position of the path or `undefined` if not found
 pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
   path = path.split separator if typeof path is 'string'
   debugPathSearch "get path #{util.inspect path} from #{util.inspect obj}"
