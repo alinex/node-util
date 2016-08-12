@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alinex Util: Readme</title>
+    <title>Clone Method</title>
     <meta name="HandheldFriendly" content="true" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -50,35 +50,35 @@
             <input name="q" type="text" class="form-control" placeholder="Search...">
           </form>
           <ul class="nav sidebar-to-top">
-                <li class="active level0">
-                  <a href="README.md.html" title="Alinex Util: Readme (/README.md)" class="btn btn-warning">Readme <span class="sr-only">(current)</span></a>
+                <li class="level0">
+                  <a href="../../README.md.html" title="Alinex Util: Readme (/README.md)" class="btn btn-primary">Readme</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
+                  <a href="../index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/array.coffee.html" title="Array Methods (/src/mod/array.coffee)" class="btn btn-primary">Array Methods</a>
+                  <a href="array.coffee.html" title="Array Methods (/src/mod/array.coffee)" class="btn btn-primary">Array Methods</a>
+                </li>
+                <li class="active level2">
+                  <a href="clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)" class="btn btn-warning">Clone Method <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)" class="btn btn-primary">Clone Method</a>
+                  <a href="extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)" class="btn btn-primary">Extend Object</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)" class="btn btn-primary">Extend Object</a>
+                  <a href="function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)" class="btn btn-primary">Function Wrapper</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)" class="btn btn-primary">Function Wrapper</a>
+                  <a href="number.coffee.html" title="Number Methods (/src/mod/number.coffee)" class="btn btn-primary">Number Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/number.coffee.html" title="Number Methods (/src/mod/number.coffee)" class="btn btn-primary">Number Methods</a>
+                  <a href="object.coffee.html" title="Object Methods (/src/mod/object.coffee)" class="btn btn-primary">Object Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/object.coffee.html" title="Object Methods (/src/mod/object.coffee)" class="btn btn-primary">Object Methods</a>
-                </li>
-                <li class="level2">
-                  <a href="src/mod/string.coffee.html" title="String Methods (/src/mod/string.coffee)" class="btn btn-primary">String Methods</a>
+                  <a href="string.coffee.html" title="String Methods (/src/mod/string.coffee)" class="btn btn-primary">String Methods</a>
                 </li>
                 <li class="level0">
-                  <a href="Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
+                  <a href="../../Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
                 </li>
           </ul>
         </div>
@@ -105,104 +105,96 @@
 <gcse:searchresults-only></gcse:searchresults-only>
 
           <main><p><ul class="table-of-contents" aria-hidden="true"><header>Index</header>
-<li><a href="#install">Install</a></li>
-<li><a href="#general-usage">General Usage</a></li>
-<li><a href="#license">License</a></li>
+<li>
+<ul>
+<li><a href="#clone">clone()</a></li>
+</ul>
+</li>
+<li><a href="#debugging">Debugging</a></li>
 </ul>
 </p>
-<h1 id="alinex-util-readme">Alinex Util: Readme</h1>
-<p><a href="https://travis-ci.org/alinex/node-util"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status" /></a>
-<a href="https://coveralls.io/r/alinex/node-util?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.svg?branch=master" alt="Coverage Status" /></a>
-<a href="https://gemnasium.com/alinex/node-util"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status" /></a>
-<a href="https://github.com/alinex/node-util" title="Code on GitHub"><img src="https://assets-cdn.github.com/favicon.ico" alt="GitHub" class="right" /></a></p>
-<p>This module will be used as incubator for different small helper methods which
-are generally used for different general class types:</p>
-<ul>
-<li>general helper</li>
-<li>string helper</li>
-<li>number helper</li>
-<li>array helper</li>
-<li>object helper</li>
-</ul>
+<h1 id="clone-method">Clone Method</h1>
 <blockquote>
-<p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Namespace</a>
-following the code standards defined in the <a href="http://alinex.github.io/develop">General Docs</a>.</p>
+<p>Path: <code>/src/mod/clone.coffee</code> compiled to <code>/lib/mod/clone.js</code></p>
 </blockquote>
-<p class="hide"><strong>Read the complete documentation under
-<a href="https://alinex.github.io/node-util">https://alinex.github.io/node-util</a>.</strong></p>
-<h2 id="install">Install</h2>
-<p><a href="https://www.npmjs.com/package/alinex-util"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM" />
-<img src="https://nodei.co/npm-dl/alinex-util.png?months=9&amp;height=3" alt="Downloads" />
-</a></p>
-<blockquote>
-<p>See the <a href="Changelog.md.html" title="File: Changelog.md">Version changes</a> for a list of changes in recent versions.</p>
-</blockquote>
-<p>The easiest way is to let npm add the module directly to your modules
-(from within you node modules directory):</p>
-<pre class="language bash"><header>Shell Script</header><code>npm install alinex-util --save</code></pre>
-<h2 id="general-usage">General Usage</h2>
-<p>All methods in this package can be called from the util object:</p>
+<p>This method will create a clone of the given object.
+As possible all methods will be cloned, but if object instances are used they
+will be referenced.</p>
+<p><strong>Example:</strong></p>
 <pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
-<code>raw = { eins: <span class="hljs-number">1</span> }</code>
-<code>copy = util.clone raw</code>
-<code><span class="hljs-built_in">console</span>.log util.inspect copy</code></pre>
-<p>Or you may directly import only the needed objects with:</p>
-<pre class="language coffeescript"><header>CoffeeScript Code</header><code>{string, object} = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
-<code>array = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util/lib/mod/array'</span></code></pre>
-<p>The first example load all methods, while the second example
-only load the needed type library.</p>
-<p>The library may be used as replacement for the node util package because it also
-exports the <a href="https://nodejs.org/dist/latest-v6.x/docs/api/util.html#util_util_inspect_object_options">util.inspect()</a> method from NodeJS core which is the only really
-needed method from this package.</p>
-<h2 id="license">License</h2>
-<p>© Copyright 2014-2016 Alexander Schilling</p>
-<p>Licensed under the Apache License, Version 2.0 (the “License”);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
+<code>test = { eins: <span class="hljs-number">1</span> }</code>
+<code>result = util.clone test</code></pre>
+<p>This results to:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>result = { eins: <span class="hljs-number">1</span> }</code>
+<code>result <span class="hljs-keyword">is</span> test = <span class="hljs-literal">false</span></code></pre>
+<h3 id="clone">clone()</h3>
 <blockquote>
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p class="api-usage"><strong>Usage:</strong> <code>clone(obj, depth)</code></p>
 </blockquote>
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>obj</code> - <code>Object</code> the object to be cloned</li>
+<li><code>depth</code> - <code>Integer</code> optional maximum level of cloning deper levels will be referenced</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd><code>Object</code> the cloned object</dd>
+</dl>
+<h2 id="debugging">Debugging</h2>
+<p>Debugging is possible using environment setting:</p>
+<pre><code><span class="hljs-built_in">DEBUG</span>=util:<span class="hljs-keyword">clone </span>   -&gt; <span class="hljs-keyword">shows </span>each level of <span class="hljs-keyword">cloning
+</span></code></pre>
+<pre><code>util:clone -&gt; { maxCpu: '95%', maxLoad: '400%' } +0ms
+util:clone    ++ [] +0ms
+util:clone    -&gt; '95%' +0ms
+util:clone    &lt;- is primitive +0ms
+util:clone    -&gt; '400%' +0ms
+util:clone    &lt;- is primitive +0ms
+util:clone &lt;- cloned object +0ms
+util:clone -&gt; { nice: -20 } +0ms
+util:clone    ++ [] +0ms
+util:clone    -&gt; -20 +0ms
+util:clone    &lt;- is primitive +0ms
+util:clone &lt;- cloned object +0ms
+</code></pre>
 </main>
         </div>
         <div class="col-sm-3 col-cm-pull-9 sidebar">
           <ul class="nav nav-sidebar">
             <li class="header">
-              <a href="README.md.html">Alinex Util</a>
+              <a href="../../README.md.html">Alinex Util</a>
             </li>
-                <li class="active level0">
-                  <a href="README.md.html" title="Alinex Util: Readme (/README.md)">Readme <span class="sr-only">(current)</span></a>
+                <li class="level0">
+                  <a href="../../README.md.html" title="Alinex Util: Readme (/README.md)">Readme</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
+                  <a href="../index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/array.coffee.html" title="Array Methods (/src/mod/array.coffee)">Array Methods</a>
+                  <a href="array.coffee.html" title="Array Methods (/src/mod/array.coffee)">Array Methods</a>
+                </li>
+                <li class="active level2">
+                  <a href="clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)">Clone Method <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)">Clone Method</a>
+                  <a href="extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)">Extend Object</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)">Extend Object</a>
+                  <a href="function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)">Function Wrapper</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)">Function Wrapper</a>
+                  <a href="number.coffee.html" title="Number Methods (/src/mod/number.coffee)">Number Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/number.coffee.html" title="Number Methods (/src/mod/number.coffee)">Number Methods</a>
+                  <a href="object.coffee.html" title="Object Methods (/src/mod/object.coffee)">Object Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/object.coffee.html" title="Object Methods (/src/mod/object.coffee)">Object Methods</a>
-                </li>
-                <li class="level2">
-                  <a href="src/mod/string.coffee.html" title="String Methods (/src/mod/string.coffee)">String Methods</a>
+                  <a href="string.coffee.html" title="String Methods (/src/mod/string.coffee)">String Methods</a>
                 </li>
                 <li class="level0">
-                  <a href="Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
+                  <a href="../../Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
                 </li>
           </ul>
         </div>

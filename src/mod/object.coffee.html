@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alinex Util: Readme</title>
+    <title>Object Methods</title>
     <meta name="HandheldFriendly" content="true" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -50,35 +50,35 @@
             <input name="q" type="text" class="form-control" placeholder="Search...">
           </form>
           <ul class="nav sidebar-to-top">
-                <li class="active level0">
-                  <a href="README.md.html" title="Alinex Util: Readme (/README.md)" class="btn btn-warning">Readme <span class="sr-only">(current)</span></a>
+                <li class="level0">
+                  <a href="../../README.md.html" title="Alinex Util: Readme (/README.md)" class="btn btn-primary">Readme</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
+                  <a href="../index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/array.coffee.html" title="Array Methods (/src/mod/array.coffee)" class="btn btn-primary">Array Methods</a>
+                  <a href="array.coffee.html" title="Array Methods (/src/mod/array.coffee)" class="btn btn-primary">Array Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)" class="btn btn-primary">Clone Method</a>
+                  <a href="clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)" class="btn btn-primary">Clone Method</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)" class="btn btn-primary">Extend Object</a>
+                  <a href="extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)" class="btn btn-primary">Extend Object</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)" class="btn btn-primary">Function Wrapper</a>
+                  <a href="function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)" class="btn btn-primary">Function Wrapper</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/number.coffee.html" title="Number Methods (/src/mod/number.coffee)" class="btn btn-primary">Number Methods</a>
+                  <a href="number.coffee.html" title="Number Methods (/src/mod/number.coffee)" class="btn btn-primary">Number Methods</a>
+                </li>
+                <li class="active level2">
+                  <a href="object.coffee.html" title="Object Methods (/src/mod/object.coffee)" class="btn btn-warning">Object Methods <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/object.coffee.html" title="Object Methods (/src/mod/object.coffee)" class="btn btn-primary">Object Methods</a>
-                </li>
-                <li class="level2">
-                  <a href="src/mod/string.coffee.html" title="String Methods (/src/mod/string.coffee)" class="btn btn-primary">String Methods</a>
+                  <a href="string.coffee.html" title="String Methods (/src/mod/string.coffee)" class="btn btn-primary">String Methods</a>
                 </li>
                 <li class="level0">
-                  <a href="Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
+                  <a href="../../Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
                 </li>
           </ul>
         </div>
@@ -105,104 +105,269 @@
 <gcse:searchresults-only></gcse:searchresults-only>
 
           <main><p><ul class="table-of-contents" aria-hidden="true"><header>Index</header>
-<li><a href="#install">Install</a></li>
-<li><a href="#general-usage">General Usage</a></li>
-<li><a href="#license">License</a></li>
+<li>
+<ul>
+<li><a href="#isempty">isEmpty()</a></li>
+<li><a href="#path">path()</a></li>
+<li><a href="#pathsearch">pathSearch()</a></li>
+<li><a href="#filter">filter()</a></li>
+<li><a href="#lckeys">lcKeys()</a></li>
+<li><a href="#iscyclic">isCyclic()</a></li>
+<li><a href="#getcyclic">getCyclic()</a></li>
+</ul>
+</li>
 </ul>
 </p>
-<h1 id="alinex-util-readme">Alinex Util: Readme</h1>
-<p><a href="https://travis-ci.org/alinex/node-util"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status" /></a>
-<a href="https://coveralls.io/r/alinex/node-util?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.svg?branch=master" alt="Coverage Status" /></a>
-<a href="https://gemnasium.com/alinex/node-util"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status" /></a>
-<a href="https://github.com/alinex/node-util" title="Code on GitHub"><img src="https://assets-cdn.github.com/favicon.ico" alt="GitHub" class="right" /></a></p>
-<p>This module will be used as incubator for different small helper methods which
-are generally used for different general class types:</p>
+<h1 id="object-methods">Object Methods</h1>
+<blockquote>
+<p>Path: <code>/src/mod/object.coffee</code> compiled to <code>/lib/mod/object.js</code></p>
+</blockquote>
+<h3 id="isempty">isEmpty()</h3>
+<p>This method will check if an object is empty. This is also true for undefined
+objects.</p>
+<blockquote>
+<p class="api-usage"><strong>Usage:</strong> <code>isEmpty(object)</code></p>
+</blockquote>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
 <ul>
-<li>general helper</li>
-<li>string helper</li>
-<li>number helper</li>
-<li>array helper</li>
-<li>object helper</li>
+<li><code>object</code> - <code>Object</code> to be checked</li>
 </ul>
-<blockquote>
-<p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Namespace</a>
-following the code standards defined in the <a href="http://alinex.github.io/develop">General Docs</a>.</p>
-</blockquote>
-<p class="hide"><strong>Read the complete documentation under
-<a href="https://alinex.github.io/node-util">https://alinex.github.io/node-util</a>.</strong></p>
-<h2 id="install">Install</h2>
-<p><a href="https://www.npmjs.com/package/alinex-util"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM" />
-<img src="https://nodei.co/npm-dl/alinex-util.png?months=9&amp;height=3" alt="Downloads" />
-</a></p>
-<blockquote>
-<p>See the <a href="Changelog.md.html" title="File: Changelog.md">Version changes</a> for a list of changes in recent versions.</p>
-</blockquote>
-<p>The easiest way is to let npm add the module directly to your modules
-(from within you node modules directory):</p>
-<pre class="language bash"><header>Shell Script</header><code>npm install alinex-util --save</code></pre>
-<h2 id="general-usage">General Usage</h2>
-<p>All methods in this package can be called from the util object:</p>
+</dd>
+<dt>Return</dt>
+<dd><code>Boolean</code> <code>true</code> if object is empty</dd>
+</dl>
+<h3 id="path">path()</h3>
+<p>This method allows you to access an element deep in an object’s structure by
+giving only the path to the element.</p>
+<p><strong>Example:</strong></p>
 <pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
-<code>raw = { eins: <span class="hljs-number">1</span> }</code>
-<code>copy = util.clone raw</code>
-<code><span class="hljs-built_in">console</span>.log util.inspect copy</code></pre>
-<p>Or you may directly import only the needed objects with:</p>
-<pre class="language coffeescript"><header>CoffeeScript Code</header><code>{string, object} = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
-<code>array = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util/lib/mod/array'</span></code></pre>
-<p>The first example load all methods, while the second example
-only load the needed type library.</p>
-<p>The library may be used as replacement for the node util package because it also
-exports the <a href="https://nodejs.org/dist/latest-v6.x/docs/api/util.html#util_util_inspect_object_options">util.inspect()</a> method from NodeJS core which is the only really
-needed method from this package.</p>
-<h2 id="license">License</h2>
-<p>© Copyright 2014-2016 Alexander Schilling</p>
-<p>Licensed under the Apache License, Version 2.0 (the “License”);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
+<code>test =</code>
+<code>  string: <span class="hljs-string">'test'</span></code>
+<code>  object:</code>
+<code>    numbers:</code>
+<code>      one: <span class="hljs-number">1</span></code>
+<code>      two: <span class="hljs-number">2</span></code>
+<code>  list: [</code>
+<code>    one: <span class="hljs-number">11</span></code>
+<code>  ,</code>
+<code>    two: <span class="hljs-number">12</span></code>
+<code>  ]</code>
+<code>result = util.object.path test, <span class="hljs-string">'/object/numbers'</span></code></pre>
+<p>This results to:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>result = { one: <span class="hljs-number">1</span>, two: <span class="hljs-number">2</span> }</code></pre>
 <blockquote>
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p class="api-usage"><strong>Usage:</strong> <code>path(object, path, separator)</code></p>
 </blockquote>
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>object</code> - <code>Object</code> to be searched</li>
+<li><code>path</code> - <code>String|Array</code> specifying which element to reference</li>
+<li><code>separator</code> - <code>String|RegExp</code> optional used as separator (default: /)</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd>element at the position of the path or <code>undefined</code> if not found</dd>
+</dl>
+<h3 id="pathsearch">pathSearch()</h3>
+<p>Like path but here you may give a search pattern to find the element. It may
+also find multiple elements which will be returned in a list.</p>
+<p><strong>Example:</strong></p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
+<code>test =</code>
+<code>  string: <span class="hljs-string">'test'</span></code>
+<code>  object:</code>
+<code>    numbers:</code>
+<code>      one: <span class="hljs-number">1</span></code>
+<code>      two: <span class="hljs-number">2</span></code>
+<code>  list: [</code>
+<code>    one: <span class="hljs-number">11</span></code>
+<code>  ,</code>
+<code>    two: <span class="hljs-number">12</span></code>
+<code>  ]</code>
+<code>result = util.object.pathSearch test, <span class="hljs-string">'**/one'</span></code></pre>
+<p>This results to:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>result = <span class="hljs-number">1</span></code></pre>
+<p><strong>Pattern</strong></p>
+<p>You may specify like in the following examples (using the default separator).</p>
+<pre><code>name - get first element with this name
+group/sub/name - get element with path
+</code></pre>
+<p>You can search by using asterisk as directory placeholder or a double asterisk to
+go multiple level depth:</p>
+<pre><code>name/*/min - within any subelement
+name/*/*/min - within any subelement (two level depth)
+name/**/min - within any subelement in any depth
+</code></pre>
+<p>You may also use regexp notation to find the correct element:</p>
+<pre><code>name/test[AB]/min - pattern match with one missing character
+name/test\d+/min - pattern match with multiple missing characters
+</code></pre>
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">RegExp</a> for the possible syntax but without modifier.</p>
+<blockquote>
+<p class="api-usage"><strong>Usage:</strong> <code>pathSearch(object, path, separator)</code></p>
+</blockquote>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>object</code> - <code>Object</code> to be searched</li>
+<li><code>path</code> - <code>String|Array</code> specifying which element to reference</li>
+<li><code>separator</code> - <code>String|RegExp</code> optional used as separator (default: /)</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd>element at the position of the path or <code>undefined</code> if not found</dd>
+</dl>
+<h3 id="filter">filter()</h3>
+<p>Like the Array.filter() method of arrays you may filter object entries here.</p>
+<p><strong>Example:</strong></p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
+<code>test =</code>
+<code>  one: <span class="hljs-number">1</span></code>
+<code>  two: <span class="hljs-number">2</span></code>
+<code>  three: <span class="hljs-number">3</span></code>
+<code>  four: <span class="hljs-number">4</span></code>
+<code>result = util.object.filter test, <span class="hljs-function"><span class="hljs-params">(value)</span> -&gt;</span> value &lt; <span class="hljs-number">3</span></code></pre>
+<p>This results to:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>result =</code>
+<code>  one: <span class="hljs-number">1</span></code>
+<code>  two: <span class="hljs-number">2</span></code></pre>
+<blockquote>
+<p class="api-usage"><strong>Usage:</strong> <code>filter(obj, will)</code></p>
+</blockquote>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li>
+<p><code>obj</code> - <code>Object</code> to be filtered</p>
+</li>
+<li>
+<p><code>will</code> - <code>Function</code> be called for each entry with:</p>
+<ul>
+<li><code>value</code> - the current value</li>
+<li><code>key</code> - <code>String</code> the current key name</li>
+<li><code>obj</code> - the whole object</li>
+</ul>
+<p>It should return a <code>Boolean</code> value. If <code>true</code> the entry will be copied to the
+resulting object.</p>
+</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd><code>Object</code> data object with all or some entries from the original</dd>
+</dl>
+<h3 id="lckeys">lcKeys()</h3>
+<p>Make the keys within a deep object all lowercase.</p>
+<p><strong>Example:</strong></p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
+<code>test =</code>
+<code>  One: <span class="hljs-number">1</span></code>
+<code>  TWO:</code>
+<code>    three: <span class="hljs-number">3</span></code>
+<code>    fouR: <span class="hljs-number">4</span></code>
+<code>result = util.object.lcKeys test</code></pre>
+<p>Will result in:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>result =</code>
+<code>  one: <span class="hljs-number">1</span></code>
+<code>  two:</code>
+<code>    three: <span class="hljs-number">3</span></code>
+<code>    four: <span class="hljs-number">4</span></code></pre>
+<blockquote>
+<p class="api-usage"><strong>Usage:</strong> <code>lcKeys(obj)</code></p>
+</blockquote>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>obj</code> - <code>Object</code> to be optimized</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd><code>Object</code> data object with all keys in lowercase</dd>
+</dl>
+<h3 id="iscyclic">isCyclic()</h3>
+<p>This will check an object if it contains circular references.</p>
+<p><strong>Example:</strong></p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
+<code>test = { eins: <span class="hljs-number">1</span> }</code>
+<code>util.object.isCyclic test <span class="hljs-comment"># will be false</span></code>
+<code>test.zwei = test.eins</code>
+<code>util.object.isCyclic test <span class="hljs-comment"># will be true</span></code></pre>
+<blockquote>
+<p class="api-usage"><strong>Usage:</strong> <code>isCyclic(obj)</code></p>
+</blockquote>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>obj</code> - <code>Object</code> to be checked</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd><code>Boolean</code> <code>true</code> if the object contains circular references</dd>
+</dl>
+<h3 id="getcyclic">getCyclic()</h3>
+<p>Detects circular references but instead of only checking it list all cyclic objects.</p>
+<p><strong>Example:</strong></p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
+<code>test = { eins: <span class="hljs-number">1</span> }</code>
+<code>util.object.getCyclic test <span class="hljs-comment"># empty list []</span></code>
+<code>test.zwei = test.eins</code>
+<code>util.object.getCyclic test <span class="hljs-comment"># [{ eins: 1 }]</span></code></pre>
+<blockquote>
+<p class="api-usage"><strong>Usage:</strong> <code>getCyclic(obj)</code></p>
+</blockquote>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>obj</code> - <code>Object</code> to be checked</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd><code>Array</code> list of objects which are circular</dd>
+</dl>
 </main>
         </div>
         <div class="col-sm-3 col-cm-pull-9 sidebar">
           <ul class="nav nav-sidebar">
             <li class="header">
-              <a href="README.md.html">Alinex Util</a>
+              <a href="../../README.md.html">Alinex Util</a>
             </li>
-                <li class="active level0">
-                  <a href="README.md.html" title="Alinex Util: Readme (/README.md)">Readme <span class="sr-only">(current)</span></a>
+                <li class="level0">
+                  <a href="../../README.md.html" title="Alinex Util: Readme (/README.md)">Readme</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
+                  <a href="../index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/array.coffee.html" title="Array Methods (/src/mod/array.coffee)">Array Methods</a>
+                  <a href="array.coffee.html" title="Array Methods (/src/mod/array.coffee)">Array Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)">Clone Method</a>
+                  <a href="clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)">Clone Method</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)">Extend Object</a>
+                  <a href="extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)">Extend Object</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)">Function Wrapper</a>
+                  <a href="function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)">Function Wrapper</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/number.coffee.html" title="Number Methods (/src/mod/number.coffee)">Number Methods</a>
+                  <a href="number.coffee.html" title="Number Methods (/src/mod/number.coffee)">Number Methods</a>
+                </li>
+                <li class="active level2">
+                  <a href="object.coffee.html" title="Object Methods (/src/mod/object.coffee)">Object Methods <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/object.coffee.html" title="Object Methods (/src/mod/object.coffee)">Object Methods</a>
-                </li>
-                <li class="level2">
-                  <a href="src/mod/string.coffee.html" title="String Methods (/src/mod/string.coffee)">String Methods</a>
+                  <a href="string.coffee.html" title="String Methods (/src/mod/string.coffee)">String Methods</a>
                 </li>
                 <li class="level0">
-                  <a href="Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
+                  <a href="../../Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
                 </li>
           </ul>
         </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alinex Util: Readme</title>
+    <title>Function Wrapper</title>
     <meta name="HandheldFriendly" content="true" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -50,35 +50,35 @@
             <input name="q" type="text" class="form-control" placeholder="Search...">
           </form>
           <ul class="nav sidebar-to-top">
-                <li class="active level0">
-                  <a href="README.md.html" title="Alinex Util: Readme (/README.md)" class="btn btn-warning">Readme <span class="sr-only">(current)</span></a>
+                <li class="level0">
+                  <a href="../../README.md.html" title="Alinex Util: Readme (/README.md)" class="btn btn-primary">Readme</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
+                  <a href="../index.coffee.html" title="API Usage (/src/index.coffee)" class="btn btn-primary">API Usage</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/array.coffee.html" title="Array Methods (/src/mod/array.coffee)" class="btn btn-primary">Array Methods</a>
+                  <a href="array.coffee.html" title="Array Methods (/src/mod/array.coffee)" class="btn btn-primary">Array Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)" class="btn btn-primary">Clone Method</a>
+                  <a href="clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)" class="btn btn-primary">Clone Method</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)" class="btn btn-primary">Extend Object</a>
+                  <a href="extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)" class="btn btn-primary">Extend Object</a>
+                </li>
+                <li class="active level2">
+                  <a href="function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)" class="btn btn-warning">Function Wrapper <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)" class="btn btn-primary">Function Wrapper</a>
+                  <a href="number.coffee.html" title="Number Methods (/src/mod/number.coffee)" class="btn btn-primary">Number Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/number.coffee.html" title="Number Methods (/src/mod/number.coffee)" class="btn btn-primary">Number Methods</a>
+                  <a href="object.coffee.html" title="Object Methods (/src/mod/object.coffee)" class="btn btn-primary">Object Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/object.coffee.html" title="Object Methods (/src/mod/object.coffee)" class="btn btn-primary">Object Methods</a>
-                </li>
-                <li class="level2">
-                  <a href="src/mod/string.coffee.html" title="String Methods (/src/mod/string.coffee)" class="btn btn-primary">String Methods</a>
+                  <a href="string.coffee.html" title="String Methods (/src/mod/string.coffee)" class="btn btn-primary">String Methods</a>
                 </li>
                 <li class="level0">
-                  <a href="Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
+                  <a href="../../Changelog.md.html" title="Version changes (/Changelog.md)" class="btn btn-primary">Version changes</a>
                 </li>
           </ul>
         </div>
@@ -105,104 +105,211 @@
 <gcse:searchresults-only></gcse:searchresults-only>
 
           <main><p><ul class="table-of-contents" aria-hidden="true"><header>Index</header>
-<li><a href="#install">Install</a></li>
-<li><a href="#general-usage">General Usage</a></li>
-<li><a href="#license">License</a></li>
+<li>
+<ul>
+<li><a href="#once">once()</a></li>
+<li><a href="#oncethrow">onceThrow()</a></li>
+<li><a href="#onceskip">onceSkip()</a></li>
+<li><a href="#oncetime">onceTime()</a></li>
+</ul>
+</li>
 </ul>
 </p>
-<h1 id="alinex-util-readme">Alinex Util: Readme</h1>
-<p><a href="https://travis-ci.org/alinex/node-util"><img src="https://travis-ci.org/alinex/node-util.svg?branch=master" alt="Build Status" /></a>
-<a href="https://coveralls.io/r/alinex/node-util?branch=master"><img src="https://coveralls.io/repos/alinex/node-util/badge.svg?branch=master" alt="Coverage Status" /></a>
-<a href="https://gemnasium.com/alinex/node-util"><img src="https://gemnasium.com/alinex/node-util.png" alt="Dependency Status" /></a>
-<a href="https://github.com/alinex/node-util" title="Code on GitHub"><img src="https://assets-cdn.github.com/favicon.ico" alt="GitHub" class="right" /></a></p>
-<p>This module will be used as incubator for different small helper methods which
-are generally used for different general class types:</p>
+<h1 id="function-wrapper">Function Wrapper</h1>
+<blockquote>
+<p>Path: <code>/src/mod/function.coffee</code> compiled to <code>/lib/mod/function.js</code></p>
+</blockquote>
+<p>The following functions are used to wrap functions to give them more functionality.
+You will get a resulting function which can be called any time.</p>
+<p>In all of the following methods you may give an optional context to use as first
+parameter. So to call it from class do so like:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>class = Test</code>
+<code>  init: util.function.once this, (cb) -&gt;</code>
+<code>    # method...</code>
+<code>    cb null, @status</code></pre>
+<p>That allows your function to access class members and methods. Keep in mind to use
+<code>=&gt;</code> if you use sub functions.</p>
+<p>If you use it in <code>module.exports</code> then do it as follows:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code><span class="hljs-built_in">module</span>.exports =</code>
+<code>  anyMethod: <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span></code>
+<code>  <span class="hljs-comment"># and so on</span></code>
+<code></code>
+<code><span class="hljs-built_in">module</span>.exports.init = util.function.once <span class="hljs-built_in">module</span>.exports, <span class="hljs-function"><span class="hljs-params">(cb)</span> -&gt;</span></code>
+<code>  <span class="hljs-comment"># method...</span></code>
+<code>  @anyMethod cb</code></pre>
+<p>Like you see above you have to declare this method separately so that the <code>util.function.once</code>
+method can access the now already defined module.exports object.</p>
+<h3 id="once">once()</h3>
+<p>Run method only once but return the same result to all calls:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>fn = util.function.once (cb) -&gt;</code>
+<code>  time = process.hrtime()</code>
+<code>  setTimeout -&gt;</code>
+<code>    cb <span class="hljs-literal">null</span>, time[<span class="hljs-number">1</span>]</code>
+<code>  , <span class="hljs-number">1000</span></code></pre>
+<p>Use this to make some initializations which only have to run once but neither
+function may start because it is not done:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>async.parallel [ fn, fn ], <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span></code>
+<code>  <span class="hljs-comment"># same as with `once.atime` it will come here exactly after the</span></code>
+<code>  <span class="hljs-comment"># first call finished because the second one will get the</span></code>
+<code>  <span class="hljs-comment"># result the same time</span></code>
+<code>  <span class="hljs-comment"># results here will be the same integer, twice</span></code>
+<code>  fn (err, result) -&gt;</code>
+<code>    <span class="hljs-comment"># and this call will return imediately with the previous result</span></code></pre>
+<blockquote>
+<p class="api-usage"><strong>Usage:</strong> <code>once(context, func)</code></p>
+</blockquote>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
 <ul>
-<li>general helper</li>
-<li>string helper</li>
-<li>number helper</li>
-<li>array helper</li>
-<li>object helper</li>
+<li><code>context</code> - <code>Object</code> within the function will run</li>
+<li><code>func</code> - <code>Function</code> to be called</li>
 </ul>
+</dd>
+<dt>Return</dt>
+<dd>the second and later calls will return with the same result</dd>
+<dt>Throws</dt>
+<dd>
+<ul>
+<li><code>Error</code> Argument func is not a function!</li>
+</ul>
+</dd>
+</dl>
+<h3 id="oncethrow">onceThrow()</h3>
+<p>Throw an error if it is called a second time:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>fn = util.function.onceThrow (a, b, cb) -&gt; cb <span class="hljs-literal">null</span>, a + b</code></pre>
+<p>If you call this method multiple times it will throw an exception:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>fn <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span></code>
+<code>  <span class="hljs-comment"># x will now be 5</span></code>
+<code>  fn <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-function"><span class="hljs-params">(err, x)</span> -&gt;</span></code>
+<code>    <span class="hljs-comment"># will neither get there because an exception is thrown above</span></code></pre>
 <blockquote>
-<p>It is one of the modules of the <a href="http://alinex.github.io/code.html">Alinex Namespace</a>
-following the code standards defined in the <a href="http://alinex.github.io/develop">General Docs</a>.</p>
+<p class="api-usage"><strong>Usage:</strong> <code>onceThrow(context, func)</code></p>
 </blockquote>
-<p class="hide"><strong>Read the complete documentation under
-<a href="https://alinex.github.io/node-util">https://alinex.github.io/node-util</a>.</strong></p>
-<h2 id="install">Install</h2>
-<p><a href="https://www.npmjs.com/package/alinex-util"><img src="https://nodei.co/npm/alinex-util.png?downloads=true&amp;downloadRank=true&amp;stars=true" alt="NPM" />
-<img src="https://nodei.co/npm-dl/alinex-util.png?months=9&amp;height=3" alt="Downloads" />
-</a></p>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>context</code> - <code>Object</code> within the function will run</li>
+<li><code>func</code> - <code>Function</code> to be called</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd>result on first call only</dd>
+<dt>Throws</dt>
+<dd>
+<ul>
+<li><code>Error</code> Argument func is not a function!</li>
+<li><code>Error</code> This function should only be called once.</li>
+</ul>
+</dd>
+</dl>
+<h3 id="onceskip">onceSkip()</h3>
+<p>With the skip method only the first call works all other will return an Error.</p>
+<p>A function may be wrapped with the skip method. And it will only be called once
+for ever.</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>fn = util.function.onceSkip (a, b) -&gt; a + b</code></pre>
+<p>And now you can call the function as normal but on the second call it will
+return imediately without running the code:</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>x = fn <span class="hljs-number">2</span>, <span class="hljs-number">3</span></code>
+<code><span class="hljs-comment"># x = 5</span></code>
+<code>x = fn <span class="hljs-number">2</span>, <span class="hljs-number">3</span></code>
+<code><span class="hljs-comment"># x = &lt;Error&gt;</span></code></pre>
+<p>You may use this helper in case of initialization (wait) there a specific
+method have to run once before any other call can succeed. Or then events
+are involved and an error event will trigger the callback and the end event will
+do the same.</p>
 <blockquote>
-<p>See the <a href="Changelog.md.html" title="File: Changelog.md">Version changes</a> for a list of changes in recent versions.</p>
+<p class="api-usage"><strong>Usage:</strong> <code>onceSkip(context, func)</code></p>
 </blockquote>
-<p>The easiest way is to let npm add the module directly to your modules
-(from within you node modules directory):</p>
-<pre class="language bash"><header>Shell Script</header><code>npm install alinex-util --save</code></pre>
-<h2 id="general-usage">General Usage</h2>
-<p>All methods in this package can be called from the util object:</p>
-<pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
-<code>raw = { eins: <span class="hljs-number">1</span> }</code>
-<code>copy = util.clone raw</code>
-<code><span class="hljs-built_in">console</span>.log util.inspect copy</code></pre>
-<p>Or you may directly import only the needed objects with:</p>
-<pre class="language coffeescript"><header>CoffeeScript Code</header><code>{string, object} = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
-<code>array = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util/lib/mod/array'</span></code></pre>
-<p>The first example load all methods, while the second example
-only load the needed type library.</p>
-<p>The library may be used as replacement for the node util package because it also
-exports the <a href="https://nodejs.org/dist/latest-v6.x/docs/api/util.html#util_util_inspect_object_options">util.inspect()</a> method from NodeJS core which is the only really
-needed method from this package.</p>
-<h2 id="license">License</h2>
-<p>© Copyright 2014-2016 Alexander Schilling</p>
-<p>Licensed under the Apache License, Version 2.0 (the “License”);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>context</code> - <code>Object</code> within the function will run</li>
+<li><code>func</code> - <code>Function</code> to be called</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd><code>Mixed|Error</code> the reuslt or an <code>Èrror</code> if called multiple times</dd>
+<dt>Throws</dt>
+<dd>
+<ul>
+<li><code>Error</code> Argument func is not a function!</li>
+</ul>
+</dd>
+</dl>
+<h3 id="oncetime">onceTime()</h3>
+<p>Only run it once at a time, queue following requests and send them the result
+of the next run. All calls get the same result, but then the process is already
+started it will list the following calls for the next round. This assures that
+their result is from the newest data set because you may changed something
+while the first run was already working.</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>fn = util.function.onceTime (cb) -&gt;</code>
+<code>  time = process.hrtime()</code>
+<code>  setTimeout -&gt;</code>
+<code>    cb <span class="hljs-literal">null</span>, time[<span class="hljs-number">1</span>]</code>
+<code>  , <span class="hljs-number">1000</span></code></pre>
+<p>And now you may call it multiple times but it will not run more than once
+simultaneously. But all simultaneous calls will get the same result.</p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>async.parallel [ fn, fn ], <span class="hljs-function"><span class="hljs-params">(err, results)</span> -&gt;</span></code>
+<code>  <span class="hljs-comment"># will come here exactly after the first call finished (because the</span></code>
+<code>  <span class="hljs-comment"># second will do so the same time)</span></code>
+<code>  <span class="hljs-comment"># results here will be the same integer, twice</span></code></pre>
 <blockquote>
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p class="api-usage"><strong>Usage:</strong> <code>onceTime(context, func)</code></p>
 </blockquote>
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p>
+<dl class="api-spec">
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>context</code> - <code>Object</code> within the function will run</li>
+<li><code>func</code> - <code>Function</code> to be called</li>
+</ul>
+</dd>
+<dt>Throws</dt>
+<dd>
+<ul>
+<li><code>Error</code> Argument func is not a function!</li>
+</ul>
+</dd>
+</dl>
 </main>
         </div>
         <div class="col-sm-3 col-cm-pull-9 sidebar">
           <ul class="nav nav-sidebar">
             <li class="header">
-              <a href="README.md.html">Alinex Util</a>
+              <a href="../../README.md.html">Alinex Util</a>
             </li>
-                <li class="active level0">
-                  <a href="README.md.html" title="Alinex Util: Readme (/README.md)">Readme <span class="sr-only">(current)</span></a>
+                <li class="level0">
+                  <a href="../../README.md.html" title="Alinex Util: Readme (/README.md)">Readme</a>
                 </li>
                 <li class="level1">
-                  <a href="src/index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
+                  <a href="../index.coffee.html" title="API Usage (/src/index.coffee)">API Usage</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/array.coffee.html" title="Array Methods (/src/mod/array.coffee)">Array Methods</a>
+                  <a href="array.coffee.html" title="Array Methods (/src/mod/array.coffee)">Array Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)">Clone Method</a>
+                  <a href="clone.coffee.html" title="Clone Method (/src/mod/clone.coffee)">Clone Method</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)">Extend Object</a>
+                  <a href="extend.coffee.html" title="Extend Object (/src/mod/extend.coffee)">Extend Object</a>
+                </li>
+                <li class="active level2">
+                  <a href="function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)">Function Wrapper <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/function.coffee.html" title="Function Wrapper (/src/mod/function.coffee)">Function Wrapper</a>
+                  <a href="number.coffee.html" title="Number Methods (/src/mod/number.coffee)">Number Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/number.coffee.html" title="Number Methods (/src/mod/number.coffee)">Number Methods</a>
+                  <a href="object.coffee.html" title="Object Methods (/src/mod/object.coffee)">Object Methods</a>
                 </li>
                 <li class="level2">
-                  <a href="src/mod/object.coffee.html" title="Object Methods (/src/mod/object.coffee)">Object Methods</a>
-                </li>
-                <li class="level2">
-                  <a href="src/mod/string.coffee.html" title="String Methods (/src/mod/string.coffee)">String Methods</a>
+                  <a href="string.coffee.html" title="String Methods (/src/mod/string.coffee)">String Methods</a>
                 </li>
                 <li class="level0">
-                  <a href="Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
+                  <a href="../../Changelog.md.html" title="Version changes (/Changelog.md)">Version changes</a>
                 </li>
           </ul>
         </div>
