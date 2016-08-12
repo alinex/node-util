@@ -4,6 +4,23 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.4.0 (2016-08-12)
+-------------------------------------------------
+Remove old, already deprecated clone() and extend() methods.
+
+- Update async@2.0.1, alinex-builder@2.3.6
+- Finished documentation.
+- Documented object methods.
+- Updated documentation for object.
+- Remove deprecated methods.
+- Optimize documentation.
+- Updated doc for numbers.
+- Add debugging to string methods.
+- Update documentation for string helper.
+- Update documentation of clone/extend.
+- Rename links to Alinex Namespace.
+- Add copyright sign.
+
 Version 2.3.1 (2016-07-02)
 -------------------------------------------------
 - Upgrade builder package.
