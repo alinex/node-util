@@ -46,7 +46,7 @@ are generally used for different general class types:
 
 __Read the complete documentation under
 [https://alinex.github.io/node-util](https://alinex.github.io/node-util).__
-<!-- {p: .hide} -->
+<!-- {p: .hidden} -->
 
 
 Install
