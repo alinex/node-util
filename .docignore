@@ -12,3 +12,5 @@ node_modules/
 /var/local/
 npm-debug.log
 /test/
+/.travis.yml
+/coffeelint.json
