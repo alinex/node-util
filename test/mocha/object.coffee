@@ -77,6 +77,8 @@ describe "Object", ->
       expect(object.pathSearch(test, '')).to.deep.equal test
       expect(object.pathSearch(test, '/')).to.deep.equal test
       expect(object.pathSearch(test, [])).to.deep.equal test
+      expect(object.pathSearch(test, '*')).to.deep.equal test
+      expect(object.pathSearch(test, '**')).to.deep.equal test
 
     it "should access subelement", ->
       expect(object.pathSearch(test, '/string')).to.deep.equal test.string
@@ -111,6 +113,11 @@ describe "Object", ->
     it "should find element using regular expressions", ->
       expect(object.pathSearch(test, '**/st.*')).to.deep.equal test.string
       expect(object.pathSearch(test, '**/o[ne]*')).to.deep.equal 1
+
+    it "should fail to find something", ->
+      expect(object.pathSearch(test, 'notthere')).to.not.exist
+      expect(object.pathSearch(test, 'notthere/*')).to.not.exist
+      expect(object.pathSearch(test, '**/notthere')).to.not.exist
 
   describe "filter", ->
 

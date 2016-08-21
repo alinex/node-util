@@ -134,6 +134,7 @@ pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
   switch
     # wildcard path
     when cur is '*'
+      return obj unless path.length
       unless path.length
         result = []
         result.push val for key, val of obj
