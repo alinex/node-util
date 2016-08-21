@@ -122,7 +122,7 @@ describe "once", ->
         expect(x, 'result').to.exist
         done()
 
-    it.only "should run once with parallel calls", (done) ->
+    it "should run once with parallel calls", (done) ->
       @timeout 10000
       fn = util.function.onceTime (cb) ->
         time = new Date().getTime()

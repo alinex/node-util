@@ -229,9 +229,14 @@ describe "String", ->
       Keep in mind that the machine is in the test net and you have to use a valid
       VPN connection for accessing.
       """
+
     it "should not wrap in long words", ->
       expect string.wordwrap "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)", null, 0
       .to.be.equal "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)"
+
+    it "should wrap after long words", ->
+      expect string.wordwrap "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png) is great"
+      .to.be.equal "![google](https://www.google.de/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)\nis great"
 
     it "should not wrap short text", ->
       expect string.wordwrap "This is\nashort text.", 78
