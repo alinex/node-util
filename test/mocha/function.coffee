@@ -122,12 +122,12 @@ describe "once", ->
         expect(x, 'result').to.exist
         done()
 
-    it "should run once with parallel calls", (done) ->
-      @timeout 5000
+    it.only "should run once with parallel calls", (done) ->
+      @timeout 10000
       fn = util.function.onceTime (cb) ->
-        time = process.hrtime()
+        time = new Date().getTime()
         setTimeout ->
-          cb null, time[1]
+          cb null, time
         , 1000
       async.parallel [ fn, fn, fn ], (err, results) ->
         expect(err, 'error').to.not.exist
@@ -138,9 +138,9 @@ describe "once", ->
     it "should run twice with two serial calls", (done) ->
       @timeout 5000
       fn = util.function.onceTime (cb) ->
-        time = process.hrtime()
+        time = new Date().getTime()
         setTimeout ->
-          cb null, time[1]
+          cb null, time
         , 1000
       async.series [ fn, fn ], (err, results) ->
         expect(err, 'error').to.not.exist
