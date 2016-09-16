@@ -203,6 +203,55 @@ exports.trim = (string, chars = " \n\t") ->
   string
 
 ###
+Left trim given characters.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = '/var/local/'
+result = util.string.ltrim test, '/'
+```
+
+This results to:
+
+    result = 'var/local/'
+
+@param {String} string text to be trimmed
+@param {String} [chars=' \n\t'] list of characters to trim off
+@return {String} the trimmed text
+###
+exports.ltrim = (string, chars = " \n\t") ->
+  debug "ltrim #{util.inspect chars} from  #{util.inspect string}"
+  string = string.substring 1 while string and ~chars.indexOf string.charAt 0
+  string
+
+###
+Right trim given characters.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = '/var/local/'
+result = util.string.rtrim test, '/'
+```
+
+This results to:
+
+    result = '/var/local'
+
+@param {String} string text to be trimmed
+@param {String} [chars=' \n\t'] list of characters to trim off
+@return {String} the trimmed text
+###
+exports.rtrim = (string, chars = " \n\t") ->
+  debug "rtrim #{util.inspect chars} from  #{util.inspect string}"
+  while string and ~chars.indexOf string.charAt string.length-1
+    string = string.substring 0, string.length-1
+  string
+
+###
 Make first letter upper case.
 
 __Example:__
