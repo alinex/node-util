@@ -4,6 +4,19 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.4.1 (2016-09-16)
+-------------------------------------------------
+- Update alinex-builder@2.3.8.
+- Add ltrim and rtrim methods for strings.
+- Remove uglify call.
+- Add more pathSearch tests for object.
+- Add test for wordbreak after too long word.
+- Update travis config.
+- Updated ignore files.
+- Use normal time method in tests.
+- Update docs.
+- Update docs.
+
 Version 2.4.0 (2016-08-12)
 -------------------------------------------------
 Remove old, already deprecated clone() and extend() methods.
