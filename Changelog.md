@@ -4,6 +4,10 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.4.2 (2016-09-29)
+-------------------------------------------------
+- Optimize debug calls to make less performance if not used.
+
 Version 2.4.1 (2016-09-16)
 -------------------------------------------------
 - Update alinex-builder@2.3.8.
