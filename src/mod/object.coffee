@@ -62,7 +62,7 @@ result = { one: 1, two: 2 }
 ###
 exports.path = (obj, path, separator = '/') ->
   path = path.split separator if typeof path is 'string'
-  debug "get path #{util.inspect path} from #{util.inspect obj}"
+  debug "get path #{util.inspect path} from #{util.inspect obj}" if debug.enabled
   ref = obj
   for k in path
     continue unless k
@@ -124,7 +124,8 @@ exports.path = (obj, path, separator = '/') ->
 # @return element at the position of the path or `undefined` if not found
 pathSearch = exports.pathSearch = (obj, path, separator = '/') ->
   path = path.split separator if typeof path is 'string'
-  debugPathSearch "get path #{util.inspect path} from #{util.inspect obj}"
+  if debugPathSearch.enabled
+    debugPathSearch "get path #{util.inspect path} from #{util.inspect obj}"
   return obj unless path.length
   cur = path.shift()
   # step over empty paths like //

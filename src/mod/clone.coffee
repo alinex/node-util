@@ -46,25 +46,25 @@ module.exports = (obj, depth) ->
   doClone = (obj, depth) ->
     indent += '   '
     # null, undefined values check
-    debug chalk.grey "#{indent[3..]}-> #{util.inspect obj}"
+    debug chalk.grey "#{indent[3..]}-> #{util.inspect obj}" if debug.enabled
     unless obj
       indent = indent[3..]
-      debug chalk.grey "#{indent}<- is undefined"
+      debug chalk.grey "#{indent}<- is undefined" if debug.enabled
       return obj
     if depth? and depth is 0
       indent = indent[3..]
-      debug chalk.grey "#{indent}<- max depth reached"
+      debug chalk.grey "#{indent}<- max depth reached" if debug.enabled
       return obj
     # return primitive types
     if typeof obj in ['number', 'string', 'boolean']
       indent = indent[3..]
-      debug chalk.grey "#{indent}<- is primitive"
+      debug chalk.grey "#{indent}<- is primitive" if debug.enabled
       return obj
     # return basic types
     for type in [Number, String, Boolean, Date]
       if obj instanceof type
         indent = indent[3..]
-        debug chalk.grey "#{indent}<- is #{type}"
+        debug chalk.grey "#{indent}<- is #{type}" if debug.enabled
         return new type obj
     # regexp
     if obj instanceof RegExp
@@ -77,10 +77,10 @@ module.exports = (obj, depth) ->
       #flags += 'y' if obj.sticky # sticky not standardized till yet
       return new RegExp obj.source, flags
     # cyclic references
-    debug chalk.grey "#{indent}++", util.inspect cloned
+    debug chalk.grey "#{indent}++", util.inspect cloned if debug.enabled
     for e in cloned
       if e[0] is obj
-        debug chalk.grey "#{indent}<- already cloned object..."
+        debug chalk.grey "#{indent}<- already cloned object..." if debug.enabled
         return e[1]
     # arrays
     if Array.isArray obj
@@ -88,25 +88,25 @@ module.exports = (obj, depth) ->
       cloned.push [obj, res]
       res[i] = doClone n, depth-1 for n, i in obj
       indent = indent[3..]
-      debug chalk.grey "#{indent}<- cloned array..."
+      debug chalk.grey "#{indent}<- cloned array..." if debug.enabled
       return res
     # testing that this is DOM
     if obj.nodeType and typeof obj.cloneNode is 'function'
       indent = indent[3..]
-      debug chalk.grey "#{indent}<- cloned DOM node..."
+      debug chalk.grey "#{indent}<- cloned DOM node..." if debug.enabled
       res = obj.cloneNode true
       cloned.push [obj, res]
       return res
     if obj.constructor.name isnt Object.name
       indent = indent[3..]
-      debug chalk.grey "#{indent}<- keep class object"
+      debug chalk.grey "#{indent}<- keep class object" if debug.enabled
       return obj
     # this is a literal
     res = {}
     cloned.push [obj, res]
     res[i] = doClone v, depth-1 for i, v of obj
     indent = indent[3..]
-    debug chalk.grey "#{indent}<- cloned object"
+    debug chalk.grey "#{indent}<- cloned object" if debug.enabled
     return res
   # run cloning
   doClone obj, depth

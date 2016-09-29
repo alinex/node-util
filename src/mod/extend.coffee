@@ -80,14 +80,15 @@ module.exports = extend = (ext...) ->
   mode = mode.filter (e) -> e isnt 'CLONE'
   # run over extenders
   obj = ext.shift()
-  debug "#{indent[3..]}-> extend #{chalk.grey util.inspect obj}"
-  debug "#{indent[3..]}   using mode: #{mode.join ', '}" if mode.length
+  if debug.enabled
+    debug "#{indent[3..]}-> extend #{chalk.grey util.inspect obj}"
+    debug "#{indent[3..]}   using mode: #{mode.join ', '}" if mode.length
   # use all extenders
   for src in ext
     continue unless src?
     # empty source object
     continue if src.constructor?.name is Object.name and not Object.keys(src).length
-    debug "#{indent[3..]}   by #{chalk.grey util.inspect src}"
+    debug "#{indent[3..]}   by #{chalk.grey util.inspect src}" if debug.enabled
     # undefined object
     unless obj?
       obj = src
@@ -98,7 +99,7 @@ module.exports = extend = (ext...) ->
       cmode = mode
       if 'OVERWRITE' in mode and typeof src[0] is 'string' and src[0][0..4] is 'MODE '
         cmode = src.shift().split(' ')[1..]
-        debug "#{indent[3..]}   change mode: #{cmode.join ', '}"
+        debug "#{indent[3..]}   change mode: #{cmode.join ', '}" if debug.enabled
       else mode
       # extend depending on mode
       if 'ARRAY_REPLACE' in cmode or not Array.isArray obj
@@ -120,7 +121,7 @@ module.exports = extend = (ext...) ->
     if 'OVERWRITE' in mode and src.OBJECT_REPLACE
       cmode = ['OBJECT_REPLACE']
       delete src.OBJECT_REPLACE
-      debug "#{indent[3..]}   change mode: #{cmode.join ', '}"
+      debug "#{indent[3..]}   change mode: #{cmode.join ', '}" if debug.enabled
     # replace if different type
     if not(obj?) or Array.isArray(obj) or typeof obj isnt 'object' or
     obj.constructor.name isnt Object.name
@@ -145,7 +146,7 @@ module.exports = extend = (ext...) ->
         v
   # return resulting obj
   indent = indent[3..]
-  debug "#{indent}<- #{chalk.grey util.inspect obj}"
+  debug "#{indent}<- #{chalk.grey util.inspect obj}" if debug.enabled
   obj
 
 ###

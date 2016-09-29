@@ -92,9 +92,10 @@ module.exports.once = (context, func) ->
   listeners = []  # callbacks waiting
   results = []    # the results stored for further calls
   func.__id ?= ++functionId
-  debug "wait ##{func.__id}: created for #{chalk.grey func}"
-  if context
-    debug "wait ##{func.__id}: using specific context"
+  if debug.enabled
+    debug "wait ##{func.__id}: created for #{chalk.grey func}"
+    if context
+      debug "wait ##{func.__id}: using specific context"
   # return wait function
   ->
     # get callback parameter
@@ -102,24 +103,24 @@ module.exports.once = (context, func) ->
     cb = args.pop() ? {}
     # return if already done
     if done
-      debug "wait ##{func.__id}: called again -> send result"
+      debug "wait ##{func.__id}: called again -> send result" if debug.enabled
       return cb.apply context, results
     # add to listeners
     listeners.push cb
     if started
-      debug "wait ##{func.__id}: called again while running"
+      debug "wait ##{func.__id}: called again while running" if debug.enabled
       return
-    debug "wait ##{func.__id}: called"
+    debug "wait ##{func.__id}: called" if debug.enabled
     # add the wait callback
     started = true
     args.push ->
-      debug "wait ##{func.__id}: done"
+      debug "wait ##{func.__id}: done" if debug.enabled
       # store results
       done = true
       results = [].slice.call arguments
       # call all listeners
       for cb in listeners
-        debug "wait ##{func.__id}: inform listener"
+        debug "wait ##{func.__id}: inform listener" if debug.enabled
         cb.apply context, results
       listeners = null
     # run real function

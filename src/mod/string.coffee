@@ -35,7 +35,8 @@ This results to:
 @return {Boolean} `true` if string starts with literal
 ###
 exports.starts = (string, literal, start) ->
-  debug "check #{util.inspect string} to start with #{util.inspect literal}
+  if debug.enabled
+    debug "check #{util.inspect string} to start with #{util.inspect literal}
   #{if start then 'starting at #' + start else ''}"
   literal is string.substr start, literal.length
 
@@ -60,7 +61,8 @@ This results to:
 @return {Boolean} `true` if string ends with literal
 ###
 exports.ends = (string, literal, back) ->
-  debug "check #{util.inspect string} to end with #{util.inspect literal}
+  if debug.enabled
+    debug "check #{util.inspect string} to end with #{util.inspect literal}
   #{if back then 'starting before #' + back else ''}"
   len = literal.length
   literal is string.substr string.length - len - (back or 0), len
@@ -85,7 +87,7 @@ This results to:
 @return {String} the repeated text
 ###
 exports.repeat = (string, num) ->
-  debug "repeat #{util.inspect string} #{num} times"
+  debug "repeat #{util.inspect string} #{num} times" if debug.enabled
   # use clever algorithm to have O(log(num)) string concatenation operations
   res = ''
   while num > 0
@@ -115,7 +117,8 @@ This results to:
 @return {String} the padded text
 ###
 exports.lpad = (string, length, char = ' ') ->
-  debug "left padding #{util.inspect string} with #{util.inspect char} to length of #{length}"
+  if debug.enabled
+    debug "left padding #{util.inspect string} with #{util.inspect char} to length of #{length}"
   string = string.toString() unless typeof string is 'string'
   return string unless length >= string.length
   exports.repeat(char, length - string.length) + string
@@ -141,7 +144,8 @@ This results to:
 @return {String} the padded text
 ###
 exports.rpad = (string, length, char = ' ') ->
-  debug "right padding #{util.inspect string} with #{util.inspect char} to length of #{length}"
+  if debug.enabled
+    debug "right padding #{util.inspect string} with #{util.inspect char} to length of #{length}"
   string = string.toString() unless typeof string is 'string'
   return string unless length >= string.length
   string + exports.repeat(char, length - string.length)
@@ -169,7 +173,8 @@ This results to:
 @return {String} the padded text
 ###
 exports.cpad = (string, length, char = ' ') ->
-  debug "center padding #{util.inspect string} with #{util.inspect char} to length of #{length}"
+  if debug.enabled
+    debug "center padding #{util.inspect string} with #{util.inspect char} to length of #{length}"
   string = string.toString() unless typeof string is 'string'
   return string unless length >= string.length
   lpad = exports.repeat char, Math.floor (length - string.length) / 2
@@ -196,7 +201,8 @@ This results to:
 @return {String} the trimmed text
 ###
 exports.trim = (string, chars = " \n\t") ->
-  debug "trim #{util.inspect chars} from  #{util.inspect string}"
+  if debug.enabled
+    debug "trim #{util.inspect chars} from  #{util.inspect string}"
   string = string.substring 1 while string and ~chars.indexOf string.charAt 0
   while string and ~chars.indexOf string.charAt string.length-1
     string = string.substring 0, string.length-1
@@ -222,7 +228,8 @@ This results to:
 @return {String} the trimmed text
 ###
 exports.ltrim = (string, chars = " \n\t") ->
-  debug "ltrim #{util.inspect chars} from  #{util.inspect string}"
+  if debug.enabled
+    debug "ltrim #{util.inspect chars} from  #{util.inspect string}"
   string = string.substring 1 while string and ~chars.indexOf string.charAt 0
   string
 
@@ -246,7 +253,8 @@ This results to:
 @return {String} the trimmed text
 ###
 exports.rtrim = (string, chars = " \n\t") ->
-  debug "rtrim #{util.inspect chars} from  #{util.inspect string}"
+  if debug.enabled
+    debug "rtrim #{util.inspect chars} from  #{util.inspect string}"
   while string and ~chars.indexOf string.charAt string.length-1
     string = string.substring 0, string.length-1
   string
@@ -270,7 +278,8 @@ This results to:
 @return {String} the text with first letter upper case
 ###
 exports.ucFirst = (string) ->
-  debug "upper case first letter of #{util.inspect string}"
+  if debug.enabled
+    debug "upper case first letter of #{util.inspect string}"
   string.charAt(0).toUpperCase() + string.slice(1)
 
 ###
@@ -292,7 +301,8 @@ This results to:
 @return {String} the text with first letter lower case
 ###
 exports.lcFirst = (string) ->
-  debug "lower case first letter of #{util.inspect string}"
+  if debug.enabled
+    debug "lower case first letter of #{util.inspect string}"
   string.charAt(0).toLowerCase() + string.slice(1)
 
 ###
@@ -317,7 +327,8 @@ This results to:
 @return {Boolean} `true` if phrase is contained in string
 ###
 exports.contains = (string, phrase) ->
-  debug "check if #{util.inspect string} contains #{util.inspect phrase}"
+  if debug.enabled
+    debug "check if #{util.inspect string} contains #{util.inspect phrase}"
   string.indexOf(phrase) isnt -1
 
 
@@ -351,7 +362,8 @@ This results to (variable result):
 @return {String} the multiline text
 ###
 exports.wordwrap = (str, width = 80, brk = '\n') ->
-  debug "wordwrap to width of #{width} characters (separator is #{util.inspect brk}):
+  if debug.enabled
+    debug "wordwrap to width of #{width} characters (separator is #{util.inspect brk}):
   \n#{str}"
   wrap = ''
   loop
@@ -411,7 +423,8 @@ This results to (variable result):
 @return {String} shortend text
 ###
 exports.shorten = (str, limit) ->
-  debug "shorten to width of #{limit} characters:\n#{str}"
+  if debug.enabled
+    debug "shorten to width of #{limit} characters:\n#{str}"
   return str if str.length < limit
   # need to shorten
   str = str[0..limit-3].replace /\s\S*?$/, ''
@@ -450,7 +463,8 @@ table = [
 @return {Array} the new list or list of arrays
 ###
 exports.toList = (text, rowDelimiter = /\n/, colDelimiter) ->
-  debug "split to list (#{util.inspect rowDelimiter}/#{util.inspect colDelimiter}):\n#{text}"
+  if debug.enabled
+    debug "split to list (#{util.inspect rowDelimiter}/#{util.inspect colDelimiter}):\n#{text}"
   list = text.split rowDelimiter
   return list unless colDelimiter
   list.map (e) -> e.split colDelimiter
@@ -471,7 +485,7 @@ list = util.string.split test # use the RegExp
 @return {RegExp|String} regular expression or ioriginal text
 ###
 exports.toRegExp = (text) ->
-  debug "try to transform #{util.inspect text} to RegExp"
+  debug "try to transform #{util.inspect text} to RegExp" if debug.enabled
   return text unless typeof text is 'string'
   match = text.replace '\t', '\\t'
   .replace '\n', '\\n'
