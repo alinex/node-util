@@ -3,13 +3,15 @@ Alinex Util: Readme
 
 [![GitHub watchers](
   https://img.shields.io/github/watchers/alinex/node-util.svg?style=social&label=Watch&maxAge=2592000)](
-  https://github.com/alinex/node-util/subscription)<!-- {.hidden-small} -->
+  https://github.com/alinex/node-util/subscription)
+<!-- {.hidden-small} -->
 [![GitHub stars](
   https://img.shields.io/github/stars/alinex/node-util.svg?style=social&label=Star&maxAge=2592000)](
   https://github.com/alinex/node-util)
 [![GitHub forks](
   https://img.shields.io/github/forks/alinex/node-util.svg?style=social&label=Fork&maxAge=2592000)](
-  https://github.com/alinex/node-util)<!-- {.hidden-small} -->
+  https://github.com/alinex/node-util)
+<!-- {.hidden-small} -->
 <!-- {p:.right} -->
 
 [![npm package](
@@ -17,7 +19,8 @@ Alinex Util: Readme
   https://www.npmjs.com/package/alinex-util)
 [![latest version](
   https://img.shields.io/npm/l/alinex-util.svg?maxAge=2592000)](
-  #license)<!-- {.hidden-small} -->
+  #license)
+<!-- {.hidden-small} -->
 [![Travis status](
   https://img.shields.io/travis/alinex/node-util.svg?maxAge=2592000&label=develop)](
   https://travis-ci.org/alinex/node-util)
@@ -29,7 +32,8 @@ Alinex Util: Readme
   https://gemnasium.com/alinex/node-util)
 [![GitHub issues](
   https://img.shields.io/github/issues/alinex/node-util.svg?maxAge=2592000)](
-  https://github.com/alinex/node-util/issues)<!-- {.hidden-small} -->
+  https://github.com/alinex/node-util/issues)
+<!-- {.hidden-small} -->
 
 
 This module will be used as incubator for different small helper methods which
