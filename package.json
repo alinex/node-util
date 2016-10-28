@@ -39,8 +39,8 @@
     "debug": "2.x"
   },
   "devDependencies": {
-    "alinex-builder": "^2.3.8",
-    "async": "^2.0.1",
+    "alinex-builder": "^2.3.9",
+    "async": "^2.1.2",
     "chai": "^3.5.0"
   },
   "optionalDependencies": {},
