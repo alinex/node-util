@@ -121,7 +121,7 @@ describe "Array", ->
       expect array.sortBy(test, 'last', 'first')
       , "sortBy last, first"
 
-  describe.only "shuffle", ->
+  describe "shuffle", ->
 
     it "should keep small arrays the same", ->
       for test, i in [
