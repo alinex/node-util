@@ -110,6 +110,7 @@
 <li><a href="#last">last()</a></li>
 <li><a href="#unique">unique()</a></li>
 <li><a href="#sortby">sortBy()</a></li>
+<li><a href="#shuffle">shuffle()</a></li>
 </ul>
 </li>
 </ul>
@@ -129,7 +130,7 @@
 <blockquote>
 <p class="api-usage"><strong>Usage:</strong> <code>last(array, back)</code></p>
 </blockquote>
-<dl class="api-spec">
+<dl>
 <dt>Parameter</dt>
 <dd>
 <ul>
@@ -138,7 +139,8 @@
 </ul>
 </dd>
 <dt>Return</dt>
-<dd>last element value</dd>
+<dd>last element value  <!-- {dl:.api-spec} -->
+</dd>
 </dl>
 <h3 id="unique">unique()</h3>
 <p>Remove duplicate entries from array.</p>
@@ -151,7 +153,7 @@
 <blockquote>
 <p class="api-usage"><strong>Usage:</strong> <code>unique(array)</code></p>
 </blockquote>
-<dl class="api-spec">
+<dl>
 <dt>Parameter</dt>
 <dd>
 <ul>
@@ -159,7 +161,8 @@
 </ul>
 </dd>
 <dt>Return</dt>
-<dd><code>Array</code> new array with duplicates removed</dd>
+<dd><code>Array</code> new array with duplicates removed  <!-- {dl:.api-spec} -->
+</dd>
 </dl>
 <h3 id="sortby">sortBy()</h3>
 <p>Sort array of objects.</p>
@@ -192,7 +195,7 @@ descending order.</p>
 <blockquote>
 <p class="api-usage"><strong>Usage:</strong> <code>sortBy(array, sort...)</code></p>
 </blockquote>
-<dl class="api-spec">
+<dl>
 <dt>Parameter</dt>
 <dd>
 <ul>
@@ -208,6 +211,28 @@ descending order)</li>
 <ul>
 <li><code>Error</code> Missing sort column name.</li>
 </ul>
+  <!-- {dl:.api-spec} -->
+</dd>
+</dl>
+<h3 id="shuffle">shuffle()</h3>
+<p>Shuffle elements. But this only works if the array has more than two elements within
+else it will be kept unchanged.</p>
+<p><strong>Example:</strong></p>
+<pre class="language coffeescript"><header>CoffeeScript Code</header><code>util = <span class="hljs-built_in">require</span> <span class="hljs-string">'alinex-util'</span></code>
+<code>util.array.shuffle [<span class="hljs-number">1.</span><span class="hljs-number">.9</span>]</code>
+<code><span class="hljs-comment"># =&gt; [ 3, 1, 5, 6, 4, 8, 2, 9, 7 ]</span></code></pre>
+<blockquote>
+<p class="api-usage"><strong>Usage:</strong> <code>shuffle(array)</code></p>
+</blockquote>
+<dl>
+<dt>Parameter</dt>
+<dd>
+<ul>
+<li><code>array</code> - <code>Array</code> to to be shuffled</li>
+</ul>
+</dd>
+<dt>Return</dt>
+<dd><code>Array</code> the same array  <!-- {dl:.api-spec} -->
 </dd>
 </dl>
 </main>
