@@ -4,7 +4,7 @@ expect = chai.expect
 
 describe "Array", ->
 
-  {array} = require '../../src/index'
+  {array, clone} = require '../../src/index'
 
   describe "last", ->
 
@@ -120,3 +120,20 @@ describe "Array", ->
       ]
       expect array.sortBy(test, 'last', 'first')
       , "sortBy last, first"
+
+  describe.only "shuffle", ->
+
+    it "should keep small arrays the same", ->
+      for test, i in [
+        []
+        [1]
+      ]
+        expect array.shuffle(clone test)
+        , "shuffle-#{i}"
+        .to.be.deep.equal test
+
+    it "should change bigger ones", ->
+      test = [1..9]
+      expect array.shuffle(clone test)
+      , "shuffle"
+      .to.not.be.deep.equal test

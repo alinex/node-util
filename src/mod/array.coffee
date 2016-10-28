@@ -106,6 +106,32 @@ exports.sortBy = (array) ->
     else
       array.sort dynamicMultiSort.apply this, args[1..]
 
+###
+Shuffle elements. But this only works if the array has more than two elements within
+else it will be kept unchanged.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+util.array.shuffle [1..9]
+# => [ 3, 1, 5, 6, 4, 8, 2, 9, 7 ]
+```
+
+@param {Array} array to to be shuffled
+@return {Array} the same array
+###
+exports.shuffle = (source) ->
+  # arrays with < 2 elements do not shuffle well. Instead make it a noop
+  return source unless source.length >= 2
+  # From the end of the list to the beginning, pick element `index`.
+  for i in [source.length-1..1]
+    # Choose random element `r` to the front of `i` to swap with.
+    r = Math.floor Math.random() * (i + 1)
+    # Swap `r` with `i`, using destructured assignment
+    [source[i], source[r]] = [source[r], source[i]]
+  source
+
 
 # Helper Methods
 # -------------------------------------------------
