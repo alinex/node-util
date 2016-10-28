@@ -4,6 +4,13 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.5.0 (2016-10-28)
+-------------------------------------------------
+- Let all tests run again.
+- Update alinex-builder@2.3.9, async@2.1.2
+- Add array.shuffle method.
+- Fix documentation to hide style comments in github view.
+
 Version 2.4.2 (2016-09-29)
 -------------------------------------------------
 - Optimize debug calls to make less performance if not used.
