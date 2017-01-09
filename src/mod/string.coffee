@@ -494,6 +494,56 @@ exports.toRegExp = (text) ->
   return text unless match
   new RegExp match[1], match[2]
 
+###
+Mask special characters for html display.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = '<html>'
+test = util.string.htmlEncode test
+```
+
+@param {String} text to be encoded
+@return {RegExp|String} encoded text
+###
+exports.htmlEncode = (text) ->
+  debug "encode #{text} for html" if debug.enabled
+  return text unless typeof text is 'string'
+  map =
+    "&": "&amp;"
+    "<": "&lt;"
+    ">": "&gt;"
+    "\"": "&quot;"
+    "'": "&#39;"
+  text.replace /[&<>"']/g, (m) -> return map[m]
+
+###
+Unmask special characters for html display.
+
+__Example:__
+
+``` coffee
+util = require 'alinex-util'
+test = '&lt;html&gt;'
+test = util.string.htmlDecode test
+```
+
+@param {String} text to be decoded
+@return {RegExp|String} decoded text
+###
+exports.htmlDecode = (text) ->
+  debug "encode #{text} for html" if debug.enabled
+  return text unless typeof text is 'string'
+  map =
+    "&amp;": "&"
+    "&lt;": "<"
+    "&gt;": ">"
+    "&quot;": "\""
+    "&#39;": "'"
+  text.replace /[&<>"']/g, (m) -> return map[m]
+
 
 ###
 Debugging

@@ -296,3 +296,15 @@ describe "String", ->
     it "should return object if no string", ->
       expect string.toRegExp Number 5
       .to.be.equal 5
+
+  describe "htmlEncode", ->
+
+    it "should convert text", ->
+      expect string.htmlEncode '<html>'
+      .to.be.equal '&lt;html&gt;'
+
+  describe "htmlDecode", ->
+
+    it "should convert text", ->
+      expect string.htmlDecode '&lt;html&gt;'
+      .to.be.equal '<html>'
