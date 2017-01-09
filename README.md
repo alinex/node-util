@@ -100,7 +100,7 @@ needed method from this package.
 License
 -------------------------------------------------
 
-(C) Copyright 2014-2016 Alexander Schilling
+(C) Copyright 2014-2017 Alexander Schilling
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -2,7 +2,7 @@
   "name": "alinex-util",
   "version": "2.5.0",
   "description": "Different small helper methods which are generally used",
-  "copyright": "Alexander Schilling 2014-2016",
+  "copyright": "Alexander Schilling 2014-2017",
   "private": false,
   "keywords": [
     "utils",
@@ -36,11 +36,11 @@
   },
   "dependencies": {
     "chalk": "^1.1.3",
-    "debug": "2.x"
+    "debug": "^2.6.0"
   },
   "devDependencies": {
-    "alinex-builder": "^2.3.9",
-    "async": "^2.1.2",
+    "alinex-builder": "^2.4.1",
+    "async": "^2.1.4",
     "chai": "^3.5.0"
   },
   "optionalDependencies": {},
