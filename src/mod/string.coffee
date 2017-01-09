@@ -542,7 +542,7 @@ exports.htmlDecode = (text) ->
     "&gt;": ">"
     "&quot;": "\""
     "&#39;": "'"
-  text.replace /[&<>"']/g, (m) -> return map[m]
+  text.replace /(&amp;|&lt;|&gt;|&quot;|&#39;)/g, (m) -> return map[m]
 
 
 ###
