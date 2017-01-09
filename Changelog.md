@@ -4,6 +4,12 @@ Version changes
 The following list gives a short overview about what is changed between
 individual versions:
 
+Version 2.5.1 (2017-01-09)
+-------------------------------------------------
+- Fix bug in decoding html.
+- Update async@2.1.4, debug@2.6.0, alinex-builder@2.4.1
+- Add new methods for html encoding/decoding.
+
 Version 2.5.0 (2016-10-28)
 -------------------------------------------------
 - Let all tests run again.
