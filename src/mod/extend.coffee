@@ -169,7 +169,7 @@ And you may also change the mode only for one element addition (here the first a
 ``` coffee
 test1 = {a: [1, 2, 3], b: [1, 2, 3], c: [1, 2, 3]}
 test2 = {a: ['MODE ARRAY_REPLACE', 4, 5, 6], c: ['a']}
-ext = util.extend test1, test2
+ext = util.extend 'MODE OVERWRITE', test1, test2
 # ext = {a: [4, 5, 6], b: [1, 2, 3], c: [1, 2, 3, 'a']}
 ```
 
@@ -178,7 +178,7 @@ And to set a mode in an object you give it as argument with value `true`:
 ``` coffee
 test1 = {t1: {a: 1, b: 2, c: 3}, t2: {d: 4, e: 5, f: 6}}
 test2 = {t1: {OBJECT_REPLACE: true, a: 4, b: 5}, t2: {d: 9}}
-ext = util.extend test1, test2
+ext = util.extend 'MODE OVERWRITE', test1, test2
 # ext = {t1: {a: 4, b: 5}, t2: {d: 9, e: 5, f: 6}}
 ```
 
